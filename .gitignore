@@ -1,0 +1,10 @@
+.cursor/
+__pycache__/
+build/
+tmp/
+*.pyc
+
+# Keep the final packaged calculator, but ignore old one-file/debug builds.
+dist/*.exe
+dist/ScientificCalculator_debug/
+dist/ScientificCalculator_test/
