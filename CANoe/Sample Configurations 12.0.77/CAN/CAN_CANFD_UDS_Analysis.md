@@ -4,7 +4,7 @@ This document analyzes the CAN related sample configurations under:
 
 `F:\AI_Codex\CANoe\Sample Configurations 12.0.77\CAN`
 
-The focus is ordinary CAN communication, CAN FD behavior, and UDS diagnostics over CAN. The original CANoe project files were only read and were not modified.
+The focus is ordinary CAN communication, CAN FD behavior, UDS diagnostics over CAN, and Network Management (NM). The original CANoe project files were only read and were not modified.
 
 ## 1. Recommended Reading Path
 
@@ -23,12 +23,18 @@ The focus is ordinary CAN communication, CAN FD behavior, and UDS diagnostics ov
    - Key files: `CAN_FD\CANdb\CAN_FD_Powertrain.dbc`, `CAN_FD\CANdb\Comfort.dbc`, `CAN_FD\Nodes\CAN_FD_CAN_Gateway.can`, `CAN_FD\Nodes\TFS_CAPL_CAN_FD.can`.
    - What to learn: CAN FD payload width, DLC handling, signal routing between CAN FD and classic CAN, and test feature set checks.
 
-4. Study `Diagnostics\UDSBasic\UDSBasic.cfg`.
+4. Study NM samples.
+   - Classic NM observer/tester: `CANSystemDemo\Nodes\NM_Tester_C.can`, `CANSystemDemo\Nodes\NM_Tester_PT.can`, and `CANSystemDemo\CANdb\NM_Tester.dbc`.
+   - AUTOSAR NM integrated demo: `CANSystemDemo_Autosar\CANSystem_HighRes_Autosar.cfg`, `Comfort_AsrNM33.INI`, `Powertrain_AsrNM33.INI`, `CAPL Includes\NM_Observer_Include.cin`.
+   - AUTOSAR NM standalone demo: `MoreExamples\Autosar_NM_Demo\ASRNm.cfg` or `ASRNm.stcfg`.
+   - What to learn: NM state observation, bus sleep/wakeup, repeat message, passive/active node behavior, communication enable/disable, partial networking, and car wakeup.
+
+5. Study `Diagnostics\UDSBasic\UDSBasic.cfg`.
    - Purpose: understand the smallest UDS tester and simulated ECU model.
    - Key files: `Diagnostics\UDSBasic\Cdd\UDS-ExampleEcu-5.0.2.cdd`, `Diagnostics\UDSBasic\Nodes\SimDiagECU.can`, `Diagnostics\UDSBasic\Tester\Tester.can`, `Diagnostics\UDSBasic\Tester\TestModule.can`.
    - What to learn: `diagRequest`, `diagResponse`, parameter read/write, raw data handling, positive response, and negative response.
 
-5. Finish with `Diagnostics\UDSSystem\UDSSystem.cfg`.
+6. Finish with `Diagnostics\UDSSystem\UDSSystem.cfg`.
    - Purpose: understand a complete UDS system with multiple ECUs, panels, system variables, DIDs, security access, downloads, fault memory, macros, and vTESTstudio assets.
    - Key files: `Diagnostics\UDSSystem\Nodes\DoorFL.can`, `Diagnostics\UDSSystem\Nodes\DoorFR.can`, `Diagnostics\UDSSystem\CAPL_Includes\*.cin`, `Diagnostics\UDSSystem\SecurityAccess\SeednKey.dll`, `Diagnostics\UDSSystem\Testunits\vTESTstudio_DiagTest.vtsoproj`.
 
@@ -99,6 +105,136 @@ The most useful mechanisms are:
 
 ## 4. UDSBasic
 
+## 4. Network Management
+
+There are three relevant NM layers in this CAN sample set:
+
+1. Classic NM monitoring in `CANSystemDemo`.
+2. AUTOSAR NM integrated into `CANSystemDemo_Autosar`.
+3. Standalone AUTOSAR NM with partial networking in `MoreExamples\Autosar_NM_Demo`.
+
+CAN FD databases also carry NM-style messages such as `NM_Engine`, `NM_Gateway`, `NM_DOORri`, `NM_DOORle`, and `NM_Console`, so NM remains relevant when studying CAN FD gateway behavior.
+
+### 4.1 Classic NM Tester in CANSystemDemo
+
+Important assets:
+
+- `CANSystemDemo\CANdb\NM_Tester.dbc`
+- `CANSystemDemo\Nodes\NM_Tester_C.can`
+- `CANSystemDemo\Nodes\NM_Tester_PT.can`
+- `CANSystemDemo\SystemVariables\NMTester.xml`
+
+`NM_Tester_C.can` observes comfort-network NM frames in the range `CAN1.0x401-0x440`. It maps the CAN ID offset to a node number and interprets byte 1 as a simple NM command state:
+
+- `0x01`: `ALIVE`
+- `0x02`: `RING`
+- `0x12`: `SLEEP_IND`
+- `0x32`: `SLEEP_ACK`
+
+It updates `NMTester` system variables for console, left door, right door, and gateway display states. It also detects general bus activity on `CAN1.*` and uses timers to clear wakeup and bus-communication indicators.
+
+`NM_Tester_PT.can` performs the same role for the powertrain bus, observing `CAN2.0x500-0x540`. It tracks gateway and engine NM states, sleep indication, sleep acknowledge, wakeup display, receiver IDs, and bus-communication activity.
+
+Use these two files if the learning goal is classic CAN NM message interpretation and visualization through system variables.
+
+### 4.2 AUTOSAR NM in CANSystemDemo_Autosar
+
+Main entry:
+
+`CANSystemDemo_Autosar\CANSystem_HighRes_Autosar.cfg`
+
+Important assets:
+
+- `CANSystemDemo_Autosar\Databases\Comfort.arxml`
+- `CANSystemDemo_Autosar\Databases\PowerTrain.arxml`
+- `CANSystemDemo_Autosar\Comfort_AsrNM33.INI`
+- `CANSystemDemo_Autosar\Powertrain_AsrNM33.INI`
+- `CANSystemDemo_Autosar\CAPL Includes\NM_Observer_Include.cin`
+- `CANSystemDemo_Autosar\Panels\NM_Tester.xvp`
+
+`NM_Observer_Include.cin` is the key CAPL reference. It disables automatic NM and Interaction Layer startup in `on preStart` with `Nm_SetAutoStartParam(0)` and `ILSetAutoStartParam(0)`, resolves the `Comfort` and `PowerTrain` bus contexts, then displays each node's local identifier and NM state.
+
+It maps `Nm_GetState()` values to readable states:
+
+- `0`: `UNINIT`
+- `1`: `BUS_SLEEP`
+- `2`: `PREPARE_BUS_SLEEP`
+- `3`: `READY_SLEEP`
+- `4`: `NORMAL_OPERATION`
+- `5`: `REPEAT_MESSAGE`
+- `8`: `Disabled`
+
+`Nm_StateChangeNotification(previousState, currentState)` refreshes the panel state display. This makes `CANSystemDemo_Autosar` the best sample for understanding NM state observation in a larger AUTOSAR-style vehicle configuration.
+
+### 4.3 Standalone AUTOSAR NM Demo
+
+Main entries:
+
+- `MoreExamples\Autosar_NM_Demo\ASRNm.cfg`
+- `MoreExamples\Autosar_NM_Demo\ASRNm.stcfg`
+
+Important assets:
+
+- `MoreExamples\Autosar_NM_Demo\CANdb\DemoAsrNM.dbc`
+- `MoreExamples\Autosar_NM_Demo\CAN_AsrNM33.INI`
+- `MoreExamples\Autosar_NM_Demo\Nodes\nodeA.can`
+- `MoreExamples\Autosar_NM_Demo\Nodes\nodeB.can`
+- `MoreExamples\Autosar_NM_Demo\Nodes\nodeC.can`
+- `MoreExamples\Autosar_NM_Demo\Nodes\nodeD.can`
+- `MoreExamples\Autosar_NM_Demo\Nodes\Gateway.can`
+- `MoreExamples\Autosar_NM_Demo\Panels\NM_Control.xvp`
+
+The demo describes five nodes: `NodeA`, `NodeB`, `NodeC`, `NodeD`, and `Gateway`. It demonstrates AUTOSAR NM 3.3, including partial networking introduced in AUTOSAR 3.2. The nodes can be controlled from panels: network request state, active/passive behavior, communication enablement, partial networking, user data, control bit vector, repeat message, detected nodes, and car wakeup are all represented.
+
+`nodeA.can` is representative for nodes A-D. It uses:
+
+- `Nm_SetVerbosity`
+- `Nm_SetAutoStartParam`
+- `Nm_ConfigureILNotifications`
+- `Nm_BusSleepModeInd`
+- `Nm_PrepareBusSleepModeInd`
+- `Nm_NetworkModeInd`
+- `Nm_NetworkStartInd`
+- `Nm_StateChangeNotification`
+- `Nm_RepeatMessageRequest`
+- `Nm_RequestBusSynch`
+- `Nm_SetUserData`
+- `Nm_SetControlBitVector`
+- `Nm_EnableCommunication` / `Nm_DisableCommunication`
+- `Nm_EnablePartialNetworking` / `Nm_DisablePartialNetworking`
+- `Nm_EnablePassiveMode` / `Nm_DisablePassiveMode`
+- `Nm_CarWakeUpInd`
+
+`Gateway.can` is the best reference for partial-network request aggregation. It tracks panel variables `GatewayReqPn1` and `GatewayReqPn2`, builds PN request bytes, calls `Nm_SetPnRequestBits(reqBits)`, and starts or releases network requests with `Nm_NetworkRequest()` / `Nm_NetworkRelease()`. It also supports `SendCarWakeUp` by setting the car wakeup bit and temporarily requesting all PNs.
+
+`CAN_AsrNM33.INI` contains the NM timing and PN configuration. Notable settings:
+
+- `NM_CAR_WAKEUP_RX_ENABLED=1`
+- `NM_CAR_WAKEUP_BYTE_POSITION=2`
+- `NM_CAR_WAKEUP_BIT_POSITION=0`
+- `NM_CAR_WAKEUP_FILTER_NODE_ID=0x55`
+- `NM_PN_ENABLED=1`
+- `NM_PN_INFO_OFFSET=3`
+- `NM_PN_INFO_LENGTH=2`
+- `NM_IMMEDIATE_NM_TRANSMISSIONS=3`
+- `CANNM_MSG_CYCLE_TIME=640`
+- `NM_TIMEOUT_TIME=2000`
+- `NM_WAIT_BUS_SLEEP_TIME=1500`
+- `NM_REPEAT_MESSAGE_TIME=3200`
+
+It also defines node-specific PN masks. For example, Node A requests PN1, Node B requests PN1 and PN2, Node C and Node D request PN2-related masks, and Gateway accepts all PN masks.
+
+### 4.4 NM and CAN FD
+
+The CAN FD sample is not primarily an NM demo, but its DBCs contain NM messages:
+
+- `CAN_FD\CANdb\CAN_FD_Powertrain.dbc`: includes `NM_Engine` and `NM_Gateway`.
+- `CAN_FD\CANdb\Comfort.dbc`: includes `NM_Gateway`, `NM_DOORri`, `NM_DOORle`, and `NM_Console`.
+
+These are useful when comparing a CAN FD powertrain side with a classic comfort side, especially if a future reuse task needs gateway behavior plus network state handling.
+
+## 5. UDSBasic
+
 Main entry:
 
 `Diagnostics\UDSBasic\UDSBasic.cfg`
@@ -152,7 +288,7 @@ The tester uses:
 
 This file is the best minimal reference for tester-side UDS scripting in CAPL.
 
-## 5. UDSSystem
+## 6. UDSSystem
 
 Main entry:
 
@@ -277,20 +413,24 @@ Automated testing:
 - `Testunits\DiagTest\DiagTest.vtuexe`
 - `Testunits\vTESTstudio_DiagTest.vtsoproj`
 
-## 6. Automation View
+## 7. Automation View
 
 For CAN FD automation, start with `TFS_CAPL_CAN_FD.can`. It is short and clearly maps test cases to DLC, signal, message, and cycle-time checks.
 
 For UDS automation, start with `UDSBasic\Tester\TestModule.can` to see a smaller diagnostic test module, then move to `UDSSystem\Testmodules\CAPL_Testcases_ECU1.can` and the vTESTstudio project. The UDSSystem test assets are more comprehensive and depend on the full ECU simulation, CDD/PDX diagnostic descriptions, and system variables.
 
-## 7. Practical Reuse Notes
+For NM automation and observation, start with `CANSystemDemo_Autosar\CAPL Includes\NM_Observer_Include.cin` for state display and `MoreExamples\Autosar_NM_Demo\Nodes\nodeA.can` for active panel-driven NM behavior. Use `Gateway.can` in the same AUTOSAR NM demo when partial networking and car wakeup are the target.
+
+## 8. Practical Reuse Notes
 
 - For learning CAPL diagnostics, copy the patterns from `UDSBasic` first. It has the least indirection.
 - For a realistic ECU simulation, use `DoorFL.can` as a feature map, but do not copy it wholesale. Extract one behavior at a time, such as session handling, security access, DID read/write, or fault memory.
 - For CAN FD validation, reuse the `TFS_CAPL_CAN_FD.can` structure: message wait checks, DLC checks, signal checks, and cycle-time checks are cleanly separated.
 - For gateway behavior, `CAN_FD_CAN_Gateway.can` is the highest-value minimal example because it demonstrates both frame-based and signal-based routing.
+- For classic NM visualization, reuse the `NM_Tester_C.can` and `NM_Tester_PT.can` pattern: watch NM ID ranges, decode command bytes, and update panel-facing system variables.
+- For AUTOSAR NM, prefer the standalone `Autosar_NM_Demo` before the full `CANSystemDemo_Autosar`; it isolates active/passive mode, Repeat Message, PN request masks, communication enablement, and car wakeup.
 
-## 8. Files Created by This Analysis
+## 9. Files Created by This Analysis
 
 - `CAN_CANFD_UDS_Analysis.md`: this report.
 - `CAN_CANFD_UDS_Project_Entrypoints.md`: project entrypoint index.

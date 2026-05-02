@@ -11,6 +11,16 @@
 | `CANSystemDemo\Testmodul\EngineTester.can` | Classic CAN test module | Useful for learning CANoe test module structure before CAN FD and UDS tests. |
 | `CANSystemDemo\Testmodul\TestCaseLibrary.can` | Shared classic CAN tests | Reusable test-case pattern reference. |
 
+## Network Management
+
+| File | Role | Key behavior |
+| --- | --- | --- |
+| `CANSystemDemo\Nodes\NM_Tester_C.can` | Classic comfort-bus NM tester/observer | Observes `CAN1.0x401-0x440`, maps NM ID from CAN ID offset, decodes command byte values into `ALIVE`, `RING`, `SLEEP_IND`, and `SLEEP_ACK`, then updates `NMTester` system variables and panel indicators. |
+| `CANSystemDemo\Nodes\NM_Tester_PT.can` | Classic powertrain-bus NM tester/observer | Observes `CAN2.0x500-0x540`, tracks gateway and engine NM states, receiver IDs, sleep indication, sleep acknowledge, wakeup display, and bus communication activity. |
+| `CANSystemDemo_Autosar\CAPL Includes\NM_Observer_Include.cin` | AUTOSAR NM state observer | Uses bus contexts for `Comfort` and `PowerTrain`, disables automatic NM/IL startup, reads local node IDs, maps `Nm_GetState()` to readable states, and refreshes panel state through `Nm_StateChangeNotification`. |
+| `MoreExamples\Autosar_NM_Demo\Nodes\nodeA.can` | Representative AUTOSAR NM node | Demonstrates `Nm_SetVerbosity`, `Nm_SetAutoStartParam`, state indications, Repeat Message, passive/active mode, communication enable/disable, partial networking, user data, control bit vector, bus synchronization, detected node display, and car wakeup handling. Nodes B-D follow the same design pattern. |
+| `MoreExamples\Autosar_NM_Demo\Nodes\Gateway.can` | AUTOSAR NM gateway and PN request controller | Aggregates panel requests for PN1/PN2, calls `Nm_SetPnRequestBits`, `Nm_NetworkRequest`, `Nm_NetworkRelease`, and controls the car wakeup bit. Best reference for partial networking gateway behavior. |
+
 ## CAN FD
 
 | File | Role | Key behavior |
@@ -59,5 +69,7 @@
 - Message observation: `testWaitForMessage`, `TestGetWaitEventMsgData`, `testJoinMessageEvent`.
 - CAN FD DLC checks: `ChkStart_InconsistentDLC`, `ChkStart_InconsistentTxDLC`, `ChkStart_InconsistentRxDLC`, `testSetMsgDlc`, `testResetMsgDlc`.
 - CAN FD cycle checks: `ChkStart_MsgRelCycleTimeViolation`, `ChkStart_MsgAbsCycleTimeViolation`, `ChkStart_SignalCycleTimeViolation`.
+- Classic NM observation: monitor NM CAN ID ranges, decode NM command bytes, update system variables, and clear wakeup/bus activity indicators with timers.
+- AUTOSAR NM APIs: `Nm_SetAutoStartParam`, `Nm_GetState`, `Nm_StateChangeNotification`, `Nm_NetworkRequest`, `Nm_NetworkRelease`, `Nm_RepeatMessageRequest`, `Nm_EnableCommunication`, `Nm_DisableCommunication`, `Nm_EnablePartialNetworking`, `Nm_DisablePartialNetworking`, `Nm_SetPnRequestBits`, `Nm_SetCarWakeUpBit`.
 - UDS ECU side: `on diagRequest`, `diagResponse`, `SendPositiveResponse`, `SendNegativeResponse`, `SetParameter`, `SetParameterRaw`.
 - UDS tester side: `DiagRequest`, `SendRequest`, `on diagResponse`, `IsPositiveResponse`, `GetResponseCode`, `GetParameter`, `GetParameterRaw`.

@@ -1,5 +1,23 @@
 # CAN / CAN FD / UDS Diagnostic Asset Index
 
+## Network Management Assets
+
+| Asset | Path | Purpose |
+| --- | --- | --- |
+| Classic NM tester DBC | `CANSystemDemo\CANdb\NM_Tester.dbc` | DBC for classic NM tester visualization in `CANSystemDemo`. |
+| Classic comfort NM tester | `CANSystemDemo\Nodes\NM_Tester_C.can` | Observes comfort bus NM frames, decodes ALIVE/RING/SLEEP_IND/SLEEP_ACK, and updates `NMTester` system variables. |
+| Classic powertrain NM tester | `CANSystemDemo\Nodes\NM_Tester_PT.can` | Observes powertrain bus NM frames and updates powertrain NM display system variables. |
+| NM system variables | `CANSystemDemo\SystemVariables\NMTester.xml` | System variable namespace backing the classic NM tester panels. |
+| AUTOSAR full-system NM config | `CANSystemDemo_Autosar\Comfort_AsrNM33.INI`; `Powertrain_AsrNM33.INI` | AUTOSAR NM node-layer configuration for the full vehicle demo. |
+| AUTOSAR NM observer include | `CANSystemDemo_Autosar\CAPL Includes\NM_Observer_Include.cin` | Shared observer logic for displaying AUTOSAR NM state across Comfort and PowerTrain bus contexts. |
+| AUTOSAR NM panel | `CANSystemDemo_Autosar\Panels\NM_Tester.xvp` | Panel for NM state visualization in the AUTOSAR full-system demo. |
+| Standalone AUTOSAR NM project | `MoreExamples\Autosar_NM_Demo\ASRNm.cfg`; `ASRNm.stcfg` | Focused AUTOSAR NM sample entrypoints. |
+| Standalone AUTOSAR NM DBC | `MoreExamples\Autosar_NM_Demo\CANdb\DemoAsrNM.dbc` | Database for the standalone AUTOSAR NM demo. |
+| Standalone AUTOSAR NM config | `MoreExamples\Autosar_NM_Demo\CAN_AsrNM33.INI` | Defines car wakeup, PN settings, timing, node PN masks, and PN names. |
+| Standalone AUTOSAR NM nodes | `MoreExamples\Autosar_NM_Demo\Nodes\nodeA.can`; `nodeB.can`; `nodeC.can`; `nodeD.can`; `Gateway.can` | Node behavior for active/passive mode, Repeat Message, communication control, PN request bits, car wakeup, and detected-node display. |
+| Standalone AUTOSAR NM panels | `MoreExamples\Autosar_NM_Demo\Panels\NM_Control.xvp`; `NodeA.xvp`; `NodeB.xvp`; `NodeC.xvp`; `NodeD.xvp`; `Gateway.xvp` | Panels for controlling NM node state, PN requests, user data, control bits, and gateway wakeup behavior. |
+| TestFeatureSet NM DBC | `TestFeatureSet\CentralLockingSystem\DBs\NM.dbc` | NM database used by the central locking test feature set sample. |
+
 ## UDSBasic Assets
 
 | Asset | Path | Purpose |
