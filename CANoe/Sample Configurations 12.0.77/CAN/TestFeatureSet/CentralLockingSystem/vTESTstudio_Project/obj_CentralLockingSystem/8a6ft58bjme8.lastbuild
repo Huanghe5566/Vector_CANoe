@@ -1,0 +1,229 @@
+﻿19:24:22 # Build of test unit 'CentralLockingSystemTest_CSharp' started...
+19:24:22 - Build Step #0: BuildPreparation (ArtefactID: -1)
+19:24:22 - ------------------------------------------------
+19:24:22 - ============================== Build Step #0 finished ==============================
+19:24:22 - Build Step #1: PreBuildEvent (ArtefactID: -1)
+19:24:22 - ---------------------------------------------
+19:24:22 - ============================== Build Step #1 finished ==============================
+19:24:22 - Build Step #2: BuildTestSequenceDiagramDependencyTree (ArtefactID: -1)
+19:24:22 - ----------------------------------------------------------------------
+19:24:22 - Nothing to do (no Test Sequence Diagram Files)
+19:24:22 - ============================== Build Step #2 finished ==============================
+19:24:22 - Build Step #3: TraceArtefactIds (ArtefactID: -1)
+19:24:22 - ------------------------------------------------
+19:24:22 - Artefact IDs:
+19:24:22 -   0 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can
+19:24:22 -   1 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\TestTree.vtt
+19:24:22 -   2 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam
+19:24:22 -   3 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam
+19:24:22 -   4 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\DoorLockData.vct
+19:24:22 -   5 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\LockingSystemTester.cs
+19:24:22 -   6 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\LockingTestLibrary.cs
+19:24:22 -   7 D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\BasicDiagnostics.cs
+19:24:22 - ============================== Build Step #3 finished ==============================
+19:24:22 - Build Step #4: ValidateTestUnit (ArtefactID: -1)
+19:24:22 - ------------------------------------------------
+19:24:22 # Checking test unit consistency
+19:24:22 - ============================== Build Step #4 finished ==============================
+19:24:22 - Build Step #16: CopyParameterFile (ArtefactID: 2)
+19:24:22 - -------------------------------------------------
+19:24:22 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\TestParameters.vparam' is outdated
+19:24:22 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:22 - Copied file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\TestParameters.vparam'
+19:24:22 - ============================== Build Step #16 finished ==============================
+19:24:22 - Build Step #17: CopyParameterFile (ArtefactID: 3)
+19:24:22 - -------------------------------------------------
+19:24:22 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\VariantSpecificParameters.vparam' is outdated
+19:24:22 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:22 - Copied file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam' to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\VariantSpecificParameters.vparam'
+19:24:22 - ============================== Build Step #17 finished ==============================
+19:24:22 - Build Step #18: CopyParameterFile (ArtefactID: 4)
+19:24:22 - -------------------------------------------------
+19:24:22 - ============================== Build Step #18 finished ==============================
+19:24:22 - Build Step #5: BuildParameterTypeLibs (ArtefactID: -1)
+19:24:22 - ------------------------------------------------------
+19:24:22 - Output file: D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_PA.dll
+19:24:22 - Source files:
+19:24:22 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam
+19:24:22 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam
+19:24:22 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\DoorLockData.vct
+19:24:22 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8=VP.vvarprop
+19:24:22 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_PA.dll' is outdated
+19:24:22 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:23 # Creating type libraries for parameters and variant properties
+19:24:23 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_PA.dll' generated successfully
+19:24:23 - ============================== Build Step #5 finished ==============================
+19:24:23 - Build Step #6: BuildCaplTypeLibs (ArtefactID: -1)
+19:24:23 - -------------------------------------------------
+19:24:23 - Output file: D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_CA.dll
+19:24:23 - Source files:
+19:24:23 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8~0-0.
+19:24:23 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_CA.dll' is up to date (regarding to export table hash)
+19:24:23 - ============================== Build Step #6 finished ==============================
+19:24:23 - Build Step #7: BuildSysVarTypeLibs (ArtefactID: -1)
+19:24:23 - ---------------------------------------------------
+19:24:23 - Output file: D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\hvenbpbktmf7_TestSysVars.dll
+19:24:23 - Source files:
+19:24:23 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\ufj9uirk3n6g-MTSV
+19:24:23 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\hvenbpbktmf7_TestSysVars.dll' is up to date (regarding to dependencies in MAKE database)
+19:24:23 - ============================== Build Step #7 finished ==============================
+19:24:23 - Build Step #8: BuildCoTypeLib (ArtefactID: -1)
+19:24:23 - ----------------------------------------------
+19:24:23 - Nothing to do (no C# documents and no .NET assemblies or no CO-Lib)
+19:24:23 - ============================== Build Step #8 finished ==============================
+19:24:23 - Build Step #9: ValidateCSharp (ArtefactID: -1)
+19:24:23 - ----------------------------------------------
+19:24:23 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\CentralLockingSystemTest_CSharp.dll' is up to date (regarding to export table hash)
+19:24:23 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\CentralLockingSystemTest_CSharp.dll' is outdated
+19:24:23 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_PA.dll' (2022/7/8 19:24:23) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\8a6ft58bjme8_PA.dll' (2022/7/8 19:24:10) stored in MAKE database
+19:24:23 # Compiling C# files in test unit 'CentralLockingSystemTest_CSharp'
+19:24:24 #  Vector.PostCompiler - Aspect weaving .NET Assembly post-compiler
+19:24:24 #  Copyright © Vector Informatik GmbH 2015
+19:24:24 #  Post compilation complete
+19:24:24 # Compilation succeeded (19:24:24) -- 0 errors, 0 warnings
+19:24:24 - ============================== Build Step #9 finished ==============================
+19:24:24 - Build Step #10: ValidateCaplFile (ArtefactID: 0)
+19:24:24 - ------------------------------------------------
+19:24:24 - CAPL file dependencies (direct dependencies only):
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can --> <TestParameters.vparam>, <VariantSpecificParameters.vparam>, <DoorLockData.vct>, <8a6ft58bjme8=VP.vvarprop>
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\Utilities.cbf' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 - BuildStepUtilities.CompileCaplFile: 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can' --> 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\Utilities.cbf'
+19:24:24 # Compiling file 'Utilities.can' in test unit 'CentralLockingSystemTest_CSharp'
+19:24:24 # Compilation succeeded (19:24:24) -- 0 errors, 0 warnings
+19:24:24 - ============================== Build Step #10 finished ==============================
+19:24:24 - Build Step #11: ValidateTteFile (ArtefactID: 1)
+19:24:24 - -----------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\TestTree.vtt' is up to date (regarding to export table hash)
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\TestTree.vtt' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 # Compiling file 'TestTree.vtt' in test unit 'CentralLockingSystemTest_CSharp'
+19:24:24 # Compilation succeeded (19:24:24) -- 0 errors, 0 warnings
+19:24:24 - ============================== Build Step #11 finished ==============================
+19:24:24 - Build Step #12: ValidateParameterFile (ArtefactID: 2)
+19:24:24 - -----------------------------------------------------
+19:24:24 - Dependent files:
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8=VP.vvarprop
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 # Compiling file 'TestParameters.vparam' in test unit 'CentralLockingSystemTest_CSharp'
+19:24:24 # Compilation succeeded (19:24:24) -- 0 errors, 0 warnings
+19:24:24 - ============================== Build Step #12 finished ==============================
+19:24:24 - Build Step #13: ValidateParameterFile (ArtefactID: 3)
+19:24:24 - -----------------------------------------------------
+19:24:24 - Dependent files:
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8=VP.vvarprop
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 # Compiling file 'VariantSpecificParameters.vparam' in test unit 'CentralLockingSystemTest_CSharp'
+19:24:24 # Compilation succeeded (19:24:24) -- 0 errors, 0 warnings
+19:24:24 - ============================== Build Step #13 finished ==============================
+19:24:24 - Build Step #14: ValidateClassificationTree (ArtefactID: 4)
+19:24:24 - ----------------------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\DoorLockData.vct' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\DoorLockData.vct.vparam' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - ============================== Build Step #14 finished ==============================
+19:24:24 - Build Step #15: ConditionalBuildAbort (ArtefactID: -1)
+19:24:24 - ------------------------------------------------------
+19:24:24 - All Validation succeeded - continue build.
+19:24:24 - ============================== Build Step #15 finished ==============================
+19:24:24 - Build Step #19: CollectNavigationInfo (ArtefactID: 1)
+19:24:24 - -----------------------------------------------------
+19:24:24 - ============================== Build Step #19 finished ==============================
+19:24:24 - Build Step #20: CompileVtt2Vxtx (ArtefactID: 1)
+19:24:24 - -----------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.can' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx' is up to date (regarding to export table hash)
+19:24:24 - ============================== Build Step #20 finished ==============================
+19:24:24 - Build Step #21: CompileGeneratedCapl (ArtefactID: 1)
+19:24:24 - ----------------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.cbf' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.can' (2022/7/8 19:24:24) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.can' (2022/7/8 19:24:11) stored in MAKE database
+19:24:24 - BuildStepUtilities.CompileCaplFile: 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.can' --> 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__TsoBuildFiles_\TestTree.vxtx.cbf'
+19:24:24 - Export table file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8~3-0.' not copied to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__ExpTbl_\TestTree.vtt.export.xml' because export tables have not changed
+19:24:24 - Copied file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\TestTree.vtt' to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\TestTree.vtt'
+19:24:24 - ============================== Build Step #21 finished ==============================
+19:24:24 - Build Step #22: MergeCaplDocument (ArtefactID: 0)
+19:24:24 - -------------------------------------------------
+19:24:24 - CAPL file dependencies (direct dependencies only):
+19:24:24 - D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can --> <TestParameters.vparam>, <VariantSpecificParameters.vparam>, <DoorLockData.vct>, <8a6ft58bjme8=VP.vvarprop>
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\Utilities.can' is outdated
+19:24:24 - Reason: Last write time of 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2022/7/8 19:24:19) differs from dependency relation to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam' (2019/3/22 19:43:44) stored in MAKE database
+19:24:24 - Export table file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8~0-0.' not copied to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\__ExpTbl_\Utilities.can.export.xml' because export tables have not changed
+19:24:24 - ============================== Build Step #22 finished ==============================
+19:24:24 - Build Step #23: MoveCSharpXmlDocumentation (ArtefactID: -1)
+19:24:24 - -----------------------------------------------------------
+19:24:24 - MoveCSharpXmlDocumentation: Skipped because option is deactivated
+19:24:24 - ============================== Build Step #23 finished ==============================
+19:24:24 - Build Step #24: CopyCSharpFile (ArtefactID: 5)
+19:24:24 - ----------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\LockingSystemTester.cs' is up to date (regarding to export table hash)
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\LockingSystemTester.cs' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - ============================== Build Step #24 finished ==============================
+19:24:24 - Build Step #25: CopyCSharpFile (ArtefactID: 6)
+19:24:24 - ----------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\LockingTestLibrary.cs' is up to date (regarding to export table hash)
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\LockingTestLibrary.cs' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - ============================== Build Step #25 finished ==============================
+19:24:24 - Build Step #26: CopyCSharpFile (ArtefactID: 7)
+19:24:24 - ----------------------------------------------
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\BasicDiagnostics.cs' is up to date (regarding to export table hash)
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\BasicDiagnostics.cs' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - ============================== Build Step #26 finished ==============================
+19:24:24 - Build Step #27: ValidateTteFile (ArtefactID: 1)
+19:24:24 - -----------------------------------------------
+19:24:24 - ============================== Build Step #27 finished ==============================
+19:24:24 - Build Step #28: ValidateIdUsage (ArtefactID: -1)
+19:24:24 - ------------------------------------------------
+19:24:24 - ============================== Build Step #28 finished ==============================
+19:24:24 - Build Step #29: ExportTraceabilityMatrix (ArtefactID: -1)
+19:24:24 - ---------------------------------------------------------
+19:24:24 - ExportTraceabilityMatrix: Skipped because option is deactivated
+19:24:24 - ============================== Build Step #29 finished ==============================
+19:24:24 - Build Step #30: IncludeSources (ArtefactID: -1)
+19:24:24 - -----------------------------------------------
+19:24:24 - IncludeSources: Skipped because option is deactivated
+19:24:24 - ============================== Build Step #30 finished ==============================
+19:24:24 - Build Step #31: WriteSystemEnvironment (ArtefactID: -1)
+19:24:24 - -------------------------------------------------------
+19:24:24 - Copy merged Test System Variable file...
+19:24:24 - Copy <ufj9uirk3n6g-MTSV> to D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\TestSysVars.vsysvar
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\TestSysVars.vsysvar' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - Add variant property file...
+19:24:24 - 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\CentralLockingSystemTest_CSharp_ctrlvars1.vvarprop' is up to date (regarding to dependencies in MAKE database)
+19:24:24 - Copied file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystem.vtraceitem' to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\CentralLockingSystem.vtraceitem'
+19:24:24 - Copied file 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystem.vattribute' to 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\CentralLockingSystem.vattribute'
+19:24:24 - ============================== Build Step #31 finished ==============================
+19:24:24 - Build Step #32: WriteTUProperties (ArtefactID: -1)
+19:24:24 - --------------------------------------------------
+19:24:24 - ============================== Build Step #32 finished ==============================
+19:24:24 - Build Step #33: WriteTetEntries (ArtefactID: -1)
+19:24:24 - ------------------------------------------------
+19:24:24 - ============================== Build Step #33 finished ==============================
+19:24:24 - Build Step #34: WriteManifest (ArtefactID: -1)
+19:24:24 - ----------------------------------------------
+19:24:24 - Writing manifest D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\bin_8a6ft58bjme8\CentralLockingSystemTest_CSharp.vtumanifest
+19:24:24 - ============================== Build Step #34 finished ==============================
+19:24:24 - Build Step #39: RemoveOrphanedBuildArtfacts (ArtefactID: -1)
+19:24:24 - ------------------------------------------------------------
+19:24:24 - Removing orphaned build artefacts from the vtuexe's main folder...
+19:24:24 - Nothing to do.
+19:24:24 - ============================== Build Step #39 finished ==============================
+19:24:24 - Build Step #35: WriteMetainfo (ArtefactID: -1)
+19:24:24 - ----------------------------------------------
+19:24:24 - BUILD TIME excluding ZIP/UNZIP (hours:minutes:seconds:milliseconds): 00:00:01:214
+19:24:24 - ============================== Build Step #35 finished ==============================
+19:24:24 - Build Step #36: WriteVtuexe (ArtefactID: -1)
+19:24:24 - --------------------------------------------
+19:24:24 # Test unit created 'D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\CentralLockingSystemTest_CSharp.vtuexe'
+19:24:24 - ============================== Build Step #36 finished ==============================
+19:24:24 - Build Step #37: PostBuildEvent (ArtefactID: -1)
+19:24:24 - -----------------------------------------------
+19:24:24 - ============================== Build Step #37 finished ==============================
+19:24:24 - Build Step #38: BuildCleanup (ArtefactID: -1)
+19:24:24 - ---------------------------------------------

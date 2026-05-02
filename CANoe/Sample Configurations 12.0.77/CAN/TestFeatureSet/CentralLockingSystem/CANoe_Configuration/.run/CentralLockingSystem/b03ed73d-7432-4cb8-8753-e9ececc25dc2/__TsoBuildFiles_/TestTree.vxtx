@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testtree>
+  <title></title>
+  <version>1</version>
+  <nestedcallparameterlist>
+    <callparameterlist>
+      <name>ad209eabd6778fcdcce3afb2f6e88f2f</name>
+      <title>Apply crash with different velocities</title>
+      <testcaseid>192bb50a-b7b0-4c60-b12a-0af3a7874b02</testcaseid>
+      <combinatorics>combinatorial</combinatorics>
+      <callparameter>
+        <name>engineRunning</name>
+        <type>long</type>
+        <valuelist>
+          <value>
+            <const>0</const>
+          </value>
+          <value>
+            <const>1</const>
+          </value>
+        </valuelist>
+      </callparameter>
+      <callparameter>
+        <name>velocity</name>
+        <type>long</type>
+        <listparameter>
+          <syspar>
+            <name>LockingTests::VelocityList</name>
+          </syspar>
+        </listparameter>
+      </callparameter>
+    </callparameterlist>
+    <callparameterlist>
+      <name>ed27cb18cf6b54ce14ba531c3f5a70f9</name>
+      <title>Ambiguous request KeyUp/KeyDown</title>
+      <testcaseid>52a93e5d-1f3e-4f83-b361-6db6567eee8a</testcaseid>
+      <combinatorics>sequential</combinatorics>
+      <callparameter>
+        <name>engineRunning</name>
+        <type>long</type>
+        <valuelist>
+          <value>
+            <const>0</const>
+          </value>
+          <value>
+            <const>1</const>
+          </value>
+        </valuelist>
+      </callparameter>
+    </callparameterlist>
+  </nestedcallparameterlist>
+  <caplfunction>
+    <name>Tt7_Tet_TtInit</name>
+  </caplfunction>
+  <testgroup>
+    <title>Test static requirements of the door control unit</title>
+    <navid>a67afed6-c0e2-4e8e-8a44-30d4c2cdf683</navid>
+    <testcase>
+      <title>Lock statically</title>
+      <testcaseid>d0e07d00-1258-4730-a553-25a49a111efe</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall0</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Unlock statically</title>
+      <testcaseid>7df46b81-a987-4d15-9360-5cb410e718f5</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall1</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Crash detection while engine is off and not moving</title>
+      <testcaseid>be0c14a7-fe6f-46e1-88ad-ce62f4993c6d</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall2</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Crash detection while engine is off and moving</title>
+      <testcaseid>35daeae7-765a-485e-9476-f469e7d2f077</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall3</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Crash detection while engine is running</title>
+      <testcaseid>42a320a6-f30f-4c7b-86ed-3bec7a254f4f</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall4</name>
+      </caplfunction>
+    </testcase>
+  </testgroup>
+  <testgroup>
+    <title>Test velocity dependent requirements of the door control unit</title>
+    <navid>c531ed8e-f7ca-4262-9350-f49ee8c2ce05</navid>
+    <testcase>
+      <title>Lock by increasing velocity</title>
+      <testcaseid>7fdbfb32-c864-4ec6-aae4-75974eaf0703</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall5</name>
+      </caplfunction>
+    </testcase>
+    <testcaselist>
+      <title>Apply crash with different velocities</title>
+      <testcaseid>192bb50a-b7b0-4c60-b12a-0af3a7874b02</testcaseid>
+      <refname>ad209eabd6778fcdcce3afb2f6e88f2f</refname>
+      <caplfunction>
+        <name>Tt7_Tet_NetTcCall0</name>
+      </caplfunction>
+    </testcaselist>
+  </testgroup>
+  <testgroup>
+    <title>Comfort close</title>
+    <navid>984a71de-bf27-4ac7-a6fe-189fdb6a6bae</navid>
+    <testcase>
+      <title>Open and comfort close</title>
+      <testcaseid>c57ecc46-9989-430f-b626-9599e6eb5443</testcaseid>
+      <caplfunction>
+        <name>Tt7_Tet_CaplTcCall6</name>
+      </caplfunction>
+    </testcase>
+  </testgroup>
+  <testgroup>
+    <title>Diagnostics</title>
+    <navid>09028fce-b271-4a8a-b440-9f018bf870b8</navid>
+    <variantdependencies>
+      <varprop>
+        <name>Coverage</name>
+        <eq>
+          <const>2</const>
+        </eq>
+      </varprop>
+    </variantdependencies>
+    <testcaselist>
+      <title>Ambiguous request KeyUp/KeyDown</title>
+      <testcaseid>52a93e5d-1f3e-4f83-b361-6db6567eee8a</testcaseid>
+      <refname>ed27cb18cf6b54ce14ba531c3f5a70f9</refname>
+      <caplfunction>
+        <name>Tt7_Tet_NetTcCall1</name>
+      </caplfunction>
+    </testcaselist>
+  </testgroup>
+</testtree>

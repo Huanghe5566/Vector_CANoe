@@ -1,0 +1,631 @@
+﻿/* !Encoding: 65001  */
+includes
+{
+  #include "__DiagLibrary.cin"
+  #include "__VariablesLib.cin"
+  #include "__CaplGeneratorLib.cin"
+  #include "__CANoeReportFuntionsLib.cin"
+}
+
+variables
+{
+  // Global variables defined within this CAPL file
+}
+
+void Tt4_MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0()
+{
+  TestCommandBegin(__eReport, __cReport, __cEmpty, "3");
+  {
+    testStep(2, __cEmpty, "Establish diagnostic connection here");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt4_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1()
+{
+  TestCommandBegin(__eSet, __cSet, "", "4");
+  {
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'Velocity'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'CrashDetected'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'LockRequest'", `CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "idle");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'EngineRunning'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'LockState'", `CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "5");
+  {
+    __Wait("1", (500 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt4_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2()
+{
+  TestCommandBegin(__eFaultMemoryClear, __cFaultMemoryClear, "", "6");
+  {
+    long __res;
+    long __dtc;
+    
+    __DiagSetTarget("SUT");
+  
+    DiagSetReportDetailLevel(EnumServiceDetails_onfail);
+    TestStep("Query fault memory", "Clearing fault memory of target Diagnostic ECU 'SUT'");
+  
+    __res = TestWaitForDiagTroubleCodesCleared(-1, cDiagAppTimeoutDefault);
+    if (__EvaluateWaitResWithVerdict(__res, 1, "DTC cleared successfully"))
+      TestReportWriteFaultMemoryDetails(__bVerdict); }
+  TestCommandEnd();
+
+}
+
+void Tt4_MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt4_MelFunction_Decision_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_4(int64 velocity)
+{
+  TestCommandBegin(__eCAPLInline, __cCAPLInline, "", "8");
+  {
+    __tt4CaplInline0(velocity);
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "9");
+  {
+    __Wait("1", (100 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+
+void __tt4CaplInline0 (int64& velocity)
+{
+  {
+$Velocity = velocity;
+  }
+}
+
+void Tt4_MelFunction_DecisionContainer_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_5(int64 velocity)
+{
+  int64 __ifExec0;
+
+  
+  TestControlStructBegin(__cIf, "", "10");
+  {
+    int64 __condition;
+    {
+      int64 __expr0;
+      __ifExec0 = 0;
+  
+      {
+        __csr = CheckSignalMatch(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, syspar::`LockingTests::`LockVelocity, "<=")==1;
+      }
+      {
+        __expr0 = __csr;
+      }
+      __condition = __expr0;
+  
+        snprintf(__cConditionArray, 2048, "%s", "");
+        snprintf(__cCompareArray, 2048, "%s", "");
+        snprintf(__cCompareArray, 2048, "%s%s%s", "Velocity", "<=", "LockVelocity");
+        snprintf(__cArray, 2048, "%s", __cCompareArray);
+        snprintf(__cCompareArray, 2048, "( %s )", __cArray);
+        snprintf(__cArray, 2048, "%s", __cConditionArray);
+        snprintf(__cConditionArray, 2048, "%s%s", __cArray, __cCompareArray);
+        snprintf(__cArray, 2048, "%s", __cConditionArray);
+        snprintf(__cConditionArray, 2048, "%s %s", "If", __cArray);
+  
+      __ReportConditionTableHead(__cConditionArray, __condition);
+      {
+        __csr = CheckSignalMatch(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, syspar::`LockingTests::`LockVelocity, "<=")==1;
+        __ReportTableRow(0, "CAN signal 'Velocity'", "<=", syspar::`LockingTests::`LockVelocity, "LockVelocity");
+        __ReportCell(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+        __ReportCellResult(__csr, __eTrueFalse); 
+      }
+      __ReportTableEndCondition(__cIfCondition);
+    }
+  
+    if(__condition)
+    {  
+      __ifExec0 = 1;
+
+      Tt4_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_6(velocity);
+
+
+    }
+  }
+  TestControlStructEnd(__eUndefined);
+
+  TestControlStructBegin(__cElse, "", "11");
+  {
+    if (__DoElse(__ifExec0))
+    {
+      Tt4_MelFunction_Check_031a2a56_ac71_4ee9_afca_0ca53f80b2c2_7(velocity);
+
+
+    }
+  }
+  TestControlStructEnd(__eUndefined);
+
+}
+
+void Tt4_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_6(int64 velocity)
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_031a2a56_ac71_4ee9_afca_0ca53f80b2c2_7(int64 velocity)
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8()
+{
+    
+  TestCommandBegin(__eFaultMemoryStatus, __cFaultMemoryStatus, "Check that fault memory is still empty since no errors provoked", "14");
+  {
+    long  __res;
+    DWORD __statusByte;
+    
+    __bVerdict = __eVerdictPass;
+    __DiagSetTarget("SUT");
+    DiagSetReportDetailLevel(EnumServiceDetails_onfail);
+    TestStep("Query fault memory", "Checking status of fault memory for Diagnostic ECU  'SUT'");
+  
+    __statusByte = -1;
+  
+    __res = TestWaitForDiagTroubleCodes(__statusByte, cDiagAppTimeoutDefault);
+    if(__EvaluateWaitResWithVerdict(__res, 1))
+    {
+      long __dtcCount;
+  	  
+      __dtcCount = DiagGetDTCCount();
+      if(__dtcCount >= 0)
+      {
+        __ReportTableHead5Columns("Check received number of relevant DTCs", __cTSym, __cTOp, __cRefVal, __cActual, __cRes);
+        __csr = (CheckSignalMatch(__dtcCount, 0, "==") == 1);
+        __ReportTableRow(0, "Expected number of DTCs", "==", 0, "");
+        __ReportCell(__dtcCount);
+        __ReportCellResult(__csr, __ePassFail);
+        __ReportTableEndVerdict(__cEmpty, __csr);
+        __bVerdict = __bVerdict && __csr;
+      }
+  
+      TestReportWriteFaultMemoryDetails(__bVerdict);
+    }
+  }
+  TestCommandEnd();
+
+}
+
+void Tt4_MelFunction_BinaryLink_38113636_2bdd_4cda_acb0_d6039dde355d_9()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(65);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_10()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_c670079e_808b_4970_bf59_9ef6a20d9ac9_11()
+{
+  {
+    CreateTTEIFFunction("SlowDown", __eFct, __eGlobal);
+    AddIFParameterDouble(65);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "cadd0fcf-ccd5-43d2-bab8-0545b3aa7987");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_bb316327_1ffd_447c_a5d4_ec49913e2aa0_12()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_7fb90f9e_cfbd_4b11_b78b_5955ec732598_13()
+{
+  dword __h0;
+
+  __h0 = HILAPICreateSignalGenerator("VelocityWaveform.sti");
+  if(__h0 == 0)
+    testStepErrorInTestSystem("Generation of signal generator for waveform curve 'Increase' failed"); 
+  
+  if ((__h0 != 0) && (testWaitForHILAPISignalGeneratorLoaded(__h0) < 0))
+  {
+    testStepErrorInTestSystem("Load of signal generator for waveform curve 'Increase' failed"); 
+    __h0 = 0; 
+  }
+
+  TestCommandBegin(__eStimulateWaveform, __cStimulateWaveform, "Increase -> Velocity, Wait", "19");
+  {
+    __ReportTableHead2Columns(__cExecuteWaveformCurves, __cWaveformCurve, __cTSym);
+    testInfoRow(__tableHandle, 0, "Increase");
+    snprintf(__cArray, elCount(__cArray), "CAN signal '%s'", "Velocity");
+    testInfoCell(__tableHandle, __cArray);
+    
+    if ((__h0 != 0) && (0 == HILAPISetSignalGeneratorAssignment(__h0, "Increase", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity)))
+    { 
+      snprintf(__cArray2, 2048, "Assignment of signal generator for waveform curve 'Increase' failed");
+      testStepErrorInTestSystem(__cArray2); 
+      __h0 = 0;
+    }
+    HILAPIStartSignalGenerator(__h0);
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+  if(__h0 != 0 && HILAPIGetSignalGeneratorState(__h0) == 4)
+    testWaitForHILAPISignalGeneratorFinished(__h0);
+
+
+  if(__h0 != 0) 
+  { 
+    HILAPIStopSignalGenerator(__h0); 
+    HILAPIDestroySignalGenerator(__h0); 
+  }
+}
+
+void Tt4_MelFunction_Check_280e3e8e_c5a7_4437_8215_3957c060cf28_14()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Check_8045574d_5c2c_47e9_903a_7a578228ecce_15()
+{
+  dword __h1;
+
+  __h1 = HILAPICreateSignalGenerator("VelocityWaveform.sti");
+  if(__h1 == 0)
+    testStepErrorInTestSystem("Generation of signal generator for waveform curve 'Decrease' failed"); 
+  
+  if ((__h1 != 0) && (testWaitForHILAPISignalGeneratorLoaded(__h1) < 0))
+  {
+    testStepErrorInTestSystem("Load of signal generator for waveform curve 'Decrease' failed"); 
+    __h1 = 0; 
+  }
+
+  TestCommandBegin(__eStimulateWaveform, __cStimulateWaveform, "Decrease -> Velocity, Wait", "21");
+  {
+    __ReportTableHead2Columns(__cExecuteWaveformCurves, __cWaveformCurve, __cTSym);
+    testInfoRow(__tableHandle, 0, "Decrease");
+    snprintf(__cArray, elCount(__cArray), "CAN signal '%s'", "Velocity");
+    testInfoCell(__tableHandle, __cArray);
+    
+    if ((__h1 != 0) && (0 == HILAPISetSignalGeneratorAssignment(__h1, "Decrease", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity)))
+    { 
+      snprintf(__cArray2, 2048, "Assignment of signal generator for waveform curve 'Decrease' failed");
+      testStepErrorInTestSystem(__cArray2); 
+      __h1 = 0;
+    }
+    HILAPIStartSignalGenerator(__h1);
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+  if(__h1 != 0 && HILAPIGetSignalGeneratorState(__h1) == 4)
+    testWaitForHILAPISignalGeneratorFinished(__h1);
+
+
+  if(__h1 != 0) 
+  { 
+    HILAPIStopSignalGenerator(__h1); 
+    HILAPIDestroySignalGenerator(__h1); 
+  }
+}
+
+void Tt4_MelFunction_Check_df608474_54fa_4936_a64f_f5f82b9c10cd_16()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt4_MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_17()
+{
+  TestCommandBegin(__eReport, __cReport, __cEmpty, "23");
+  {
+    testStep(2, __cEmpty, "Release diagnostic connection here");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt4_Tet_TtInit()
+{
+
+}
+
+void Tt4_Tet_Tf_Preparation0()
+{
+  TestPreparationBegin();
+  {
+    Tt4_MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0();
+
+
+  }
+  TestPreparationEnd();
+}
+
+
+void Tt4_Tet_Tf_Completion0()
+{
+  TestCompletionBegin();
+  {
+    Tt4_MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_17();
+
+
+  }
+  TestCompletionEnd();
+}
+
+
+void Tt4_Tet_Tc0()
+{
+  CreateTTEIFFunction("Tt4_Tc0", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "finished");
+  AddIFParameterTestCaseAttribute("Note", "");
+  CallInterfaceFunction("Check lock by increasing velocity", __cEmpty , __cEmpty );
+}
+testcase Tt4_Tc0()
+{	
+  int64 __tt4LoopVar0;
+
+  SetBreakOnFail(1);
+
+  Tt4_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt4_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt4_MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3();
+
+
+  {
+    TestControlStructBegin(__cForEach, "For Each (For Each velocity in VelocityList)", "0");
+    for(__tt4LoopVar0 = 0; __tt4LoopVar0 < elCount(syspar::`LockingTests::`VelocityList); __tt4LoopVar0++)
+    {
+      snprintf(__cArray, 2048, "For Each (For Each velocity in VelocityList; current velocity = %I64d (%s[%I64d]))", (int64)syspar::`LockingTests::`VelocityList[__tt4LoopVar0], "VelocityList", __tt4LoopVar0);
+      TestControlStructBegin(__cForEachIteration, __cArray, "2");
+
+      Tt4_MelFunction_Decision_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_4(syspar::`LockingTests::`VelocityList[__tt4LoopVar0]);
+
+
+      Tt4_MelFunction_DecisionContainer_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_5(syspar::`LockingTests::`VelocityList[__tt4LoopVar0]);
+
+
+      TestControlStructEnd(__eUndefined);
+    }
+    TestControlStructEnd(__eUndefined);
+  }
+  Tt4_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8();
+
+
+}
+
+void Tt4_Tet_Tc1()
+{
+  CreateTTEIFFunction("Tt4_Tc1", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "finished");
+  AddIFParameterTestCaseAttribute("Note", "");
+  CallInterfaceFunction("Check no unlock when slowing down", __cEmpty , __cEmpty );
+}
+testcase Tt4_Tc1()
+{	
+  SetBreakOnFail(1);
+
+  Tt4_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt4_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt4_MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3();
+
+
+  Tt4_MelFunction_BinaryLink_38113636_2bdd_4cda_acb0_d6039dde355d_9();
+
+
+  {
+      snprintf(__cConditionArray, 2048, "%s", "");
+    snprintf(__cCompareArray, 2048, "%s", "");
+    snprintf(__cCompareArray, 2048, "%s%s%s", "Velocity", ">=", "0");
+    snprintf(__cArray, 2048, "%s", __cCompareArray);
+    snprintf(__cCompareArray, 2048, "( %s )", __cArray);
+    snprintf(__cArray, 2048, "%s", __cConditionArray);
+    snprintf(__cConditionArray, 2048, "%s%s", __cArray, __cCompareArray);
+    snprintf(__cArray, 2048, "%s", __cConditionArray);
+    snprintf(__cConditionArray, 2048, "%s %s", "While", __cArray);
+
+    snprintf(__cConditionArray, 2048, "%s%s", "While (", __cConditionArray);
+    snprintf(__cConditionArray, 2048, "%s%s", __cConditionArray, ")");
+    TestControlStructBegin(__cWhile, __cConditionArray, "0");
+    while(1)
+    {
+      int64 __expr0;
+      int64 __condition;
+  
+      {
+        __csr = CheckSignalMatch(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, 0, ">=") == 1;
+      }
+      {
+        __expr0 = __csr;
+      }
+      __condition = __expr0;
+  
+          snprintf(__cConditionArray, 2048, "%s", "");
+      snprintf(__cCompareArray, 2048, "%s", "");
+      snprintf(__cCompareArray, 2048, "%s%s%s", "Velocity", ">=", "0");
+      snprintf(__cArray, 2048, "%s", __cCompareArray);
+      snprintf(__cCompareArray, 2048, "( %s )", __cArray);
+      snprintf(__cArray, 2048, "%s", __cConditionArray);
+      snprintf(__cConditionArray, 2048, "%s%s", __cArray, __cCompareArray);
+      snprintf(__cArray, 2048, "%s", __cConditionArray);
+      snprintf(__cConditionArray, 2048, "%s %s", "While", __cArray);
+  
+      snprintf(__cConditionArray, 2048, "%s%s", "While (", __cConditionArray);
+      snprintf(__cConditionArray, 2048, "%s%s", __cConditionArray, ")");
+      if(__condition == 1)
+      {
+        snprintf(__cArray2, 2048, "%s%s", __cConditionArray, " : true");
+      }
+      else
+      {
+        snprintf(__cArray2, 2048, "%s%s", __cConditionArray, " : false");
+      }
+      TestControlStructBegin(__cWhileIteration, __cArray2, "1");
+      {
+      __ReportTableHead5Columns("Condition", __cTSym, __cTOp, __cRefVal, __cActual, __cRes);
+      {
+            __csr = CheckSignalMatch(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, 0, ">=") == 1;
+      __ReportTableRow(0, "CAN signal 'Velocity'", ">=", 0, "");
+      __ReportCell(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+      __ReportCellResult(__csr, __eTrueFalse); 
+      }
+      __ReportTableEndCondition(__cWhileCondition, 1);
+  
+      if(__LoopIsBlocking())
+      {
+        TestControlStructEnd(__eErrorInTestSystem);
+        break;
+      }
+  
+      if (0 == __condition)
+      {
+        TestControlStructEnd(__eUndefined);
+        break;
+      }
+    }
+
+      Tt4_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_10();
+
+
+      Tt4_MelFunction_Check_c670079e_808b_4970_bf59_9ef6a20d9ac9_11();
+
+
+      TestControlStructEnd(__eUndefined);
+    }
+    TestControlStructEnd(__eUndefined);
+  }
+  
+
+  Tt4_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8();
+
+
+}
+
+void Tt4_Tet_Tc2()
+{
+  CreateTTEIFFunction("Tt4_Tc2", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "finished");
+  AddIFParameterTestCaseAttribute("Note", "");
+  CallInterfaceFunction("Check lock/unlock", __cEmpty , __cEmpty );
+}
+testcase Tt4_Tc2()
+{	
+  SetBreakOnFail(1);
+
+  Tt4_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt4_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt4_MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3();
+
+
+  Tt4_MelFunction_Check_bb316327_1ffd_447c_a5d4_ec49913e2aa0_12();
+
+
+  Tt4_MelFunction_Check_7fb90f9e_cfbd_4b11_b78b_5955ec732598_13();
+
+
+  Tt4_MelFunction_Check_280e3e8e_c5a7_4437_8215_3957c060cf28_14();
+
+
+  Tt4_MelFunction_Check_8045574d_5c2c_47e9_903a_7a578228ecce_15();
+
+
+  Tt4_MelFunction_Check_df608474_54fa_4936_a64f_f5f82b9c10cd_16();
+
+
+  Tt4_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8();
+
+
+}
+

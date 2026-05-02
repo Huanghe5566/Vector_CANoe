@@ -1,0 +1,17 @@
+Vector Parameter	1.0
+
+ScalarSingleRecord
+
+Name	Type	Info	Value
+kIdfr	String	Identifier used in the ICMP Messages to identify an ICMP Message	16
+kSeqno	String	Sequence Numbers used in ICMP Messages to identify an ICMP Message	32
+kOrigTimestampValue	String	This value is used in ICMPv4_TYPE_11	1531297
+kListenTimeMilliseconds	Integer	Default value: 3 second (OPEN Alliance specification, p. 147)	3000
+kTriggerTimeMilliseconds	Auto	Default value: 30 seconds (OPEN Alliance specification, p. 147)	30000
+kFragReassemblyTimeoutMilliseconds	Integer	Default value: 15 seconds (OPEN alliance specification, p. 147)	15000
+kDUTSupportsIPOptions	Integer	0: false; 1: true	1
+kUnsupportedProtocol	Integer	For Testcase ICMPv4_TYPE_18	143
+kUnusedUdpPort	String	An unused UDP port available on the DUT	6544
+kTesterUdpSourcePort	String	The UDP source port which is used by the Tester	5000
+kInvalidIcmpType	Auto		42
+

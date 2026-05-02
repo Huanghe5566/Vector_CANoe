@@ -1,0 +1,83 @@
+# OS metadata
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor and IDE state
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+*.opensdf
+*.sdf
+*.ipch
+
+# Visual Studio / .NET build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Dd]ebugPublic/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]uild/
+[Aa]rtifacts/
+TestResults/
+*.pdb
+*.ilk
+*.idb
+*.iobj
+*.ipdb
+*.obj
+*.pch
+*.tlog
+*.lastbuildstate
+*.log
+*.cache
+*.tmp
+*.temp
+
+# NuGet and package restore output
+packages/
+*.nupkg
+project.assets.json
+project.nuget.cache
+
+# CMake / native build scratch
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+_build/
+
+# Python helper environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# CANoe / Vector runtime and local-generated files
+Logging/
+Logs/
+log/
+logs/
+Trace/
+Traces/
+Measurements/
+Reports/
+Temp/
+*.bak
+*.orig
+*.~*

@@ -1,0 +1,37 @@
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+on start
+{
+  @sysVar::Test::SysTestApplyControlMode = 0;
+}
+
+on sysvar Common::SysChangeLinkStatusMode
+{   
+  if (@this == 1)
+  {
+    if (@sysVar::Common::SysLinkStatusSimulation)
+    {
+      @sysVar::Common::SysLinkStatusSimulation = 0;
+      sysSetVariableString(sysVar::Common::SysLinkStatusModeString, "polling");
+    }
+    else
+    {
+      @sysVar::Common::SysLinkStatusSimulation = 1;
+      sysSetVariableString(sysVar::Common::SysLinkStatusModeString, "simulated");
+    }
+  }
+}
+
+on *
+{
+	output(this);
+}
+

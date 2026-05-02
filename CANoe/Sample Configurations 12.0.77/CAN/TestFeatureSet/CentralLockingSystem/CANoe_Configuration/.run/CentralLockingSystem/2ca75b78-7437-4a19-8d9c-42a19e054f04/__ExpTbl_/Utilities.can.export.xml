@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<tclibrary>
+  <testfunction name="AccelerateDecelerateToTargetSpeed" comment="Simulates increasing/decreasing velocity slowly as if controlled by driver.&#xA;" signature="testfunction AccelerateDecelerateToTargetSpeed(float targetSpeed)" file="D:\_COE_Demo\trunk\Demos\CANoe Sample Configurations\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can" SourceFilePersistencyGuid="7mrblem9tbhn" IsPrivate="false" IsNetSignatureAndDefinedInExternalDll="true">
+    <parameter name="targetSpeed" type="float" raw_type="float" />
+    <document_position><![CDATA[<OffsetDocumentPosition xmlns:SerializedType="Vector.ITE.Document.OffsetDocumentPosition"><Offset>134</Offset></OffsetDocumentPosition>]]></document_position>
+    <implementation_language lang="CAPL" />
+  </testfunction>
+</tclibrary>

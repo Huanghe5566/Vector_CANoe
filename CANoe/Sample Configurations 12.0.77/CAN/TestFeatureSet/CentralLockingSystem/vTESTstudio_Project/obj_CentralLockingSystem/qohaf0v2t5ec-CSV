@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<systemvariables version="4">
+  <namespace name="" comment="">
+    <namespace name="_Statistics" comment="">
+      <namespace name="CAN1" comment="Bus Statistic Variables for Channel CAN1">
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="Busload" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="" name="ChipState" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="4" maxValuePhys="4">
+          <valuetable definesMinMax="true">
+            <valuetableentry value="0" description="Active" />
+            <valuetableentry value="1" description="Passive" />
+            <valuetableentry value="2" description="Off" />
+            <valuetableentry value="3" description="Warning" />
+            <valuetableentry value="4" description="Simulated" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ExtDataRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ExtRemoteRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="ms" name="BurstTime" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="StdData" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="StdDataRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ExtData" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="StdRemote" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="Bursts" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ExtRemote" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="StdRemoteRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ErrorFrames" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ErrorFrameRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ChipStateTxErr" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ChipStateRxErr" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="ms" name="MinSendDist" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="" name="FramesPerBurst" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="TransceiverErrors" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadAvg" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadMin" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadMax" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+      </namespace>
+      <namespace name="CAN2" comment="Bus Statistic Variables for Channel CAN2">
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="Busload" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="" name="ChipState" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="4" maxValuePhys="4">
+          <valuetable definesMinMax="true">
+            <valuetableentry value="0" description="Active" />
+            <valuetableentry value="1" description="Passive" />
+            <valuetableentry value="2" description="Off" />
+            <valuetableentry value="3" description="Warning" />
+            <valuetableentry value="4" description="Simulated" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ExtDataRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ExtRemoteRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="ms" name="BurstTime" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="StdData" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="StdDataRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ExtData" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="StdRemote" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="Bursts" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ExtRemote" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="StdRemoteRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ErrorFrames" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="fr/s" name="ErrorFrameRate" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ChipStateTxErr" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="ChipStateRxErr" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="ms" name="MinSendDist" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="" name="FramesPerBurst" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="total" name="TransceiverErrors" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadAvg" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadMin" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+        <variable anlyzLocal="1" readOnly="true" valueSequence="false" unit="%" name="BusloadMax" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" minValue="0" maxValue="100" />
+      </namespace>
+    </namespace>
+  </namespace>
+</systemvariables>

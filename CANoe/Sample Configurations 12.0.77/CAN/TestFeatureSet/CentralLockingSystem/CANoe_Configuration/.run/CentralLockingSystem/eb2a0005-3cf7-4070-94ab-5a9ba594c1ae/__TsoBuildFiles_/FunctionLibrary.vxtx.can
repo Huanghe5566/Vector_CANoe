@@ -1,0 +1,96 @@
+﻿/* !Encoding: 65001  */
+includes
+{
+  #include "__VariablesLib.cin"
+  #include "__CaplGeneratorLib.cin"
+  #include "__CANoeReportFuntionsLib.cin"
+}
+
+variables
+{
+  // Global variables defined within this CAPL file
+}
+
+export void LockManually()
+{
+  TestCommandBegin(__eSet, __cSet, "", "0");
+  {
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      $`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest.phys = 1;
+      __ReportSignalSetLValue("CAN signal 'LockRequest'", `CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 1, "Request_lock");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "1");
+  {
+    __Wait("1", (((int64)syspar::`LockingTests::`LockRequestWaitTime) * 1000000), 1000000, "LockRequestWaitTime");
+  }
+  TestCommandEnd();
+
+}
+
+export void UnlockManually()
+{
+  TestCommandBegin(__eSet, __cSet, "", "0");
+  {
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      $`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest.phys = 2;
+      __ReportSignalSetLValue("CAN signal 'LockRequest'", `CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 2, "Request_unlock");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "1");
+  {
+    __Wait("1", (((int64)syspar::`LockingTests::`LockRequestWaitTime) * 1000000), 1000000, "LockRequestWaitTime");
+  }
+  TestCommandEnd();
+
+}
+
+export void SpeedUpToLockVelocity(int64 offset)
+{
+  int64 __tt6targetVelocity0;
+
+  {
+    __tt6targetVelocity0 = syspar::`LockingTests::`LockVelocity;
+    snprintf(__cArray, elCount(__cArray), "%I64d", __tt6targetVelocity0);
+  }
+
+
+  TestCommandBegin(__eSet, __cSet, "", "0");
+  {
+    int64 __caplExprVar0;
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      __caplExprVar0 = (__tt6targetVelocity0 + offset);
+      __tt6targetVelocity0 = __caplExprVar0;
+      __ReportTableRow(0, "Variable 'targetVelocity'", __cAOp, __caplExprVar0, "targetVelocity + offset");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity.phys = __tt6targetVelocity0;
+      __ReportSignalSetLValue("CAN signal 'Velocity'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, __tt6targetVelocity0, "targetVelocity");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "1");
+  {
+    __Wait("1", (500 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+

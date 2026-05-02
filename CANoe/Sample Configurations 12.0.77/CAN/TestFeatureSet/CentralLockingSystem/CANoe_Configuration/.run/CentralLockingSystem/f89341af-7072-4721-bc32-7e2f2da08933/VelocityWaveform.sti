@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SignalDescriptionFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hilnormung.de/stimulusgeneration/stimulusfile SignalDescriptionFormat.xsd" version="1" xmlns="http://www.hilnormung.de/stimulusgeneration/stimulusfile">
+    <SignalDescriptionSet>
+        <SignalDescription name="Increase" id="ID_SIGNAL_Increase">
+            <SegmentSignalDescription>
+                <SignalValueSegment>
+                    <SignalValues fileName="Increase_0.mat">
+                        <Parameter name="TimeVector" value="Time" />
+                        <Parameter name="ValueVector" value="Values" />
+                    </SignalValues>
+                    <Interpolation value="eLinear" />
+                </SignalValueSegment>
+            </SegmentSignalDescription>
+        </SignalDescription>
+        <SignalDescription name="Decrease" id="ID_SIGNAL_Decrease">
+            <SegmentSignalDescription>
+                <ExpSegment>
+                    <Duration xsi:type="ConstSymbol">
+                        <Value>1</Value>
+                    </Duration>
+                    <Start xsi:type="ConstSymbol">
+                        <Value>100</Value>
+                    </Start>
+                    <Stop xsi:type="ConstSymbol">
+                        <Value>0</Value>
+                    </Stop>
+                    <Tau xsi:type="ConstSymbol">
+                        <Value>0.25</Value>
+                    </Tau>
+                </ExpSegment>
+            </SegmentSignalDescription>
+        </SignalDescription>
+    </SignalDescriptionSet>
+</SignalDescriptionFile>
+

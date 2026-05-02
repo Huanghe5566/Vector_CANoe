@@ -1,0 +1,105 @@
+﻿/* !Encoding: 65001  */
+includes
+{
+  #include "__VariablesLib.cin"
+  #include "__CaplGeneratorLib.cin"
+  #include "__CANoeReportFuntionsLib.cin"
+}
+
+variables
+{
+  // Global variables defined within this CAPL file
+}
+
+export void CheckDoors(int64 lockState)
+{
+
+
+  TestCommandBegin(__eCheck, __cCheck, "", "0");
+  {
+    __bVerdict = __eVerdictPass;
+    __ReportTableHead5Columns(__cCheckCaption, __cTSym, __cTOp, __cRefVal, __cActual, __cRes);
+    {
+      __csr = CheckSignalMatch(`CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState, lockState, "==") == 1;
+      __ReportTableRow(0, "CAN signal 'LockState'", "==", lockState, "lockState");
+      __ReportCell(`CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState);
+      __ReportCellResult(__csr, __ePassFail);
+      __bVerdict = __bVerdict && __csr;
+    }
+    __ReportTableEndVerdict("1", __bVerdict);
+  }
+  TestCommandEnd();
+
+}
+
+export void CheckEngine(int64 isRunning)
+{
+
+
+  TestCommandBegin(__eCheck, __cCheck, "", "0");
+  {
+    __bVerdict = __eVerdictPass;
+    __ReportTableHead5Columns(__cCheckCaption, __cTSym, __cTOp, __cRefVal, __cActual, __cRes);
+    {
+      __csr = CheckSignalMatch(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning, isRunning, "==") == 1;
+      __ReportTableRow(0, "CAN signal 'EngineRunning'", "==", isRunning, "isRunning");
+      __ReportCell(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning);
+      __ReportCellResult(__csr, __ePassFail);
+      __bVerdict = __bVerdict && __csr;
+    }
+    __ReportTableEndVerdict("1", __bVerdict);
+  }
+  TestCommandEnd();
+
+}
+
+export void SetStimulus(signal * sSignal, int64 value)
+{
+
+
+  TestCommandBegin(__eSet, __cSet, "", "0");
+  {
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      $sSignal.phys = value;
+      __ReportSignalRefSetLValue(sSignal, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, value, "value");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "1");
+  {
+    __Wait("1", (250 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+
+export void SlowDown(double speed)
+{
+
+
+  TestCommandBegin(__eCAPLInline, __cCAPLInline, "Decrease velocity", "0");
+  {
+    __tt2CaplInline0(speed);
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "1");
+  {
+    __Wait("1", (100 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+
+void __tt2CaplInline0 (double& speed)
+{
+  {
+$Velocity = $Velocity - speed;
+  }
+}
+

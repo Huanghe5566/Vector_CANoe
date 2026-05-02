@@ -1,0 +1,2121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Vector Test Table Editor-->
+<ttroot version="19" minRequiredVersion="16" xmlns="http://www.vector-informatik.de/ITE/TestTable/1.0">
+  <tt>
+    <tf navid="4292af7b-c120-48a8-ac56-1e16173fca04">
+      <title>LockingSystemTester</title>
+      <preparation>
+        <title>Setup</title>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0</name>
+        </testdiagramhelperfunction>
+      </preparation>
+      <tc>
+        <title>Engine=On_V=0_ManualUnlocked</title>
+        <tcid>da8d0dd1-144c-3b8a-cc4d-9b56b0881d3d</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=0_ManualLocked_Crash</title>
+        <tcid>b20143ca-8274-05e8-903d-c20c9301e00a</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=0_ManualLocked_Engine=Off</title>
+        <tcid>399416a4-8ad2-2259-ae36-900e32cc448a</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&lt;LockVel_ManualUnlocked</title>
+        <tcid>f0fcdf6c-f031-080a-5674-c00e6e21790f</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&lt;LockVel_ManualLocked_Crash</title>
+        <tcid>ca5fa515-fc82-1077-f8ab-e70379001132</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&lt;LockVel_ManualLocked_Engine=Off</title>
+        <tcid>40fae1c0-15d9-0143-3ea4-7b2c59045a35</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=LockVel_ManualLocked_V=LockVel_Crash</title>
+        <tcid>40551c6a-0d05-3d64-a2ba-4289a6500c22</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=LockVel_ManualLocked_V=LockVel_Engine=Off</title>
+        <tcid>9715d5f9-ad3a-5e2a-0749-0cf4f32eac32</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=LockVel_ManualLocked_V&lt;LockVel_Crash</title>
+        <tcid>9e63f791-9a13-5fae-dcdb-1388cee0e300</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=LockVel_ManualLocked_V&lt;LockVel_Engine=Off</title>
+        <tcid>c6021239-52e0-84a9-d88f-de0861f73cf4</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V=LockVel_ManualUnlocked_V&lt;LockVel</title>
+        <tcid>86fe1248-1806-1e4e-60d3-5396d1899867</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&gt;LockVel_ManualLocked_V=LockVel_Crash</title>
+        <tcid>e155e9e7-e4dc-e2ed-78bc-634bfef118b7</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&gt;LockVel_ManualLocked_V=LockVel_Engine=Off</title>
+        <tcid>96794e8b-9461-bf9a-6884-6ffa10e8a868</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&gt;LockVel_ManualLocked_V&lt;LockVel_Crash</title>
+        <tcid>ca735588-c172-2901-7246-9d32adf4fa9e</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&gt;LockVel_ManualLocked_V&lt;LockVel_Engine=Off</title>
+        <tcid>8367edf1-6fd6-3fc4-c2ad-a7b20dbe3f2e</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Variants are defined in the project variant property dialog.
+Variant dependent parameters are defined in the parameter file "VariantSpecificParameterns".</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=On_V&gt;LockVel_ManualUnlocked_V&lt;LockVel</title>
+        <tcid>4e42b4f2-4e18-2636-93d9-4ec32d865734</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Double-click on the function in the command/parameter editor to get the definition of the function.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Engine=Off</title>
+        <tcid>6e36f926-102e-7626-3e4c-62210da02340</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>in implementation</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>almost done, final details to be completed only</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Initialize stimuli and state for each generated test case.
+
+Used Test-Code (commands) can be seen in the toolitp.</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_b569d132_5541_4304_bed5_fdba4b3affce_36</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_022c015a_0c0e_4865_bcd8_e89d325cb079_37</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_5c4e7c03_3f1d_4eb0_a6df_de7357353490_38</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_8412a82c_cc5c_4d2a_8b48_272bd383daee_39</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_59d22dee_1e29_4a79_ba15_a1ba1eb1fefd_40</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_3c299358_8974_40ae_aa13_48bd69f1c1ed_41</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f651dbdd_88bb_44cc_bda7_b00f1ac079a8_42</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <completion>
+        <title>Cleanup</title>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_43</name>
+        </testdiagramhelperfunction>
+      </completion>
+    </tf>
+  </tt>
+  <ttlib>
+    <ts_definitions />
+    <tc_definitions />
+    <function_definitions>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0</name>
+        <parameters />
+        <report>
+          <text>Establish diagnostic connection here</text>
+        </report>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        <parameters />
+        <set>
+          <title />
+          <in>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <valuetable_entry>idle</valuetable_entry>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|CentralLockingSystemState|0|False|END_OF_OBJECT_FrameData|LockState|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+          </in>
+        </set>
+        <wait>
+          <title />
+          <time>
+            <value>
+              <const>500</const>
+            </value>
+            <unit>ms</unit>
+          </time>
+        </wait>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        <parameters />
+        <faultmem_clear>
+          <title />
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <reportservicedetails>
+            <enum>onfail</enum>
+          </reportservicedetails>
+          <dtcs />
+        </faultmem_clear>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckEngine</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=0 km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>2</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86629|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86641|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12</name>
+        <parameters />
+        <faultmem_status>
+          <title>Check that fault memory is still empty since no errors provoked</title>
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <expected_dtccount>
+            <eq>
+              <const>0</const>
+            </eq>
+          </expected_dtccount>
+        </faultmem_status>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86623|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18</name>
+        <parameters />
+        <if>
+          <title />
+          <compare>
+            <value>
+              <dbobject>ChParScalar_BEGIN_OF_OBJECT|1|UnlockDoorOnEngineStop|END_OF_OBJECT_ChParScalar|</dbobject>
+            </value>
+            <eq>
+              <const>0</const>
+            </eq>
+          </compare>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_90fcd160_dc9f_4202_8cc1_b4c7e8c05224_19</name>
+          </testdiagramhelperfunction>
+        </if>
+        <elseif>
+          <title />
+          <compare>
+            <value>
+              <dbobject>ChParScalar_BEGIN_OF_OBJECT|1|UnlockDoorOnEngineStop|END_OF_OBJECT_ChParScalar|</dbobject>
+            </value>
+            <eq>
+              <const>1</const>
+            </eq>
+          </compare>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_952c0cee_fc47_4f47_9de9_3692a4054365_20</name>
+          </testdiagramhelperfunction>
+        </elseif>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_90fcd160_dc9f_4202_8cc1_b4c7e8c05224_19</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_952c0cee_fc47_4f47_9de9_3692a4054365_20</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=15km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>15</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=20 km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <dbobject>ChParScalar_BEGIN_OF_OBJECT|1|LockingTests::LockVelocity|END_OF_OBJECT_ChParScalar|</dbobject>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86635|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=20km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <dbobject>ChParScalar_BEGIN_OF_OBJECT|1|LockingTests::LockVelocity|END_OF_OBJECT_ChParScalar|</dbobject>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc8663b|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=15km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>15</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>2</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=15km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>15</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35</name>
+        <parameters />
+        <ttfunction>
+          <title>SetStimulus (sSignal=Velocity, value=50 km/h)</title>
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>75</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_b569d132_5541_4304_bed5_fdba4b3affce_36</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_022c015a_0c0e_4865_bcd8_e89d325cb079_37</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckEngine</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_5c4e7c03_3f1d_4eb0_a6df_de7357353490_38</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_8412a82c_cc5c_4d2a_8b48_272bd383daee_39</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_59d22dee_1e29_4a79_ba15_a1ba1eb1fefd_40</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_3c299358_8974_40ae_aa13_48bd69f1c1ed_41</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>2</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_f651dbdd_88bb_44cc_bda7_b00f1ac079a8_42</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_43</name>
+        <parameters />
+        <report>
+          <text>Release diagnostic connection here</text>
+        </report>
+      </testdiagramhelperfunction_definition>
+    </function_definitions>
+  </ttlib>
+</ttroot>

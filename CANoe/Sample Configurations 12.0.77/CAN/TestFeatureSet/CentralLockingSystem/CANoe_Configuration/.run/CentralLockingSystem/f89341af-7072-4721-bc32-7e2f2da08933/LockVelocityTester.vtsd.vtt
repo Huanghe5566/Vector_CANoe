@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Vector Test Table Editor-->
+<ttroot version="19" minRequiredVersion="16" xmlns="http://www.vector-informatik.de/ITE/TestTable/1.0">
+  <tt>
+    <tf navid="3e6c03fb-3f04-466f-9a28-27e01b08c49d">
+      <title>LockVelocityTester</title>
+      <preparation>
+        <title>Setup</title>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0</name>
+        </testdiagramhelperfunction>
+      </preparation>
+      <tc>
+        <title>Check lock by increasing velocity</title>
+        <tcid>af8383cb-0d99-51f8-677e-43f45804f78f</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>finished</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value />
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Velocity = 0</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Velocity list is defined in TestParameters.vparam</title>
+        </comment>
+        <foreach>
+          <title />
+          <loopvar>velocity</loopvar>
+          <listparameter>ChParList_BEGIN_OF_OBJECT|1|LockingTests::VelocityList|END_OF_OBJECT_ChParList|</listparameter>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Decision_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_4</name>
+            <param>
+              <type>int</type>
+              <value>
+                <variable>velocity</variable>
+              </value>
+            </param>
+          </testdiagramhelperfunction>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_DecisionContainer_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_5</name>
+            <param>
+              <type>int</type>
+              <value>
+                <variable>velocity</variable>
+              </value>
+            </param>
+          </testdiagramhelperfunction>
+        </foreach>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Check no unlock when slowing down</title>
+        <tcid>e6f42565-8358-fd2e-5138-4941223b52d0</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>finished</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value />
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Velocity = 0</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_38113636_2bdd_4cda_acb0_d6039dde355d_9</name>
+        </testdiagramhelperfunction>
+        <while>
+          <title />
+          <compare>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+            <ge>
+              <const>0</const>
+            </ge>
+          </compare>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_10</name>
+          </testdiagramhelperfunction>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_c670079e_808b_4970_bf59_9ef6a20d9ac9_11</name>
+          </testdiagramhelperfunction>
+        </while>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Check lock/unlock</title>
+        <tcid>31548370-1d05-ec0f-327e-1c0b4171b2e7</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>finished</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value />
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <comment>
+          <title>Velocity = 0</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_bb316327_1ffd_447c_a5d4_ec49913e2aa0_12</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Stimulus is described by the usage of the Waveform Editor
+(VelocityWaveform.vtsd)</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_7fb90f9e_cfbd_4b11_b78b_5955ec732598_13</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_280e3e8e_c5a7_4437_8215_3957c060cf28_14</name>
+        </testdiagramhelperfunction>
+        <comment>
+          <title>Stimulus is described by the usage of the Waveform Editor
+(VelocityWaveform.vtsd)</title>
+        </comment>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_8045574d_5c2c_47e9_903a_7a578228ecce_15</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_df608474_54fa_4936_a64f_f5f82b9c10cd_16</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <completion>
+        <title>Cleanup</title>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_17</name>
+        </testdiagramhelperfunction>
+      </completion>
+    </tf>
+  </tt>
+  <ttlib>
+    <ts_definitions />
+    <tc_definitions />
+    <function_definitions>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0</name>
+        <parameters />
+        <report>
+          <text>Establish diagnostic connection here</text>
+        </report>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1</name>
+        <parameters />
+        <set>
+          <title />
+          <in>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <valuetable_entry>idle</valuetable_entry>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|CentralLockingSystemState|0|False|END_OF_OBJECT_FrameData|LockState|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+          </in>
+        </set>
+        <wait>
+          <title />
+          <time>
+            <value>
+              <const>500</const>
+            </value>
+            <unit>ms</unit>
+          </time>
+        </wait>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2</name>
+        <parameters />
+        <faultmem_clear>
+          <title />
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <reportservicedetails>
+            <enum>onfail</enum>
+          </reportservicedetails>
+          <dtcs />
+        </faultmem_clear>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_5a438903_bcf7_4b40_8eff_27370ce034d3_3</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Decision_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_4</name>
+        <parameters>
+          <parameter_definition>
+            <name>velocity</name>
+            <type>int</type>
+          </parameter_definition>
+        </parameters>
+        <caplinline>
+          <title />
+          <code>$Velocity = velocity;
+</code>
+        </caplinline>
+        <wait>
+          <title />
+          <time>
+            <value>
+              <const>100</const>
+            </value>
+            <unit>ms</unit>
+          </time>
+        </wait>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_DecisionContainer_83b3b8a0_a031_4b84_ac7c_6e1c2aaa0637_5</name>
+        <parameters>
+          <parameter_definition>
+            <name>velocity</name>
+            <type>int</type>
+          </parameter_definition>
+        </parameters>
+        <if>
+          <title />
+          <compare>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+            <le>
+              <dbobject>ChParScalar_BEGIN_OF_OBJECT|1|LockingTests::LockVelocity|END_OF_OBJECT_ChParScalar|</dbobject>
+            </le>
+          </compare>
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_6</name>
+            <param>
+              <type>int</type>
+              <value>
+                <variable>velocity</variable>
+              </value>
+            </param>
+          </testdiagramhelperfunction>
+        </if>
+        <else>
+          <title />
+          <testdiagramhelperfunction>
+            <title />
+            <name>MelFunction_Check_031a2a56_ac71_4ee9_afca_0ca53f80b2c2_7</name>
+            <param>
+              <type>int</type>
+              <value>
+                <variable>velocity</variable>
+              </value>
+            </param>
+          </testdiagramhelperfunction>
+        </else>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_6</name>
+        <parameters>
+          <parameter_definition>
+            <name>velocity</name>
+            <type>int</type>
+          </parameter_definition>
+        </parameters>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_031a2a56_ac71_4ee9_afca_0ca53f80b2c2_7</name>
+        <parameters>
+          <parameter_definition>
+            <name>velocity</name>
+            <type>int</type>
+          </parameter_definition>
+        </parameters>
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_8</name>
+        <parameters />
+        <faultmem_status>
+          <title>Check that fault memory is still empty since no errors provoked</title>
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <expected_dtccount>
+            <eq>
+              <const>0</const>
+            </eq>
+          </expected_dtccount>
+        </faultmem_status>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_38113636_2bdd_4cda_acb0_d6039dde355d_9</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SetStimulus</name>
+          <param>
+            <type>signal</type>
+            <value>
+              <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+            </value>
+          </param>
+          <param>
+            <type>int</type>
+            <value>
+              <const>65</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_10</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_c670079e_808b_4970_bf59_9ef6a20d9ac9_11</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SlowDown</name>
+          <param>
+            <type>float</type>
+            <value>
+              <const>65</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_bb316327_1ffd_447c_a5d4_ec49913e2aa0_12</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>0</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_7fb90f9e_cfbd_4b11_b78b_5955ec732598_13</name>
+        <parameters />
+        <waveform_stimulus>
+          <title>Increase -&gt; Velocity, Wait</title>
+          <stimulus>
+            <curve>Waveform_BEGIN_OF_OBJECT|1|Increase|END_OF_OBJECT_Waveform|</curve>
+            <symbol>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</symbol>
+          </stimulus>
+          <wait_until_finished>
+            <bool>true</bool>
+          </wait_until_finished>
+        </waveform_stimulus>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_280e3e8e_c5a7_4437_8215_3957c060cf28_14</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_8045574d_5c2c_47e9_903a_7a578228ecce_15</name>
+        <parameters />
+        <waveform_stimulus>
+          <title>Decrease -&gt; Velocity, Wait</title>
+          <stimulus>
+            <curve>Waveform_BEGIN_OF_OBJECT|1|Decrease|END_OF_OBJECT_Waveform|</curve>
+            <symbol>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</symbol>
+          </stimulus>
+          <wait_until_finished>
+            <bool>true</bool>
+          </wait_until_finished>
+        </waveform_stimulus>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Check_df608474_54fa_4936_a64f_f5f82b9c10cd_16</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>CheckDoors</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_17</name>
+        <parameters />
+        <report>
+          <text>Release diagnostic connection here</text>
+        </report>
+      </testdiagramhelperfunction_definition>
+    </function_definitions>
+  </ttlib>
+</ttroot>

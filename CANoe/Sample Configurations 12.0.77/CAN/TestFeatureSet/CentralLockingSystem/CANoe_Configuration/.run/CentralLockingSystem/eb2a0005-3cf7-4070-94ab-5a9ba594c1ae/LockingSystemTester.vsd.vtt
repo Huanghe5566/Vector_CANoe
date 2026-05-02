@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Vector Test Table Editor-->
+<ttroot version="19" minRequiredVersion="16" xmlns="http://www.vector-informatik.de/ITE/TestTable/1.0">
+  <tt>
+    <tf navid="5cc1d09b-9975-4ab0-9792-9714cd18d2cd">
+      <title>LockingSystemTester</title>
+      <tc>
+        <title>Initialize_LockRequest=RequestUnlock_LockRequest=RequestLock_Finalize</title>
+        <tcid>f60ad838-a757-5338-35db-06596e2bed0e</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_99367b4a_387f_45ed_b38b_27d0d2bf00f1_3</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Initialize_0&lt;Velocity&lt;LockVelocity_LockRequest=RequestLock_Finalize</title>
+        <tcid>e323d94b-9fc3-658f-884f-0b1e47522b91</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_754ed7c6_961b_4ace_bb84_b2a64e0813a4_8</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Initialize_Velocity&gt;LockVelocity_Finalize</title>
+        <tcid>7cf15bd4-e860-2bd7-9c84-1ad07f325989</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_075f6e54_1088_4f3c_8dd1_77635afb91bd_9</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Initialize_LockRequest=RequestLock_LockRequest=RequestUnlock(2)_LockRequest=RequestLock_Finalize</title>
+        <tcid>ed18937a-8997-a1fb-5a1b-7a1ad48812ae</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_76558bb6_c5bf_4855_ac19_84f1c8391c1a_10</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Initialize_LockRequest=RequestLock_LockRequest=RequestLock(2)_Finalize</title>
+        <tcid>0ba91993-ebde-70a6-46f0-56ed082e5b29</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_32bb774b_2cf1_40bd_9b58_96c7f4db86de_11</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+      <tc>
+        <title>Initialize_LockRequest=RequestLock_Velocity&lt;LockVelocity_Finalize</title>
+        <tcid>8732a760-7e49-9958-806c-64e42fbac957</tcid>
+        <attributes>
+          <attr>
+            <key>Lifecycle</key>
+            <value>ready for review</value>
+          </attr>
+          <attr>
+            <key>Note</key>
+            <value>Use algorithm for short paths (based on breadth-first search)</value>
+          </attr>
+        </attributes>
+        <breakonfail>true</breakonfail>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_6b0048f0_02ae_40f1_ad0f_50e274dbe5e7_12</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        </testdiagramhelperfunction>
+        <testdiagramhelperfunction>
+          <title />
+          <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        </testdiagramhelperfunction>
+      </tc>
+    </tf>
+  </tt>
+  <ttlib>
+    <ts_definitions />
+    <tc_definitions />
+    <function_definitions>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Initial_2e816e05_3215_4162_8d74_dbd0ca8c305d_0</name>
+        <parameters />
+        <faultmem_clear>
+          <title />
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <reportservicedetails>
+            <enum>onfail</enum>
+          </reportservicedetails>
+          <dtcs />
+        </faultmem_clear>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_c67ad6d0_00e5_410d_b968_befac6eaf581_1</name>
+        <parameters />
+        <set>
+          <title />
+          <in>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|LockingRemoteControlRequest|1|False|END_OF_OBJECT_FrameData|LockRequest|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <valuetable_entry>idle</valuetable_entry>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>1</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|CentralLockingSystemState|0|False|END_OF_OBJECT_FrameData|LockState|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+          </in>
+        </set>
+        <wait>
+          <title />
+          <time>
+            <value>
+              <const>500</const>
+            </value>
+            <unit>ms</unit>
+          </time>
+        </wait>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_State_710e4754_7ec7_4eb4_8fb4_a71436e41a95_2</name>
+        <parameters />
+        <statecheck>
+          <title />
+          <expected>
+            <compare>
+              <value>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|CentralLockingSystemState|0|False|END_OF_OBJECT_FrameData|LockState|1|END_OF_OBJECT_|</dbobject>
+              </value>
+              <eq>
+                <valuetable_entry>Unlocked</valuetable_entry>
+              </eq>
+            </compare>
+          </expected>
+        </statecheck>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_99367b4a_387f_45ed_b38b_27d0d2bf00f1_3</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>UnlockManually</name>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_55c0398b_0f03_45f2_914e_def909df752a_4</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86623|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>LockManually</name>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_State_cd9a6b21_9a93_48c8_a009_33e2c86d75a1_5</name>
+        <parameters />
+        <statecheck>
+          <title />
+          <expected>
+            <compare>
+              <value>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|CentralLockingSystemState|0|False|END_OF_OBJECT_FrameData|LockState|1|END_OF_OBJECT_|</dbobject>
+              </value>
+              <eq>
+                <valuetable_entry>Locked</valuetable_entry>
+              </eq>
+            </compare>
+          </expected>
+        </statecheck>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_7f3a2376_4fce_4bf8_8a96_3791a2ef6efc_6</name>
+        <parameters />
+        <set>
+          <title />
+          <in>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|Velocity|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|CrashDetected|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+            <assignment>
+              <sink>
+                <dbobject>DBSignal_BEGIN_OF_OBJECT|1|NodeOrFrameData_BEGIN_OF_OBJECT|1|1|CAN|1|comfort|SUT_Driver|END_OF_OBJECT_NodeOrFrameData|FrameData_BEGIN_OF_OBJECT|1|255|255|0|0|VehicleMotion|50|False|END_OF_OBJECT_FrameData|EngineRunning|1|END_OF_OBJECT_|</dbobject>
+              </sink>
+              <source>
+                <const>0</const>
+              </source>
+            </assignment>
+          </in>
+        </set>
+        <wait>
+          <title />
+          <time>
+            <value>
+              <const>500</const>
+            </value>
+            <unit>ms</unit>
+          </time>
+        </wait>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_Final_2a444042_5fe9_4e05_9c5b_1918a93cd7af_7</name>
+        <parameters />
+        <faultmem_status>
+          <title>Check that fault memory is still empty since no errors provoked</title>
+          <ecu>DiaObj_BEGIN_OF_OBJECT|2|0|SUT|||||0||END_OF_OBJECT_DiaObj|</ecu>
+          <expected_dtccount>
+            <eq>
+              <const>0</const>
+            </eq>
+          </expected_dtccount>
+        </faultmem_status>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_754ed7c6_961b_4ace_bb84_b2a64e0813a4_8</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>SpeedUpToLockVelocity</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>-1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_075f6e54_1088_4f3c_8dd1_77635afb91bd_9</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86635|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>SpeedUpToLockVelocity</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>+1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_76558bb6_c5bf_4855_ac19_84f1c8391c1a_10</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc86629|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>UnlockManually</name>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_32bb774b_2cf1_40bd_9b58_96c7f4db86de_11</name>
+        <parameters />
+        <ttfunction>
+          <title />
+          <name>LockManually</name>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+      <testdiagramhelperfunction_definition>
+        <name>MelFunction_BinaryLink_6b0048f0_02ae_40f1_ad0f_50e274dbe5e7_12</name>
+        <parameters />
+        <traceitems>
+          <traceitem>TraceItem_BEGIN_OF_OBJECT|1|a31342c143aea0ddc8663b|END_OF_OBJECT_TraceItem|</traceitem>
+        </traceitems>
+        <ttfunction>
+          <title />
+          <name>SpeedUpToLockVelocity</name>
+          <param>
+            <type>int</type>
+            <value>
+              <const>-1</const>
+            </value>
+          </param>
+        </ttfunction>
+      </testdiagramhelperfunction_definition>
+    </function_definitions>
+  </ttlib>
+</ttroot>

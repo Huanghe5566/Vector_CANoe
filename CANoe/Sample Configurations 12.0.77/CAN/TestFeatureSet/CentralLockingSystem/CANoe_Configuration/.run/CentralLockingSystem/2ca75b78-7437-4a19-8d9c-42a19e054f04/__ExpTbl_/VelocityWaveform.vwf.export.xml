@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<tclibrary>
+  <function name="Checkpoints_9e15e65899744eae95e1717f3bbcd5ec" namespace="WaveformCheckpointFunctionExport" comment="" signature="" file="D:\_COE_Demo\trunk\Demos\CANoe Sample Configurations\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\VelocityWaveform.vwf" SourceFilePersistencyGuid="pjqi0512ib19" IsPrivate="true" IsNetSignatureAndDefinedInExternalDll="true">
+    <parameter name="__generatorHandle" type="int64" raw_type="int" />
+    <document_position><![CDATA[<XPathDocumentPosition xmlns:SerializedType="Vector.ITE.Document.XPathDocumentPosition"><XPath>/ttroot/ttlib[1]/function_definitions[1]/hfdef[1]/name[1]</XPath></XPathDocumentPosition>]]></document_position>
+    <implementation_language lang="TTE" />
+  </function>
+  <function name="Checkpoints_cf5cf194a4924537a8813c30b2792b30" namespace="WaveformCheckpointFunctionExport" comment="" signature="" file="D:\_COE_Demo\trunk\Demos\CANoe Sample Configurations\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\VelocityWaveform.vwf" SourceFilePersistencyGuid="pjqi0512ib19" IsPrivate="true" IsNetSignatureAndDefinedInExternalDll="true">
+    <document_position><![CDATA[<XPathDocumentPosition xmlns:SerializedType="Vector.ITE.Document.XPathDocumentPosition"><XPath>/ttroot/ttlib[1]/function_definitions[1]/hfdef[2]/name[1]</XPath></XPathDocumentPosition>]]></document_position>
+    <implementation_language lang="TTE" />
+  </function>
+</tclibrary>

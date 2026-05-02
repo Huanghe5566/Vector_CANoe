@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<tclibrary>
+  <testcase name="CrashDetection" comment="Tests the locking behavior on crash detection." signature="CrashDetection(int, double)" file="D:\_COE_Demo\trunk\Demos\CANoe Sample Configurations\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\LockingTestLibrary.cs" SourceFilePersistencyGuid="eoaui0arhnvi" IsPrivate="false" IsNetSignatureAndDefinedInExternalDll="false" assembly="CentralLockingSystemTest" class="LockingTestLibrary">
+    <return type="void" raw_type="void" />
+    <parameter name="engineOn" type="long" raw_type="int32" />
+    <parameter name="velocity" type="float" raw_type="double" />
+    <document_position><![CDATA[<OffsetDocumentPosition xmlns:SerializedType="Vector.ITE.Document.OffsetDocumentPosition"><Offset>562</Offset></OffsetDocumentPosition>]]></document_position>
+    <implementation_language lang="CS" />
+  </testcase>
+</tclibrary>

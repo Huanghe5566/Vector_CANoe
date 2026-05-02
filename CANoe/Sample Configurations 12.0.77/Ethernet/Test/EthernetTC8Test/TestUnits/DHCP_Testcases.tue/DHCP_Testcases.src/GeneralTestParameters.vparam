@@ -1,0 +1,47 @@
+Vector Parameter	1.0
+
+ScalarSingleRecord
+
+Name	Type	Info	Value
+kMacAddressZeros	Auto		00:00:00:00:00:00
+kMacAddressBroadcast	String		FF:FF:FF:FF:FF:FF
+kIpAddressBroadcast	Auto		255.255.255.255
+kIpAddressUnused	String	<IP-First-UNUSED-ADDR-INTERFACE-1>	192.168.16.0
+kParamListenTimeMs	Integer	<ParamListenTime>	6000
+kDebug	Integer	0:No output, 1=Write window, 2=Write window + Test report	0
+kInitialBootTimeMs	Integer		2000
+kTestCompletionTimeMs	Integer		200
+kTesterUdpPort	String		0xABCD
+kTestabilityServicesIpAddress	String		192.168.2.68
+kTestabilityServicesUdpPort	Integer		10000
+kTestabilityServicesResponseTimeoutMs	Integer		5000
+kRunTestabilityStartAndEndFunctions	Integer	0: Never; 1: Only when Testability Function is Used; 2: Always	1
+kChannelNetwork0	Integer	Channel number of <DIface-0>	1
+kChannelNetwork1	Integer	Channel number of <DIface-1>	2
+kDummyData	Data		00 00 00 00 00 00 00 00
+kWildcard	String		*
+kDIface0	String	<DIface-0>	0
+kDIface0Ip	String	<DIface-0-IP> Ipv4: 192.168.2.68 Ipv6: ::68	192.168.2.68
+kDIface0MacAddr	String	<DIFACE_0_MAC_ADDR>	02:00:00:00:00:68
+kDIface0VLAN	Integer		-1
+kDIface0NetworkName	Auto		DIface-0
+kDIface1Ip	Auto	Ipv4: 192.168.2.69 Ipv6: ::69	192.168.2.69
+kDIface1MacAddr	Auto		02:00:00:00:00:69
+kDIface1NetworkName	Auto		DIface-1
+kHost1Mac	String		02:00:00:00:00:84
+kHost1Ip	String	<HOST-1-IP> Ipv4: 192.168.2.15 Ipv6: ::15	192.168.2.15
+kHost2Mac	Auto		02:00:00:00:00:84
+kHost2Ip	Auto	Ipv4: 192.168.2.16 Ipv6: ::16	192.168.2.16
+kHost1SubnetMask	String		255.255.255.0
+kIpAddressTester	String		192.168.2.84
+kMacAddr1	String	<MAC-ADDR1>	02:00:00:00:00:11
+kMacAddr2	String	<MAC-ADDR2>	02:00:00:00:00:12
+kMacAddressTester	Auto		02:00:00:00:00:84
+kTimestamp	String	This value is used for the IP timestamp option	1531297319
+kUdpPortOfDhcpClient	String	Default value: 68 (RFC 2131 p. 23)	68
+kUdpPortOfDhcpServer	String	Default value: 67 (RFC 2131 p. 23)	67
+kAllZeroIPAddress	String		0.0.0.0
+kParamToleranceTimeMilliseconds	Integer		1000
+AIFACE_0_IP_LINKLOCAL_ADDR	String		169.254.2.18
+kIpv6MinimumPMTU	Integer	The minimum path maximum transmission unit for IPv6 routing.	1280
+

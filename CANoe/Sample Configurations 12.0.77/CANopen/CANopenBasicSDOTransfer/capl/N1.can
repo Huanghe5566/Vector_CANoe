@@ -1,0 +1,32 @@
+/*@!Encoding:1252*/
+includes
+{
+  #include "CANopenHelper.cin"
+}
+
+variables
+{
+  // ------------------------------------------------
+  // File information
+  // Copyright         : 2017, Vector Informatik GmbH
+  // ------------------------------------------------
+
+  // Globals for "Master" device
+  BYTE gNodeId          = 1;
+  char gNodeLabel[32]   = "Master_ID1";
+
+  sysvarInt * gRunLEDVar;
+  sysvarInt * gErrLEDVar;
+}
+
+on preStart
+{
+  gRunLEDVar = sysvar::GUIControls::Node1_State;
+  gErrLEDVar = sysvar::GUIControls::Node1_ErrLed;
+  @sysvar::GUIControls::Node1_ID = gNodeId;
+}
+
+on sysvar CANopen::CAN::Master_ID1::Control::CommunicationState
+{
+  CANopenUpdateState(@this);
+}

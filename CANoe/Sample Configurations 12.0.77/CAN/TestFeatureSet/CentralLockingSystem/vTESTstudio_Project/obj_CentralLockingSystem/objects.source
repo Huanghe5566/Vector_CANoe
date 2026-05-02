@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TempFileMetainfo xmlns:i="http://www.w3.org/2001/XMLSchema-instance" z:Id="1" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/" xmlns="http://schemas.datacontract.org/2004/07/Vector.ITE.TempFileRepository.MetainfoModel">
+  <FileFormatVersion xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework">1</FileFormatVersion>
+  <TempFileMetainfo xmlns:d2p1="http://schemas.datacontract.org/2004/07/Vector.ITE.TempFileRepository.MetainfoModel.Entities" z:Id="2">
+    <_p z:Ref="1" i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework" />
+    <d2p1:FileSources z:Id="3">
+      <Content z:Id="4" z:Size="31" xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework">
+        <d2p1:FileSource z:Id="5" i:type="d2p1:SimpleFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Id="6">4.0.64.0</d2p1:AppVersion>
+          <d2p1:Extension z:Id="7">.vparam</d2p1:Extension>
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:19.5565191+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>1084</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="8">ckdt38vipocg=PA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="9">
+            <_p z:Ref="5" i:nil="true" />
+            <d2p1:FullFilePath z:Id="10">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\TestParameters.vparam</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2022-07-08T19:24:19.5525306+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="11" i:type="d2p1:SimpleFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="7" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.1693441+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>161</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="12">d8g3vflp57sf=PA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="13">
+            <_p z:Ref="11" i:nil="true" />
+            <d2p1:FullFilePath z:Id="14">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\VariantSpecificParameters.vparam</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="15" i:type="d2p1:SimpleFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="7" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.4146882+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>429</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="16">jvtvu2gmav26=CT</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="17">
+            <_p z:Ref="15" i:nil="true" />
+            <d2p1:FullFilePath z:Id="18">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\Shareable Folders\ParameterLibrary\DoorLockData.vct</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="19" i:type="d2p1:SimpleFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Id="20">.vwf</d2p1:Extension>
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.4805121+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>8892</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="21">pjqi0512ib19=WF</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="22">
+            <_p z:Ref="19" i:nil="true" />
+            <d2p1:FullFilePath z:Id="23">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\VelocityWaveform.vwf</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="24" i:type="d2p1:SimpleFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="20" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.5084383+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3055</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="25">3dn3sh19qrg9=WF</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="26">
+            <_p z:Ref="24" i:nil="true" />
+            <d2p1:FullFilePath z:Id="27">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_TestSequenceDiagram\VelocityWaveform.vwf</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="28" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Id="29">.</d2p1:Extension>
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.5393552+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>70</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="30">ufj9uirk3n6g-TSV</d2p1:PersistencyKey>
+          <d2p1:Crc>1158085051</d2p1:Crc>
+          <d2p1:SourceFile z:Id="31">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystem.vtsoproj</d2p1:SourceFile>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="32" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.5503235+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>74</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="33">ufj9uirk3n6g-MTSV</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="34">
+            <Content z:Id="35" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="36">
+                <_p z:Ref="34" i:nil="true" />
+                <d2p1:FullFilePath z:Id="37">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\ufj9uirk3n6g-TSV.</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.5393552+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="32" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="38" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:46.5842328+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>9958</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="39">qohaf0v2t5ec-CSV</d2p1:PersistencyKey>
+          <d2p1:Crc>1891147124</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="31" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="40" i:type="d2p1:DatabaseTlbFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:49.3119401+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>22016</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="41">olgl3r3f65j5#DB</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescription z:Id="42">
+            <_p z:Ref="40" i:nil="true" />
+            <d2p1:FullFilePath z:Id="43">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\DBs\comfort.dbc</d2p1:FullFilePath>
+            <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+          </d2p1:FileSourceDescription>
+          <d2p1:IgnoredNodes z:Id="44"></d2p1:IgnoredNodes>
+          <d2p1:NamespaceMode>0</d2p1:NamespaceMode>
+          <d2p1:Networks xmlns:d6p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" z:Id="45" z:Size="1">
+            <d6p1:string z:Id="46">CAN</d6p1:string>
+          </d2p1:Networks>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="47" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Id="48">.vvarprop</d2p1:Extension>
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:47.1786439+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>2357</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="49">TU_Indep=VP</d2p1:PersistencyKey>
+          <d2p1:Crc>4169180171</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="44" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="50" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="48" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:47.2614221+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3424</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="51">13nqkdrr6o07=VP</d2p1:PersistencyKey>
+          <d2p1:Crc>3093111734</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="44" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="52" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="48" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:47.2644144+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3424</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="53">1h427bj1oemv=VP</d2p1:PersistencyKey>
+          <d2p1:Crc>3628425435</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="44" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="54" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="48" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:49.0935236+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3423</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="55">rdp37u1eqo1h=VP</d2p1:PersistencyKey>
+          <d2p1:Crc>3587845166</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="44" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="56" i:type="d2p1:CrcBasedFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="48" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:47.2694007+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3423</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="57">8a6ft58bjme8=VP</d2p1:PersistencyKey>
+          <d2p1:Crc>1652196016</d2p1:Crc>
+          <d2p1:SourceFile z:Ref="44" i:nil="true" />
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="58" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:19.6811862+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>866</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="59">13nqkdrr6o07~0-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="60">
+            <Content z:Id="61" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="62">
+                <_p z:Ref="60" i:nil="true" />
+                <d2p1:FullFilePath z:Id="63">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\Utilities.can</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="58" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="64" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:19.6851753+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>1516</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="65">13nqkdrr6o07~4-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="66">
+            <Content z:Id="67" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="68">
+                <_p z:Ref="66" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="23" i:nil="true" />
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="64" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="69" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:19.6752017+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>2555</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="70">13nqkdrr6o07~3-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="71">
+            <Content z:Id="72" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="73">
+                <_p z:Ref="71" i:nil="true" />
+                <d2p1:FullFilePath z:Id="74">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\LockingSystemTester.vtt</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="69" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="75" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:21.613392+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>1628</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="76">1h427bj1oemv~4-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="77">
+            <Content z:Id="78" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="79">
+                <_p z:Ref="77" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="27" i:nil="true" />
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="75" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="80" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:21.6094018+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3338</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="81">1h427bj1oemv~3-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="82">
+            <Content z:Id="83" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="84">
+                <_p z:Ref="82" i:nil="true" />
+                <d2p1:FullFilePath z:Id="85">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_TestSequenceDiagram\FunctionLibrary.vtt</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="80" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="86" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:22.6376526+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>2187</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="87">rdp37u1eqo1h~3-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="88">
+            <Content z:Id="89" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="90">
+                <_p z:Ref="88" i:nil="true" />
+                <d2p1:FullFilePath z:Id="91">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_StateDiagram\FunctionLibrary.vtt</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="86" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="92" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:22.9807369+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>866</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="93">8a6ft58bjme8~0-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="94">
+            <Content z:Id="95" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="96">
+                <_p z:Ref="94" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="63" i:nil="true" />
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="92" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="97" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:22.982729+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>54</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="98">8a6ft58bjme8~3-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="99">
+            <Content z:Id="100" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="101">
+                <_p z:Ref="99" i:nil="true" />
+                <d2p1:FullFilePath z:Id="102">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\TestTree.vtt</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="97" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="103" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:24.4079179+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3584</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="104">13nqkdrr6o07#CA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="105">
+            <Content z:Id="106" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="107">
+                <_p z:Ref="105" i:nil="true" />
+                <d2p1:FullFilePath z:Id="108">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\13nqkdrr6o07~0-0.</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:24:19.6811862+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="103" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="109" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:24.5166273+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3584</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="110">8a6ft58bjme8#CA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="111">
+            <Content z:Id="112" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="113">
+                <_p z:Ref="111" i:nil="true" />
+                <d2p1:FullFilePath z:Id="114">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8~0-0.</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:24:22.9807369+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="109" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="115" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:24.9095764+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>11264</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="116">13nqkdrr6o07#PA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="117">
+            <Content z:Id="118" z:Size="4">
+              <d2p1:FileSourceDescription z:Id="119">
+                <_p z:Ref="117" i:nil="true" />
+                <d2p1:FullFilePath z:Id="120">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\ckdt38vipocg=PA.vparam</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:24:19.5565191+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="121">
+                <_p z:Ref="117" i:nil="true" />
+                <d2p1:FullFilePath z:Id="122">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\d8g3vflp57sf=PA.vparam</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.1693441+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="123">
+                <_p z:Ref="117" i:nil="true" />
+                <d2p1:FullFilePath z:Id="124">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\jvtvu2gmav26=CT.vparam</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.4146882+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="125">
+                <_p z:Ref="117" i:nil="true" />
+                <d2p1:FullFilePath z:Id="126">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\13nqkdrr6o07=VP.vvarprop</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:47.2614221+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="115" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="127" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:25.022275+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>11264</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="128">8a6ft58bjme8#PA</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="129">
+            <Content z:Id="130" z:Size="4">
+              <d2p1:FileSourceDescription z:Id="131">
+                <_p z:Ref="129" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="120" i:nil="true" />
+                <d2p1:SourceModificationTime>2022-07-08T19:24:19.5565191+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="132">
+                <_p z:Ref="129" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="122" i:nil="true" />
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.1693441+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="133">
+                <_p z:Ref="129" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="124" i:nil="true" />
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.4146882+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="134">
+                <_p z:Ref="129" i:nil="true" />
+                <d2p1:FullFilePath z:Id="135">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\8a6ft58bjme8=VP.vvarprop</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:47.2694007+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="127" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="136" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:19.6791918+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>943</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="137">13nqkdrr6o07~1-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="138">
+            <Content z:Id="139" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="140">
+                <_p z:Ref="138" i:nil="true" />
+                <d2p1:FullFilePath z:Id="141">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest\LockingTestLibrary.cs</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="136" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="142" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:24:22.9777435+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>6595</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="143">8a6ft58bjme8~1-0</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="144">
+            <Content z:Id="145" z:Size="3">
+              <d2p1:FileSourceDescription z:Id="146">
+                <_p z:Ref="144" i:nil="true" />
+                <d2p1:FullFilePath z:Id="147">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\LockingSystemTester.cs</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="148">
+                <_p z:Ref="144" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="141" i:nil="true" />
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="149">
+                <_p z:Ref="144" i:nil="true" />
+                <d2p1:FullFilePath z:Id="150">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\CentralLockingSystemTest_CSharp\BasicDiagnostics.cs</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="142" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="151" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:49.7437849+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>3584</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="152">ufj9uirk3n6g#SV</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="153">
+            <Content z:Id="154" z:Size="1">
+              <d2p1:FileSourceDescription z:Id="155">
+                <_p z:Ref="153" i:nil="true" />
+                <d2p1:FullFilePath z:Id="156">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\ufj9uirk3n6g-MTSV</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.5503235+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="151" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="157" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:50.5017591+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>24576</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="158">qohaf0v2t5ec#SV</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="159">
+            <Content z:Id="160" z:Size="2">
+              <d2p1:FileSourceDescription z:Id="161">
+                <_p z:Ref="159" i:nil="true" />
+                <d2p1:FullFilePath z:Id="162">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\CANoe_Configuration\SystemVariables\SystemVariables.xml</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="163">
+                <_p z:Ref="159" i:nil="true" />
+                <d2p1:FullFilePath z:Id="164">D:\data\Sample Configurations 12.0.77\CAN\TestFeatureSet\CentralLockingSystem\vTESTstudio_Project\obj_CentralLockingSystem\qohaf0v2t5ec-CSV</d2p1:FullFilePath>
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.5842328+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="157" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+        <d2p1:FileSource z:Id="165" i:type="d2p1:MultiFileSource">
+          <_p z:Ref="3" i:nil="true" />
+          <d2p1:AppVersion z:Ref="6" i:nil="true" />
+          <d2p1:Extension z:Ref="29" i:nil="true" />
+          <d2p1:GeneratedFileModificationTime>2022-07-08T19:21:50.8607976+08:00</d2p1:GeneratedFileModificationTime>
+          <d2p1:GeneratedFileSize>7168</d2p1:GeneratedFileSize>
+          <d2p1:PersistencyKey z:Id="166">hvsdu20bhjav#SV</d2p1:PersistencyKey>
+          <d2p1:FileSourceDescriptions z:Id="167">
+            <Content z:Id="168" z:Size="2">
+              <d2p1:FileSourceDescription z:Id="169">
+                <_p z:Ref="167" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="162" i:nil="true" />
+                <d2p1:SourceModificationTime>2019-03-22T19:43:44+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+              <d2p1:FileSourceDescription z:Id="170">
+                <_p z:Ref="167" i:nil="true" />
+                <d2p1:FullFilePath z:Ref="164" i:nil="true" />
+                <d2p1:SourceModificationTime>2022-07-08T19:21:46.5842328+08:00</d2p1:SourceModificationTime>
+              </d2p1:FileSourceDescription>
+            </Content>
+            <_p z:Ref="165" i:nil="true" />
+          </d2p1:FileSourceDescriptions>
+        </d2p1:FileSource>
+      </Content>
+      <_p z:Ref="2" i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework" />
+    </d2p1:FileSources>
+    <d2p1:TempFileMappings z:Id="171">
+      <Content z:Id="172" z:Size="8" xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework">
+        <d2p1:TempFileMapping z:Id="173">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="40" i:nil="true" />
+          <d2p1:MappingValue z:Id="174">comfort</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="175">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="103" i:nil="true" />
+          <d2p1:MappingValue z:Id="176">13nqkdrr6o07_CA</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="177">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="109" i:nil="true" />
+          <d2p1:MappingValue z:Id="178">8a6ft58bjme8_CA</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="179">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="115" i:nil="true" />
+          <d2p1:MappingValue z:Id="180">13nqkdrr6o07_PA</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="181">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="127" i:nil="true" />
+          <d2p1:MappingValue z:Id="182">8a6ft58bjme8_PA</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="183">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="151" i:nil="true" />
+          <d2p1:MappingValue z:Id="184">hvenbpbktmf7_TestSysVars</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="185">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="157" i:nil="true" />
+          <d2p1:MappingValue z:Id="186">hvenbpbktmf7_cfg_sysvars</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+        <d2p1:TempFileMapping z:Id="187">
+          <_p z:Ref="171" i:nil="true" />
+          <d2p1:FileSource z:Ref="165" i:nil="true" />
+          <d2p1:MappingValue z:Id="188">SystemVariables</d2p1:MappingValue>
+        </d2p1:TempFileMapping>
+      </Content>
+      <_p z:Ref="2" i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/Vector.Reusable.ModelFramework" />
+    </d2p1:TempFileMappings>
+  </TempFileMetainfo>
+</TempFileMetainfo>

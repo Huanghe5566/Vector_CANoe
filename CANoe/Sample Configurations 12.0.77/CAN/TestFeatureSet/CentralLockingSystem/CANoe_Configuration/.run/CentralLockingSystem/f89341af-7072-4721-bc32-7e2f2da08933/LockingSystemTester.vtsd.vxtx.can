@@ -1,0 +1,1603 @@
+﻿/* !Encoding: 65001  */
+includes
+{
+  #include "__DiagLibrary.cin"
+  #include "__VariablesLib.cin"
+  #include "__CaplGeneratorLib.cin"
+  #include "__CANoeReportFuntionsLib.cin"
+}
+
+variables
+{
+  // Global variables defined within this CAPL file
+}
+
+void Tt3_MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0()
+{
+  TestCommandBegin(__eReport, __cReport, __cEmpty, "3");
+  {
+    testStep(2, __cEmpty, "Establish diagnostic connection here");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1()
+{
+  TestCommandBegin(__eSet, __cSet, "", "4");
+  {
+  
+    __ReportTableHead3Columns(__cSetCaption , __cTSym, __cTOp, __cAssigned); 
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'Velocity'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'CrashDetected'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'LockRequest'", `CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "idle");
+    }
+    {
+      $`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'EngineRunning'", `CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    {
+      $`CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState.phys = 0;
+      __ReportSignalSetLValue("CAN signal 'LockState'", `CAN::dbNode::`SUT::`CentralLockingSystemState::`LockState, __cArray);
+      __ReportTableRow(0, __cArray, __cAOp, 0, "");
+    }
+    __ReportTableEndTestStep("1");
+  }
+  TestCommandEnd();
+
+  TestCommandBegin(__eWait, __cWait, "", "5");
+  {
+    __Wait("1", (500 * 1000000), 1000000, "");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2()
+{
+  TestCommandBegin(__eFaultMemoryClear, __cFaultMemoryClear, "", "6");
+  {
+    long __res;
+    long __dtc;
+    
+    __DiagSetTarget("SUT");
+  
+    DiagSetReportDetailLevel(EnumServiceDetails_onfail);
+    TestStep("Query fault memory", "Clearing fault memory of target Diagnostic ECU 'SUT'");
+  
+    __res = TestWaitForDiagTroubleCodesCleared(-1, cDiagAppTimeoutDefault);
+    if (__EvaluateWaitResWithVerdict(__res, 1, "DTC cleared successfully"))
+      TestReportWriteFaultMemoryDetails(__bVerdict); }
+  TestCommandEnd();
+
+}
+
+void Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4()
+{
+  {
+    CreateTTEIFFunction("CheckEngine", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "073d5d3b-ee32-465b-968f-98cecf1feda2");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(2);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9()
+{
+  testReportAddExternalRef("PREEvision", "unlock statically", "preevision://myServer/Ma31342c143aea0ddc8662aXMa31342c143aea0ddc8662910Ma31342c143aea0ddc86629", "vTESTstudio Traceability");
+
+
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11()
+{
+  testReportAddExternalRef("PREEvision", "crash detection when car is moving", "preevision://myServer/Ma31342c143aea0ddc86642XMa31342c143aea0ddc8664110Ma31342c143aea0ddc86641", "vTESTstudio Traceability");
+
+
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12()
+{
+    
+  TestCommandBegin(__eFaultMemoryStatus, __cFaultMemoryStatus, "Check that fault memory is still empty since no errors provoked", "16");
+  {
+    long  __res;
+    DWORD __statusByte;
+    
+    __bVerdict = __eVerdictPass;
+    __DiagSetTarget("SUT");
+    DiagSetReportDetailLevel(EnumServiceDetails_onfail);
+    TestStep("Query fault memory", "Checking status of fault memory for Diagnostic ECU  'SUT'");
+  
+    __statusByte = -1;
+  
+    __res = TestWaitForDiagTroubleCodes(__statusByte, cDiagAppTimeoutDefault);
+    if(__EvaluateWaitResWithVerdict(__res, 1))
+    {
+      long __dtcCount;
+  	  
+      __dtcCount = DiagGetDTCCount();
+      if(__dtcCount >= 0)
+      {
+        __ReportTableHead5Columns("Check received number of relevant DTCs", __cTSym, __cTOp, __cRefVal, __cActual, __cRes);
+        __csr = (CheckSignalMatch(__dtcCount, 0, "==") == 1);
+        __ReportTableRow(0, "Expected number of DTCs", "==", 0, "");
+        __ReportCell(__dtcCount);
+        __ReportCellResult(__csr, __ePassFail);
+        __ReportTableEndVerdict(__cEmpty, __csr);
+        __bVerdict = __bVerdict && __csr;
+      }
+  
+      TestReportWriteFaultMemoryDetails(__bVerdict);
+    }
+  }
+  TestCommandEnd();
+
+}
+
+void Tt3_MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14()
+{
+  testReportAddExternalRef("PREEvision", "lock statically", "preevision://myServer/Ma31342c143aea0ddc86624XMa31342c143aea0ddc8662310Ma31342c143aea0ddc86623", "vTESTstudio Traceability");
+
+
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18()
+{
+  int64 __ifExec0;
+
+  
+  TestControlStructBegin(__cIf, "", "22");
+  {
+    int64 __condition;
+    {
+      int64 __expr0;
+      __ifExec0 = 0;
+  
+      {
+        __csr = (CheckSignalMatch(syspar::`UnlockDoorOnEngineStop, 0, "==") == 1);
+      }
+      {
+        __expr0 = __csr;
+      }
+      __condition = __expr0;
+  
+        snprintf(__cConditionArray, 2048, "%s", "");
+        snprintf(__cCompareArray, 2048, "%s", "");
+        snprintf(__cCompareArray, 2048, "%s%s%s", "UnlockDoorOnEngineStop", "==", "0");
+        snprintf(__cArray, 2048, "%s", __cCompareArray);
+        snprintf(__cCompareArray, 2048, "( %s )", __cArray);
+        snprintf(__cArray, 2048, "%s", __cConditionArray);
+        snprintf(__cConditionArray, 2048, "%s%s", __cArray, __cCompareArray);
+        snprintf(__cArray, 2048, "%s", __cConditionArray);
+        snprintf(__cConditionArray, 2048, "%s %s", "If", __cArray);
+  
+      __ReportConditionTableHead(__cConditionArray, __condition);
+      {
+        __csr = (CheckSignalMatch(syspar::`UnlockDoorOnEngineStop, 0, "==") == 1);
+        __ReportTableRow(0, "Parameter 'UnlockDoorOnEngineStop'", "==", 0, "");
+        __ReportCell(syspar::`UnlockDoorOnEngineStop);
+        __ReportCellResult(__csr, __eTrueFalse); 
+      }
+      __ReportTableEndCondition(__cIfCondition);
+    }
+  
+    if(__condition)
+    {  
+      __ifExec0 = 1;
+
+      Tt3_MelFunction_Check_90fcd160_dc9f_4202_8cc1_b4c7e8c05224_19();
+
+
+    }
+  }
+  TestControlStructEnd(__eUndefined);
+
+  TestControlStructBegin(__cElseIf, "", "23");
+  {
+    if (__DoElseIf(__ifExec0))
+    {
+      int64 __condition;
+      {
+        int64 __expr0;
+        {
+          __csr = (CheckSignalMatch(syspar::`UnlockDoorOnEngineStop, 1, "==") == 1);
+        }
+        {
+          __expr0 = __csr;
+        }
+        __condition = __expr0;
+  
+          snprintf(__cConditionArray, 2048, "%s", "");
+          snprintf(__cCompareArray, 2048, "%s", "");
+          snprintf(__cCompareArray, 2048, "%s%s%s", "UnlockDoorOnEngineStop", "==", "1");
+          snprintf(__cArray, 2048, "%s", __cCompareArray);
+          snprintf(__cCompareArray, 2048, "( %s )", __cArray);
+          snprintf(__cArray, 2048, "%s", __cConditionArray);
+          snprintf(__cConditionArray, 2048, "%s%s", __cArray, __cCompareArray);
+          snprintf(__cArray, 2048, "%s", __cConditionArray);
+          snprintf(__cConditionArray, 2048, "%s %s", "Else If", __cArray);
+  
+        __ReportConditionTableHead(__cConditionArray, __condition);
+        {
+          __csr = (CheckSignalMatch(syspar::`UnlockDoorOnEngineStop, 1, "==") == 1);
+          __ReportTableRow(0, "Parameter 'UnlockDoorOnEngineStop'", "==", 1, "");
+          __ReportCell(syspar::`UnlockDoorOnEngineStop);
+          __ReportCellResult(__csr, __eTrueFalse); 
+        }
+        __ReportTableEndCondition(__cIfCondition);
+      }
+  
+      if(__condition)
+      {  
+        __ifExec0 = 1;
+
+        Tt3_MelFunction_Check_952c0cee_fc47_4f47_9de9_3692a4054365_20();
+
+
+      }
+    }
+  }
+  TestControlStructEnd(__eUndefined);
+
+}
+
+void Tt3_MelFunction_Check_90fcd160_dc9f_4202_8cc1_b4c7e8c05224_19()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_952c0cee_fc47_4f47_9de9_3692a4054365_20()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(15);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(syspar::`LockingTests::`LockVelocity);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23()
+{
+  testReportAddExternalRef("PREEvision", "lock by increasing velocity", "preevision://myServer/Ma31342c143aea0ddc86636XMa31342c143aea0ddc8663510Ma31342c143aea0ddc86635", "vTESTstudio Traceability");
+
+
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(syspar::`LockingTests::`LockVelocity);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27()
+{
+  testReportAddExternalRef("PREEvision", "no unlock by slowing down", "preevision://myServer/Ma31342c143aea0ddc8663cXMa31342c143aea0ddc8663b10Ma31342c143aea0ddc8663b", "vTESTstudio Traceability");
+
+
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(15);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(2);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(15);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`CrashDetected);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`Velocity);
+    AddIFParameterInt64(75);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_b569d132_5541_4304_bed5_fdba4b3affce_36()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`VehicleMotion::`EngineRunning);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_022c015a_0c0e_4865_bcd8_e89d325cb079_37()
+{
+  {
+    CreateTTEIFFunction("CheckEngine", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "073d5d3b-ee32-465b-968f-98cecf1feda2");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_5c4e7c03_3f1d_4eb0_a6df_de7357353490_38()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_8412a82c_cc5c_4d2a_8b48_272bd383daee_39()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_59d22dee_1e29_4a79_ba15_a1ba1eb1fefd_40()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(1);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_BinaryLink_3c299358_8974_40ae_aa13_48bd69f1c1ed_41()
+{
+  {
+    CreateTTEIFFunction("SetStimulus", __eFct, __eGlobal);
+    AddIFParameterSignal(`CAN::dbNode::`SUT_Driver::`LockingRemoteControlRequest::`LockRequest);
+    AddIFParameterInt64(2);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "3e1d6754-3f7a-4b8b-8da6-8dade1989fa8");
+  }
+
+
+}
+
+void Tt3_MelFunction_Check_f651dbdd_88bb_44cc_bda7_b00f1ac079a8_42()
+{
+  {
+    CreateTTEIFFunction("CheckDoors", __eFct, __eGlobal);
+    AddIFParameterInt64(0);
+    CallInterfaceFunction(__cEmpty, __cEmpty, "6038832b-f6dd-4aab-879e-1541c61ad539");
+  }
+
+
+}
+
+void Tt3_MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_43()
+{
+  TestCommandBegin(__eReport, __cReport, __cEmpty, "48");
+  {
+    testStep(2, __cEmpty, "Release diagnostic connection here");
+  }
+  TestCommandEnd();
+
+}
+
+void Tt3_Tet_TtInit()
+{
+
+}
+
+void Tt3_Tet_Tf_Preparation0()
+{
+  TestPreparationBegin();
+  {
+    Tt3_MelFunction_Setup_042145dd_fb5b_440a_ba2a_a4462e13e61b_0();
+
+
+  }
+  TestPreparationEnd();
+}
+
+
+void Tt3_Tet_Tf_Completion0()
+{
+  TestCompletionBegin();
+  {
+    Tt3_MelFunction_Cleanup_cb9b8f0a_7f9d_4cdf_9cf8_3488ebf8d47a_43();
+
+
+  }
+  TestCompletionEnd();
+}
+
+
+void Tt3_Tet_Tc0()
+{
+  CreateTTEIFFunction("Tt3_Tc0", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=0_ManualUnlocked", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc0()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8();
+
+
+  Tt3_MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9();
+
+
+  Tt3_MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10();
+
+
+  Tt3_MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc1()
+{
+  CreateTTEIFFunction("Tt3_Tc1", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=0_ManualLocked_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc1()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13();
+
+
+  Tt3_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc2()
+{
+  CreateTTEIFFunction("Tt3_Tc2", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=0_ManualLocked_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc2()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_c7c8ab4a_7d86_4277_9cac_73845b478197_6();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13();
+
+
+  Tt3_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc3()
+{
+  CreateTTEIFFunction("Tt3_Tc3", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V<LockVel_ManualUnlocked", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc3()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_217c8846_27c9_45da_8497_94976d4dde97_8();
+
+
+  Tt3_MelFunction_Check_bd5193b2_4a0a_4c9b_99c8_9e41b8c5452b_9();
+
+
+  Tt3_MelFunction_BinaryLink_bef2f450_392e_4b1b_b377_132ce7e207af_10();
+
+
+  Tt3_MelFunction_Check_39c6d22b_2ce8_4bed_a746_71cbbc709795_11();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc4()
+{
+  CreateTTEIFFunction("Tt3_Tc4", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V<LockVel_ManualLocked_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc4()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13();
+
+
+  Tt3_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc5()
+{
+  CreateTTEIFFunction("Tt3_Tc5", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V<LockVel_ManualLocked_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc5()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_62da86ec_1048_4440_bd22_44031d25d5b0_21();
+
+
+  Tt3_MelFunction_Check_a6b6b37d_b064_46c9_8c1b_ee17dbae943a_7();
+
+
+  Tt3_MelFunction_BinaryLink_3fecbe72_5871_49eb_a0b0_a4b48534772a_13();
+
+
+  Tt3_MelFunction_Check_6d28e78d_22c8_4ee5_a7c1_946e7eb141e4_14();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc6()
+{
+  CreateTTEIFFunction("Tt3_Tc6", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=LockVel_ManualLocked_V=LockVel_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc6()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc7()
+{
+  CreateTTEIFFunction("Tt3_Tc7", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=LockVel_ManualLocked_V=LockVel_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc7()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc8()
+{
+  CreateTTEIFFunction("Tt3_Tc8", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=LockVel_ManualLocked_V<LockVel_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc8()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc9()
+{
+  CreateTTEIFFunction("Tt3_Tc9", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=LockVel_ManualLocked_V<LockVel_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc9()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc10()
+{
+  CreateTTEIFFunction("Tt3_Tc10", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V=LockVel_ManualUnlocked_V<LockVel", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc10()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_38ecaead_6ce8_4d50_808c_3959532b5bfb_22();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29();
+
+
+  Tt3_MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30();
+
+
+  Tt3_MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31();
+
+
+  Tt3_MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32();
+
+
+  Tt3_MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33();
+
+
+  Tt3_MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc11()
+{
+  CreateTTEIFFunction("Tt3_Tc11", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V>LockVel_ManualLocked_V=LockVel_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc11()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc12()
+{
+  CreateTTEIFFunction("Tt3_Tc12", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V>LockVel_ManualLocked_V=LockVel_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc12()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_75cedacd_6a49_45dc_948d_54243a881450_26();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc13()
+{
+  CreateTTEIFFunction("Tt3_Tc13", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V>LockVel_ManualLocked_V<LockVel_Crash", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc13()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_5db0b13b_1968_478e_b4f2_20596078b213_15();
+
+
+  Tt3_MelFunction_Check_08c558c4_2c52_4da1_86eb_cfef13a9c4e0_16();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc14()
+{
+  CreateTTEIFFunction("Tt3_Tc14", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V>LockVel_ManualLocked_V<LockVel_Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc14()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_54b13f41_49db_4d5d_ba6e_006080e13339_24();
+
+
+  Tt3_MelFunction_Check_c9f44f8a_ac65_4190_aa75_82d80ac8f286_25();
+
+
+  Tt3_MelFunction_BinaryLink_18d33e9a_d1d3_4d04_a7c6_f133a5665bfe_28();
+
+
+  Tt3_MelFunction_Check_1fbc2f35_b93a_4e60_bd6c_861b3b19bf36_27();
+
+
+  Tt3_MelFunction_BinaryLink_19dd03d7_7fc2_4bde_838b_6f8a00c29bd8_17();
+
+
+  Tt3_MelFunction_DecisionContainer_2985b604_6008_4ff4_aaec_27b736f808ae_18();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc15()
+{
+  CreateTTEIFFunction("Tt3_Tc15", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=On_V>LockVel_ManualUnlocked_V<LockVel", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc15()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_bf05de1b_1151_4a03_92aa_cd40b56878a7_3();
+
+
+  Tt3_MelFunction_Check_ae7d16a8_165c_458a_a82c_2cd3cee4889a_4();
+
+
+  Tt3_MelFunction_Check_46d8befd_b1f3_482c_8bfa_88bded19403b_5();
+
+
+  Tt3_MelFunction_BinaryLink_1a883e3a_f9b4_469a_8084_4909ea1a0ad9_35();
+
+
+  Tt3_MelFunction_Check_3feedab1_30c1_4999_a0ee_0474529d913e_23();
+
+
+  Tt3_MelFunction_BinaryLink_366dbd81_7339_4ee5_98b7_0ee964e153b1_29();
+
+
+  Tt3_MelFunction_Check_06b1ec72_dde2_4427_853c_7e13589add55_30();
+
+
+  Tt3_MelFunction_BinaryLink_98c3beab_9e12_4e31_8677_c3f107e8909c_31();
+
+
+  Tt3_MelFunction_Check_64a3d9de_f153_44d1_872c_6b78f484b699_32();
+
+
+  Tt3_MelFunction_BinaryLink_80c0b580_dfb8_44a6_8ef3_f67f42daf11b_33();
+
+
+  Tt3_MelFunction_Check_ab39034c_95d4_4f1e_a064_99e9951c5096_34();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+
+void Tt3_Tet_Tc16()
+{
+  CreateTTEIFFunction("Tt3_Tc16", __eTcDef, __eLocal);  
+  AddIFParameterTestCaseAttribute("Lifecycle", "in implementation");
+  AddIFParameterTestCaseAttribute("Note", "almost done, final details to be completed only");
+  CallInterfaceFunction("Engine=Off", __cEmpty , __cEmpty );
+}
+testcase Tt3_Tc16()
+{	
+  SetBreakOnFail(1);
+
+  Tt3_MelFunction_Check_f428627c_0c05_4671_8734_4ef2a7ccb66a_1();
+
+
+  Tt3_MelFunction_Check_465f9d39_e695_4a44_a7e1_41b54cd6331f_2();
+
+
+  Tt3_MelFunction_BinaryLink_b569d132_5541_4304_bed5_fdba4b3affce_36();
+
+
+  Tt3_MelFunction_Check_022c015a_0c0e_4865_bcd8_e89d325cb079_37();
+
+
+  Tt3_MelFunction_Check_5c4e7c03_3f1d_4eb0_a6df_de7357353490_38();
+
+
+  Tt3_MelFunction_BinaryLink_8412a82c_cc5c_4d2a_8b48_272bd383daee_39();
+
+
+  Tt3_MelFunction_Check_59d22dee_1e29_4a79_ba15_a1ba1eb1fefd_40();
+
+
+  Tt3_MelFunction_BinaryLink_3c299358_8974_40ae_aa13_48bd69f1c1ed_41();
+
+
+  Tt3_MelFunction_Check_f651dbdd_88bb_44cc_bda7_b00f1ac079a8_42();
+
+
+  Tt3_MelFunction_Check_ae5cf800_5768_49af_8f2a_54ca2da2dd40_12();
+
+
+}
+

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testtree>
+  <title></title>
+  <version>1</version>
+  <caplfunction>
+    <name>Tt4_Tet_TtInit</name>
+  </caplfunction>
+  <testfixture>
+    <title>LockVelocityTester</title>
+    <navid>3e6c03fb-3f04-466f-9a28-27e01b08c49d</navid>
+    <preparation>
+      <title>Setup</title>
+      <caplfunction>
+        <name>Tt4_Tet_Tf_Preparation0</name>
+      </caplfunction>
+    </preparation>
+    <completion>
+      <title>Cleanup</title>
+      <caplfunction>
+        <name>Tt4_Tet_Tf_Completion0</name>
+      </caplfunction>
+    </completion>
+    <testcase>
+      <title>Check lock by increasing velocity</title>
+      <testcaseid>af8383cb-0d99-51f8-677e-43f45804f78f</testcaseid>
+      <caplfunction>
+        <name>Tt4_Tet_Tc0</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Check no unlock when slowing down</title>
+      <testcaseid>e6f42565-8358-fd2e-5138-4941223b52d0</testcaseid>
+      <caplfunction>
+        <name>Tt4_Tet_Tc1</name>
+      </caplfunction>
+    </testcase>
+    <testcase>
+      <title>Check lock/unlock</title>
+      <testcaseid>31548370-1d05-ec0f-327e-1c0b4171b2e7</testcaseid>
+      <caplfunction>
+        <name>Tt4_Tet_Tc2</name>
+      </caplfunction>
+    </testcase>
+  </testfixture>
+</testtree>
