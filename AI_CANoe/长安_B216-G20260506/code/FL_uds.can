@@ -1,0 +1,2347 @@
+/*@!Encoding:936*/
+
+includes
+{
+  #include "ReportAndLog.cin"
+}
+
+/* 
+ * @brief 雷达诊断测试脚本 - 支持多产品配置
+ * 功能：通过Radar_Type系统变量切换不同雷达产品
+ * 手写 ASC：Button_FL_22FD0C 走方案 2（openFileWrite，0x700~0x7DF）；其它流程仍可用 ReportAndLog + Logging Block。
+ */
+
+variables {
+  // 诊断步骤枚举（必须放在结构体之前）
+  // 完整自动标定序列（Btn 标定）：10 03 -> 27 01 -> 27 02 ->
+  //   -> 2E F190 -> 22 F190 -> 2E 50 02 -> 22 50 02 -> 31 01 23 01 -> 22 FD0C -> 22 FD1C
+  enum DiagStep {
+    IDLE = 0,
+    WAIT_10_03 = 1,          // 进入扩展会话
+    WAIT_27_01 = 2,          // 请求安全Seed
+    WAIT_27_02 = 3,          // 发送安全Key
+    WAIT_31_01 = 4,          // 启动标定例程
+    WAIT_22_FD0C = 5,        // 读取标定状态
+    WAIT_22_FD1C = 6,        // 读取安装角度
+    // 标定完成后自动执行VIN和配置写入
+    WAIT_VIN_FC = 7,         // 等待VIN写入流控帧
+    WAIT_VIN_WRITE = 8,      // 等待VIN写入响应
+    WAIT_VIN_READ = 9,       // 等待VIN读取响应
+    WAIT_DID5002_FC = 10,    // 等待DID5002流控帧
+    WAIT_DID5002_WRITE = 11, // 等待DID5002写入响应
+    WAIT_DID5002_READ = 12,  // 等待DID5002读取响应
+    // 独立功能
+    WAIT_DTC = 13,           // 读取故障码（独立功能）
+    WAIT_DUAL_HANDOFF = 14   // 串联标定两段之间占位，不收应用层响应
+  };
+
+  // UDS 服务间延时后执行的下一动作（对应 on timer tServiceGap）
+  enum ServiceGapAction {
+    SVC_GAP_NONE = 0,
+    SVC_GAP_AFTER_1003 = 1,
+    SVC_GAP_AFTER_SEED_SEND_KEY = 2,
+    SVC_GAP_AFTER_2702 = 3,
+    SVC_GAP_AFTER_3101 = 4,
+    SVC_GAP_AFTER_FD0C = 5,
+    SVC_GAP_AFTER_FD1C_VIN_FF = 6,
+    SVC_GAP_AFTER_FD1C_DID5002 = 7,
+    SVC_GAP_AFTER_VIN_WR_6E = 8,
+    SVC_GAP_AFTER_VIN_RD_DID5002 = 9,
+    SVC_GAP_AFTER_DID5002_WR_6E = 10,
+    SVC_GAP_AFTER_D502_READ_ROUTINE = 11,
+    SVC_GAP_DUAL_START_RR_PHASE = 12,   // FL(766)整段 FD1C 结束后启动 RR(754)新会话链
+    SVC_GAP_DUAL_STAT_RR_FD0C = 13,      // 序读双雷达状态：766 FD1C 后切 754 再发 FD0C
+    SVC_GAP_4R_NEXT_FULL = 14,           // 一键标定4R：当前颗整链结束后切下一颗(从 10 03 起)
+    SVC_GAP_4R_NEXT_READ = 15            // 一键读4R：当前颗 FD1C 结束后切下一颗(从 22 FD0C 起)
+  };
+
+  const int SERVICE_GAP_MS = 20;  // UDS 服务间隔 ms，不稳可改为 50
+  
+  // 产品配置结构体（请求/响应 ID + 所在 CAN 通道）
+  struct Product {
+    long requestId;      // 物理寻址请求ID (Tx)
+    long responseId;     // 物理寻址响应ID (Rx)
+    int  canChannel;     // CANoe 通道号（1-based，与 msg.can 一致）
+  };
+  
+  // 产品配置表（4个产品）- 在枚举定义之后初始化
+  struct Product gProducts[4];
+  
+  // 当前选中的产品索引（由Radar_Type系统变量设置，1-4）
+  int gCurrentProductIdx = 0;  // 数组索引0-3，对应Radar_Type值1-4
+
+  // FL雷达配置参数
+  const long FL_REQUEST_ID = 0x766;
+  const long FL_RESPONSE_ID = 0x76E;
+  char FL_DIAG_TARGET[10] = "FL";
+  
+  // 当前诊断状态
+  enum DiagStep gCurrentStep;
+  msTimer tTimeout;
+  int gIsRunning = 0;
+
+  // Seed-Key安全访问变量
+  byte SeedArray[4];
+  byte KeyArray[4];
+  int  rev = 0;
+  
+  // 解析结果存储
+  float gCalStatus;       // 标定状态
+  float gAngleDeviation;  // 安装角度偏差
+  
+  // VIN写入相关
+  char gVINToWrite[18];   // 要写入的VIN（17字符+结束符）
+  char gVINReadBack[18];  // 读回的VIN
+  int  gVINWriteStep;     // VIN写入步骤（0=写入，1=读取验证）
+  int  gVINReadLen;       // 已接收的VIN字节数
+  int  gVINFrameCount;    // 接收到的VIN帧计数
+  
+  // DID5002配置写入相关（2E 50 02，64字节数据）
+  byte gDID5002Data[67];  // 完整数据：3字节(SID+DID) + 64字节payload
+  int  gDID5002DataLen;   // 数据长度（固定67）
+  int  gDID5002SentBytes; // 已发送字节数（用于连续帧跟踪）
+  
+  // ISO-TP STmin 参数（从流控帧获取，单位：ms）
+  int  gFC_STmin_VIN;      // VIN写入的STmin
+  int  gFC_STmin_DID5002;  // DID5002写入的STmin
+  
+  // STmin定时器（用于连续帧发送间隔）
+  msTimer tSTmin_VIN;      // VIN连续帧间隔定时器
+  msTimer tSTmin_DID5002;  // DID5002连续帧间隔定时器
+  
+  // 连续帧发送状态
+  int  gVIN_CF2_Pending;   // VIN CF2等待发送标志
+  
+  // DID5002 ISO-TP 多帧发送状态机
+  int  gDID5002_CF_SeqNum;   // 当前CF序号（0x0-0xF，实际发送时+0x20）
+  int  gDID5002_BlockCount;  // 当前Block内已发送帧数
+  int  gDID5002_BlockSize;   // ECU要求的BlockSize（从FC获取）
+  
+  // DID5002 读取(22 50 02) 多帧组装：62 50 02 + 64 字节
+  int  gDID5002_ReadPduTotal;  // FF 声明的 UDS PDU 总长（通常为 67）
+  int  gDID5002_ReadReceived;   // 已组装 PDU 字节数
+  byte gDID5002_ReadBuf[72];
+  
+  // 产品名称和位置字符串（在函数中初始化）
+  char gProductNames[4][20];
+  char gProductPositions[4][10];
+  
+  // 流程控制标志
+  int  gIsFullCalibrationFlow; // 1=完整标定流程（含VIN和DID5002），0=仅读取标定数据
+  /* 串联标定：先完整跑前左 766/76E(FD1C应答完)，再切换到后右 754/75C 重跑整条链（仅 Btn 标定时置位） */
+  int  gRadarSeqFLThenRR;
+  int  gRadarSeqOnRRPhase;     /* 1=当前为第二段(754)，0=当前为第一段(766) */
+  /* 序读状态：Button_FL_22FD0C 置1：固定先 0x766 再 0x754，各 FD0C+FD1C */
+  int  gSeqStatFLThenRR;
+
+  /* 一键 4R 状态机：依次跑 FL→FR→RL→RR（CAN1 上 FL/FR，CAN2 上 RL/RR） */
+  int  g4RSeqActive;     /* 1=一键 4R 流程进行中 */
+  int  g4RSeqIsFull;     /* 1=完整标定(10 03 起整链)，0=仅读 FD0C/FD1C */
+  int  g4RSeqIdx;        /* 当前雷达索引：0=FL 1=FR 2=RL 3=RR */
+
+  // UDS 服务间间隔（避免上一服务刚结束就发下一服务，ECU 未收尾）
+  msTimer tServiceGap;
+  enum ServiceGapAction gPendingServiceAction;
+
+  /* ReportAndLog.cin（仅 logging*，变量在此声明，避免与 include 重复 variables 块） */
+  char TimeString[100];
+  char LoggingBLockName[50] = "Logging";
+  char logFile[500];
+  int  gUdsTraceRecording;
+  msTimer tUdsTraceStopDelay;
+  /* 首帧诊断真正发出时再 loggingStart（与 StartUdsTrace 武装配对） */
+  int  gArmUdsTraceOnFirstSend;
+  char gPendingUdsTraceTitle[120];
+
+  /* 手写 ASC（方案 2）：不依赖 Measurement Setup Logging Block */
+  int  gManualLogActive = 0;
+  dword gManualLogFile = 0;
+  msTimer tManualLogStop;
+  char gManualLogPath[384];
+}
+
+// --- 取消服务间待定动作 ---
+void ClearServiceGapPending() {
+  cancelTimer(tServiceGap);
+  gPendingServiceAction = SVC_GAP_NONE;
+}
+
+void Clear4RSeqFlags() {
+  g4RSeqActive = 0;
+  g4RSeqIsFull = 0;
+  g4RSeqIdx = 0;
+}
+
+void ClearDualRadarSeqFlags() {
+  gRadarSeqFLThenRR = 0;
+  gRadarSeqOnRRPhase = 0;
+  gSeqStatFLThenRR = 0;
+  /* 失败/退出路径统一清 4R 状态；4R 进行中正常切换走的是 WAIT_22_FD1C 内的 4R 分支 break，不会触发到此 */
+  Clear4RSeqFlags();
+}
+
+void StartUdsTrace(char title[]) {
+  cancelTimer(tUdsTraceStopDelay);
+  if(gUdsTraceRecording == 1) {
+    loggingStop();
+    gUdsTraceRecording = 0;
+  }
+  snprintf(gPendingUdsTraceTitle, elCount(gPendingUdsTraceTitle), "%s", title);
+  gArmUdsTraceOnFirstSend = 1;
+  write("【UDS Trace】已武装，首帧诊断发出后开始写 ASC: %s", title);
+}
+
+
+/* Button_FL_22FD0C 专用：按钮置 1 后立即开始录制，不等首帧发送 */
+void StartUdsTraceImmediate(char title[]) {
+  cancelTimer(tUdsTraceStopDelay);
+  gArmUdsTraceOnFirstSend = 0;
+  if(gUdsTraceRecording == 1) {
+    loggingStop();
+    gUdsTraceRecording = 0;
+  }
+  snprintf(gPendingUdsTraceTitle, elCount(gPendingUdsTraceTitle), "%s", title);
+  loggingStart(gPendingUdsTraceTitle);
+  gUdsTraceRecording = 1;
+  write("【UDS Trace】立即开始录制 Logging");
+}
+/* 任一首次发出物理层诊断帧时调用（SendStepRequest / VIN FF / DID5002 FF） */
+void FlushUdsTraceOnFirstDiagSend() {
+  if(gArmUdsTraceOnFirstSend != 1) {
+    return;
+  }
+  gArmUdsTraceOnFirstSend = 0;
+  loggingStart(gPendingUdsTraceTitle);
+  gUdsTraceRecording = 1;
+  write("【UDS Trace】随首帧诊断开始录制 Logging");
+}
+
+/* ECU 肯定响应处理完毕或异常结束时停止（含 NRC） */
+void UdsTraceStopNow() {
+  cancelTimer(tUdsTraceStopDelay);
+  ManualLogStop();
+  gArmUdsTraceOnFirstSend = 0;
+  if(gUdsTraceRecording == 1) {
+    loggingStop();
+    gUdsTraceRecording = 0;
+    write("【UDS Trace】停止录制（肯定响应或服务结束）");
+  }
+}
+
+
+void UdsTraceStopAfterMs(long delayMs) {
+  gArmUdsTraceOnFirstSend = 0;
+  if(gUdsTraceRecording != 1) {
+    return;
+  }
+  cancelTimer(tUdsTraceStopDelay);
+  setTimer(tUdsTraceStopDelay, delayMs);
+  write("【UDS Trace】已收到目标响应，%ld ms 后停止录制", delayMs);
+}
+
+void ManualLogSanitizeFilenamePart(char src[], char dst[], int dstSize) {
+  int i;
+  int j;
+  char c;
+
+  j = 0;
+  for(i = 0; src[i] && j < dstSize - 1; i++) {
+    c = src[i];
+    if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+       (c >= '0' && c <= '9') || c == '_' || c == '-') {
+      dst[j++] = c;
+    } else {
+      dst[j++] = '_';
+    }
+  }
+  dst[j] = '\0';
+}
+
+void ManualLogWriteLine(char s[]) {
+  if(gManualLogActive == 1 && gManualLogFile != 0) {
+    filePutString(s, strlen(s), gManualLogFile);
+  }
+}
+
+void ManualLogStop() {
+  cancelTimer(tManualLogStop);
+  if(gManualLogActive != 1) {
+    return;
+  }
+
+  fileClose(gManualLogFile);
+  gManualLogFile = 0;
+  gManualLogActive = 0;
+
+  write("【ManualLog】Stop: %s", gManualLogPath);
+}
+
+/* tag 用于文件名片段，如 FL22FD0C */
+void ManualLogStart(char tag[]) {
+  long tm[9];
+  char safeTag[96];
+  dword h;
+
+  ManualLogStop();
+
+  getLocalTime(tm);
+  ManualLogSanitizeFilenamePart(tag, safeTag, elCount(safeTag));
+  snprintf(gManualLogPath, elCount(gManualLogPath),
+           "F:\\AI_Cursor\\AI_CANoe\\长安_B216-G\\Log\\UDS_manual_%d_%02d_%02d_%02d_%02d_%02d_%s.asc",
+           tm[5] + 1900, tm[4] + 1, tm[3],
+           tm[2], tm[1], tm[0],
+           safeTag);
+
+  h = openFileWrite(gManualLogPath, 0);
+  if(h == 0) {
+    write("【ManualLog】打开文件失败: %s", gManualLogPath);
+    return;
+  }
+
+  gManualLogFile = h;
+  gManualLogActive = 1;
+  ManualLogWriteLine("date generated by CAPL\r\n");
+  ManualLogWriteLine("base hex  timestamps absolute\r\n");
+  ManualLogWriteLine("internal events logged\r\n");
+  ManualLogWriteLine("// CAPL manual UDS trace 0x700~0x7DF (no Measurement Logging block)\r\n");
+  write("【ManualLog】Start: %s", gManualLogPath);
+}
+
+void ManualLogStopAfter5s() {
+  if(gManualLogActive != 1) {
+    return;
+  }
+  cancelTimer(tManualLogStop);
+  setTimer(tManualLogStop, 5000);
+  write("【ManualLog】最后一次肯定响应已到，5000 ms 后关闭 ASC");
+}
+
+void ManualLogCaptureBusRx(message * m) {
+  char line[320];
+  char dataStr[100];
+  char byteStr[10];
+  long id;
+  int dlc;
+  int i;
+  double tSec;
+
+  if(gManualLogActive != 1) {
+    return;
+  }
+
+  id = m.id;
+  if(id < 0x700 || id > 0x7DF) {
+    return;
+  }
+
+  dlc = m.dlc;
+  if(dlc > 8) {
+    dlc = 8;
+  }
+
+  dataStr[0] = '\0';
+  for(i = 0; i < dlc; i++) {
+    snprintf(byteStr, elCount(byteStr), "%02X ", m.byte(i));
+    strncat(dataStr, byteStr, elCount(dataStr) - strlen(dataStr) - 1);
+  }
+
+  tSec = (double)timeNow() / 1000000.0;
+  snprintf(line, elCount(line),
+           "%10.6f CAN%d %03lX Rx d %d %s\r\n",
+           tSec,
+           m.can,
+           id & 0x7FF,
+           dlc,
+           dataStr);
+  ManualLogWriteLine(line);
+}
+
+/* Simulation 节点发出的请求帧（本节点 Tx） */
+void ManualLogCaptureSimTx(message * m, int channel, long arbId) {
+  char line[320];
+  char dataStr[100];
+  char byteStr[10];
+  int dlc;
+  int i;
+  double tSec;
+
+  if(gManualLogActive != 1) {
+    return;
+  }
+  if(arbId < 0x700 || arbId > 0x7DF) {
+    return;
+  }
+
+  dlc = m.dlc;
+  if(dlc > 8) {
+    dlc = 8;
+  }
+
+  dataStr[0] = '\0';
+  for(i = 0; i < dlc; i++) {
+    snprintf(byteStr, elCount(byteStr), "%02X ", m.byte(i));
+    strncat(dataStr, byteStr, elCount(dataStr) - strlen(dataStr) - 1);
+  }
+
+  tSec = (double)timeNow() / 1000000.0;
+  snprintf(line, elCount(line),
+           "%10.6f CAN%d %03lX Tx d %d %s\r\n",
+           tSec,
+           channel,
+           arbId & 0x7FF,
+           dlc,
+           dataStr);
+  ManualLogWriteLine(line);
+}
+/* Button_FL_22FD0C：单雷达读标定数据（22 FD0C→FD1C），按 Radar_Type 选 FL/FR/RL/RR；需该雷达已在扩展会话 */
+void BeginReadDualRadarCalStatus()
+{
+  char tt[120];
+
+  ClearServiceGapPending();
+  cancelTimer(tTimeout);
+  cancelTimer(tSTmin_VIN);
+  cancelTimer(tSTmin_DID5002);
+  gVIN_CF2_Pending = 0;
+  gIsRunning = 0;
+  gCurrentStep = IDLE;
+  gIsFullCalibrationFlow = 0;
+  ClearDualRadarSeqFlags();
+
+  // 按 Radar_Type 选当前雷达（1=FL / 2=FR / 3=RL / 4=RR）
+  SelectProductByType();
+
+  write("【FL_22FD0C】单雷达读 %s FD0C+FD1C (CAN%d Tx=0x%03X Rx=0x%03X)",
+        gProductNames[gCurrentProductIdx],
+        gProducts[gCurrentProductIdx].canChannel,
+        gProducts[gCurrentProductIdx].requestId,
+        gProducts[gCurrentProductIdx].responseId);
+  LogToPanel("%s", ">>> 读取标定(FD0C+FD1C)：按 Radar_Type 选雷达 <<<");
+
+  snprintf(tt, elCount(tt), "FL22FD0C_%s_%03X",
+           gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+  ManualLogStart(tt);
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_22_FD0C;
+  putValueToControl("面板", "FL_Status_Normal", "标定数据读取中...");
+  putValueToControl("面板", "FL_Status_Error", "");
+  SendStepRequest();
+}
+
+/* Btn_Calibration_4R：一键完整标定4R（FL→FR→RL→RR），每颗各跑完整链路(10 03 → ... → FD0C → FD1C) */
+void Begin4RCalibration() {
+  char tt[120];
+
+  ClearServiceGapPending();
+  cancelTimer(tTimeout);
+  cancelTimer(tSTmin_VIN);
+  cancelTimer(tSTmin_DID5002);
+  gVIN_CF2_Pending = 0;
+  gIsRunning = 0;
+  gCurrentStep = IDLE;
+  ClearDualRadarSeqFlags();
+  Clear4RSeqFlags();
+
+  g4RSeqActive = 1;
+  g4RSeqIsFull = 1;
+  g4RSeqIdx = 0;
+  gCurrentProductIdx = 0;       /* 从 FL 开始 */
+
+  gIsFullCalibrationFlow = 1;
+  LoadVINFromPanelForAutoFlow();
+  rev = 0;
+  gDID5002_ReadPduTotal = 0;
+  gDID5002_ReadReceived = 0;
+
+  write("【一键标定4R】启动 FL→FR→RL→RR，每颗整链(10 03 起)");
+  LogToPanel("%s", ">>> 一键标定4R(FL→FR→RL→RR) <<<");
+
+  snprintf(tt, elCount(tt), "UDS_4R_%s_%03X",
+           gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+  StartUdsTrace(tt);
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_10_03;
+  putValueToControl("面板", "FL_Status_Normal", "一键标定4R中...");
+  putValueToControl("面板", "FL_Status_Error", "");
+  SendStepRequest();
+}
+
+/* Button_4R_22FD0C：一键读 4 颗雷达标定数据（22 FD0C+FD1C），各自需已扩展会话 */
+void Begin4RReadCalStatus() {
+  char tt[120];
+
+  ClearServiceGapPending();
+  cancelTimer(tTimeout);
+  cancelTimer(tSTmin_VIN);
+  cancelTimer(tSTmin_DID5002);
+  gVIN_CF2_Pending = 0;
+  gIsRunning = 0;
+  gCurrentStep = IDLE;
+  gIsFullCalibrationFlow = 0;
+  ClearDualRadarSeqFlags();
+  Clear4RSeqFlags();
+
+  g4RSeqActive = 1;
+  g4RSeqIsFull = 0;
+  g4RSeqIdx = 0;
+  gCurrentProductIdx = 0;       /* 从 FL 开始 */
+
+  write("【一键读4R】启动 FL→FR→RL→RR，各 FD0C+FD1C");
+  LogToPanel("%s", ">>> 一键读4R(FD0C+FD1C) <<<");
+
+  snprintf(tt, elCount(tt), "FL22FD0C_4R_%s_%03X",
+           gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+  ManualLogStart(tt);
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_22_FD0C;
+  putValueToControl("面板", "FL_Status_Normal", "一键读4R中...");
+  putValueToControl("面板", "FL_Status_Error", "");
+  SendStepRequest();
+}
+
+/* 4R 一键标定：当前颗整链结束后，切到下一颗，从 10 03 重起 */
+void Advance4RToNextFull() {
+  char tt[120];
+
+  cancelTimer(tTimeout);
+  cancelTimer(tSTmin_VIN);
+  cancelTimer(tSTmin_DID5002);
+
+  g4RSeqIdx++;
+  if(g4RSeqIdx >= 4) {
+    LogToPanel("【一键标定4R】4颗雷达全部完成", "");
+    ShowNormalStatus("一键标定4R完成");
+    gIsFullCalibrationFlow = 0;
+    Clear4RSeqFlags();
+    gCurrentStep = IDLE;
+    gIsRunning = 0;
+    UdsTraceStopNow();
+    return;
+  }
+
+  gCurrentProductIdx = g4RSeqIdx;
+  gIsFullCalibrationFlow = 1;
+  LoadVINFromPanelForAutoFlow();
+  rev = 0;
+  gVIN_CF2_Pending = 0;
+  gDID5002_ReadPduTotal = 0;
+  gDID5002_ReadReceived = 0;
+
+  write("【一键标定4R】切换到 %s (CAN%d Tx=0x%03X Rx=0x%03X)",
+        gProductNames[gCurrentProductIdx],
+        gProducts[gCurrentProductIdx].canChannel,
+        gProducts[gCurrentProductIdx].requestId,
+        gProducts[gCurrentProductIdx].responseId);
+  LogToPanel("【一键标定4R】下一颗 %s 启动(10 03)", gProductPositions[gCurrentProductIdx]);
+
+  snprintf(tt, elCount(tt), "UDS_4R_%s_%03X",
+           gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+  StartUdsTrace(tt);
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_10_03;
+  SendStepRequest();
+}
+
+/* 4R 一键读：当前颗 FD1C 结束后，切到下一颗，从 22 FD0C 起 */
+void Advance4RToNextRead() {
+  char tt[120];
+
+  cancelTimer(tTimeout);
+
+  g4RSeqIdx++;
+  if(g4RSeqIdx >= 4) {
+    LogToPanel("【一键读4R】4颗雷达 FD0C/FD1C 已读完", "");
+    ShowNormalStatus("一键读4R完成");
+    Clear4RSeqFlags();
+    gCurrentStep = IDLE;
+    gIsRunning = 0;
+    ManualLogStopAfter5s();
+    return;
+  }
+
+  gCurrentProductIdx = g4RSeqIdx;
+
+  write("【一键读4R】切换到 %s (CAN%d Tx=0x%03X Rx=0x%03X)",
+        gProductNames[gCurrentProductIdx],
+        gProducts[gCurrentProductIdx].canChannel,
+        gProducts[gCurrentProductIdx].requestId,
+        gProducts[gCurrentProductIdx].responseId);
+  LogToPanel("【一键读4R】下一颗 %s FD0C/FD1C", gProductPositions[gCurrentProductIdx]);
+
+  snprintf(tt, elCount(tt), "FL22FD0C_4R_%s_%03X",
+           gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+  ManualLogStart(tt);
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_22_FD0C;
+  SendStepRequest();
+}
+
+// --- 调度：延时后再发下一服务（非阻塞）---
+void ScheduleServiceGap(enum ServiceGapAction action) {
+  cancelTimer(tServiceGap);
+  gPendingServiceAction = action;
+  setTimer(tServiceGap, SERVICE_GAP_MS);
+  write("【ServiceGap】pending=%d, delay=%dms", (long)action, (long)SERVICE_GAP_MS);
+}
+
+// --- 面板 Input_VIN 装入 gVINToWrite（自动标定须在解密后发 2E F190） ---
+void LoadVINFromPanelForAutoFlow() {
+  int i;
+  char vinInput[24];
+  sysGetVariableString(sysvar::DiagControl::Input_VIN, vinInput, elCount(vinInput));
+  vinInput[elCount(vinInput) - 1] = 0;
+  if(strlen(vinInput) == 17) {
+    for(i = 0; i < 17; i++) {
+      gVINToWrite[i] = vinInput[i];
+    }
+    gVINToWrite[17] = '\0';
+    write("【自动序列】已从面板载入 VIN(17字节)");
+  } else {
+    gVINToWrite[0] = '\0';
+    write("【自动序列】面板 VIN 非 17 字符(len=%d)，将跳过 VIN 写/读", (int)strlen(vinInput));
+  }
+}
+
+// --- DID5002 读取结束时：完整标定则继续 31 01，否则结束 ---
+void FinishAfterDID5002ReadDone() {
+  cancelTimer(tTimeout);
+  gDID5002_ReadPduTotal = 0;
+  gDID5002_ReadReceived = 0;
+  if(gIsFullCalibrationFlow == 1) {
+    LogToPanel("【自动序列】DID5002 读取完成，延时后发送 31 01 23 01", "");
+    ShowNormalStatus("配置已校验，即将启动标定例程...");
+    gCurrentStep = WAIT_31_01;
+    ScheduleServiceGap(SVC_GAP_AFTER_D502_READ_ROUTINE);
+  } else {
+    LogToPanel("【接收】DID5002读取流程结束", "");
+    ShowNormalStatus("DID5002配置读取完成");
+    gCurrentStep = IDLE;
+    gIsRunning = 0;
+    UdsTraceStopNow();
+  }
+}
+
+// --- 串联标定第二段：766/76E 整条链(FD1C)应答完成后，再开始后右 754/75C 全流程自 10 03 ---
+void RestartDualRadarRRPhase() {
+  ClearServiceGapPending();
+  cancelTimer(tTimeout);
+  cancelTimer(tSTmin_VIN);
+  cancelTimer(tSTmin_DID5002);
+
+  gCurrentProductIdx = 3;
+  gRadarSeqOnRRPhase = 1;
+  gIsFullCalibrationFlow = 1;
+  LoadVINFromPanelForAutoFlow();
+
+  rev = 0;
+  gVIN_CF2_Pending = 0;
+  gDID5002_ReadPduTotal = 0;
+  gDID5002_ReadReceived = 0;
+
+  write("【串联】前左 0x766 段完成，切换后右 Tx=0x754 Rx=0x75C，从 10 03 重开");
+  LogToPanel("%s", "【串联】后右 754 段启动(10 03)");
+
+  gIsRunning = 1;
+  gCurrentStep = WAIT_10_03;
+  SendStepRequest();
+}
+
+// --- 根据Radar_Type选择产品配置 ---
+// 从Panel系统变量DiagControl::Radar_Type读取值（1-4），选择对应产品
+void SelectProductByType() {
+  int radarType;
+  
+  // 读取Radar_Type系统变量（int类型，值范围1-4）
+  radarType = sysGetVariableInt(sysvar::DiagControl::Radar_Type);
+  
+  // 验证范围
+  if(radarType < 1 || radarType > 4) {
+    write("【错误】Radar_Type值%d无效，必须在1-4之间，使用默认值1", radarType);
+    radarType = 1;  // 默认使用产品1
+  }
+  
+  // 设置当前产品索引（1-based转0-based）
+  gCurrentProductIdx = radarType - 1;
+  
+  write("【产品选择】Radar_Type=%d, 选择产品: %s (CAN%d, Tx=0x%03X, Rx=0x%03X)", 
+        radarType, 
+        gProductNames[gCurrentProductIdx],
+        gProducts[gCurrentProductIdx].canChannel,
+        gProducts[gCurrentProductIdx].requestId,
+        gProducts[gCurrentProductIdx].responseId);
+}
+
+// --- 获取当前产品请求ID ---
+long GetCurrentRequestId() {
+  return gProducts[gCurrentProductIdx].requestId;
+}
+
+// --- 获取当前产品响应ID ---
+long GetCurrentResponseId() {
+  return gProducts[gCurrentProductIdx].responseId;
+}
+
+// --- 获取当前产品所在 CAN 通道（发送/接收过滤用） ---
+int GetCurrentCanChannel() {
+  return gProducts[gCurrentProductIdx].canChannel;
+}
+
+// --- NRC码转中文描述 ---
+void GetNRCDescription(byte nrc, char outDesc[]) {
+  switch(nrc) {
+    case 0x10: snprintf(outDesc, 50, "一般拒绝"); break;
+    case 0x11: snprintf(outDesc, 50, "服务不支持"); break;
+    case 0x12: snprintf(outDesc, 50, "子功能不支持"); break;
+    case 0x13: snprintf(outDesc, 50, "报文长度错误"); break;
+    case 0x14: snprintf(outDesc, 50, "响应过长"); break;
+    case 0x21: snprintf(outDesc, 50, "忙碌"); break;
+    case 0x22: snprintf(outDesc, 50, "条件不支持"); break;
+    case 0x24: snprintf(outDesc, 50, "请求顺序错误"); break;
+    case 0x31: snprintf(outDesc, 50, "请求超出范围"); break;
+    case 0x33: snprintf(outDesc, 50, "安全访问锁定"); break;
+    case 0x35: snprintf(outDesc, 50, "密钥无效"); break;
+    case 0x36: snprintf(outDesc, 50, "尝试次数超限"); break;
+    case 0x37: snprintf(outDesc, 50, "所需时间延迟未到"); break;
+    case 0x70: snprintf(outDesc, 50, "上传下载拒绝"); break;
+    case 0x71: snprintf(outDesc, 50, "传输数据悬挂"); break;
+    case 0x72: snprintf(outDesc, 50, "通用编程错误"); break;
+    case 0x73: snprintf(outDesc, 50, "错误校验和"); break;
+    case 0x78: snprintf(outDesc, 50, "响应等待"); break;
+    case 0x7E: snprintf(outDesc, 50, "子功能不支持在当前会话"); break;
+    case 0x7F: snprintf(outDesc, 50, "服务不支持在当前会话"); break;
+    default:   snprintf(outDesc, 50, "未知错误码"); break;
+  }
+}
+
+// --- 初始化产品配置表和产品名称 ---
+void InitProducts() {
+  // 初始化产品ID
+  gProducts[0].requestId = 0x766;
+  gProducts[0].responseId = 0x76E;
+  gProducts[0].canChannel = 1;
+
+  gProducts[1].requestId = 0x767;
+  gProducts[1].responseId = 0x76F;
+  gProducts[1].canChannel = 1;
+
+  gProducts[2].requestId = 0x753;
+  gProducts[2].responseId = 0x75B;
+  gProducts[2].canChannel = 2;
+
+  gProducts[3].requestId = 0x754;
+  gProducts[3].responseId = 0x75C;
+  gProducts[3].canChannel = 2;
+  
+  // 初始化产品名称（使用snprintf避免strncpy问题）
+  snprintf(gProductNames[0], 20, "B216_FL");
+  snprintf(gProductNames[1], 20, "B216_FR");
+  snprintf(gProductNames[2], 20, "B216_RL");
+  snprintf(gProductNames[3], 20, "B216_RR");
+  
+  // 初始化安装位置
+  snprintf(gProductPositions[0], 10, "FL");
+  snprintf(gProductPositions[1], 10, "FR");
+  snprintf(gProductPositions[2], 10, "RL");
+  snprintf(gProductPositions[3], 10, "RR");
+  
+  write("【初始化】产品配置表已加载，共4个产品");
+  write("  产品1: B216_FL (FL), CAN1, Tx=0x766, Rx=0x76E");
+  write("  产品2: B216_FR (FR), CAN1, Tx=0x767, Rx=0x76F");
+  write("  产品3: B216_RL (RL), CAN2, Tx=0x753, Rx=0x75B");
+  write("  产品4: B216_RR (RR), CAN2, Tx=0x754, Rx=0x75C");
+}
+
+// --- 启动事件 ---
+on start {
+  // 初始化产品配置表和名称
+  InitProducts();
+  
+  // 默认选择产品1
+  gCurrentProductIdx = 0;
+  
+  // 初始化流程标志
+  gIsFullCalibrationFlow = 0;
+  ClearDualRadarSeqFlags();
+  gUdsTraceRecording = 0;
+  gArmUdsTraceOnFirstSend = 0;
+  cancelTimer(tUdsTraceStopDelay);
+  gPendingUdsTraceTitle[0] = '\0';
+  cancelTimer(tManualLogStop);
+  ManualLogStop();
+  gManualLogFile = 0;
+  cancelTimer(tServiceGap);
+
+  write("【启动】CAPL脚本已启动，默认产品: B216_FL (CAN1, Tx=0x766, Rx=0x76E)");
+}
+
+// --- 服务间延时到：执行下一 UDS 服务 ---
+on timer tServiceGap {
+  enum ServiceGapAction act;
+  act = gPendingServiceAction;
+  gPendingServiceAction = SVC_GAP_NONE;
+
+  switch(act) {
+    case SVC_GAP_AFTER_1003:
+      SendStepRequest();
+      break;
+    case SVC_GAP_AFTER_SEED_SEND_KEY:
+      SendKey();
+      break;
+    case SVC_GAP_AFTER_2702:
+      SendVINFirstFrame();
+      break;
+    case SVC_GAP_AFTER_3101:
+      SendStepRequest();
+      break;
+    case SVC_GAP_AFTER_FD0C:
+      SendStepRequest();
+      break;
+    case SVC_GAP_AFTER_FD1C_VIN_FF:
+      SendVINFirstFrame();
+      break;
+    case SVC_GAP_AFTER_FD1C_DID5002:
+      PrepareDID5002Data();
+      SendDID5002FirstFrame();
+      break;
+    case SVC_GAP_AFTER_VIN_WR_6E:
+      SendVINReadRequest();
+      break;
+    case SVC_GAP_AFTER_VIN_RD_DID5002:
+      PrepareDID5002Data();
+      SendDID5002FirstFrame();
+      break;
+    case SVC_GAP_AFTER_DID5002_WR_6E:
+      SendDID5002ReadRequest();
+      break;
+    case SVC_GAP_AFTER_D502_READ_ROUTINE:
+      SendStepRequest();
+      break;
+    case SVC_GAP_DUAL_START_RR_PHASE:
+      RestartDualRadarRRPhase();
+      break;
+    case SVC_GAP_DUAL_STAT_RR_FD0C:
+      SendStepRequest();
+      break;
+    case SVC_GAP_4R_NEXT_FULL:
+      Advance4RToNextFull();
+      break;
+    case SVC_GAP_4R_NEXT_READ:
+      Advance4RToNextRead();
+      break;
+    default:
+      break;
+  }
+}
+
+// --- FD0C标定状态解析 ---
+void ParseFD0C(byte data4, byte data5) {
+  char statusDesc[40];
+  char errorDesc[50];
+  char resultStr[100];
+  
+  // 解析标定状态 (Byte 4)
+  switch(data4) {
+    case 0x00: snprintf(statusDesc, 40, "未开始"); gCalStatus = 0; break;
+    case 0x01: snprintf(statusDesc, 40, "标定中"); gCalStatus = 1; break;
+    case 0x02: snprintf(statusDesc, 40, "标定成功"); gCalStatus = 2; break;
+    case 0x03: snprintf(statusDesc, 40, "标定失败"); gCalStatus = 3; break;
+    default:   snprintf(statusDesc, 40, "未知状态"); gCalStatus = -1; break;
+  }
+  
+  // 解析错误原因 (Byte 5) - 根据图片中的错误码表
+  switch(data5) {
+    case 0x00: snprintf(errorDesc, 50, "无错误"); break;
+    case 0x01: snprintf(errorDesc, 50, "安装角度超差(3-5度)"); break;
+    case 0x02: snprintf(errorDesc, 50, "安装角度超差(大于5度)"); break;
+    case 0x03: snprintf(errorDesc, 50, "标定超时"); break;
+    case 0x04: snprintf(errorDesc, 50, "EEPROM写入失败"); break;
+    case 0x05: snprintf(errorDesc, 50, "ID写入失败"); break;
+    case 0x06: snprintf(errorDesc, 50, "车速误差过大"); break;
+    case 0x10: snprintf(errorDesc, 50, "车速过低"); break;
+    case 0x20: snprintf(errorDesc, 50, "加速度过大"); break;
+    case 0x40: snprintf(errorDesc, 50, "Yawrate过大"); break;
+    default:   snprintf(errorDesc, 50, "其他错误"); break;
+  }
+  
+  snprintf(resultStr, elCount(resultStr), "【FD0C解析】标定状态: %s, 错误原因: %s", statusDesc, errorDesc);
+  LogToPanel(resultStr, "");
+  
+  // 同步到Panel控件显示
+  putValueToControl("面板", "FL_CalStatus", statusDesc);
+  putValueToControl("面板", "FL_CalError", errorDesc);
+}
+
+// --- FD1C安装角度偏差解析 (IEEE 754 Float) ---
+void ParseFD1C(byte data4, byte data5, byte data6, byte data7) {
+  char resultStr[100];
+  char angleStr[20];
+  dword floatBits;
+  float angleValue;
+  
+  // 组合4字节为IEEE 754 float (小端序)
+  floatBits = (dword)data4 | ((dword)data5 << 8) | ((dword)data6 << 16) | ((dword)data7 << 24);
+  
+  // CAPL中float转换：使用dword强制转换（注意：实际项目中可能需要根据ECU实现调整）
+  // 这里使用简单的数值转换作为示例
+  angleValue = (float)floatBits / 1000000.0; // 简化处理，实际需要根据数据范围调整
+  gAngleDeviation = angleValue;
+  
+  // 显示原始字节和转换后的角度值
+  snprintf(resultStr, elCount(resultStr), "【FD1C解析】安装角度偏差: %f (原始数据: %02X %02X %02X %02X)", 
+           angleValue, data4, data5, data6, data7);
+  LogToPanel(resultStr, "");
+  
+  // 同步到Panel控件显示
+  snprintf(angleStr, 20, "%f", angleValue);
+  putValueToControl("面板", "FL_AngleDeviation", angleStr);
+}
+
+// --- 2301例程响应数据解析 ---
+void Parse2301Response(byte data0, byte data1, byte data2, byte data3, 
+                       byte data4, byte data5, byte data6, byte data7) {
+  char resultStr[150];
+  char statusDesc[40];
+  char errorDesc[50];
+  
+  // 解析标定状态 (Byte 4)
+  switch(data4) {
+    case 0x00: snprintf(statusDesc, 40, "未开始"); break;
+    case 0x01: snprintf(statusDesc, 40, "标定中"); break;
+    case 0x02: snprintf(statusDesc, 40, "标定成功"); break;
+    case 0x03: snprintf(statusDesc, 40, "标定失败"); break;
+    default:   snprintf(statusDesc, 40, "未知"); break;
+  }
+  
+  // 解析错误原因 (Byte 5)
+  switch(data5) {
+    case 0x00: snprintf(errorDesc, 50, "无错误"); break;
+    case 0x01: snprintf(errorDesc, 50, "安装角度超差(3-5度)"); break;
+    case 0x02: snprintf(errorDesc, 50, "安装角度超差(大于5度)"); break;
+    case 0x03: snprintf(errorDesc, 50, "超时"); break;
+    case 0x04: snprintf(errorDesc, 50, "EEPROM写入失败"); break;
+    case 0x05: snprintf(errorDesc, 50, "ID写入失败"); break;
+    case 0x06: snprintf(errorDesc, 50, "车速误差过大"); break;
+    default:   snprintf(errorDesc, 50, "其他错误"); break;
+  }
+  
+  snprintf(resultStr, elCount(resultStr), 
+           "【2301解析】SID: %02X%02X, 状态: %s, 错误: %s, 车速:%02X, 耗时:%02X%02X",
+           data1, data2, statusDesc, errorDesc, data6, data7, 0);
+  LogToPanel(resultStr, "");
+}
+
+// --- 日志辅助函数 ---
+void LogToPanel(char format[], char arg1[]) {
+  char Buffer[256];
+  char FinalMsg[260];
+  
+  snprintf(Buffer, elCount(Buffer), format, arg1);
+  snprintf(FinalMsg, elCount(FinalMsg), "%s\n", Buffer);
+  
+  write("%s", FinalMsg);
+  putValueToControl("面板", "CAPL Output View 1", FinalMsg);
+}
+
+void LogToPanel2(char format[], char arg1[], int arg2) {
+  char Buffer[256];
+  char FinalMsg[260];
+  
+  snprintf(Buffer, elCount(Buffer), format, arg1, arg2);
+  snprintf(FinalMsg, elCount(FinalMsg), "%s\n", Buffer);
+  
+  write("%s", FinalMsg);
+  putValueToControl("面板", "CAPL Output View 1", FinalMsg);
+}
+
+// --- 状态显示控件控制（方案2：纯代码醒目效果） ---
+void ShowNormalStatus(char msg[]) {
+  char displayMsg[150];
+  char normalMsg[100];
+  
+  // 正常状态用普通格式
+  snprintf(normalMsg, elCount(normalMsg), "【正常】%s", msg);
+  snprintf(displayMsg, elCount(displayMsg), "□ %s", normalMsg);
+  
+  putValueToControl("面板", "FL_Status_Normal", displayMsg);
+  putValueToControl("面板", "FL_Status_Error", "〇 等待操作...");
+}
+
+void ShowErrorStatus(byte nrc) {
+  char nrcDesc[50];
+  char errorMsg[150];
+  char boxTop[60];
+  char boxBottom[60];
+  char boxMiddle[150];
+  char fullDisplay[400];
+  int i;
+  
+  GetNRCDescription(nrc, nrcDesc);
+  
+  // 构建框线（使用等宽字符创造醒目效果）
+  snprintf(boxTop, elCount(boxTop), "╔═══════════════════════════════════╗");
+  snprintf(boxBottom, elCount(boxBottom), "╚═══════════════════════════════════╝");
+  
+  // 错误信息行
+  snprintf(errorMsg, elCount(errorMsg), "  NRC: 0x%02X  %s", nrc, nrcDesc);
+  snprintf(boxMiddle, elCount(boxMiddle), "║ %-35s ║", errorMsg);
+  
+  // 组合完整显示（带换行）
+  snprintf(fullDisplay, elCount(fullDisplay), 
+           "%s\n%s\n%s\n", boxTop, boxMiddle, boxBottom);
+  
+  // 输出到完整日志
+  write("%s", fullDisplay);
+  putValueToControl("面板", "CAPL Output View 1", fullDisplay);
+  
+  // 简化版显示到状态控件（也用框线）
+  putValueToControl("面板", "FL_Status_Error", fullDisplay);
+  putValueToControl("面板", "FL_Status_Normal", "■ 测试中断");
+}
+
+// --- 清除错误显示（恢复正常）---
+void ClearErrorDisplay() {
+  putValueToControl("面板", "FL_Status_Error", "〇 等待响应...");
+  putValueToControl("面板", "FL_Status_Normal", "■ 测试中...");
+}
+
+// --- NRC负响应处理 ---
+void LogToPanelNRC(byte nrc) {
+  // 使用新的错误显示方案
+  ShowErrorStatus(nrc);
+}
+
+// --- Seed-Key计算与发送 ---
+void SendKey() {
+  dword keyActualSize;
+  long status;
+  char keyStr[100];
+  message * keyMsg;
+  int i;
+
+  if(rev) {
+    rev = 0;
+    
+    status = diagGenerateKeyFromSeed(FL_DIAG_TARGET, SeedArray, elcount(SeedArray), 1, "", "", KeyArray, elcount(KeyArray), keyActualSize);
+    
+    if(status == 0) {
+      keyMsg.can = GetCurrentCanChannel();
+      keyMsg.id = GetCurrentRequestId();  // 使用当前产品请求ID
+      keyMsg.dlc = 8;
+      keyMsg.byte(0) = 0x06;
+      keyMsg.byte(1) = 0x27; 
+      keyMsg.byte(2) = 0x02;
+      for(i = 0; i < 4; i++) keyMsg.byte(i+3) = KeyArray[i];
+
+      FlushUdsTraceOnFirstDiagSend();
+      output(keyMsg);
+      setTimer(tTimeout, 2000);
+      
+      snprintf(keyStr, elCount(keyStr), "%02X %02X %02X %02X", 
+               KeyArray[0], KeyArray[1], KeyArray[2], KeyArray[3]);
+      LogToPanel("【发送】安全访问Key: %s", keyStr);
+    } else {
+      LogToPanel2("【错误】Key计算失败, 状态码=%d", "", (int)status);
+      ClearDualRadarSeqFlags();
+      gCurrentStep = IDLE;
+      gIsRunning = 0;
+      UdsTraceStopNow();
+    }
+  }
+}
+
+// --- VIN首帧发送（2E F190） ---
+// ISO-TP协议：首帧(FF, PCI=10 14) -> FC -> CF1(21)+CF2(22)
+// 总长度=20字节 (2E F1 90 + 17字节VIN)
+void SendVINFirstFrame() {
+  message * firstFrame;
+  char vinHex[60];
+  char byteHex[4];
+  int i;
+  
+  // 所有变量必须在函数最前面声明（CAPL规则）
+  
+  // 验证VIN长度必须为17
+  if(strlen(gVINToWrite) != 17) {
+    LogToPanel2("【错误】VIN长度错误: %d字符（必须17）", "", (int)strlen(gVINToWrite));
+    ClearDualRadarSeqFlags();
+    gIsRunning = 0;
+    gCurrentStep = IDLE;
+    UdsTraceStopNow();
+    return;
+  }
+  
+  firstFrame.can = GetCurrentCanChannel();
+  firstFrame.id = GetCurrentRequestId();  // 使用当前产品请求ID
+  firstFrame.dlc = 8;
+  
+  // === 正确ISO-TP首帧 ===
+  // PCI: 0x10 (First Frame) + 0x14 (总长度20字节)
+  firstFrame.byte(0) = 0x10;  // First Frame
+  firstFrame.byte(1) = 0x14;  // 总长度20 (3+17)
+  firstFrame.byte(2) = 0x2E;  // SID: WriteDataByIdentifier
+  firstFrame.byte(3) = 0xF1;  // DID高字节 F1
+  firstFrame.byte(4) = 0x90;  // DID低字节 90
+  firstFrame.byte(5) = gVINToWrite[0];  // VIN[0]
+  firstFrame.byte(6) = gVINToWrite[1];  // VIN[1]
+  firstFrame.byte(7) = gVINToWrite[2];  // VIN[2]
+
+  FlushUdsTraceOnFirstDiagSend();
+  output(firstFrame);
+  
+  // 生成完整VIN十六进制字符串用于显示
+  vinHex[0] = '\0';
+  for(i = 0; i < 17; i++) {
+    snprintf(byteHex, 4, "%02X ", (byte)gVINToWrite[i]);
+    strncat(vinHex, byteHex, elCount(vinHex) - strlen(vinHex) - 1);
+  }
+  
+  LogToPanel("【发送】VIN首帧(FF: 10 14), 6字节数据, 等待FC...", "");
+  LogToPanel("【VIN数据】%s", vinHex);
+  putValueToControl("面板", "FL_VIN_Sent", gVINToWrite);
+  
+  gCurrentStep = WAIT_VIN_FC;
+  setTimer(tTimeout, 4000);  // 等待流控帧超时4秒
+}
+
+// --- VIN连续帧发送（收到流控帧后调用） ---
+// CF1: 7字节 (VIN[3..9]), CF2: 7字节 (VIN[10..16])
+void SendVINConsecutiveFrames() {
+  message * cf1;
+  char cf1Data[50];
+  int i;
+  
+  LogToPanel("【发送】开始发送VIN连续帧(CF1+CF2)...", "");
+  
+  // === CF1: 连续帧1 (PCI=0x21 + 7字节VIN[3..9]) ===
+  cf1.can = GetCurrentCanChannel();
+  cf1.id = GetCurrentRequestId();
+  cf1.dlc = 8;
+  cf1.byte(0) = 0x21;                    // 连续帧序号1
+  for(i = 0; i < 7; i++) {
+    cf1.byte(1 + i) = (byte)gVINToWrite[3 + i];
+  }
+  output(cf1);
+  
+  snprintf(cf1Data, elCount(cf1Data), "CF1: 21 %02X %02X %02X %02X %02X %02X %02X",
+           gVINToWrite[3], gVINToWrite[4], gVINToWrite[5], gVINToWrite[6],
+           gVINToWrite[7], gVINToWrite[8], gVINToWrite[9]);
+  write(cf1Data);
+  putValueToControl("面板", "FL_VIN_CF1_Data", cf1Data);
+  LogToPanel("【发送】%s", cf1Data);
+  
+  // 固定7ms延迟后发送CF2（实际约6ms）
+  gVIN_CF2_Pending = 1;  // 标记CF2等待发送
+  setTimer(tSTmin_VIN, 7);  // 设置7ms间隔
+}
+
+// --- VIN CF2 发送（单独函数，可由定时器调用） ---
+void SendVIN_CF2() {
+  message * cf2;
+  char cf2Data[50];
+  char fullHex[80];
+  char tmp[5];
+  int i;
+  
+  // === CF2: 连续帧2 (PCI=0x22 + 7字节VIN[10..16]) ===
+  cf2.can = GetCurrentCanChannel();
+  cf2.id = GetCurrentRequestId();
+  cf2.dlc = 8;
+  cf2.byte(0) = 0x22;                    // 连续帧序号2
+  for(i = 0; i < 7; i++) {
+    cf2.byte(1 + i) = (byte)gVINToWrite[10 + i];
+  }
+  output(cf2);
+  
+  snprintf(cf2Data, elCount(cf2Data), "CF2: 22 %02X %02X %02X %02X %02X %02X %02X",
+           gVINToWrite[10], gVINToWrite[11], gVINToWrite[12], gVINToWrite[13],
+           gVINToWrite[14], gVINToWrite[15], gVINToWrite[16]);
+  write(cf2Data);
+  putValueToControl("面板", "FL_VIN_CF2_Data", cf2Data);
+  LogToPanel("【发送】%s", cf2Data);
+  
+  // 显示完整发送的VIN
+  putValueToControl("面板", "FL_VIN_Sent", gVINToWrite);
+  
+  // 生成完整17字节hex显示
+  fullHex[0] = '\0';
+  for(i = 0; i < 17; i++) {
+    snprintf(tmp, 5, "%02X ", (byte)gVINToWrite[i]);
+    strncat(fullHex, tmp, 79 - strlen(fullHex));
+  }
+  LogToPanel("【VIN完整17字节】%s", fullHex);
+  
+  LogToPanel("【发送】VIN连续帧发送完成(7+7=14字节)，等待6E F190响应...", "");
+  
+  gVIN_CF2_Pending = 0;
+  gCurrentStep = WAIT_VIN_WRITE;
+  setTimer(tTimeout, 4000);
+}
+
+// --- ISO-TP：接收方发流控帧(CTS)，供 VIN 读 / DID5002 读等多帧响应通用 ---
+void SendFlowControlFrame(byte blockSize, byte stMin) {
+  message * fcMsg;
+  fcMsg.can = GetCurrentCanChannel();
+  fcMsg.id = GetCurrentRequestId();
+  fcMsg.dlc = 8;
+  fcMsg.byte(0) = 0x30;  // FC, FS=CTS
+  fcMsg.byte(1) = blockSize;
+  fcMsg.byte(2) = stMin;
+  fcMsg.byte(3) = 0x00;
+  fcMsg.byte(4) = 0x00;
+  fcMsg.byte(5) = 0x00;
+  fcMsg.byte(6) = 0x00;
+  fcMsg.byte(7) = 0x00;
+  output(fcMsg);
+}
+
+// --- VIN读取请求发送（22 F190），内部固定进入 WAIT_VIN_READ ---
+void SendVINReadRequest() {
+  message * msg;
+  
+  cancelTimer(tTimeout);
+  gVINReadLen = 0;
+  gVINFrameCount = 0;
+  gCurrentStep = WAIT_VIN_READ;
+  gIsRunning = 1;
+  
+  msg.can = GetCurrentCanChannel();
+  msg.id = GetCurrentRequestId();
+  msg.dlc = 8;
+  msg.byte(0) = 0x03;  // PCI: 单帧，3字节
+  msg.byte(1) = 0x22;  // SID: ReadDataByIdentifier
+  msg.byte(2) = 0xF1;  // DID高字节
+  msg.byte(3) = 0x90;  // DID低字节 (F190=VIN)
+  
+  output(msg);
+  LogToPanel("【发送】读取VIN(22 F190)进行验证", "");
+  setTimer(tTimeout, 5000);
+}
+
+// --- DID5002配置数据准备（2E 50 02，67字节总长度） ---
+void PrepareDID5002Data() {
+  int i;
+  
+  // 清空67字节数据区
+  for(i = 0; i < 67; i++) {
+    gDID5002Data[i] = 0x00;
+  }
+  
+  // 设置SID和DID（前3字节）
+  gDID5002Data[0] = 0x2E;  // SID: WriteDataByIdentifier
+  gDID5002Data[1] = 0x50;  // DID高字节
+  gDID5002Data[2] = 0x02;  // DID低字节 (5002)
+  
+  // 从Panel系统变量读取配置值，写入指定位置
+  // byte10 -> data[3+10] = data[13]
+  // byte44 -> data[3+44] = data[47]
+  // byte46 -> data[3+46] = data[49]
+  gDID5002Data[13] = (byte)sysGetVariableInt(sysvar::DiagControl::DID5002_Byte10);
+  gDID5002Data[47] = (byte)sysGetVariableInt(sysvar::DiagControl::DID5002_Byte44);
+  gDID5002Data[49] = (byte)sysGetVariableInt(sysvar::DiagControl::DID5002_Byte46);
+  
+  gDID5002DataLen = 67;
+  gDID5002SentBytes = 0;
+  
+  write("【DID5002】数据准备完成，byte10=0x%02X, byte44=0x%02X, byte46=0x%02X", 
+        gDID5002Data[13], gDID5002Data[47], gDID5002Data[49]);
+}
+
+// --- DID5002首帧发送（2E 50 02，67字节ISO-TP多帧） ---
+// 首帧格式：PCI=10 43（67字节），携带前6字节数据
+void SendDID5002FirstFrame() {
+  message * firstFrame;
+  char hexStr[20];
+  int i;
+
+  // 数据有效性保护：检查是否已准备好DID5002数据
+  if(gDID5002DataLen != 67 || gDID5002Data[0] != 0x2E || gDID5002Data[1] != 0x50 || gDID5002Data[2] != 0x02) {
+    write("【警告】DID5002数据未准备，自动调用PrepareDID5002Data()");
+    PrepareDID5002Data();
+  }
+
+  firstFrame.can = GetCurrentCanChannel();
+  firstFrame.id = GetCurrentRequestId();
+  firstFrame.dlc = 8;
+  
+  // PCI: First Frame + 总长度67字节 (0x43)
+  firstFrame.byte(0) = 0x10;  // First Frame
+  firstFrame.byte(1) = 0x43;  // 总长度67 (3+64)
+  
+  // 首帧携带前6字节数据（SID+DID的前3字节 + payload的前3字节）
+  for(i = 0; i < 6; i++) {
+    firstFrame.byte(2 + i) = gDID5002Data[i];
+  }
+
+  FlushUdsTraceOnFirstDiagSend();
+  output(firstFrame);
+  
+  // 记录发送的首帧数据
+  snprintf(hexStr, elCount(hexStr), "10 43 %02X %02X %02X %02X %02X %02X",
+           gDID5002Data[0], gDID5002Data[1], gDID5002Data[2],
+           gDID5002Data[3], gDID5002Data[4], gDID5002Data[5]);
+  LogToPanel("【发送】DID5002首帧(FF): %s", hexStr);
+  
+  gDID5002SentBytes = 6;    // 已发送6字节（首帧）
+  gDID5002_CF_SeqNum = 1;    // CF序号从1开始（0x21）
+  gDID5002_BlockCount = 0; // Block计数器清零
+  gDID5002_BlockSize = 8;    // 默认BlockSize=8
+  gCurrentStep = WAIT_DID5002_FC;
+  setTimer(tTimeout, 4000);
+  write("【DID5002首帧】SentBytes=6, CF_SeqNum=1, 等待FC...");
+}
+
+// --- DID5002读取请求发送（22 50 02） ---
+void SendDID5002ReadRequest() {
+  message * msg;
+  
+  msg.can = GetCurrentCanChannel();
+  msg.id = GetCurrentRequestId();
+  msg.dlc = 8;
+  msg.byte(0) = 0x03;  // PCI: 单帧，3字节数据
+  msg.byte(1) = 0x22;  // SID: ReadDataByIdentifier
+  msg.byte(2) = 0x50;  // DID高字节
+  msg.byte(3) = 0x02;  // DID低字节 (5002)
+
+  FlushUdsTraceOnFirstDiagSend();
+  output(msg);
+  LogToPanel("【发送】读取DID5002配置(22 50 02)进行验证", "");
+  
+  gDID5002_ReadPduTotal = 0;
+  gDID5002_ReadReceived = 0;
+  gCurrentStep = WAIT_DID5002_READ;
+  setTimer(tTimeout, 5000);  // 5秒超时等待62 50 02响应
+}
+
+// --- DID5002连续帧发送（收到流控帧后调用） ---
+// 67字节数据，首帧已发6字节，剩余61字节需要9个连续帧（CF1-CF9）
+// CF1-CF8各7字节（56字节），CF9剩5字节
+void SendDID5002ConsecutiveFrames() {
+  int remaining;
+  
+  // 计算剩余未发送字节数
+  remaining = gDID5002DataLen - gDID5002SentBytes;
+  
+  write("【DID5002】开始/继续发送连续帧，剩余%d字节, CF_SeqNum=0x%02X", 
+        remaining, 0x20 + gDID5002_CF_SeqNum);
+  
+  // 注意：CF_SeqNum 不能重置，必须从当前值继续
+  // BlockCount 在收到新的FC时重置
+  
+  // 发送当前连续帧
+  SendDID5002_NextCF();
+}
+
+// --- DID5002 单帧连续帧发送（由STmin定时器触发） ---
+// --- DID5002 单帧连续帧发送（由STmin定时器触发或立即调用） ---
+// ISO-TP协议要点：
+// 1. CF序号在完整传输过程中持续递增（0x1-0xF循环），不能按Block重置
+// 2. 每发送一帧后检查是否达到BlockSize，达到则等待下一个FC
+// 3. STmin是连续帧之间的最小间隔
+void SendDID5002_NextCF() {
+  message * cf;
+  char cfLog[60];
+  char byteHex[4];
+  int i;
+  int remaining;
+  int bytesToSend;
+  int seqNumByte;  // 实际PCI字节值
+  
+  // 计算剩余字节数
+  remaining = gDID5002DataLen - gDID5002SentBytes;
+  
+  write("【DID5002_CF】SN=0x%02X(PCI=0x%02X), BlockCount=%d/%d, remaining=%d", 
+        gDID5002_CF_SeqNum, 0x20 + gDID5002_CF_SeqNum, 
+        gDID5002_BlockCount, gDID5002_BlockSize, remaining);
+  
+  if(remaining <= 0) {
+    // 所有数据已发送完成
+    write("【DID5002】全部数据发送完成，共%d字节", gDID5002SentBytes);
+    LogToPanel("【发送】DID5002连续帧发送完成", "");
+    gCurrentStep = WAIT_DID5002_WRITE;
+    setTimer(tTimeout, 5000);
+    return;
+  }
+  
+  // 检查是否达到BlockSize限制
+  if(gDID5002_BlockCount >= gDID5002_BlockSize) {
+    // 已达到BlockSize，需要等待下一个FC
+    write("【DID5002】达到BlockSize(%d)，等待下一个FC...", gDID5002_BlockSize);
+    gCurrentStep = WAIT_DID5002_FC;  // 回到等待FC状态
+    setTimer(tTimeout, 5000);
+    return;
+  }
+  
+  // 构建并发送连续帧
+  cf.can = GetCurrentCanChannel();
+  cf.id = GetCurrentRequestId();
+  cf.dlc = 8;
+  
+  // PCI: 连续帧序号（0x21-0x2F循环，但本次传输只用0x21-0x29）
+  // ISO-TP序号: CF1=0x21, CF2=0x22, ..., CF15=0x2F, CF16=0x20(回绕)
+  seqNumByte = 0x20 + (gDID5002_CF_SeqNum & 0x0F);  // 取低4位
+  cf.byte(0) = seqNumByte;
+  
+  // 计算本帧要发送的字节数（最多7字节）
+  if(remaining >= 7) {
+    bytesToSend = 7;
+  } else {
+    bytesToSend = remaining;
+  }
+  
+  // 填充数据
+  for(i = 0; i < bytesToSend; i++) {
+    cf.byte(1 + i) = gDID5002Data[gDID5002SentBytes + i];
+  }
+  
+  // 剩余字节填充0x00
+  for(i = bytesToSend; i < 7; i++) {
+    cf.byte(1 + i) = 0x00;
+  }
+  
+  output(cf);
+  
+  // 记录本帧数据（只显示实际发送的字节）
+  cfLog[0] = '\0';
+  for(i = 0; i < bytesToSend; i++) {
+    snprintf(byteHex, 4, "%02X ", cf.byte(1 + i));
+    strncat(cfLog, byteHex, 55 - strlen(cfLog));
+  }
+  write("【发送】CF(SN=0x%02X, PCI=0x%02X, %d字节): %s", 
+        gDID5002_CF_SeqNum, seqNumByte, bytesToSend, cfLog);
+  
+  // 更新状态
+  gDID5002SentBytes += bytesToSend;
+  gDID5002_CF_SeqNum++;      // 序号递增
+  gDID5002_BlockCount++;     // Block计数递增
+  
+  // 序号回绕处理（0x0F -> 0x00，但本次传输应该用不着）
+  gDID5002_CF_SeqNum = gDID5002_CF_SeqNum & 0x0F;
+  
+  // 检查是否还有剩余数据
+  remaining = gDID5002DataLen - gDID5002SentBytes;
+  
+  if(remaining > 0) {
+    // 还有数据要发送
+    if(gDID5002_BlockCount >= gDID5002_BlockSize) {
+      // 达到BlockSize，等待下一个FC
+      write("【DID5002】Block满(%d/%d)，等待FC", gDID5002_BlockCount, gDID5002_BlockSize);
+      gCurrentStep = WAIT_DID5002_FC;
+      setTimer(tTimeout, 5000);
+    } else {
+      // 继续发送下一帧，设置7ms间隔
+      setTimer(tSTmin_DID5002, 7);
+    }
+  } else {
+    // 所有数据发送完成
+    write("【DID5002】全部数据发送完成，共%d字节", gDID5002SentBytes);
+    LogToPanel("【发送】DID5002连续帧发送完成", "");
+    gCurrentStep = WAIT_DID5002_WRITE;
+    setTimer(tTimeout, 5000);  // 等待6E 50 02响应
+  }
+}
+
+// --- 统一请求发送 ---
+void SendStepRequest() {
+  message * msg;
+  int i;
+  char stepDesc[60];
+  
+  // 发送新请求时，清空错误状态（准备接收新响应）
+  putValueToControl("面板", "FL_Status_Error", "");
+  
+  msg.can = GetCurrentCanChannel();
+  msg.id = GetCurrentRequestId();
+  msg.dlc = 8;
+  for(i=0; i<8; i++) msg.byte(i)=0;
+
+  switch(gCurrentStep) {
+    case WAIT_10_03:   
+      msg.byte(0)=0x02; msg.byte(1)=0x10; msg.byte(2)=0x03; 
+      snprintf(stepDesc, elCount(stepDesc), "进入扩展会话(10 03)");
+      break;
+    case WAIT_27_01:   
+      msg.byte(0)=0x02; msg.byte(1)=0x27; msg.byte(2)=0x01; 
+      snprintf(stepDesc, elCount(stepDesc), "请求安全Seed(27 01)");
+      break;
+    case WAIT_31_01:   
+      msg.byte(0)=0x04; msg.byte(1)=0x31; msg.byte(2)=0x01; msg.byte(3)=0x23; msg.byte(4)=0x01; 
+      snprintf(stepDesc, elCount(stepDesc), "启动标定例程(31 01 23 01)");
+      break;
+    case WAIT_22_FD0C: 
+      msg.byte(0)=0x03; msg.byte(1)=0x22; msg.byte(2)=0xFD; msg.byte(3)=0x0C; 
+      snprintf(stepDesc, elCount(stepDesc), "读取标定状态FD0C");
+      break;
+    case WAIT_22_FD1C: 
+      msg.byte(0)=0x03; msg.byte(1)=0x22; msg.byte(2)=0xFD; msg.byte(3)=0x1C; 
+      snprintf(stepDesc, elCount(stepDesc), "读取安装角度FD1C");
+      break;
+    case WAIT_DTC:     
+      msg.byte(0)=0x03; msg.byte(1)=0x19; msg.byte(2)=0x02; msg.byte(3)=0x01; 
+      snprintf(stepDesc, elCount(stepDesc), "读取故障码(19 02 01)");
+      break;
+    // 标定序列中的VIN和DID5002写入步骤 - 使用独立函数处理
+    case WAIT_VIN_FC:
+    case WAIT_VIN_WRITE:
+    case WAIT_VIN_READ:
+      // VIN写入/读取使用单独函数处理
+      return;
+    case WAIT_DID5002_FC:
+    case WAIT_DID5002_WRITE:
+    case WAIT_DID5002_READ:
+      // DID5002写入/读取使用单独函数处理
+      return;
+  }
+  
+  if(gCurrentStep != IDLE) {
+    FlushUdsTraceOnFirstDiagSend();
+    output(msg);
+    ManualLogCaptureSimTx(msg, GetCurrentCanChannel(), GetCurrentRequestId());
+    setTimer(tTimeout, 2000);
+    LogToPanel("【发送】%s", stepDesc);
+    
+    // 发送新请求时，显示测试中状态
+    ClearErrorDisplay();
+  }
+}
+
+// --- 启动诊断流程 ---
+void StartDiagFlow(enum DiagStep startStep) {
+  ClearServiceGapPending();
+  gSeqStatFLThenRR = 0;
+
+  // 根据Radar_Type选择产品（每次启动时重新读取）
+  SelectProductByType();
+
+  // 设置流程标志：从WAIT_10_03开始的是完整标定流程
+  if(startStep == WAIT_10_03) {
+    gIsFullCalibrationFlow = 1;
+    LoadVINFromPanelForAutoFlow();
+    write("【流程】启动完整标定序列(解密后: VIN读写->5002读写->311->FD0C/FD1C)");
+  } else if(startStep == WAIT_DTC) {
+    gIsFullCalibrationFlow = 0;
+    ClearDualRadarSeqFlags();
+    write("【流程】启动故障码读取流程");
+  }
+
+  {
+    char traceTitle[120];
+    if(startStep == WAIT_DTC) {
+      snprintf(traceTitle, elCount(traceTitle), "UDS_DTC_%s_%03X",
+               gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+    } else {
+      snprintf(traceTitle, elCount(traceTitle), "UDS_%s_%03X",
+               gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+    }
+    StartUdsTrace(traceTitle);
+  }
+
+  gIsRunning = 1;
+  gCurrentStep = startStep;
+  
+  // 启动时清空所有状态显示
+  putValueToControl("面板", "FL_Status_Normal", "测试启动...");
+  putValueToControl("面板", "FL_Status_Error", "");
+  
+  LogToPanel("--- 开始FL雷达诊断测试 ---", "");
+  SendStepRequest();
+}
+
+// --- FL雷达响应处理 ---
+// 使用通配符接收所有消息，内部根据当前产品ID过滤
+on message * {
+  char buff[32];
+  byte nrc;
+  int i;
+  long expectedRespId;
+
+  ManualLogCaptureBusRx(this);
+
+  // 获取当前产品的期望响应ID
+  expectedRespId = GetCurrentResponseId();
+  
+  // 检查消息 ID + CAN 通道是否与当前产品一致（避免双总线同 ID 误判）
+  if(this.id != expectedRespId || this.can != GetCurrentCanChannel()) {
+    return;
+  }
+  
+  if(!gIsRunning) return;
+
+  if(gCurrentStep == WAIT_DUAL_HANDOFF) {
+    return;
+  }
+
+  // WAIT_VIN_READ / WAIT_DID5002_READ 等多帧 RX：不在此处取消超时，由各分支或 NRC 中刷新
+  if(gCurrentStep != WAIT_VIN_READ && gCurrentStep != WAIT_DID5002_READ) {
+    cancelTimer(tTimeout);
+  }
+
+  // 负响应判断
+  if(this.byte(1) == 0x7F) {
+    cancelTimer(tTimeout);
+    ClearServiceGapPending();
+    nrc = this.byte(3);
+    LogToPanelNRC(nrc);
+    ClearDualRadarSeqFlags();
+    gCurrentStep = IDLE;
+    gIsRunning = 0;
+    UdsTraceStopNow();
+    return;
+  }
+
+  // 正响应状态机处理
+  switch(gCurrentStep) {
+    case WAIT_10_03:
+      LogToPanel("【接收】扩展会话已激活", "");
+      ShowNormalStatus("扩展会话已激活");
+      gCurrentStep = WAIT_27_01;
+      LogToPanel("【流程】延时后进入安全访问(27 01)", "");
+      ScheduleServiceGap(SVC_GAP_AFTER_1003);
+      break;
+
+    case WAIT_27_01:
+      if(this.byte(1) == 0x67 && this.byte(2) == 0x01) {
+        SeedArray[0] = this.byte(3); SeedArray[1] = this.byte(4);
+        SeedArray[2] = this.byte(5); SeedArray[3] = this.byte(6);
+        rev = 1;
+        LogToPanel("【接收】安全访问Seed已获取", "");
+        ShowNormalStatus("安全访问Seed已获取");
+        gCurrentStep = WAIT_27_02;
+        LogToPanel("【流程】延时后发送安全Key(27 02)", "");
+        ScheduleServiceGap(SVC_GAP_AFTER_SEED_SEND_KEY);
+      }
+      break;
+
+    case WAIT_27_02:
+      if(this.byte(1) == 0x67 && this.byte(2) == 0x02) {
+        LogToPanel("【接收】安全访问解锁成功", "");
+        ShowNormalStatus("安全访问解锁成功");
+
+        cancelTimer(tTimeout);
+        /* 完整标定：解密后顺序 2E F190→22 F190→2E5002→225002→311→FD0C→FD1C（FD0C=标定状态） */
+        if(gIsFullCalibrationFlow == 1) {
+          if(strlen(gVINToWrite) != 17) {
+            LogToPanel2("【自动序列】VIN 无效(len=%d)，跳过 VIN，延时后 DID5002(2E 50 02)", "", (int)strlen(gVINToWrite));
+            ScheduleServiceGap(SVC_GAP_AFTER_FD1C_DID5002);
+          } else {
+            gVINReadLen = 0;
+            gVINFrameCount = 0;
+            LogToPanel("【流程】解密成功，延时后写入 VIN(2E F190)", "");
+            ScheduleServiceGap(SVC_GAP_AFTER_2702);
+          }
+        } else {
+          gCurrentStep = WAIT_31_01;
+          LogToPanel("【流程】延时后启动标定例程(31 01)", "");
+          ScheduleServiceGap(SVC_GAP_AFTER_D502_READ_ROUTINE);
+        }
+      }
+      break;
+
+    case WAIT_31_01:
+      // 解析71 01 23 01响应 (启动例程确认)
+      LogToPanel("【接收】标定例程已启动", "");
+      ShowNormalStatus("标定例程已启动");
+      // 解析响应数据
+      Parse2301Response(this.byte(0), this.byte(1), this.byte(2), this.byte(3),
+                        this.byte(4), this.byte(5), this.byte(6), this.byte(7));
+      gCurrentStep = WAIT_22_FD0C;
+      LogToPanel("【流程】延时后读取 FD0C", "");
+      ScheduleServiceGap(SVC_GAP_AFTER_3101);
+      break;
+
+    case WAIT_22_FD0C:
+      // 62 FD 0C + 2字节数据
+      LogToPanel("【接收】FD0C标定状态数据", "");
+      ShowNormalStatus("标定状态数据已读取");
+      ParseFD0C(this.byte(4), this.byte(5));
+      gCurrentStep = WAIT_22_FD1C;
+      LogToPanel("【流程】延时后读取 FD1C", "");
+      ScheduleServiceGap(SVC_GAP_AFTER_FD0C);
+      break;
+
+    case WAIT_22_FD1C:
+      LogToPanel("【接收】FD1C安装角度偏差数据", "");
+      ShowNormalStatus("安装角度偏差数据已读取");
+      ParseFD1C(this.byte(4), this.byte(5), this.byte(6), this.byte(7));
+
+      cancelTimer(tTimeout);
+      cancelTimer(tSTmin_VIN);
+      cancelTimer(tSTmin_DID5002);
+      /* 一键 4R 一键读：FD1C 收齐后切下一颗（仅 FD0C/FD1C，不写 VIN/5002） */
+      if(g4RSeqActive == 1 && g4RSeqIsFull == 0) {
+        LogToPanel("【一键读4R】%s 完成，切下一颗", gProductPositions[gCurrentProductIdx]);
+        ShowNormalStatus("4R 读取，切下一颗...");
+        gCurrentStep = WAIT_DUAL_HANDOFF;
+        ScheduleServiceGap(SVC_GAP_4R_NEXT_READ);
+        break;
+      }
+      /* 一键 4R 一键标定：当前颗整链(FD1C 是最后一步)结束后切下一颗 */
+      if(g4RSeqActive == 1 && g4RSeqIsFull == 1) {
+        LogToPanel("【一键标定4R】%s 整链完成，切下一颗", gProductPositions[gCurrentProductIdx]);
+        ShowNormalStatus("4R 标定，切下一颗...");
+        gIsFullCalibrationFlow = 0;     /* 切换前清，下一颗启动时再置1 */
+        gCurrentStep = WAIT_DUAL_HANDOFF;
+        ScheduleServiceGap(SVC_GAP_4R_NEXT_FULL);
+        break;
+      }
+      /* 序读状态：766 收完先到 754 再 FD0C，不得走“单雷达单次读”收尾 */
+      if(gSeqStatFLThenRR == 1) {
+        if(gCurrentProductIdx == 0) {
+          LogToPanel("【序读状态】766 FD0C/FD1C 已收齐，切换到后右 754 Tx 再读", "");
+          ShowNormalStatus("前左读完，读后右...");
+          gCurrentProductIdx = 3;
+          gCurrentStep = WAIT_22_FD0C;
+          ScheduleServiceGap(SVC_GAP_DUAL_STAT_RR_FD0C);
+          break;
+        }
+        if(gCurrentProductIdx == 3) {
+          LogToPanel("【序读状态】754 FD0C/FD1C 已收齐，双雷达状态读取结束", "");
+          ShowNormalStatus("766+754 标定状态读完成");
+          gSeqStatFLThenRR = 0;
+          gCurrentStep = IDLE;
+          gIsRunning = 0;
+          ManualLogStopAfter5s();
+          break;
+        }
+      }
+      if(gIsFullCalibrationFlow != 1) {
+        LogToPanel("【标定数据读取】FD0C/FD1C读取完成，流程结束", "");
+        ShowNormalStatus("标定数据读取完成");
+        gCurrentStep = IDLE;
+        gIsRunning = 0;
+        UdsTraceStopNow();
+        break;
+      }
+      if(gRadarSeqFLThenRR) {
+        if(!gRadarSeqOnRRPhase && gCurrentProductIdx == 0) {
+          LogToPanel("【串联】前左段 FD1C 完成，延时后启动后右 Tx=0x754", "");
+          ShowNormalStatus("前左完成，切换后右...");
+          gCurrentStep = WAIT_DUAL_HANDOFF;
+          ScheduleServiceGap(SVC_GAP_DUAL_START_RR_PHASE);
+          break;
+        }
+        if(gRadarSeqOnRRPhase && gCurrentProductIdx == 3) {
+          LogToPanel("【自动序列】完成：766 段与 754 段 FD0C/FD1C 均已结束", "");
+          ShowNormalStatus("串联标定序列完成");
+          gIsFullCalibrationFlow = 0;
+          ClearDualRadarSeqFlags();
+          gCurrentStep = IDLE;
+          gIsRunning = 0;
+          UdsTraceStopNow();
+          break;
+        }
+      }
+      LogToPanel("【自动序列】完成：已完成 5002 与例程后的 FD0C/FD1C", "");
+      ShowNormalStatus("自动标定序列完成");
+      gIsFullCalibrationFlow = 0;
+      ClearDualRadarSeqFlags();
+      gCurrentStep = IDLE;
+      gIsRunning = 0;
+      UdsTraceStopNow();
+      break;
+      
+    case WAIT_DTC:
+      LogToPanel("【接收】故障码读取完成", "");
+      ShowNormalStatus("故障码读取完成");
+      gCurrentStep = IDLE;
+      gIsRunning = 0;
+      UdsTraceStopNow();
+      break;
+      
+    case WAIT_VIN_FC:
+      // 等待流控帧(Flow Control)：雷达响应首帧后发送FC
+      {
+        byte fcPci;
+        byte fcStatus;
+        byte blockSize;
+        byte stMin;
+        char debugMsg[100];
+        
+        fcPci = this.byte(0);
+        fcStatus = fcPci & 0x0F;   // FS在低4位: 0=CTS, 1=WAIT, 2=OVFLW
+        blockSize = this.byte(1);  // Block Size
+        stMin = this.byte(2);      // STmin
+        
+        // 调试：显示收到的帧信息
+        snprintf(debugMsg, elCount(debugMsg), 
+                 "【调试】收到帧，PCI=0x%02X, FS=0x%02X, BS=%d, STmin=%d，当前步骤=WAIT_VIN_FC", 
+                 fcPci, fcStatus, blockSize, stMin);
+        write(debugMsg);
+        
+        // 检查是否为流控帧：PCI = 0x30-0x3F (FC)
+        // ISO-TP流控帧格式：PCI=0x3X (X=FS), BS, STmin
+        if((fcPci & 0xF0) == 0x30) {
+          // 是流控帧，根据状态处理
+          if(fcStatus == 0x00) {
+            // 0x00 = 继续发送(Clear to Send)
+            // STmin处理: 0x00-0x7F = 0-127ms, 0xF1-0xF9 = 100-9000us
+            if(stMin <= 0x7F) {
+              gFC_STmin_VIN = stMin;  // 直接毫秒值
+            } else if(stMin >= 0xF1 && stMin <= 0xF9) {
+              gFC_STmin_VIN = 1;      // 100us-900us 近似为1ms
+            } else {
+              gFC_STmin_VIN = 0;      // 默认无延迟
+            }
+            write("【VIN流控帧】CTS，BS=%d, STmin=%d ms，开始发送连续帧", blockSize, gFC_STmin_VIN);
+            LogToPanel("【接收】流控帧: CTS，STmin=", "");
+            cancelTimer(tTimeout);
+            
+            // 发送连续帧（带STmin延迟）
+            SendVINConsecutiveFrames();
+          }
+          else if(fcStatus == 0x01) {
+            // Wait (等待后再发)
+            LogToPanel("【接收】流控帧(FC): WAIT，等待后继续发送", "");
+            cancelTimer(tTimeout);
+            // TODO: 根据STmin延迟后再发送
+            SendVINConsecutiveFrames();
+          }
+          else if(fcStatus == 0x02) {
+            // Overflow (溢出，停止发送)
+            LogToPanel("【错误】流控帧(FC): Overflow，停止发送", "");
+            ClearDualRadarSeqFlags();
+            gCurrentStep = IDLE;
+            gIsRunning = 0;
+            UdsTraceStopNow();
+          }
+          else {
+            // 其他状态，默认继续发送（只在日志输出，不在面板显示）
+            write("【调试】流控帧(FC): 未知状态(0x%02X)，尝试继续发送", fcStatus);
+            cancelTimer(tTimeout);
+            SendVINConsecutiveFrames();
+          }
+        }
+        else {
+          // 不是流控帧，可能是错误响应或其他帧
+          // 检查是否是负响应(0x7F)
+          if(this.byte(1) == 0x7F) {
+            LogToPanel("【错误】收到负响应而非流控帧，停止VIN写入", "");
+            ClearDualRadarSeqFlags();
+            gCurrentStep = IDLE;
+            gIsRunning = 0;
+            UdsTraceStopNow();
+          }
+          else {
+            // 其他帧，忽略继续等待流控帧
+            write("【调试】收到非流控帧，继续等待FC...");
+          }
+        }
+      }
+      break;
+      
+    case WAIT_VIN_WRITE:
+      // 6E F1 90 - VIN写入成功响应（连续帧发送完成后收到）
+      if(this.byte(1) == 0x6E && this.byte(2) == 0xF1 && this.byte(3) == 0x90) {
+        LogToPanel("【接收】VIN写入成功，开始读取验证...", "");
+        ShowNormalStatus("VIN写入成功，开始读取验证...");
+        LogToPanel("【流程】延时后发送 VIN 读取(22 F190)", "");
+        ScheduleServiceGap(SVC_GAP_AFTER_VIN_WR_6E);
+      }
+      break;
+      
+    case WAIT_VIN_READ:
+      // VIN读取响应处理（22 F190的多帧响应：62 F1 90 + 17字节VIN）
+      {
+        byte msgPci;
+        byte msgSid;
+        int vinIdx;
+        char vinReadHex[60];
+        char byteHex[4];
+        int seqNum;
+        int isVINValid;
+        int isComplete = 0;
+        char debugMsg[80];
+        
+        msgPci = this.byte(0);
+        
+        // 更鲁棒的VIN读取响应判断（支持首帧和连续帧）
+        if((msgPci & 0xF0) == 0x10) {           // 首帧 (First Frame)
+          // 首帧格式通常为：10 14 62 F1 90 + VIN前N字节
+          if(this.byte(2) == 0x62 && this.byte(3) == 0xF1 && this.byte(4) == 0x90) {
+            msgSid = 0x62;
+            LogToPanel("【接收】VIN读取首帧(PCI=10, 包含62 F190)", "");
+            
+            // 首帧携带VIN前3字节（偏移: byte5开始）
+            gVINReadBack[0] = this.byte(5);
+            gVINReadBack[1] = this.byte(6);
+            gVINReadBack[2] = this.byte(7);
+            gVINReadLen = 3;
+            gVINFrameCount = 1;
+            
+            write("【VIN接收-FF】%02X %02X %02X", (byte)gVINReadBack[0], (byte)gVINReadBack[1], (byte)gVINReadBack[2]);
+            SendFlowControlFrame(0x08, 0x00);
+            LogToPanel("【发送】VIN读取流控 FC(30 08 00)，等待 ECU 连续帧", "");
+            cancelTimer(tTimeout);
+            setTimer(tTimeout, 5000);
+          }
+        }
+        else if((msgPci & 0xF0) == 0x20) {      // 连续帧 (Consecutive Frame)
+          seqNum = msgPci & 0x0F;
+          {
+            char seqStr[4];
+            snprintf(seqStr, 4, "%d", seqNum);
+            LogToPanel("【接收】VIN读取连续帧 seq=", seqStr);
+          }
+          
+          if(seqNum == 1) {
+            // CF1: 7字节 VIN[3..9]
+            for(vinIdx = 0; vinIdx < 7; vinIdx++) {
+              gVINReadBack[3 + vinIdx] = this.byte(1 + vinIdx);
+            }
+            gVINReadLen = 10;
+            gVINFrameCount = 2;
+            LogToPanel("【接收】VIN CF1(7字节)，累计10字节", "");
+            write("【VIN接收-CF1】%02X %02X %02X %02X %02X %02X %02X",
+                  (byte)gVINReadBack[3],(byte)gVINReadBack[4],(byte)gVINReadBack[5],
+                  (byte)gVINReadBack[6],(byte)gVINReadBack[7],(byte)gVINReadBack[8],
+                  (byte)gVINReadBack[9]);
+            cancelTimer(tTimeout);
+            setTimer(tTimeout, 5000);
+          }
+          else if(seqNum == 2) {
+            // CF2: 7字节 VIN[10..16]
+            for(vinIdx = 0; vinIdx < 7; vinIdx++) {
+              gVINReadBack[10 + vinIdx] = this.byte(1 + vinIdx);
+            }
+            gVINReadLen = 17;
+            gVINFrameCount = 3;
+            gVINReadBack[17] = '\0';
+            isComplete = 1;
+            LogToPanel("【接收】VIN CF2(7字节)，累计17字节完成！", "");
+            write("【VIN接收-CF2】%02X %02X %02X %02X %02X %02X %02X",
+                  (byte)gVINReadBack[10],(byte)gVINReadBack[11],(byte)gVINReadBack[12],
+                  (byte)gVINReadBack[13],(byte)gVINReadBack[14],(byte)gVINReadBack[15],
+                  (byte)gVINReadBack[16]);
+          }
+        }
+        
+        // 如果收到完整17字节VIN
+        if(isComplete && gVINReadLen >= 17) {
+            char cf1Received[60];
+            char cf2Received[60];
+            
+            // 取消超时定时器
+            cancelTimer(tTimeout);
+            
+            // 生成完整17字节十六进制显示（修复长度截断）
+            vinReadHex[0] = '\0';
+            for(vinIdx = 0; vinIdx < 17; vinIdx++) {
+              snprintf(byteHex, 4, "%02X ", (byte)gVINReadBack[vinIdx]);
+              strncat(vinReadHex, byteHex, 59 - strlen(vinReadHex));
+            }
+            
+            // 显示接收到的CF1和CF2数据（现在一定会打印）
+            snprintf(cf1Received, elCount(cf1Received), 
+                     "CF1_Recv: 21 %02X %02X %02X %02X %02X %02X %02X",
+                     (byte)gVINReadBack[3], (byte)gVINReadBack[4], (byte)gVINReadBack[5],
+                     (byte)gVINReadBack[6], (byte)gVINReadBack[7], (byte)gVINReadBack[8],
+                     (byte)gVINReadBack[9]);
+            snprintf(cf2Received, elCount(cf2Received), 
+                     "CF2_Recv: 22 %02X %02X %02X %02X %02X %02X %02X",
+                     (byte)gVINReadBack[10], (byte)gVINReadBack[11], (byte)gVINReadBack[12],
+                     (byte)gVINReadBack[13], (byte)gVINReadBack[14], (byte)gVINReadBack[15],
+                     (byte)gVINReadBack[16]);
+            
+            LogToPanel("【接收】VIN读取完成，长度: 17字节", "");
+            LogToPanel("【读取VIN】%s", gVINReadBack);
+            write("【VIN读取数据】%s", vinReadHex);
+            
+            // 将读取到的VIN数据完整显示到Panel
+            putValueToControl("面板", "FL_VIN_ReadBack", gVINReadBack);     // ASCII VIN码
+            putValueToControl("面板", "FL_VIN_HexData", vinReadHex);         // 十六进制数据
+            putValueToControl("面板", "FL_VIN_CF1_Received", cf1Received); // 接收到的CF1
+            putValueToControl("面板", "FL_VIN_CF2_Received", cf2Received); // 接收到的CF2
+            
+            // 验证写入的VIN与读取的是否一致（17字节完整比较）
+            isVINValid = 1;
+            for(vinIdx = 0; vinIdx < 17; vinIdx++) {
+              if(gVINToWrite[vinIdx] != gVINReadBack[vinIdx]) {
+                isVINValid = 0;
+                break;
+              }
+            }
+            
+            if(isVINValid) {
+              // VIN一致，写入成功
+              LogToPanel("【验证】VIN写入与读取一致", "");
+              LogToPanel("【结果】VIN写入成功 [OK]", "");
+              ShowNormalStatus("VIN写入成功 - 开始DID5002配置写入");
+              putValueToControl("面板", "FL_VIN_Result", "写入成功");
+              putValueToControl("面板", "FL_VIN_Status", "PASS");
+            } else {
+              // VIN不一致，写入失败但仍继续DID5002写入
+              LogToPanel("【错误】VIN写入与读取不一致", "");
+              LogToPanel("【结果】VIN写入失败 [FAIL]", "");
+              LogToPanel("【预期】%s", gVINToWrite);
+              LogToPanel("【实际】%s", gVINReadBack);
+              ShowNormalStatus("VIN写入失败 - 继续DID5002配置写入");
+              putValueToControl("面板", "FL_VIN_Result", "写入失败-数据不一致");
+              putValueToControl("面板", "FL_VIN_Status", "FAIL");
+            }
+            
+            // VIN流程完成，自动进入DID5002写入流程（服务间延时，避免紧接 62 F190 就发 2E 5002）
+            cancelTimer(tTimeout);
+            LogToPanel("【流程】VIN读取完成，延时后开始 DID5002 写入", "");
+            ScheduleServiceGap(SVC_GAP_AFTER_VIN_RD_DID5002);
+          }
+      }
+      break;
+      
+    case WAIT_DID5002_FC:
+      // 等待DID5002流控帧
+      // ISO-TP FC格式: PCI=0x3X (X=FS: 0=CTS, 1=WAIT, 2=OVFLW), BS, STmin
+      {
+        byte fcPci;
+        byte fcStatus;
+        byte blockSize;
+        byte stMin;
+        
+        fcPci = this.byte(0);
+        fcStatus = fcPci & 0x0F;  // FS在低4位
+        blockSize = this.byte(1);  // Block Size
+        stMin = this.byte(2);       // STmin (分离时间)
+        
+        // 检查是否为流控帧 (PCI = 0x30-0x3F)
+        if((fcPci & 0xF0) == 0x30) {
+          // STmin处理: 0x00-0x7F = 0-127ms, 0xF1-0xF9 = 100-9000us
+          if(stMin <= 0x7F) {
+            gFC_STmin_DID5002 = stMin;  // 直接毫秒值
+          } else if(stMin >= 0xF1 && stMin <= 0xF9) {
+            gFC_STmin_DID5002 = 1;      // 100us-900us 近似为1ms
+          } else {
+            gFC_STmin_DID5002 = 0;      // 默认无延迟
+          }
+          
+          if(fcStatus == 0x00) {
+            // CTS: Clear To Send，继续发送
+            // 保存BlockSize和STmin
+            gDID5002_BlockSize = blockSize;
+            if(stMin <= 0x7F) {
+              gFC_STmin_DID5002 = stMin;
+            } else {
+              gFC_STmin_DID5002 = 6;  // 默认6ms
+            }
+            
+            write("【DID5002流控帧】CTS，BS=%d, STmin=%d ms", blockSize, gFC_STmin_DID5002);
+            write("【DID5002】收到FC，当前: CF_SeqNum=0x%02X, SentBytes=%d", 
+                  gDID5002_CF_SeqNum, gDID5002SentBytes);
+            
+            // 关键：收到FC后只重置BlockCount，不能重置CF_SeqNum
+            gDID5002_BlockCount = 0;
+            
+            LogToPanel("【接收】DID5002流控帧: CTS，延迟后发送", "");
+            cancelTimer(tTimeout);
+            
+            // 收到FC后延迟7ms再发送CF（确保与FC间隔>6ms）
+            write("【DID5002】延迟7ms后发送CF...");
+            setTimer(tSTmin_DID5002, 7);  // 延迟7ms后发送
+          }
+          else if(fcStatus == 0x01) {
+            write("【DID5002流控帧】WAIT, BS=%d, STmin=%d ms", blockSize, stMin);
+            LogToPanel("【接收】DID5002流控帧: WAIT，延迟后发送", "");
+            cancelTimer(tTimeout);
+            // WAIT状态通常不需要立即处理，等待下一个FC
+            setTimer(tTimeout, 5000);
+          }
+          else if(fcStatus == 0x02) {
+            write("【DID5002流控帧】Overflow，停止发送");
+            LogToPanel("【错误】DID5002流控帧: Overflow，停止发送", "");
+            ClearDualRadarSeqFlags();
+            gCurrentStep = IDLE;
+            gIsRunning = 0;
+            UdsTraceStopNow();
+          }
+        }
+      }
+      break;
+      
+    case WAIT_DID5002_WRITE:
+      // 等待DID5002写入响应：6E 50 02
+      if(this.byte(1) == 0x6E && this.byte(2) == 0x50 && this.byte(3) == 0x02) {
+        LogToPanel("【接收】DID5002写入成功 (6E 50 02)", "");
+        ShowNormalStatus("DID5002配置写入成功，准备读取验证...");
+        putValueToControl("面板", "FL_DID5002_Result", "写入成功");
+        putValueToControl("面板", "FL_DID5002_Status", "PASS");
+        
+        cancelTimer(tTimeout);
+        LogToPanel("【流程】延时后发送 DID5002 读取(22 50 02)", "");
+        ScheduleServiceGap(SVC_GAP_AFTER_DID5002_WR_6E);
+      }
+      break;
+      
+    case WAIT_DID5002_READ:
+      // 62 50 02 + 64 字节：可能为单帧，或 FF(10 43 62 50 02...) + CF
+      {
+        byte msgPci;
+        byte msgSid;
+        int pduTotal;
+        int i;
+        int copyLen;
+        int remaining;
+
+        msgPci = this.byte(0);
+
+        if((msgPci & 0xF0) == 0x10) {
+          pduTotal = ((msgPci & 0x0F) << 8) | this.byte(1);
+          if(this.byte(2) == 0x62 && this.byte(3) == 0x50 && this.byte(4) == 0x02) {
+            gDID5002_ReadPduTotal = pduTotal;
+            for(i = 0; i < 6; i++) {
+              if(i < pduTotal && i < elCount(gDID5002_ReadBuf)) {
+                gDID5002_ReadBuf[i] = this.byte(2 + i);
+              }
+            }
+            gDID5002_ReadReceived = 6;
+            if(gDID5002_ReadReceived > gDID5002_ReadPduTotal) {
+              gDID5002_ReadReceived = gDID5002_ReadPduTotal;
+            }
+            if(gDID5002_ReadReceived >= gDID5002_ReadPduTotal) {
+              LogToPanel("【接收】DID5002读取完成(首帧PDU即完整)", "");
+              FinishAfterDID5002ReadDone();
+            } else {
+              // 67 字节 PDU：首帧 6 + 需 9 个 CF。若发 30 08 xx(BS=8) 则第 9 个 CF 前要再发一次 FC。
+              // BS=0：本段不传块限制，ECU 可一次发完 21~29；STmin=0 避免声明 5ms 与实车间隔不一致告警
+              LogToPanel("【接收】DID5002读取首帧 FF，发送 FC(30 00 00)", "");
+              SendFlowControlFrame(0x00, 0x00);
+              cancelTimer(tTimeout);
+              setTimer(tTimeout, 5000);
+            }
+          }
+        }
+        else if((msgPci & 0xF0) == 0x20) {
+          if(gDID5002_ReadPduTotal <= 0) {
+            break;
+          }
+          remaining = gDID5002_ReadPduTotal - gDID5002_ReadReceived;
+          if(remaining <= 0) {
+            break;
+          }
+          if(remaining > 7) {
+            copyLen = 7;
+          } else {
+            copyLen = remaining;
+          }
+          for(i = 0; i < copyLen; i++) {
+            if(gDID5002_ReadReceived + i < elCount(gDID5002_ReadBuf)) {
+              gDID5002_ReadBuf[gDID5002_ReadReceived + i] = this.byte(1 + i);
+            }
+          }
+          gDID5002_ReadReceived += copyLen;
+          cancelTimer(tTimeout);
+          setTimer(tTimeout, 5000);
+          if(gDID5002_ReadReceived >= gDID5002_ReadPduTotal) {
+            LogToPanel("【接收】DID5002读取完成(多帧)", "");
+            FinishAfterDID5002ReadDone();
+          }
+        }
+        else {
+          msgSid = this.byte(1);
+          if(msgSid == 0x62 && this.byte(2) == 0x50 && this.byte(3) == 0x02) {
+            LogToPanel("【接收】DID5002读取成功(62 50 02 单帧)", "");
+            FinishAfterDID5002ReadDone();
+          }
+        }
+      }
+      break;
+  }
+}
+
+// --- 用户交互事件 ---
+on sysvar DiagControl::Btn_Calibration {
+  if(@this == 1) {
+    ClearDualRadarSeqFlags();
+    LogToPanel("%s", ">>> 启动单雷达标定流程(按 Radar_Type 选 FL/FR/RL/RR) <<<");
+    StartDiagFlow(WAIT_10_03);
+  }
+}
+
+on sysvar DiagControl::Btn_ReadDTC {
+  if(@this == 1) {
+    LogToPanel("%s", ">>> 启动FL雷达故障码读取 <<<");
+    StartDiagFlow(WAIT_DTC);
+  }
+}
+
+/* 标定数据读取：按 Radar_Type 选单雷达读 FD0C+FD1C，不写入 VIN/DID5002，不自动 10 03 */
+on sysvar sysvar::Button::Button_FL_22FD0C {
+  if(@this == 1) {
+    BeginReadDualRadarCalStatus();
+  }
+}
+
+/* 一键读 4R：FL→FR→RL→RR 各 FD0C+FD1C，不写 VIN/DID5002，不自动 10 03（需各雷达已扩展会话） */
+on sysvar sysvar::Button::Button_4R_22FD0C {
+  if(@this == 1) {
+    Begin4RReadCalStatus();
+  }
+}
+
+/* 一键标定 4R：FL→FR→RL→RR 各跑完整链路(10 03 → ... → FD0C → FD1C) */
+on sysvar DiagControl::Btn_Calibration_4R {
+  if(@this == 1) {
+    Begin4RCalibration();
+  }
+}
+
+// --- VIN写入事件 ---
+on sysvar Button::Button_FL_F190 {
+  int i;
+  char vinInput[20];
+  int btnValue;
+  
+  // 读取按钮值
+  btnValue = @this;
+  
+  if(btnValue == 1) {
+    // 根据Radar_Type选择产品配置
+    SelectProductByType();
+    
+    // 从系统变量 DiagControl::Input_VIN 读取VIN（17字节ASCII）
+    // 字符串类型系统变量使用 sysGetVariableString 读取
+    sysGetVariableString(sysvar::DiagControl::Input_VIN, vinInput, elCount(vinInput));
+    
+    // 验证VIN长度（应为17字符）
+    if(strlen(vinInput) != 17) {
+      LogToPanel2("【错误】VIN长度错误: %d字符（应为17）", "", (int)strlen(vinInput));
+      return;
+    }
+    
+    // 复制到全局变量（17字节ASCII）
+    for(i = 0; i < 17; i++) {
+      gVINToWrite[i] = vinInput[i];
+    }
+    gVINToWrite[17] = '\0';
+    
+    LogToPanel("%s", ">>> 启动VIN写入流程(2E F190 17字节) <<<");
+    LogToPanel("【VIN】准备写入: %s", gVINToWrite);
+
+    {
+      char tt[120];
+      snprintf(tt, elCount(tt), "UDS_%s_VIN_2EF190_%03X",
+               gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+      StartUdsTrace(tt);
+    }
+
+    // 直接启动VIN写入（假设已在扩展诊断会话）
+    gIsRunning = 1;
+    gCurrentStep = WAIT_VIN_FC;  // 首帧发送后立即进入等待FC状态
+    
+    // 清空状态显示
+    putValueToControl("面板", "FL_Status_Normal", "VIN写入中(ISO-TP多帧)...");
+    putValueToControl("面板", "FL_Status_Error", "");
+    putValueToControl("面板", "FL_VIN_CF1_Data", "");
+    putValueToControl("面板", "FL_VIN_CF2_Data", "");
+    
+    // 发送首帧(10 14)，进入标准ISO-TP流程：FF -> FC -> CF1+CF2
+    SendVINFirstFrame();
+  }
+}
+
+// --- DID5002配置写入事件 ---
+on sysvar Button::Button_FL_5002 {
+  int btnValue;
+
+  btnValue = @this;
+
+  if(btnValue == 1) {
+    // 防重复触发保护：检查是否已有流程在运行
+    if(gIsRunning && gCurrentStep != IDLE) {
+      write("【DID5002】流程正在运行(step=%d)，忽略重复触发", gCurrentStep);
+      return;
+    }
+
+    // 根据Radar_Type选择产品配置
+    SelectProductByType();
+    
+    LogToPanel("%s", ">>> 启动DID5002配置写入(2E 50 02 64字节) <<<");
+    
+    // 准备DID5002数据（从Panel系统变量读取配置值）
+    PrepareDID5002Data();
+
+    {
+      char tt[120];
+      snprintf(tt, elCount(tt), "UDS_%s_DID5002_2E5002_%03X",
+               gProductPositions[gCurrentProductIdx], GetCurrentRequestId());
+      StartUdsTrace(tt);
+    }
+
+    // 启动DID5002写入流程
+    gIsRunning = 1;
+    gCurrentStep = WAIT_DID5002_FC;
+    
+    // 清空状态显示
+    putValueToControl("面板", "FL_Status_Normal", "DID5002配置写入中...");
+    putValueToControl("面板", "FL_Status_Error", "");
+    putValueToControl("面板", "FL_DID5002_Result", "");
+    putValueToControl("面板", "FL_DID5002_Status", "");
+    
+    // 发送首帧(10 43)，进入ISO-TP多帧流程
+    SendDID5002FirstFrame();
+  }
+}
+
+// --- STmin定时器事件（VIN连续帧间隔） ---
+on timer tSTmin_VIN {
+  if(gVIN_CF2_Pending == 1) {
+    SendVIN_CF2();  // 发送VIN的第二连续帧
+  }
+}
+
+// --- STmin定时器事件（DID5002连续帧间隔） ---
+on timer tSTmin_DID5002 {
+  write("【tSTmin_DID5002】定时器触发，当前SeqNum=%d", gDID5002_CF_SeqNum);
+  // 发送下一帧DID5002连续帧
+  SendDID5002_NextCF();
+}
+
+// --- 超时处理 ---
+on timer tTimeout {
+  char timeoutMsg[60];
+  // 超时信息只在日志输出，不在面板显示（避免显示步骤数字）
+  write("【错误】步骤%d超时", (int)gCurrentStep);
+  
+  // 显示超时错误到错误状态控件（使用中文描述，不显示数字）
+  if(gCurrentStep == WAIT_VIN_FC) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - 等待流控帧无响应");
+  } else if(gCurrentStep == WAIT_VIN_WRITE) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - VIN写入无响应");
+  } else if(gCurrentStep == WAIT_VIN_READ) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - VIN读取无响应");
+  } else if(gCurrentStep == WAIT_DID5002_FC) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - DID5002等待流控帧无响应");
+  } else if(gCurrentStep == WAIT_DID5002_WRITE) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - DID5002写入无响应");
+  } else if(gCurrentStep == WAIT_DID5002_READ) {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - DID5002读取无响应");
+  } else {
+    snprintf(timeoutMsg, elCount(timeoutMsg), "超时错误 - 无响应");
+  }
+  putValueToControl("面板", "FL_Status_Error", timeoutMsg);
+  putValueToControl("面板", "FL_Status_Normal", "");
+  
+  ClearServiceGapPending();
+  ClearDualRadarSeqFlags();
+  gCurrentStep = IDLE;
+  gIsRunning = 0;
+  UdsTraceStopNow();
+}
+
+// --- 方案 2：手写 ASC 延时关闭文件 ---
+on timer tManualLogStop {
+  cancelTimer(tManualLogStop);
+  ManualLogStop();
+}
+
+// --- ReportAndLog 延时 stop（标定/其它流程仍可用）---
+on timer tUdsTraceStopDelay {
+  cancelTimer(tUdsTraceStopDelay);
+  gArmUdsTraceOnFirstSend = 0;
+  if(gUdsTraceRecording == 1) {
+    loggingStop();
+    gUdsTraceRecording = 0;
+    write("【UDS Trace】延时到期，loggingStop 落盘完成");
+  }
+}

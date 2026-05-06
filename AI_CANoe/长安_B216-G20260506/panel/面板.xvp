@@ -1,0 +1,976 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="面板">
+    <Object Type="Vector.CANalyzer.Panels.Design.VectorTabControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="VectorTabControl1" Children="Controls" ControlName="Tab Control 1">
+      <Object Type="Vector.CANalyzer.Panels.Design.VectorTabPage, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="VectorTabPage1" Children="Controls" ControlName="Tab Control 1">
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box 1">
+          <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl2" Children="Controls" ControlName="Button 2">
+            <Property Name="Name">ButtonControl2</Property>
+            <Property Name="Size">176, 23</Property>
+            <Property Name="Location">60, 49</Property>
+            <Property Name="Text">4R一键写入VIN码配置和标定</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;Btn_Calibration_4R;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">5</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 2">
+            <Property Name="Name">StaticTextControl2</Property>
+            <Property Name="Size">107, 16</Property>
+            <Property Name="Location">0, 24</Property>
+            <Property Name="BackColor">RosyBrown</Property>
+            <Property Name="Font">SimSun, 10.8pt</Property>
+            <Property Name="Text">先填VIN码和配置</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl20" Children="Controls" ControlName="Button 19">
+            <Property Name="Name">ButtonControl20</Property>
+            <Property Name="Size">176, 23</Property>
+            <Property Name="Location">107, 21</Property>
+            <Property Name="Text">一键写入VIN码，配置和动态标定</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;Btn_Calibration;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">4</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl1</Property>
+          <Property Name="Size">287, 79</Property>
+          <Property Name="Location">5, 249</Property>
+          <Property Name="BackColor">WhiteSmoke</Property>
+          <Property Name="Text">2301标定</Property>
+          <Property Name="TabIndex">10</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl10" Children="Controls" ControlName="Combo Box 10">
+          <Property Name="Name">ComboBoxControl10</Property>
+          <Property Name="Size">147, 23</Property>
+          <Property Name="Location">121, 22</Property>
+          <Property Name="DropDownWidth">105</Property>
+          <Property Name="BackColor">Window</Property>
+          <Property Name="ForeColor">WindowText</Property>
+          <Property Name="TextBackColor">Gainsboro</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">Radar_Type:</Property>
+          <Property Name="UsedValueTable">PhysicalValue</Property>
+          <Property Name="DescriptionSize">68, 20</Property>
+          <Property Name="SymbolConfiguration">6;16;DiagControl;;;Radar_Type;1;;;-1;;;;</Property>
+          <Property Name="TabIndex">56</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.StartStopControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StartStopControl1" Children="Controls" ControlName="Start Stop Control 1">
+          <Property Name="Name">StartStopControl1</Property>
+          <Property Name="Size">112, 56</Property>
+          <Property Name="Location">4, 5</Property>
+          <Property Name="TabIndex">55</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl8" Children="Controls" ControlName="Group Box 8">
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl14" Children="Controls" ControlName="Input/Output Box 14">
+            <Property Name="Name">TextBoxControl14</Property>
+            <Property Name="Size">98, 25</Property>
+            <Property Name="Location">160, 78</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Hexadecimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">Byte46:</Property>
+            <Property Name="DescriptionSize">45, 22</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte46;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">10</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl13" Children="Controls" ControlName="Input/Output Box 13">
+            <Property Name="Name">TextBoxControl13</Property>
+            <Property Name="Size">98, 25</Property>
+            <Property Name="Location">160, 49</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Hexadecimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">Byte44:</Property>
+            <Property Name="DescriptionSize">45, 22</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte44;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">9</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl12" Children="Controls" ControlName="Input/Output Box 12">
+            <Property Name="Name">TextBoxControl12</Property>
+            <Property Name="Size">98, 25</Property>
+            <Property Name="Location">160, 19</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Hexadecimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">Byte10:</Property>
+            <Property Name="DescriptionSize">45, 22</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte10;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">8</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl8" Children="Controls" ControlName="Combo Box 8">
+            <Property Name="Name">ComboBoxControl8</Property>
+            <Property Name="Size">143, 23</Property>
+            <Property Name="Location">13, 21</Property>
+            <Property Name="DropDownWidth">260</Property>
+            <Property Name="BackColor">Window</Property>
+            <Property Name="ForeColor">WindowText</Property>
+            <Property Name="TextBackColor">WhiteSmoke</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">byte10:</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="DescriptionSize">45, 20</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte10;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">1</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl7" Children="Controls" ControlName="Combo Box 7">
+            <Property Name="Name">ComboBoxControl7</Property>
+            <Property Name="Size">143, 23</Property>
+            <Property Name="Location">13, 50</Property>
+            <Property Name="DropDownWidth">260</Property>
+            <Property Name="BackColor">Window</Property>
+            <Property Name="ForeColor">WindowText</Property>
+            <Property Name="TextBackColor">WhiteSmoke</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">byte44:</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="DescriptionSize">45, 20</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte44;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">2</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl9" Children="Controls" ControlName="Combo Box 9">
+            <Property Name="Name">ComboBoxControl9</Property>
+            <Property Name="Size">143, 23</Property>
+            <Property Name="Location">13, 79</Property>
+            <Property Name="DropDownWidth">260</Property>
+            <Property Name="BackColor">Window</Property>
+            <Property Name="ForeColor">WindowText</Property>
+            <Property Name="TextBackColor">WhiteSmoke</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">byte46:</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="DescriptionSize">45, 20</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;DID5002_Byte46;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">3</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl8</Property>
+          <Property Name="Size">286, 113</Property>
+          <Property Name="Location">5, 131</Property>
+          <Property Name="BackColor">WhiteSmoke</Property>
+          <Property Name="Text">5002配置</Property>
+          <Property Name="TabIndex">53</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl7" Children="Controls" ControlName="Group Box 7">
+          <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button 1">
+            <Property Name="Name">ButtonControl1</Property>
+            <Property Name="Size">182, 23</Property>
+            <Property Name="Location">58, 49</Property>
+            <Property Name="Text">4R一键读标定状态和角度</Property>
+            <Property Name="SymbolConfiguration">6;16;Button;;;Button_4R_22FD0C;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">6</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl22" Children="Controls" ControlName="Button 21">
+            <Property Name="Name">ButtonControl22</Property>
+            <Property Name="Size">182, 23</Property>
+            <Property Name="Location">58, 21</Property>
+            <Property Name="Text">一键读标定状态和角度</Property>
+            <Property Name="SymbolConfiguration">6;16;Button;;;Button_FL_22FD0C;1;;;-1;;;;</Property>
+            <Property Name="TabIndex">5</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl7</Property>
+          <Property Name="Size">287, 78</Property>
+          <Property Name="Location">2, 333</Property>
+          <Property Name="BackColor">WhiteSmoke</Property>
+          <Property Name="Text">2301标定</Property>
+          <Property Name="TabIndex">9</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl4" Children="Controls" ControlName="Group Box 4">
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl11" Children="Controls" ControlName="Input/Output Box 11">
+            <Property Name="Name">TextBoxControl11</Property>
+            <Property Name="Size">233, 25</Property>
+            <Property Name="Location">25, 26</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Text</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">Input_VIN:</Property>
+            <Property Name="DescriptionSize">62, 22</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
+            <Property Name="SymbolConfiguration">6;16;DiagControl;;;Input_VIN;4;;;-1;;;;</Property>
+            <Property Name="TabIndex">54</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl4</Property>
+          <Property Name="Size">286, 59</Property>
+          <Property Name="Location">5, 67</Property>
+          <Property Name="BackColor">WhiteSmoke</Property>
+          <Property Name="Text">车辆VIN码写入</Property>
+          <Property Name="TabIndex">10</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.CAPLOutputViewControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="CAPLOutputViewControl1" Children="Controls" ControlName="CAPL Output View 1">
+          <Property Name="Name">CAPLOutputViewControl1</Property>
+          <Property Name="Size">368, 497</Property>
+          <Property Name="Location">304, 14</Property>
+          <Property Name="BoxFont">SimSun, 12pt</Property>
+          <Property Name="BoxBackgroundColor">Gainsboro</Property>
+          <Property Name="TabIndex">5</Property>
+        </Object>
+        <Property Name="Name">VectorTabPage1</Property>
+        <Property Name="Size">676, 516</Property>
+        <Property Name="Location">3, 22</Property>
+        <Property Name="BackColor">Gainsboro</Property>
+        <Property Name="Text">雷达</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.VectorTabPage, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="VectorTabPage2" Children="Controls" ControlName="Tab Control 1">
+        <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl1" Children="Controls" ControlName="Combo Box 1">
+          <Property Name="Name">ComboBoxControl1</Property>
+          <Property Name="Size">141, 23</Property>
+          <Property Name="Location">335, 169</Property>
+          <Property Name="DropDownWidth">144</Property>
+          <Property Name="BackColor">Window</Property>
+          <Property Name="ForeColor">WindowText</Property>
+          <Property Name="TextBackColor">Gainsboro</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">状态:</Property>
+          <Property Name="DescriptionSize">33, 20</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;FRR_L;FRR_L_2B3;RealTimeCal_Status_FR;1;CAN3;CAN3;-1;;;;</Property>
+          <Property Name="TabIndex">50</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl2" Children="Controls" ControlName="Combo Box 2">
+          <Property Name="Name">ComboBoxControl2</Property>
+          <Property Name="Size">136, 23</Property>
+          <Property Name="Location">338, 73</Property>
+          <Property Name="DropDownWidth">137</Property>
+          <Property Name="BackColor">Window</Property>
+          <Property Name="ForeColor">WindowText</Property>
+          <Property Name="TextBackColor">Gainsboro</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">状态:</Property>
+          <Property Name="DescriptionSize">33, 20</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;FLR_L;FLR_L_2B2;RealTimeCal_Status_FL;1;CAN3;CAN3;-1;;;;</Property>
+          <Property Name="TabIndex">49</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box 1">
+          <Property Name="Name">TextBoxControl1</Property>
+          <Property Name="Size">136, 25</Property>
+          <Property Name="Location">338, 95</Property>
+          <Property Name="AlarmUpperTextColor">WindowText</Property>
+          <Property Name="AlarmLowerBkgColor">Salmon</Property>
+          <Property Name="ValueDisplay">Double</Property>
+          <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+          <Property Name="AlarmLowerTextColor">WindowText</Property>
+          <Property Name="AlarmGeneralSettings">1;2;-5;5</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">FL:</Property>
+          <Property Name="DescriptionSize">22, 22</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;;FLR_L_2B2;EolCal_HoriMntErrOutput_FL;1;FL;CAN1;-1;;;;</Property>
+          <Property Name="TabIndex">53</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text 3">
+          <Property Name="Name">StaticTextControl3</Property>
+          <Property Name="Size">136, 13</Property>
+          <Property Name="Location">336, 217</Property>
+          <Property Name="Text">左后雷达标定进度：</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box 2">
+          <Property Name="Name">TextBoxControl2</Property>
+          <Property Name="Size">138, 25</Property>
+          <Property Name="Location">338, 194</Property>
+          <Property Name="AlarmUpperTextColor">WindowText</Property>
+          <Property Name="AlarmLowerBkgColor">Salmon</Property>
+          <Property Name="ValueDisplay">Double</Property>
+          <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+          <Property Name="AlarmLowerTextColor">WindowText</Property>
+          <Property Name="AlarmGeneralSettings">1;2;-5;5</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">FR:</Property>
+          <Property Name="DescriptionSize">22, 22</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;;FRR_L_2B3;EolCal_HoriMntErrOutput_FR;1;FL;CAN1;-1;;;;</Property>
+          <Property Name="TabIndex">55</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl4" Children="Controls" ControlName="Static Text 4">
+          <Property Name="Name">StaticTextControl4</Property>
+          <Property Name="Size">138, 13</Property>
+          <Property Name="Location">335, 316</Property>
+          <Property Name="Text">右后雷达标定进度：</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ProgressBarControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ProgressBarControl1" Children="Controls" ControlName="Progress Bar 1">
+          <Property Name="Name">ProgressBarControl1</Property>
+          <Property Name="Size">137, 28</Property>
+          <Property Name="Location">335, 38</Property>
+          <Property Name="OriginValue">0</Property>
+          <Property Name="DecimalPlaces">0</Property>
+          <Property Name="ValueSize">28, 24</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;FLR_L;FLR_L_2B2;EolCal_PrcssBar_FL;1;FL;CAN1;-1;;;;</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box 3">
+          <Property Name="Name">TextBoxControl3</Property>
+          <Property Name="Size">135, 25</Property>
+          <Property Name="Location">338, 289</Property>
+          <Property Name="AlarmUpperTextColor">WindowText</Property>
+          <Property Name="AlarmLowerBkgColor">Salmon</Property>
+          <Property Name="ValueDisplay">Double</Property>
+          <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+          <Property Name="AlarmLowerTextColor">WindowText</Property>
+          <Property Name="AlarmGeneralSettings">1;2;-5;5</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">RL:</Property>
+          <Property Name="DescriptionSize">22, 22</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;;RLR_L_2B4;RealTimeCal_HoriMntErrOutput_RL;1;LR;CAN2;-1;;;;</Property>
+          <Property Name="TabIndex">57</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl3" Children="Controls" ControlName="Combo Box 3">
+          <Property Name="Name">ComboBoxControl3</Property>
+          <Property Name="Size">135, 23</Property>
+          <Property Name="Location">336, 367</Property>
+          <Property Name="DropDownWidth">98</Property>
+          <Property Name="BackColor">Window</Property>
+          <Property Name="ForeColor">WindowText</Property>
+          <Property Name="TextBackColor">Gainsboro</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">状态:</Property>
+          <Property Name="DescriptionSize">33, 20</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RRR_L;RRR_L_2B5;RealTimeCal_Status_RR;1;CAN3;CAN3;-1;;;;</Property>
+          <Property Name="TabIndex">52</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl6" Children="Controls" ControlName="Static Text 6">
+          <Property Name="Name">StaticTextControl6</Property>
+          <Property Name="Size">138, 13</Property>
+          <Property Name="Location">335, 21</Property>
+          <Property Name="Text">左前雷达标定进度：</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ProgressBarControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ProgressBarControl2" Children="Controls" ControlName="Progress Bar 2">
+          <Property Name="Name">ProgressBarControl2</Property>
+          <Property Name="Size">137, 28</Property>
+          <Property Name="Location">333, 335</Property>
+          <Property Name="OriginValue">0</Property>
+          <Property Name="DecimalPlaces">0</Property>
+          <Property Name="ValueSize">28, 24</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RRR_L;RRR_L_2B5;EolCal_PrcssBar_RR;1;LR;CAN2;-1;;;;</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl4" Children="Controls" ControlName="Combo Box 4">
+          <Property Name="Name">ComboBoxControl4</Property>
+          <Property Name="Size">138, 23</Property>
+          <Property Name="Location">335, 268</Property>
+          <Property Name="DropDownWidth">98</Property>
+          <Property Name="BackColor">Window</Property>
+          <Property Name="ForeColor">WindowText</Property>
+          <Property Name="TextBackColor">Gainsboro</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">状态:</Property>
+          <Property Name="DescriptionSize">33, 20</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_2B4;RealTimeCal_Status_RL;1;CAN3;CAN3;-1;;;;</Property>
+          <Property Name="TabIndex">51</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ProgressBarControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ProgressBarControl3" Children="Controls" ControlName="Progress Bar 3">
+          <Property Name="Name">ProgressBarControl3</Property>
+          <Property Name="Size">137, 28</Property>
+          <Property Name="Location">338, 138</Property>
+          <Property Name="OriginValue">0</Property>
+          <Property Name="DecimalPlaces">0</Property>
+          <Property Name="ValueSize">28, 24</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;FRR_L;FRR_L_2B3;EolCal_PrcssBar_FR;1;FL;CAN1;-1;;;;</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl7" Children="Controls" ControlName="Static Text 7">
+          <Property Name="Name">StaticTextControl7</Property>
+          <Property Name="Size">136, 13</Property>
+          <Property Name="Location">338, 119</Property>
+          <Property Name="Text">右前雷达标定进度：</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl4" Children="Controls" ControlName="Input/Output Box 4">
+          <Property Name="Name">TextBoxControl4</Property>
+          <Property Name="Size">138, 25</Property>
+          <Property Name="Location">333, 389</Property>
+          <Property Name="AlarmUpperTextColor">WindowText</Property>
+          <Property Name="AlarmLowerBkgColor">Salmon</Property>
+          <Property Name="ValueDisplay">Double</Property>
+          <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+          <Property Name="AlarmLowerTextColor">WindowText</Property>
+          <Property Name="AlarmGeneralSettings">1;2;-5;5</Property>
+          <Property Name="DisplayLabel">Left</Property>
+          <Property Name="DescriptionText">RR:</Property>
+          <Property Name="DescriptionSize">22, 22</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;;RRR_L_2B5;RealTimeCal_HoriMntErrOutput_RR;1;LR;CAN2;-1;;;;</Property>
+          <Property Name="TabIndex">59</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.ProgressBarControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ProgressBarControl4" Children="Controls" ControlName="Progress Bar 4">
+          <Property Name="Name">ProgressBarControl4</Property>
+          <Property Name="Size">137, 28</Property>
+          <Property Name="Location">336, 234</Property>
+          <Property Name="OriginValue">0</Property>
+          <Property Name="DecimalPlaces">0</Property>
+          <Property Name="ValueSize">28, 24</Property>
+          <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_2B4;EolCal_PrcssBar_RL;1;LR;CAN2;-1;;;;</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl6" Children="Controls" ControlName="Group Box 6">
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl8" ControlName="LED Control 8">
+            <Property Name="Name">LEDControl8</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">158, 186</Property>
+            <Property Name="UsedLEDColorOn">Maroon</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Right_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">127</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl6" ControlName="LED Control 6">
+            <Property Name="Name">LEDControl6</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">80, 187</Property>
+            <Property Name="UsedLEDColorOn">Maroon</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">126</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl8" Children="Controls" ControlName="Static Text 8">
+            <Property Name="Name">StaticTextControl8</Property>
+            <Property Name="Size">16, 13</Property>
+            <Property Name="Location">106, 198</Property>
+            <Property Name="Text">右</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl27" ControlName="LED Control 27">
+            <Property Name="Name">LEDControl27</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">138, 187</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;2&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;2</Property>
+            <Property Name="SwitchValueOn">2</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Right_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">122</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl20" ControlName="LED Control 20">
+            <Property Name="Name">LEDControl20</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">29, 187</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">119</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl18" ControlName="LED Control 18">
+            <Property Name="Name">LEDControl18</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">55, 187</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;2&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;2</Property>
+            <Property Name="SwitchValueOn">2</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">120</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl3" ControlName="LED Control 3">
+            <Property Name="Name">LEDControl3</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">118, 187</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Right_RCWAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">121</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl22" Children="Controls" ControlName="Static Text 22">
+            <Property Name="Name">StaticTextControl22</Property>
+            <Property Name="Size">16, 13</Property>
+            <Property Name="Location">10, 198</Property>
+            <Property Name="Text">左</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl26" ControlName="LED Control 26">
+            <Property Name="Name">LEDControl26</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">29, 135</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_DOWLeftAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">114</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl9" ControlName="LED Control 9">
+            <Property Name="Name">LEDControl9</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">56, 135</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_DOWLeftAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">115</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl21" ControlName="LED Control 21">
+            <Property Name="Name">LEDControl21</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">118, 136</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_DOWRightAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">116</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl12" ControlName="LED Control 12">
+            <Property Name="Name">LEDControl12</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">143, 136</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_DOWRightAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">117</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl11" Children="Controls" ControlName="Static Text 11">
+            <Property Name="Name">StaticTextControl11</Property>
+            <Property Name="Size">16, 13</Property>
+            <Property Name="Location">98, 119</Property>
+            <Property Name="Text">右</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl22" ControlName="LED Control 22">
+            <Property Name="Name">LEDControl22</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">118, 108</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Right_SEAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">84</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl13" ControlName="LED Control 13">
+            <Property Name="Name">LEDControl13</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">143, 108</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Right_SEAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">85</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl18" Children="Controls" ControlName="Static Text 18">
+            <Property Name="Name">StaticTextControl18</Property>
+            <Property Name="Size">47, 13</Property>
+            <Property Name="Location">106, 284</Property>
+            <Property Name="Text">RCTA_R:</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl19" Children="Controls" ControlName="Static Text 19">
+            <Property Name="Name">StaticTextControl19</Property>
+            <Property Name="Size">47, 13</Property>
+            <Property Name="Location">4, 284</Property>
+            <Property Name="Text">RCTA_L:</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl12" Children="Controls" ControlName="Static Text 12">
+            <Property Name="Name">StaticTextControl12</Property>
+            <Property Name="Size">16, 13</Property>
+            <Property Name="Location">10, 119</Property>
+            <Property Name="Text">左</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl10" Children="Controls" ControlName="Static Text 10">
+            <Property Name="Name">StaticTextControl10</Property>
+            <Property Name="Size">22, 13</Property>
+            <Property Name="Location">93, 62</Property>
+            <Property Name="Text">右:</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl5" Children="Controls" ControlName="Static Text 5">
+            <Property Name="Name">StaticTextControl5</Property>
+            <Property Name="Size">16, 13</Property>
+            <Property Name="Location">14, 59</Property>
+            <Property Name="Text">左</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl10" ControlName="LED Control 10">
+            <Property Name="Name">LEDControl10</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">65, 276</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;DACANFDRLCRMessagelistV25ISSUEFo;RLCR;RLCR_1;RLCR_1_RCTAWarn;1;CAN1;;-1;;;;</Property>
+            <Property Name="TabIndex">82</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl4" ControlName="LED Control 4">
+            <Property Name="Name">LEDControl4</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">160, 81</Property>
+            <Property Name="UsedLEDColorOn">Lime</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_SEAOnOffSts;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">66</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl7" ControlName="LED Control 7">
+            <Property Name="Name">LEDControl7</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">158, 161</Property>
+            <Property Name="UsedLEDColorOn">Lime</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_RCWEnableStatus;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">70</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl9" Children="Controls" ControlName="Input/Output Box 9">
+            <Property Name="Name">TextBoxControl9</Property>
+            <Property Name="Size">138, 25</Property>
+            <Property Name="Location">13, 81</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Decimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;0;1</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">DOW状态:</Property>
+            <Property Name="DescriptionSize">50, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_SEAOnOffSts;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">59</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl11" ControlName="LED Control 11">
+            <Property Name="Name">LEDControl11</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">55, 49</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;2&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;2</Property>
+            <Property Name="SwitchValueOn">2</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Left_BSD_LCAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">63</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl1" ControlName="LED Control 1">
+            <Property Name="Name">LEDControl1</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">159, 18</Property>
+            <Property Name="UsedLEDColorOn">Lime</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_BSDLCAOnOff;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">65</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl25" ControlName="LED Control 25">
+            <Property Name="Name">LEDControl25</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">56, 107</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;3&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;3</Property>
+            <Property Name="SwitchValueOn">3</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_SEAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">69</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl19" ControlName="LED Control 19">
+            <Property Name="Name">LEDControl19</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">114, 52</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_BSD_LCAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">55</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl29" ControlName="LED Control 29">
+            <Property Name="Name">LEDControl29</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">138, 52</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SwitchValueVTOnXml">&lt;Version&gt;2&lt;/Version&gt;&lt;LowerUpper&gt;Lower&lt;/LowerUpper&gt;&lt;RxValue&gt;2&lt;/RxValue&gt;</Property>
+            <Property Name="SwitchValueVTOn">1;Lower;2</Property>
+            <Property Name="SwitchValueOn">2</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_BSD_LCAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">64</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl8" Children="Controls" ControlName="Input/Output Box 8">
+            <Property Name="Name">TextBoxControl8</Property>
+            <Property Name="Size">145, 25</Property>
+            <Property Name="Location">6, 166</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Decimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;0;1</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">RCW状态:</Property>
+            <Property Name="DescriptionSize">50, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_RCWEnableStatus;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">60</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl28" ControlName="LED Control 28">
+            <Property Name="Name">LEDControl28</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">161, 276</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;DACANFDRRCRMessagelistV25ISSUEFo;RRCR;RRCR_1;RRCR_1_RCTAWarn;1;CAN1;;-1;;;;</Property>
+            <Property Name="TabIndex">74</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl2" ControlName="LED Control 2">
+            <Property Name="Name">LEDControl2</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">29, 107</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_SEAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">68</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl16" ControlName="LED Control 16">
+            <Property Name="Name">LEDControl16</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">31, 49</Property>
+            <Property Name="UsedLEDColorOn">Gold</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_Left_BSD_LCAAlert;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">54</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl7" Children="Controls" ControlName="Input/Output Box 7">
+            <Property Name="Name">TextBoxControl7</Property>
+            <Property Name="Size">134, 25</Property>
+            <Property Name="Location">13, 21</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Decimal</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;0;1</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">BSD状态:</Property>
+            <Property Name="DescriptionSize">50, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASBCAN_CIIA15ADASBCANV19_2025;RLR_L;RLR_L_345;RLR_BSDLCAOnOff;1;LR;CAN2;-1;;;;</Property>
+            <Property Name="TabIndex">56</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl6</Property>
+          <Property Name="Size">190, 303</Property>
+          <Property Name="Location">141, 23</Property>
+          <Property Name="BackColor">Silver</Property>
+          <Property Name="Text">
+          </Property>
+          <Property Name="TabIndex">1</Property>
+        </Object>
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl5" Children="Controls" ControlName="Group Box 5">
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl10" Children="Controls" ControlName="Input/Output Box 10">
+            <Property Name="Name">TextBoxControl10</Property>
+            <Property Name="Size">108, 25</Property>
+            <Property Name="Location">8, 276</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">0</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="ValueDisplay">Double</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;0;999999</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">总里程：</Property>
+            <Property Name="DescriptionSize">50, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_530;IP_TotalOdometer;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">99</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl5" Children="Controls" ControlName="Combo Box 5">
+            <Property Name="Name">ComboBoxControl5</Property>
+            <Property Name="Size">98, 23</Property>
+            <Property Name="Location">14, 18</Property>
+            <Property Name="DropDownWidth">137</Property>
+            <Property Name="BackColor">Window</Property>
+            <Property Name="ForeColor">WindowText</Property>
+            <Property Name="TextBackColor">Silver</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">电源:</Property>
+            <Property Name="DescriptionSize">33, 20</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_28B;BCM_PowerStatusFeedback;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">90</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl14" Children="Controls" ControlName="Static Text 14">
+            <Property Name="Name">StaticTextControl14</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">66, 215</Property>
+            <Property Name="Text">右后</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl20" Children="Controls" ControlName="Static Text 20">
+            <Property Name="Name">StaticTextControl20</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">8, 215</Property>
+            <Property Name="Text">左后</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl13" Children="Controls" ControlName="Static Text 13">
+            <Property Name="Name">StaticTextControl13</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">66, 186</Property>
+            <Property Name="Text">右前</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl21" Children="Controls" ControlName="Static Text 21">
+            <Property Name="Name">StaticTextControl21</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">8, 186</Property>
+            <Property Name="Text">左前</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl16" Children="Controls" ControlName="Static Text 16">
+            <Property Name="Name">StaticTextControl16</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">66, 250</Property>
+            <Property Name="Text">右转</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl17" Children="Controls" ControlName="Static Text 17">
+            <Property Name="Name">StaticTextControl17</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">8, 250</Property>
+            <Property Name="Text">左转</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl23" ControlName="LED Control 23">
+            <Property Name="Name">LEDControl23</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">95, 240</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="LEDStyle">TriangleRight</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_28B;BCM_TurnIndicatorRight;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">80</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl17" ControlName="LED Control 17">
+            <Property Name="Name">LEDControl17</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">40, 240</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="LEDStyle">TriangleLeft</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_28B;BCM_TurnIndicatorLeft;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">79</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl15" Children="Controls" ControlName="Static Text 15">
+            <Property Name="Name">StaticTextControl15</Property>
+            <Property Name="Size">44, 13</Property>
+            <Property Name="Location">9, 56</Property>
+            <Property Name="BackColor">Silver</Property>
+            <Property Name="Text">车速：</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl6" Children="Controls" ControlName="Input/Output Box 6">
+            <Property Name="Name">TextBoxControl6</Property>
+            <Property Name="Size">104, 25</Property>
+            <Property Name="Location">9, 79</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="ValueDecimalPlaces">4</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="TextBackColor">Silver</Property>
+            <Property Name="ValueDisplay">Double</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;-2048;2047.875</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">转向:</Property>
+            <Property Name="DescriptionSize">33, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_180;SAS_SteeringAngle;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">69</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl6" Children="Controls" ControlName="Combo Box 6">
+            <Property Name="Name">ComboBoxControl6</Property>
+            <Property Name="Size">104, 23</Property>
+            <Property Name="Location">8, 108</Property>
+            <Property Name="DropDownWidth">200</Property>
+            <Property Name="BackColor">Window</Property>
+            <Property Name="ForeColor">WindowText</Property>
+            <Property Name="TextBackColor">Silver</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">档位：</Property>
+            <Property Name="DescriptionSize">39, 20</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_1A8;TCU_ActualGear;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">61</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl5" ControlName="LED Control 5">
+            <Property Name="Name">LEDControl5</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">95, 209</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_2D1;BCM_RightRearDoorStatus;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">75</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl9" Children="Controls" ControlName="Static Text 9">
+            <Property Name="Name">StaticTextControl9</Property>
+            <Property Name="Size">0, 13</Property>
+            <Property Name="Location">5, 309</Property>
+            <Property Name="Text">
+            </Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl15" ControlName="LED Control 15">
+            <Property Name="Name">LEDControl15</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">40, 175</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_28B;BCM_DriverDoorStatus;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">74</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl14" ControlName="LED Control 14">
+            <Property Name="Name">LEDControl14</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">95, 175</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_2D1;BCM_PassengerDoorStatus;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">72</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl1" Children="Controls" ControlName="Numeric Up/Down 1">
+            <Property Name="Name">NumericUpDownControl1</Property>
+            <Property Name="Size">59, 25</Property>
+            <Property Name="Location">53, 52</Property>
+            <Property Name="DecimalPlaces">4</Property>
+            <Property Name="Maximum">511.875</Property>
+            <Property Name="Increment">0.0625</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_17A;ESP_VehicleSpeed;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">78</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl5" Children="Controls" ControlName="Input/Output Box 5">
+            <Property Name="Name">TextBoxControl5</Property>
+            <Property Name="Size">104, 25</Property>
+            <Property Name="Location">9, 144</Property>
+            <Property Name="AlarmUpperTextColor">WindowText</Property>
+            <Property Name="AlarmLowerBkgColor">Salmon</Property>
+            <Property Name="TextBackColor">Silver</Property>
+            <Property Name="ValueDisplay">Double</Property>
+            <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+            <Property Name="AlarmLowerTextColor">WindowText</Property>
+            <Property Name="AlarmGeneralSettings">1;2;-180;180</Property>
+            <Property Name="DisplayLabel">Left</Property>
+            <Property Name="DescriptionText">偏航：</Property>
+            <Property Name="DescriptionSize">39, 22</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_15D;ESP_YawRate;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">56</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.LEDControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="LEDControl24" ControlName="LED Control 24">
+            <Property Name="Name">LEDControl24</Property>
+            <Property Name="Size">21, 24</Property>
+            <Property Name="Location">40, 209</Property>
+            <Property Name="UsedLEDColorOn">Yellow</Property>
+            <Property Name="UsedLEDColorOff">Gray</Property>
+            <Property Name="SymbolConfiguration">6;2;_ADASCCAN_CIIA15ADASCCANV19_2025;mADC;mADC_298;BCM_LeftRearDoorStatus;1;FL;CAN1;-1;;;;</Property>
+            <Property Name="TabIndex">73</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl5</Property>
+          <Property Name="Size">134, 303</Property>
+          <Property Name="Location">2, 23</Property>
+          <Property Name="BackColor">Silver</Property>
+          <Property Name="Text">车身信号</Property>
+          <Property Name="TabIndex">0</Property>
+        </Object>
+        <Property Name="Name">VectorTabPage2</Property>
+        <Property Name="Size">676, 516</Property>
+        <Property Name="Location">3, 22</Property>
+        <Property Name="BackColor">Gainsboro</Property>
+        <Property Name="Text">报警</Property>
+      </Object>
+      <Property Name="Name">VectorTabControl1</Property>
+      <Property Name="Size">682, 541</Property>
+      <Property Name="Location">2, 3</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+      <Property Name="TabIndex">5</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text 1">
+      <Property Name="Name">StaticTextControl1</Property>
+      <Property Name="Size">8, 13</Property>
+      <Property Name="Location">278, 81</Property>
+      <Property Name="Text">
+      </Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">687, 546</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

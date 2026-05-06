@@ -1,0 +1,215 @@
+/*@!Encoding:936*/
+
+/* @brief 诊断自动化脚本 - 包含标定流程与Seed-Key解密 - Panel Output优化版 */
+
+variables {
+  enum DiagStep {
+    IDLE = 0,
+    WAIT_10_03 = 1,
+    WAIT_27_01 = 2, // 接收Seed
+    WAIT_27_02 = 3, // 发送Key后等待
+    WAIT_31_01 = 4, // Routine Control 31 01 23 01
+    WAIT_22_FD0C = 5,
+    WAIT_22_FD1C = 6,
+    WAIT_DTC = 7
+  };
+
+  struct Product {
+    long requestID;
+    long responseID;
+    enum DiagStep currentStep;
+    char name[32];
+    char diagTarget[10]; // 用于关联CDD中的ECU名称
+  };
+
+  struct Product gProducts[4] = {
+    { 0x766, 0x76E, IDLE, "Product_1", "FL" },
+    { 0x767, 0x76F, IDLE, "Product_2", "FL" },
+    { 0x753, 0x75B, IDLE, "Product_3", "FL" },
+    { 0x753, 0x75C, IDLE, "Product_4", "FL" }
+  };
+
+  int gCurrentIdx = -1;
+  msTimer tTimeout;
+
+  // --- 安全访问相关变量 ---
+  byte SeedArray[4];
+  byte KeyArray[4];
+  int  rev = 0;
+  
+  // CDD定义方式
+  diagRequest FL.requestSeed_Key_Send gKeyReq; 
+}
+
+// --- 日志辅助函数：已添加 \n 优化换行 ---
+void LogToPanel(char format[], char arg1[]) {
+  char Buffer[256]; 
+  char FinalMsg[260];
+  
+  snprintf(Buffer, elCount(Buffer), format, arg1);
+  // 核心修改：在Buffer后追加换行符
+  snprintf(FinalMsg, elCount(FinalMsg), "%s\n", Buffer);
+  
+  write("%s", FinalMsg);
+  putValueToControl("面板", "CAPL Output View 1", FinalMsg);
+}
+
+void LogToPanel2(char format[], char arg1[], int arg2) {
+  char Buffer[256]; 
+  char FinalMsg[260];
+  
+  snprintf(Buffer, elCount(Buffer), format, arg1, arg2);
+  // 核心修改：在Buffer后追加换行符
+  snprintf(FinalMsg, elCount(FinalMsg), "%s\n", Buffer);
+  
+  write("%s", FinalMsg);
+  putValueToControl("面板", "CAPL Output View 1", FinalMsg);
+}
+
+// --- 核心解密与发送函数 ---
+void Key2(int idx) {
+  dword keyActualSize; 
+  long status;         
+  char keyStr[50];     
+
+  if(rev) {
+    rev = 0;
+    diagSetTarget(gProducts[idx].diagTarget); 
+    status = diagGenerateKeyFromSeed(gProducts[idx].diagTarget, SeedArray, elcount(SeedArray), 1, "", "", KeyArray, elcount(KeyArray), keyActualSize);
+    
+    if(status == 0) {
+      diagSetParameterRaw(gKeyReq, "SecurityKey", KeyArray, elcount(KeyArray));
+      diagSendRequest(gKeyReq);
+      snprintf(keyStr, elCount(keyStr), "Key sent: %02X %02X %02X %02X", KeyArray[0], KeyArray[1], KeyArray[2], KeyArray[3]);
+      LogToPanel("FL: %s", keyStr);
+    } else {
+      LogToPanel2("FL: Error - Key calc failed, Status=%d", "", status);
+      ExecuteNextProduct(IDLE);
+    }
+  }
+}
+
+// --- 统一发送逻辑 ---
+void SendStepRequest(int idx) {
+  message 0x000 msg;   
+  int i;               
+  char stepName[20];   
+
+  msg.id = gProducts[idx].requestID;
+  msg.dlc = 8;
+  for(i=0; i<8; i++) msg.byte(i)=0;
+
+  switch(gProducts[idx].currentStep) {
+    case WAIT_10_03:   msg.byte(0)=0x02; msg.byte(1)=0x10; msg.byte(2)=0x03; break;
+    case WAIT_27_01:   msg.byte(0)=0x02; msg.byte(1)=0x27; msg.byte(2)=0x01; break;
+    case WAIT_31_01:   msg.byte(0)=0x04; msg.byte(1)=0x31; msg.byte(2)=0x01; msg.byte(3)=0x23; msg.byte(4)=0x01; break;
+    case WAIT_22_FD0C: msg.byte(0)=0x03; msg.byte(1)=0x22; msg.byte(2)=0xFD; msg.byte(3)=0x0C; break;
+    case WAIT_22_FD1C: msg.byte(0)=0x03; msg.byte(1)=0x22; msg.byte(2)=0xFD; msg.byte(3)=0x1C; break;
+    case WAIT_DTC:     msg.byte(0)=0x03; msg.byte(1)=0x19; msg.byte(2)=0x02; msg.byte(3)=0x01; break;
+  }
+  
+  if(gProducts[idx].currentStep != IDLE) {
+    output(msg);
+    setTimer(tTimeout, 2000); 
+    snprintf(stepName, elCount(stepName), "Step %d Req", gProducts[idx].currentStep);
+    LogToPanel("TX: %s sent", stepName);
+  }
+}
+
+void ExecuteNextProduct(enum DiagStep startStep) {
+  gCurrentIdx++;
+  if(gCurrentIdx < 4) {
+    gProducts[gCurrentIdx].currentStep = startStep;
+    LogToPanel("--- Start Product: %s ---", gProducts[gCurrentIdx].name);
+    SendStepRequest(gCurrentIdx);
+  } else {
+    gCurrentIdx = -1;
+    LogToPanel("%s", "--- All Flows Finished ---");
+  }
+}
+
+// --- 响应解析 logic ---
+on message 0x76E, 0x76F, 0x75B, 0x75C {
+  char buff[30]; 
+  if(gCurrentIdx == -1) return;
+  if(this.id != gProducts[gCurrentIdx].responseID) return;
+
+  cancelTimer(tTimeout);
+
+  if(this.byte(1) == 0x7F) {
+    LogToPanel2("RX: Negative Response NRC: 0x%02X", "", this.byte(3));
+    ExecuteNextProduct(IDLE); 
+    return;
+  }
+
+  switch(gProducts[gCurrentIdx].currentStep) {
+    case WAIT_10_03:
+      LogToPanel("RX: Session 03 OK", "");
+      gProducts[gCurrentIdx].currentStep = WAIT_27_01;
+      SendStepRequest(gCurrentIdx);
+      break;
+
+    case WAIT_27_01:
+      if(this.byte(1) == 0x67 && this.byte(2) == 0x01) {
+        SeedArray[0] = this.byte(3); SeedArray[1] = this.byte(4);
+        SeedArray[2] = this.byte(5); SeedArray[3] = this.byte(6);
+        rev = 1;
+        LogToPanel("RX: Seed Received", "");
+        gProducts[gCurrentIdx].currentStep = WAIT_27_02; 
+        Key2(gCurrentIdx); 
+      }
+      break;
+
+    case WAIT_27_02:
+      if(this.byte(1) == 0x67 && this.byte(2) == 0x02) {
+        LogToPanel("FL: SecurityAccess OK.", ""); 
+        gProducts[gCurrentIdx].currentStep = WAIT_31_01;
+        SendStepRequest(gCurrentIdx);
+      }
+      break;
+
+    case WAIT_31_01:
+      LogToPanel("RX: Routine 31 01 Started", "");
+      gProducts[gCurrentIdx].currentStep = WAIT_22_FD0C;
+      SendStepRequest(gCurrentIdx);
+      break;
+
+    case WAIT_22_FD0C:
+      snprintf(buff, elCount(buff), "Data: %02X %02X", this.byte(4), this.byte(5));
+      LogToPanel("RX: FD0C %s", buff);
+      gProducts[gCurrentIdx].currentStep = WAIT_22_FD1C;
+      SendStepRequest(gCurrentIdx);
+      break;
+
+    case WAIT_22_FD1C:
+      LogToPanel("RX: FD1C OK. Product Done.", "");
+      ExecuteNextProduct(WAIT_10_03); 
+      break;
+      
+    case WAIT_DTC:
+      LogToPanel("RX: DTC Read OK", "");
+      ExecuteNextProduct(WAIT_DTC); 
+      break;
+  }
+}
+
+on sysvar DiagControl::Btn_Calibration {
+  if(@this == 1) {
+    LogToPanel("%s", ">>> Calibration Flow Started <<<");
+    gCurrentIdx = -1;
+    ExecuteNextProduct(WAIT_10_03);
+  }
+}
+
+on sysvar DiagControl::Btn_ReadDTC {
+  if(@this == 1) {
+    LogToPanel("%s", ">>> DTC Read Started <<<");
+    gCurrentIdx = -1;
+    ExecuteNextProduct(WAIT_DTC);
+  }
+}
+
+on timer tTimeout {
+  LogToPanel2("Error: Timeout at Step %d", "", gProducts[gCurrentIdx].currentStep);
+  ExecuteNextProduct(IDLE);
+}

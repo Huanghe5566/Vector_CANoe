@@ -1,0 +1,513 @@
+/*@!Encoding:936*/
+
+/* * @brief FL雷达诊断测试 - CAPL Test模块
+ * 功能：自动化测试并输出XML报告
+ * 版本：标准CAPL兼容版（无需CAPL Test库）
+ */
+
+variables {
+  // 报告文件相关
+  char gReportPath[256];
+  char gReportBuffer[5000];  // 报告内容累积
+  int gReportLineCount;
+  int gFileHandle;
+  
+  // 测试结果
+  int gTestResult;        // 0=Pass, 1=Fail
+  int gCurrentStep;       // 当前测试步骤
+  int gTestRunning;       // 测试是否运行中
+  
+  // Seed-Key变量
+  byte SeedArray[4];
+  byte KeyArray[4];
+  int rev;
+  
+  // 测试数据
+  float gCalStatus;
+  float gAngleDeviation;
+  byte gLastNRC;
+  
+  // 定时器
+  msTimer tTestTimeout;
+  int gTimeoutFlag;
+  
+  // 步骤完成标志
+  int gStepDone;
+}
+
+// --- 获取时间字符串 ---
+void GetCurrentTimeString(char outTime[]) {
+  // 使用系统变量获取时间
+  long seconds;
+  seconds = timeNow() / 1000;  // 转换为秒
+  
+  // 简化为数字格式：YYYYMMDD_HHMMSS
+  snprintf(outTime, 20, "%010d", (int)seconds);
+}
+
+// --- 报告写入函数 ---
+void ReportWrite(char line[]) {
+  // 累积到缓冲区
+  strncat(gReportBuffer, line, elCount(gReportBuffer) - strlen(gReportBuffer) - 1);
+  strncat(gReportBuffer, "\n", elCount(gReportBuffer) - strlen(gReportBuffer) - 1);
+  gReportLineCount++;
+}
+
+// --- 开始测试报告 ---
+void StartTestReport() {
+  char timeStr[30];
+  
+  // 清空缓冲区
+  gReportBuffer[0] = 0;
+  gReportLineCount = 0;
+  
+  // XML头部
+  ReportWrite("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+  ReportWrite("<TestReport>");
+  ReportWrite("  <Header>");
+  ReportWrite("    <Title>FL雷达诊断测试报告</Title>");
+  ReportWrite("    <StartTime>测试开始</StartTime>");
+  ReportWrite("    <TestObject>前左(FL)雷达</TestObject>");
+  ReportWrite("    <CAN_ID>Request: 0x766, Response: 0x76E</CAN_ID>");
+  ReportWrite("    <Channel>CAN1</Channel>");
+  ReportWrite("  </Header>");
+  ReportWrite("  <TestCases>");
+}
+
+// --- 结束测试报告 ---
+void EndTestReport() {
+  char summary[512];
+  
+  ReportWrite("  </TestCases>");
+  ReportWrite("  <Summary>");
+  
+  if(gTestResult == 0) {
+    ReportWrite("    <OverallResult>PASS</OverallResult>");
+    snprintf(summary, elCount(summary), "所有测试步骤通过");
+  } else {
+    ReportWrite("    <OverallResult>FAIL</OverallResult>");
+    snprintf(summary, elCount(summary), "测试过程中检测到错误，NRC: 0x%02X", gLastNRC);
+  }
+  
+  ReportWrite("    <SummaryText>%s</SummaryText>", summary);
+  ReportWrite("    <EndTime>测试结束</EndTime>");
+  ReportWrite("  </Summary>");
+  ReportWrite("</TestReport>");
+  
+  // 保存到文件
+  gFileHandle = openFileWrite(gReportPath, 0);
+  if(gFileHandle >= 0) {
+    fileWriteString(gFileHandle, gReportBuffer);
+    fileClose(gFileHandle);
+    write("测试报告已保存: %s", gReportPath);
+  } else {
+    write("警告: 无法保存报告文件到 %s", gReportPath);
+    write("报告内容:\n%s", gReportBuffer);
+  }
+}
+
+// --- 写入测试用例 ---
+void WriteTestCase(char testName[], char description[], int result, char details[]) {
+  char resultStr[10];
+  
+  if(result == 0) {
+    snprintf(resultStr, 10, "PASS");
+  } else {
+    snprintf(resultStr, 10, "FAIL");
+  }
+  
+  ReportWrite("    <TestCase name=\"%s\">", testName);
+  ReportWrite("      <Description>%s</Description>", description);
+  ReportWrite("      <Result>%s</Result>", resultStr);
+  ReportWrite("      <Details>%s</Details>", details);
+  ReportWrite("    </TestCase>");
+  
+  // 同时输出到日志
+  write("[TEST] %s: %s - %s", testName, resultStr, details);
+}
+
+// --- 写入错误信息 ---
+void WriteErrorCase(char serviceName[], byte nrc, char nrcDesc[]) {
+  ReportWrite("    <Error>");
+  ReportWrite("      <Service>%s</Service>", serviceName);
+  ReportWrite("      <NRC>0x%02X</NRC>", nrc);
+  ReportWrite("      <NRC_Description>%s</NRC_Description>", nrcDesc);
+  ReportWrite("    </Error>");
+  
+  // 记录最后错误
+  gLastNRC = nrc;
+  gTestResult = 1;
+  
+  write("[ERROR] %s: NRC 0x%02X - %s", serviceName, nrc, nrcDesc);
+}
+
+// --- 测试步骤1：初始化 ---
+void TestStep_Init() {
+  char details[256];
+  
+  // 设置报告路径
+  snprintf(gReportPath, elCount(gReportPath), 
+           "F:\\AI_Cursor\\AI_CANoe\\长安_B216-G\\test_reports\\FL_Radar_Test_Report.xml");
+  
+  // 初始化变量
+  gTestResult = 0;
+  gCurrentStep = 0;
+  gTestRunning = 1;
+  rev = 0;
+  gTimeoutFlag = 0;
+  gStepDone = 0;
+  gLastNRC = 0;
+  
+  // 开始报告
+  StartTestReport();
+  
+  snprintf(details, elCount(details), "报告路径: %s", gReportPath);
+  WriteTestCase("Init", "测试初始化", 0, details);
+  
+  write("=== FL雷达诊断测试开始 ===");
+}
+
+// --- 测试步骤2：扩展会话 ---
+void TestStep_ExtendedSession() {
+  message 0x766 msg;
+  char details[256];
+  
+  gCurrentStep = 1;
+  gStepDone = 0;
+  
+  // 发送请求
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x02;
+  msg.byte(1) = 0x10;
+  msg.byte(2) = 0x03;
+  output(msg);
+  
+  snprintf(details, elCount(details), "发送: 10 03 (进入扩展会话)");
+  write("[STEP 1] %s", details);
+  
+  // 等待响应（通过on message处理）
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 测试步骤3：安全访问请求 ---
+void TestStep_SecurityAccess() {
+  message 0x766 msg;
+  char details[256];
+  
+  gCurrentStep = 2;
+  gStepDone = 0;
+  
+  // 发送27 01请求Seed
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x02;
+  msg.byte(1) = 0x27;
+  msg.byte(2) = 0x01;
+  output(msg);
+  
+  snprintf(details, elCount(details), "发送: 27 01 (请求Seed)");
+  write("[STEP 2] %s", details);
+  
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 测试步骤4：发送Key ---
+void TestStep_SendKey() {
+  message 0x766 msg;
+  dword keyActualSize;
+  long status;
+  char details[256];
+  
+  if(!rev) {
+    write("[ERROR] 未收到Seed，无法计算Key");
+    WriteTestCase("SecurityAccess", "安全访问", 1, "未收到Seed响应");
+    gTestResult = 1;
+    EndTestReport();
+    gTestRunning = 0;
+    return;
+  }
+  
+  // 计算Key
+  status = diagGenerateKeyFromSeed("FL", SeedArray, 4, 1, "", "", KeyArray, 4, keyActualSize);
+  
+  if(status != 0) {
+    snprintf(details, elCount(details), "Key计算失败，状态码: %ld", status);
+    write("[ERROR] %s", details);
+    WriteTestCase("SecurityAccess", "安全访问", 1, details);
+    gTestResult = 1;
+    EndTestReport();
+    gTestRunning = 0;
+    return;
+  }
+  
+  // 发送27 02
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x06;
+  msg.byte(1) = 0x27;
+  msg.byte(2) = 0x02;
+  msg.byte(3) = KeyArray[0];
+  msg.byte(4) = KeyArray[1];
+  msg.byte(5) = KeyArray[2];
+  msg.byte(6) = KeyArray[3];
+  output(msg);
+  
+  snprintf(details, elCount(details), 
+           "发送Key: %02X %02X %02X %02X", 
+           KeyArray[0], KeyArray[1], KeyArray[2], KeyArray[3]);
+  write("[STEP 2b] %s", details);
+  
+  gCurrentStep = 3;
+  gStepDone = 0;
+  rev = 0;
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 测试步骤5：启动标定例程 ---
+void TestStep_StartCalibration() {
+  message 0x766 msg;
+  char details[256];
+  
+  gCurrentStep = 4;
+  gStepDone = 0;
+  
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x04;
+  msg.byte(1) = 0x31;
+  msg.byte(2) = 0x01;
+  msg.byte(3) = 0x23;
+  msg.byte(4) = 0x01;
+  output(msg);
+  
+  snprintf(details, elCount(details), "发送: 31 01 23 01 (启动标定)");
+  write("[STEP 3] %s", details);
+  
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 测试步骤6：读取标定状态 ---
+void TestStep_ReadCalStatus() {
+  message 0x766 msg;
+  char details[256];
+  
+  gCurrentStep = 5;
+  gStepDone = 0;
+  
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x03;
+  msg.byte(1) = 0x22;
+  msg.byte(2) = 0xFD;
+  msg.byte(3) = 0x0C;
+  output(msg);
+  
+  snprintf(details, elCount(details), "发送: 22 FD 0C (读取标定状态)");
+  write("[STEP 4] %s", details);
+  
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 测试步骤7：读取安装角度 ---
+void TestStep_ReadAngle() {
+  message 0x766 msg;
+  char details[256];
+  
+  gCurrentStep = 6;
+  gStepDone = 0;
+  
+  msg.can = 1;
+  msg.dlc = 8;
+  msg.byte(0) = 0x03;
+  msg.byte(1) = 0x22;
+  msg.byte(2) = 0xFD;
+  msg.byte(3) = 0x1C;
+  output(msg);
+  
+  snprintf(details, elCount(details), "发送: 22 FD 1C (读取安装角度)");
+  write("[STEP 5] %s", details);
+  
+  setTimer(tTestTimeout, 2000);
+}
+
+// --- 获取NRC描述 ---
+void GetNRCDesc(byte nrc, char outDesc[]) {
+  switch(nrc) {
+    case 0x10: snprintf(outDesc, 50, "一般拒绝"); break;
+    case 0x11: snprintf(outDesc, 50, "服务不支持"); break;
+    case 0x12: snprintf(outDesc, 50, "子功能不支持"); break;
+    case 0x13: snprintf(outDesc, 50, "报文长度错误"); break;
+    case 0x21: snprintf(outDesc, 50, "忙碌"); break;
+    case 0x22: snprintf(outDesc, 50, "条件不支持"); break;
+    case 0x31: snprintf(outDesc, 50, "请求超出范围"); break;
+    case 0x33: snprintf(outDesc, 50, "安全访问锁定"); break;
+    case 0x35: snprintf(outDesc, 50, "密钥无效"); break;
+    case 0x36: snprintf(outDesc, 50, "尝试次数超限"); break;
+    case 0x78: snprintf(outDesc, 50, "响应等待"); break;
+    default:   snprintf(outDesc, 50, "未知错误"); break;
+  }
+}
+
+// --- 主测试流程控制 ---
+void RunTestStep() {
+  if(!gTestRunning) return;
+  if(!gStepDone) return;  // 等待当前步骤完成
+  
+  switch(gCurrentStep) {
+    case 0:  // 初始化后
+      TestStep_ExtendedSession();
+      break;
+    case 1:  // 扩展会话完成后
+      WriteTestCase("ExtendedSession", "进入扩展会话(10 03)", 0, "扩展会话激活成功");
+      TestStep_SecurityAccess();
+      break;
+    case 2:  // 收到Seed后
+      TestStep_SendKey();
+      break;
+    case 3:  // 安全访问完成后
+      WriteTestCase("SecurityAccess", "安全访问(27)", 0, "解锁成功");
+      TestStep_StartCalibration();
+      break;
+    case 4:  // 标定例程启动后
+      WriteTestCase("StartCalibration", "启动标定例程(31)", 0, "例程已启动");
+      TestStep_ReadCalStatus();
+      break;
+    case 5:  // 读取标定状态后
+      TestStep_ReadAngle();
+      break;
+    case 6:  // 读取角度后
+      WriteTestCase("ReadCalStatus", "读取标定状态(22 FD0C)", 0, "状态读取完成");
+      WriteTestCase("ReadAngle", "读取安装角度(22 FD1C)", 0, "角度读取完成");
+      
+      // 测试完成
+      EndTestReport();
+      gTestRunning = 0;
+      write("=== FL雷达诊断测试完成 ===");
+      break;
+  }
+}
+
+// --- 启动测试 ---
+void StartFLTest() {
+  TestStep_Init();
+  gStepDone = 1;  // 初始化立即完成
+  RunTestStep();
+}
+
+// --- 消息响应处理 ---
+on message 0x76E {
+  char nrcDesc[50];
+  char serviceName[30];
+  char details[256];
+  
+  if(!gTestRunning) return;
+  
+  // 取消超时定时器
+  cancelTimer(tTestTimeout);
+  
+  // 负响应判断
+  if(this.byte(1) == 0x7F) {
+    byte nrc = this.byte(3);
+    byte service = this.byte(2);
+    
+    // 确定服务名称
+    switch(service) {
+      case 0x10: snprintf(serviceName, 30, "ExtendedSession"); break;
+      case 0x27: snprintf(serviceName, 30, "SecurityAccess"); break;
+      case 0x31: snprintf(serviceName, 30, "RoutineControl"); break;
+      case 0x22: snprintf(serviceName, 30, "ReadDataByID"); break;
+      default:   snprintf(serviceName, 30, "Unknown"); break;
+    }
+    
+    GetNRCDesc(nrc, nrcDesc);
+    WriteErrorCase(serviceName, nrc, nrcDesc);
+    
+    // 结束测试
+    EndTestReport();
+    gTestRunning = 0;
+    return;
+  }
+  
+  // 正响应处理
+  switch(this.byte(1)) {
+    case 0x50: // 扩展会话响应
+      gStepDone = 1;
+      RunTestStep();
+      break;
+      
+    case 0x67: // 安全访问响应
+      if(this.byte(2) == 0x01) {
+        // 收到Seed
+        SeedArray[0] = this.byte(3);
+        SeedArray[1] = this.byte(4);
+        SeedArray[2] = this.byte(5);
+        SeedArray[3] = this.byte(6);
+        rev = 1;
+        gStepDone = 1;
+        RunTestStep();
+      }
+      else if(this.byte(2) == 0x02) {
+        // Key验证成功
+        gStepDone = 1;
+        RunTestStep();
+      }
+      break;
+      
+    case 0x71: // 例程控制响应
+      gStepDone = 1;
+      RunTestStep();
+      break;
+      
+    case 0x62: // 读取数据响应
+      if(this.byte(2) == 0xFD && this.byte(3) == 0x0C) {
+        // FD0C - 标定状态
+        gCalStatus = this.byte(4);
+        snprintf(details, elCount(details), "标定状态: 0x%02X", (byte)gCalStatus);
+        write("[DATA] FD0C: %s", details);
+        gStepDone = 1;
+        RunTestStep();
+      }
+      else if(this.byte(2) == 0xFD && this.byte(3) == 0x1C) {
+        // FD1C - 安装角度偏差
+        dword bits = (dword)this.byte(4) | ((dword)this.byte(5) << 8) | 
+                     ((dword)this.byte(6) << 16) | ((dword)this.byte(7) << 24);
+        gAngleDeviation = (float)bits / 1000000.0;
+        snprintf(details, elCount(details), "角度偏差: %.2f度", gAngleDeviation);
+        write("[DATA] FD1C: %s", details);
+        gStepDone = 1;
+        RunTestStep();
+      }
+      break;
+  }
+}
+
+// --- 超时处理 ---
+on timer tTestTimeout {
+  char details[256];
+  
+  gTimeoutFlag = 1;
+  
+  snprintf(details, elCount(details), "步骤%d超时，未收到响应", gCurrentStep);
+  write("[TIMEOUT] %s", details);
+  
+  WriteTestCase("Timeout", "响应超时", 1, details);
+  
+  gTestResult = 1;
+  EndTestReport();
+  gTestRunning = 0;
+}
+
+// --- 用户触发测试 ---
+on sysvar DiagControl::Btn_StartTest {
+  if(@this == 1) {
+    write(">>> 启动FL雷达自动测试 <<<");
+    StartFLTest();
+  }
+}
+
+// --- 也可以按键触发 ---
+on key 't' {
+  write(">>> 按键启动FL雷达测试 <<<");
+  StartFLTest();
+}

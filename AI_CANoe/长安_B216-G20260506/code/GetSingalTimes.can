@@ -1,0 +1,132 @@
+/*@!Encoding:936*/
+//includes
+//{
+//  
+//}
+//
+//variables
+//{
+//  long cnt_sig_eq_0 = 0;
+//  long cnt_sig_eq_1 = 0;
+//  long cnt_sig_eq_2 = 0;
+//  long cnt_sig_eq_3 = 0;
+//  long cnt_sig_eq_4 = 0;
+//  
+//  int  last_val = -9999;   // 用于按“变化次数”统计时去重
+//}
+//
+//// 方式A：按每次接收到值就计数
+//on signal CAN3::LR::LR_RDI_Header::LR_MaxDetectionRange
+//{
+//  int v ; 
+//  v = $CAN3::LR::LR_RDI_Header::LR_MaxDetectionRange;
+//
+//  if (v == 1)
+//  {
+//    cnt_sig_eq_1++;
+//  }
+//  else if (v == 0)
+//  {
+//    cnt_sig_eq_0++;
+//  }
+//    else if (v == 2)
+//  {
+//    cnt_sig_eq_2++;
+//  }
+//   else if (v == 3)
+//  {
+//    cnt_sig_eq_3++;
+//  }
+//  else if (v == 4)
+//  {
+//    cnt_sig_eq_4++;
+//  }
+//  
+//  write("YourSignal == 1 count = %d", cnt_sig_eq_1);
+//  write("YourSignal == 2 count = %d", cnt_sig_eq_2);
+//  write("YourSignal == 3 count = %d", cnt_sig_eq_3);
+//  write("YourSignal == 4 count = %d", cnt_sig_eq_4);
+//  write("YourSignal == 0 count = %d", cnt_sig_eq_0);
+//  
+//}
+//
+////// 方式B：按“状态切换到1/2”计数，避免同值重复报文一直累加
+////on signal YourMsg::YourSignal
+////{
+////  int v = this;
+////
+////  if (v != last_val)
+////  {
+////    if (v == 1)
+////    {
+////      cnt_sig_eq_1++;
+////    }
+////    else if (v == 2)
+////    {
+////      cnt_sig_eq_2++;
+////    }
+////
+////    last_val = v;
+////  }
+////}
+//
+//// 测量结束时输出
+//on stopMeasurement
+//{
+//  write("YourSignal == 1 count = %d", cnt_sig_eq_1);
+//  write("YourSignal == 2 count = %d", cnt_sig_eq_2);
+//  write("YourSignal == 3 count = %d", cnt_sig_eq_3);
+//  write("YourSignal == 4 count = %d", cnt_sig_eq_4);
+//  write("YourSignal == 0 count = %d", cnt_sig_eq_0);
+//  //write("YourSignal == 2 count = %d", cnt_sig_eq_2);
+//}
+
+/*@!Encoding:936*/
+includes
+{
+}
+
+variables
+{
+  long cnt_sig_eq_0 = 0;
+  long cnt_sig_eq_1 = 0;
+  long cnt_sig_eq_2 = 0;
+  long cnt_sig_eq_3 = 0;
+  long cnt_sig_eq_4 = 0; 
+}
+
+// 方式A：按每次接收到值就计数
+on signal CAN3::LR::LR_RDI_Header::LR_MaxDetectionRange
+{
+  // 优化点 1：直接使用 this 关键字获取当前触发事件的信号值，更加简明
+  int v;
+  v = this;
+
+  // 优化点 2：使用 switch-case 结构替代多个 if-else if
+  // 这不仅让代码逻辑更清晰，而且在底层执行时的效率更高
+  switch(v)
+  {
+    case 0: cnt_sig_eq_0++; break;
+    case 1: cnt_sig_eq_1++; break;
+    case 2: cnt_sig_eq_2++; break;
+    case 3: cnt_sig_eq_3++; break;
+    case 4: cnt_sig_eq_4++; break;
+    default: break; // 如果有超出 0-4 的异常值，直接忽略
+  }
+  
+  // 优化点 3（关键）：屏蔽了每次收到信号时的 write 打印。
+  // 在回放 .asc 日志时，报文频率可能非常高。如果在 on signal 中大量调用 write 函数（特别是打印所有计数器），
+  // 会导致 Write 窗口疯狂刷新，极大地消耗 CPU 资源，甚至导致 CANoe 崩溃或漏解报文。
+}
+
+// 测量结束时输出
+on stopMeasurement
+{
+  // 优化点 4：统一在回放结束时打印最终统计结果，干净利落 
+  write("====== 信号值统计结果 ======");
+  write("YourSignal == 0 count = %d", cnt_sig_eq_0);
+  write("YourSignal == 1 count = %d", cnt_sig_eq_1);
+  write("YourSignal == 2 count = %d", cnt_sig_eq_2);
+  write("YourSignal == 3 count = %d", cnt_sig_eq_3);
+  write("YourSignal == 4 count = %d", cnt_sig_eq_4);
+}

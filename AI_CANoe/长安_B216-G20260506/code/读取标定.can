@@ -1,0 +1,35 @@
+/*@!Encoding:936*/
+
+variables
+{
+  diagRequest FL.ExtendedDiagnosticSession_Start FL_SoftReset; // 10 03 扩展会话
+  diagRequest FL.Installation_angle_deviation_Read FL_Read_calibration;
+  
+  diagRequest FR.ExtendedDiagnosticSession_Start FR_SoftReset; // 10 03 扩展会话
+  diagRequest FR.Installation_angle_deviation_Read FR_Read_calibration;
+  
+  diagRequest RL.ExtendedDiagnosticSession_Start RL_SoftReset; // 10 03 扩展会话}  
+  diagRequest RL.Installation_angle_deviation_Read RL_Read_calibration;
+  
+  diagRequest RR.ExtendedDiagnosticSession_Start RR_SoftReset; // 10 03 扩展会话
+  diagRequest RR.Installation_angle_deviation_Read RR_Read_calibration;
+}
+On sysvar_update sysvar::Button::Button_Read_calibration
+{
+  if(@this == 1) {
+    // 进入扩展会话
+    diagSendRequest(FL_SoftReset);
+    diagSendRequest(FL_Read_calibration);
+    
+    diagSendRequest(FR_SoftReset);
+    diagSendRequest(FR_Read_calibration);
+    
+    diagSendRequest(RL_SoftReset);
+    diagSendRequest(RL_Read_calibration);
+    
+    diagSendRequest(RR_SoftReset);
+    diagSendRequest(RR_Read_calibration);
+   
+  }
+}
+

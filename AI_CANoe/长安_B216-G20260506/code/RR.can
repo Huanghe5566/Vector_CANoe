@@ -1,0 +1,141 @@
+/*@!Encoding:936*/
+
+variables
+{
+  const int kBUFFER_SIZE = 1000;
+  char Buffer[kBUFFER_SIZE];
+ 
+  // 添加FL专用的诊断请求
+  diagRequest RR.ExtendedDiagnosticSession_Start SoftReset; // 10 03 扩展会话
+  diagRequest RR.Hard_Reset_Reset Hard_Reset_Reset;//11 01
+  diagRequest RR.requestSeed_Request seed_1; // 27 01
+  diagRequest RR.requestSeed_Key_Send Key_2; // 27 02
+  diagRequest RR.Offline_dynamic_calibration_Start calibration; // 动态标定
+  diagRequest RR.Basic_features_configuration_of_self_driving_Write Configuration;
+  
+  byte SeedArray[4];
+  byte KeyArray[4];
+  byte rev = 0;
+}
+
+void key2()
+  {
+    dword KeyActualSize;
+    if(rev)
+    {
+      rev = 0;
+      if(0 == diagGenerateKeyFromSeed("RR",SeedArray,elcount(SeedArray),1,"","", KeyArray,elcount(KeyArray),KeyActualSize))
+      {
+      diagSetParameterRaw(Key_2, "SecurityKey",KeyArray,elcount(KeyArray));
+      diagSendRequest (Key_2);
+    }
+  }
+  }
+  
+  //message 0x76E exten mode;
+on Message RRR_L_75C
+{
+  if(this.byte(1) == 0x50 && this.byte(2) == 0x03)
+  {diagSendRequest(seed_1);}
+  if(this.byte(1) == 0x67 && this.byte(2) == 0x01)
+  {
+    SeedArray[0] = this.byte(3);
+    SeedArray[1] = this.byte(4);
+    SeedArray[2] = this.byte(5);
+    SeedArray[3] = this.byte(6);
+    rev = 1;
+    Key2();
+  }  
+  if(this.byte(1) == 0x67 && this.byte(2) == 0x02)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：SecurityAccess OK.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+  if(this.byte(1) == 0x7F && this.byte(2) == 0x27)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：SecurityAccess NG.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+  
+ if(this.byte(1) == 0x71 && this.byte(2) == 0x01 && this.byte(3) == 0x23)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：启动动态标定 OK.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+ if(this.byte(1) == 0x7F && this.byte(2) == 0x31)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：启动动态标定 NG.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+  if(this.byte(1) == 0x7F && this.byte(2) == 0x2E)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：2E NG.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+    if(this.byte(1) == 0x6E && this.byte(2) == 0x50&& this.byte(3) == 0x02)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：电车配置成功.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+    {diagSendRequest(Hard_Reset_Reset);}
+
+  }
+    if(this.byte(1) == 0x51 && this.byte(2) == 0x01)
+  { 
+    snprintf(Buffer, elCount(Buffer), "RR：11 01 OK.\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+}
+
+
+
+On sysvar_update sysvar::Button::Button_RR_1003
+{
+  if(@this == 1) {
+    // 进入扩展会话
+    diagSendRequest(SoftReset);
+  }
+}
+On sysvar_update sysvar::Button::Button_RR_2301
+{
+  if(@this == 1) {
+    // 动态标定
+    diagSendRequest(calibration);
+  }
+}
+On sysvar_update sysvar::Button::Button_RR_5002
+{
+  if(@this == 1) {
+    byte data[49]; 
+    data[0] = 0x2E;
+    data[1] = 0x50;
+    data[2] = 0x02;
+    data[13] = 0x05;
+    data[47] = 0x29;
+    // 将数据设置到诊断请求对象
+    diagSetPrimitiveData(Configuration, data, elCount(data));
+    // 油车配置
+    diagSendRequest(Configuration);
+    snprintf(Buffer, elCount(Buffer), "RR：配置油车 .\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+}
+On sysvar_update sysvar::Button::Button_RR_5002_HEV
+{
+  if(@this == 1) {
+    byte data[49]; 
+    data[0] = 0x2E;
+    data[1] = 0x50;
+    data[2] = 0x02;
+    data[13] = 0x05;
+    data[47] = 0x30;
+    // 将数据设置到诊断请求对象
+    diagSetPrimitiveData(Configuration, data, elCount(data));
+    // 电车配置
+    diagSendRequest(Configuration);
+    snprintf(Buffer, elCount(Buffer), "RR：配置电车 .\n");
+    putValueToControl("面板", "CAPL Output View 1", Buffer);
+  }
+}
+
+
+

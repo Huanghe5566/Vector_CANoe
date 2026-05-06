@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemvariables version="4">
+  <namespace name="" comment="" interface="">
+    <namespace name="Button" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_4R_22FD0C" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_1003" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_22FD0C" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_22FD1C" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_2301" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_5002" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_5002_HEV" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FL_F190" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FR_1003" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FR_2301" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FR_5002" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_FR_5002_HEV" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_Read_calibration" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RL_1003" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RL_2301" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RL_5002" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RL_5002_HEV" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RR_1003" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RR_2301" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RR_5002" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button_RR_5002_HEV" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" minValue="0" minValuePhys="0" maxValue="1" maxValuePhys="1" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Button1" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="0" minValue="0" minValuePhys="0" maxValue="3" maxValuePhys="3" />
+    </namespace>
+    <namespace name="DiagControl" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Btn_Calibration" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Btn_Calibration_4R" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Btn_ReadDTC" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID5002_Byte10" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="12" minValue="0" minValuePhys="0" maxValue="255" maxValuePhys="255">
+        <valuetable name="Custom" definesMinMax="false">
+          <valuetableentry value="0" lowerBound="0" upperBound="0" description="Invalid" displayString="Invalid" />
+          <valuetableentry value="1" lowerBound="1" upperBound="1" description="A24550R19" displayString="A24550R19" />
+        </valuetable>
+      </variable>
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID5002_Byte44" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="27" minValue="0" minValuePhys="0" maxValue="255" maxValuePhys="255">
+        <valuetable name="Custom" definesMinMax="false">
+          <valuetableentry value="0" lowerBound="0" upperBound="0" description="Invalid" displayString="Invalid" />
+          <valuetableentry value="4" lowerBound="4" upperBound="4" description="C857" displayString="C857" />
+          <valuetableentry value="6" lowerBound="6" upperBound="6" description="C518" displayString="C518" />
+          <valuetableentry value="8" lowerBound="8" upperBound="8" description="C798" displayString="C798" />
+          <valuetableentry value="9" lowerBound="9" upperBound="9" description="C390" displayString="C390" />
+          <valuetableentry value="20" lowerBound="20" upperBound="20" description="C928OIL" displayString="C928OIL" />
+          <valuetableentry value="27" lowerBound="27" upperBound="27" description="C857ASE" displayString="C857ASE" />
+          <valuetableentry value="39" lowerBound="39" upperBound="39" description="B216" displayString="B216" />
+        </valuetable>
+      </variable>
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID5002_Byte46" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="0" minValue="0" minValuePhys="0" maxValue="255" maxValuePhys="255">
+        <valuetable name="Custom" definesMinMax="false">
+          <valuetableentry value="0" lowerBound="0" upperBound="0" description="Normal" displayString="Normal" />
+          <valuetableentry value="1" lowerBound="1" upperBound="1" description="VIU_R" displayString="VIU_R" />
+          <valuetableentry value="2" lowerBound="2" upperBound="2" description="CDC" displayString="CDC" />
+          <valuetableentry value="3" lowerBound="3" upperBound="3" description="VIMC" displayString="VIMC" />
+          <valuetableentry value="4" lowerBound="4" upperBound="4" description="FSD" displayString="FSD" />
+        </valuetable>
+      </variable>
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Input_VIN" comment="" bitcount="0" isSigned="true" encoding="65001" type="string" startValue="LS6BME2P2RA700302" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Radar_Type" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="1" minValue="0" minValuePhys="0" maxValue="255" maxValuePhys="255">
+        <valuetable name="Custom" definesMinMax="false">
+          <valuetableentry value="0" lowerBound="0" upperBound="0" description="default" displayString="default" />
+          <valuetableentry value="1" lowerBound="1" upperBound="1" description="B216_FL" displayString="B216_FL" />
+          <valuetableentry value="2" lowerBound="2" upperBound="2" description="B216_FR" displayString="B216_FR" />
+          <valuetableentry value="3" lowerBound="3" upperBound="3" description="B216_RL" displayString="B216_RL" />
+          <valuetableentry value="4" lowerBound="4" upperBound="4" description="B216_RR" displayString="B216_RR" />
+        </valuetable>
+      </variable>
+    </namespace>
+  </namespace>
+</systemvariables>

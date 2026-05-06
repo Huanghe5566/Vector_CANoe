@@ -1,0 +1,205 @@
+Encoding: utf-8
+Detected dtd version 12.0.104
+VCANdelaPersistorImpl::GetFileVersion: DTD version '12.0.104' detected
+Detected dtd version 12.0.104
+VCANdelaPersistorImpl::GetFileVersion: DTD version '12.0.104' detected
+Loading 'D:\tool\Changan4R\长安_B216-G\CDD\B216-G\B216-G_11.0_FR.cdd'...
+  dtd version: file 12.0.104, program 17.0.3
+Document supports the languages (en-US)
+Document contains the uptodate languages (en-US)
+Template: Vector UDS
+  template data loaded
+  variant 'Base_Variant' loaded
+Migrate DIDs: ...
+Migrate DIDs: Diagnostic Class Template(s) with DID semantics:
+Migrate DIDs:  ECU Identification
+Migrate DIDs:  Variant Coding
+Migrate DIDs:  Stored Data
+Migrate DIDs:  Dynamic Data
+Migrate DIDs:  Periodic Data
+Migrate DIDs:  IO Control
+Migrate DIDs: Created attribute "qpath://[DIAGINSTDEFATTR]DIDDataReferenceQualifier17"
+Migrate DIDs: Created attribute "qpath://[DIAGINSTDEFATTR]DIDDataReferenceName17"
+Migrate DIDs: Moved DID data of DID "SVIF", 0xF100 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/SVIF"
+Migrate DIDs: Moved DID data of DID "PIF-Pointer to Current Block", 0xF110 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/PIF_Pointer_to_Current_Block"
+Migrate DIDs: Moved DID data of DID "DID 0xF111" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF111"
+Migrate DIDs: Moved DID data of DID "DID 0xF112" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF112"
+Migrate DIDs: Moved DID data of DID "DID 0xF113" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF113"
+Migrate DIDs: Moved DID data of DID "DID 0xF114" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF114"
+Migrate DIDs: Moved DID data of DID "DID 0xF115" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF115"
+Migrate DIDs: Moved DID data of DID "DID 0xF116" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF116"
+Migrate DIDs: Moved DID data of DID "DID 0xF117" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF117"
+Migrate DIDs: Moved DID data of DID "DID 0xF118" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF118"
+Migrate DIDs: Moved DID data of DID "DID 0xF119" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF119"
+Migrate DIDs: Moved DID data of DID "DID 0xF11A" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11A"
+Migrate DIDs: Moved DID data of DID "DID 0xF11B" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11B"
+Migrate DIDs: Moved DID data of DID "DID 0xF11C" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11C"
+Migrate DIDs: Moved DID data of DID "DID 0xF11D" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11D"
+Migrate DIDs: Moved DID data of DID "DID 0xF11E" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11E"
+Migrate DIDs: Moved DID data of DID "DID 0xF11F" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF11F"
+Migrate DIDs: Moved DID data of DID "NetorkInformationDataIdentifier", 0xF120 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/NetworkInformationDataIdentifier"
+Migrate DIDs: Moved DID data of DID "FunctionSpecificationDataIdentifier", 0xF121 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/FunctionSpecificationDataIdentifier"
+Migrate DIDs: Moved DID data of DID "ECU Bootloader Software Reference Number", 0xF183 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Bootloader_Software_Reference_Number"
+Migrate DIDs: Moved DID data of DID "ECU Part Number", 0xF187 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Part_Number"
+Migrate DIDs: Moved DID data of DID "System Supplier Number", 0xF18A to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/System_Supplier_Number"
+Migrate DIDs: Moved DID data of DID "ECU Manufacture Date", 0xF18B to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Manufacture_Date"
+Migrate DIDs: Moved DID data of DID "ECU Serial Number", 0xF18C to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Serial_Number"
+Migrate DIDs: Moved DID data of DID "Vehicle Identification", 0xF190 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/VINDataIdentifier"
+Migrate DIDs: Moved DID data of DID "ECU Hardware Number", 0xF191 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Hardware_Number"
+Migrate DIDs: Moved DID data of DID "Supplier ECU Hardware Reference Number", 0xF192 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Supplier_ECU_Hardware_Reference_Number"
+Migrate DIDs: Moved DID data of DID "Supplier ECU Software Reference Number", 0xF194 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Supplier_ECU_Software_Reference_Number"
+Migrate DIDs: Moved DID data of DID "Configuration Traceability Field", 0xF198 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Configuration_Traceability_Field"
+Migrate DIDs: Moved DID data of DID "ECU Application Software Number", 0xF1A0 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Application_Software_Number"
+Migrate DIDs: Moved DID data of DID "ECU Calibration Software Number", 0xF1A1 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Calibration_Software_Number"
+Migrate DIDs: Moved DID data of DID "ECU NCF Reference Number", 0xF1A2 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_NCF_Reference_Number"
+Migrate DIDs: Moved DID data of DID "ECU Index Information", 0xF1A5 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Index_Information"
+Migrate DIDs: Moved DID data of DID "Vehicle Feature Information", 0xF1A8 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Vehicle_Feature_Information"
+Migrate DIDs: Moved DID data of DID "ECU Configuration File Number", 0xF1A9 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Configuration_File_Number"
+Migrate DIDs: Moved DID data of DID "ECU Programming Process File Number", 0xF1AA to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/ECU_Programming_Process_File_Number"
+Migrate DIDs: Moved DID data of DID "Basic features configuration of self driving", 0x5002 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Basic_features_configuration_of_self_driving"
+Migrate DIDs: Moved DID data of DID "CHANA_ECUHardwareVersionNumberDataIdentifier", 0xF089 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/CHANA_ECUHardwareVersionNumbeDataidentifier"
+Migrate DIDs: Moved DID data of DID "CHANA_ECUSoftwareVersionNumberDataIdentifier", 0xF189 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF1AB_1"
+Migrate DIDs: Moved DID data of DID "Software Number", 0xF188 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DID_0xF1AB_1_1"
+Migrate DIDs: Moved DID data of DID "(dynamic) calibration status", 0xFD0C to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/_dynamic_calibration_status"
+Migrate DIDs: Moved DID data of DID "Installation angle deviation", 0xFD1C to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Installation_angle_deviation"
+Migrate DIDs: Moved DID data of DID "DiagnosticDefinitionDataIdentifier", 0xF122 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/DiagnosticDefinitionDataIdentifier"
+Migrate DIDs: Moved DID data of DID "FBL Version Information", 0xF170 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/FBL_Version_Information"
+Migrate DIDs: Moved DID data of DID "FBL Requirement Specification", 0xF171 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/FBL_Requirement_Specification"
+Migrate DIDs: Moved DID data of DID "Fingerprint", 0xF184 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Fingerprint"
+Migrate DIDs: Moved DID data of DID "DID 0xF123" to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Calibration_DataIdentifier"
+Migrate DIDs: Moved DID data of DID "Radio info", 0xF1F2 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Radio_info"
+Migrate DIDs: Moved DID data of DID "BB info", 0xF1F3 to the existing DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/BB_info"
+Migrate DIDs: Number of DID(s) moved to 49 DID Diagnostic Instance(s): 49
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Date_Time" for the DID (no Diagnostic Instance) "Date&Time", 0x010B
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Supply_voltage" for the DID (no Diagnostic Instance) "Supply voltage", 0x0112
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Power_Mode" for the DID (no Diagnostic Instance) "Power Mode", 0xD001
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Odometer_reading" for the DID (no Diagnostic Instance) "Odometer reading", 0xE101
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Application_area_status" for the DID (no Diagnostic Instance) "Application area status", 0xF010
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Vehicle_speed_Snapshot" for the DID (no Diagnostic Instance) "Vehicle speed Snapshot", 0xF1F1
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/LocalTime_Snapshot" for the DID (no Diagnostic Instance) "LocalTime Snapshot", 0xF1F4
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/Total_Odometer_Snapshot" for the DID (no Diagnostic Instance) "Total Odometer Snapshot", 0xF1F5
+Migrate DIDs: Created new de-activated DID Diagnostic Instance "qpath:/Base_Variant/ECU_Identification/System_supply_voltage_Snapsht" for the DID (no Diagnostic Instance) "System supply voltage Snapsht", 0xF1F0
+Migrate DIDs: Number of created DID Diagnostic Instance(s): 9
+Migrate DIDs: DID and Diagnostic Instance default attributes have an attribute with the same qualifier: "SYNCHELEMENT"
+Migrate DIDs: Moved DID attribute "ASR3_Legacy_Combine_DID" to Diagnostic Instance
+Migrate DIDs: Created attribute "qpath://[DIAGINSTDEFATTR]DIDQualifier17"
+Migrate DIDs: Created attribute "qpath://[DIAGINSTDEFATTR]DIDName17"
+Migrate DIDs: ...Done
+Migration 17: creating missing attribute(s) for AUTOSAR Diagnostic Extract Export...
+Skipping existing "ECU" attribute "Max Number of Dyn. Defined DID References".
+Skipping existing "ECU" attribute "Periodic Rate (Slow) [ms]".
+Skipping existing "ECU" attribute "Periodic Rate (Medium) [ms]".
+Skipping existing "ECU" attribute "Periodic Rate (Fast) [ms]".
+Skipping existing "ECU" attribute "DDDID check per source ID".
+Skipping existing "ECU" attribute "DDDID configuration storage".
+Skipping existing "ECU" attribute "AUTOSAR Type".
+Skipping existing "ECU" attribute "AUTOSAR Version".
+Skipping existing "ECU" attribute "SynchronizationAttribute".
+Skipping existing "Interface" attribute "CAN.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "CAN_Extended_Addressing.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "FlexRay_ISO.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "FlexRay_Autosar2x.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "DoIP_ISO13400.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "CAN_FD.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "CAN_FD_Extended_Addressing.DiagnosticConnectionRef".
+Skipping existing "Interface" attribute "CAN.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "CAN_Extended_Addressing.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "FlexRay_ISO.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "FlexRay_Autosar2x.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "DoIP_ISO13400.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "CAN_FD.DiagnosticProtocolPriority".
+Skipping existing "Interface" attribute "CAN_FD_Extended_Addressing.DiagnosticProtocolPriority".
+Skipping existing "Diagnostic Instance" attribute "Instance Type".
+Skipping existing "Diagnostic Instance" attribute "Max Attempts to Delay".
+Skipping existing "Diagnostic Instance" attribute "Delay Time [ms]".
+Skipping existing "Diagnostic Instance" attribute "Delay Time on PowerOn [ms]".
+Skipping existing "Diagnostic Instance" attribute "SYNCHELEMENT".
+Skipping existing "Diagnostic Instance" attribute "ASR SWC ServiceDependency Ref".
+Skipping existing "Diagnostic Instance" attribute "ASR UUID".
+Skipping existing "Diagnostic Instance" attribute "ASR3 Legacy Combine DID".
+Skipping existing "Data Object / Bitfield" attribute "ASR SWC DataElement Ref".
+Skipping existing "Data Object / Bitfield" attribute "ASR SWC ServiceDependency Ref".
+Skipping existing "Data Object / Bitfield" attribute "SYNCHELEMENT".
+Skipping existing "Data Object / Bitfield" attribute "ASR UUID".
+Skipping existing "DTC" attribute "ASR SWC ServiceDependency Ref".
+Skipping existing "DTC" attribute "SYNCHELEMENT".
+Skipping existing "Data Type" attribute "ASR Encoding".
+Creating "Condition" attribute "ASR SWC ServiceDependency Ref".
+Creating "Diagnostic Instance" attribute "ASR3 Legacy Combine Routine".
+Creating "Diagnostic Instance" attribute "Environment Data Capture".
+Creating "Diagnostic Instance" attribute "Event Displacement Strategy".
+Creating "Diagnostic Instance" attribute "Max Number of Event Entries".
+Creating "Diagnostic Instance" attribute "Memory Entry Storage Trigger".
+Creating "Diagnostic Instance" attribute "Occurrence Counter Processing".
+Creating "ECU" attribute "ASR ECU Instance Ref".
+Creating "ECU" attribute "Aging Requires Tested Cycle".
+Creating "ECU" attribute "ClearDtc Limitation".
+Creating "ECU" attribute "Default Endianess".
+Creating "ECU" attribute "OBD Support".
+Creating "ECU" attribute "Reset Confirmed Bit on Overflow".
+Creating "ECU" attribute "Respond On All Request SIDs".
+Creating "ECU" attribute "Respond on Second Declined Request".
+Creating "ECU" attribute "Respond to ECU Reset".
+Creating "ECU" attribute "Status Bit Handling TestFailed".
+Creating "ECU" attribute "Status Bit Storage TestFailed".
+Creating "Environmental Condition Group" attribute "ASR SWC DataElement Ref".
+Creating "Environmental Condition Group" attribute "ASR SWC ServiceDependency Ref".
+Creating "Environmental Condition Group" attribute "ASR UUID".
+Creating "Environmental Mode Condition" attribute "ASR SWC ModeDeclaration Ref".
+Creating "Event Function" attribute "ASR SWC ServiceDependency Ref".
+Creating "Event" attribute "ASR SWC ServiceDependency Ref".
+Creating "Indicator" attribute "ASR SWC ServiceDependency Ref".
+Creating "Interface" attribute "CAN.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "CAN_Extended_Addressing.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "CAN_FD.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "CAN_FD_Extended_Addressing.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "DoIP_ISO13400.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "FlexRay_Autosar2x.SendRespPendOnTransToBoot".
+Creating "Interface" attribute "FlexRay_ISO.SendRespPendOnTransToBoot".
+Creating "Operation Cycle" attribute "ASR SWC ServiceDependency Ref".
+Creating "Service" attribute "Service Relevant for Autosar".
+Creating "State" attribute "ASR SWC ModeDeclaration Ref".
+Creating "State" attribute "Jump to Boot".
+Migration 17: ... created missing attribute(s) for AUTOSAR Diagnostic Extract Export
+AUTOSAR fault memory migration, Read snapshots: migrating diagnostic instance "qpath:/Base_Variant/FaultMemory"...
+AUTOSAR fault memory migration, Read snapshots: Snapshot Records:
+AUTOSAR fault memory migration, Read snapshots:  0x01 New Snapshot Record
+AUTOSAR fault memory migration, Read snapshots: ...Success
+AUTOSAR fault memory migration, Read snapshots: migrating protocol service 1903 "($19) ReadDtcInformation - ReportDtcSnapshotIdentification"...
+AUTOSAR fault memory migration, Read snapshots: ...Success
+AUTOSAR fault memory migration, Read snapshots: migrating protocol service 1904 "($19) ReadDtcInformation - Report DTC snapshot record by DTC number"...
+AUTOSAR fault memory migration, Read snapshots: ...Success
+AUTOSAR fault memory migration, Read snapshots: migrating protocol service 1918 "($19) ReadDtcInformation - ReportUserDefMemoryDTCSnapshotRecordByDTCNumber"...
+AUTOSAR fault memory migration, Read snapshots: ...Success
+AUTOSAR fault memory migration, Read extended data records: migrating diagnostic instance "qpath:/Base_Variant/FaultMemory"...
+AUTOSAR fault memory migration, Read extended data records: Extended Data Records:
+AUTOSAR fault memory migration, Read extended data records:  0x01 aging times
+AUTOSAR fault memory migration, Read extended data records:  0x02 occurence times
+AUTOSAR fault memory migration, Read extended data records: set "Is Stored For Extended Data Records"
+AUTOSAR fault memory migration, Read extended data records: ...Success
+AUTOSAR fault memory migration, Read extended data records: migrating protocol service 1910 "($19) ReadDtcInformation - Report mirror memory DTC extended data record by DTC number"...
+AUTOSAR fault memory migration, Read extended data records: ...Success
+AUTOSAR fault memory migration, Read extended data records: migrating protocol service 1906 "($19) ReadDtcInformation - Report DTC extended data record by DTC number"...
+AUTOSAR fault memory migration, Read extended data records: ...Success
+AUTOSAR fault memory migration, Read extended data records: migrating protocol service 1919 "($19) ReadDtcInformation - ReportUserDefMemoryDTCExtendedDataRecordByDTCNumber"...
+AUTOSAR fault memory migration, Read extended data records: ...Success
+Done loading.
+Checking consistency of document. This may take a while, please be patient...
+ComParamMan: Unidentified ComParam TesterPresentPhys
+ComParamMan: Unidentified ComParam CanFdDataBaudrate
+ComParamMan: Unidentified ComParam CanFdDataTSeg1
+ComParamMan: Unidentified ComParam CanFdDataTSeg2
+ComParamMan: Unidentified ComParam CanFdDataSjw
+ComParamMan: Unidentified ComParam TSeg1
+ComParamMan: Unidentified ComParam TSeg2
+ComParamMan: Unidentified ComParam Sjw
+ComParamMan: Unidentified ComParam CanFdHandling
+ComParamMan: Unidentified ComParam CanFdBrsHandling
+ComParamMan: Unidentified ComParam CanFdMaxDlc
+ComParamMan: Unidentified ComParam MaxTPMessageLength
+ComParamMan: Unidentified ComParam AutoP2Handling
+ComParamMan: Unidentified ComParam DiagnosticConnectionRef
+ComParamMan: Unidentified ComParam DiagnosticProtocolPriority
+ComParamMan: Unidentified ComParam SendRespPendOnTransToBoot
+Checking service prefixes in base variant "Base_Variant" ... OK
+Document is consistent.

@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "*.can": "c",
+    "*.cin": "c"
+  },
+  "[c]": {
+    "files.encoding": "gbk",
+    "files.autoGuessEncoding": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "workbench.editor.languageDetection": false,
+  "files.autoGuessEncoding": false
+}

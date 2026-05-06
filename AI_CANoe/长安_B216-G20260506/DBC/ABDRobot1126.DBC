@@ -1,0 +1,118 @@
+VERSION "HIPBNYYYYYYYYYYYYYYYYYYYYYYYYYYYNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+NS_ :
+ NS_DESC_
+ CM_
+ BA_DEF_
+ BA_
+ VAL_
+ CAT_DEF_
+ CAT_
+ FILTER
+ BA_DEF_DEF_
+ EV_DATA_
+ ENVVAR_DATA_
+ SGTYPE_
+ SGTYPE_VAL_
+ BA_DEF_SGTYPE_
+ BA_SGTYPE_
+ SIG_TYPE_REF_
+ VAL_TABLE_
+ SIG_GROUP_
+ SIG_VALTYPE_
+ SIGTYPE_VALTYPE_
+ BO_TX_BU_
+ BA_DEF_REL_
+ BA_REL_
+ BA_DEF_DEF_REL_
+ BU_SG_REL_
+ BU_EV_REL_
+ BU_BO_REL_
+
+BS_: 
+
+BU_: ABD_Controller
+
+BO_ 1600 Steering_1_CMABD01_BUS1: 8 ABD_Controller
+ SG_ SrCommand : 0|16@1- (0.1,0) [0|0] "EU" ABD_Controller
+ SG_ SrAngle : 16|16@1- (0.1,0) [0|0] "°" ABD_Controller
+ SG_ SrVelocity : 32|16@1- (0.1,0) [0|0] "°/s" ABD_Controller
+ SG_ SrAcceleration : 48|16@1- (1,0) [0|0] "°/s²" ABD_Controller
+
+BO_ 1601 UD7__longitudinal__CMABD02_BUS1: 8 ABD_Controller
+ SG_ RelativeLongitudinalDistance : 0|32@1+ (1,0) [0|0] "m" ABD_Controller
+ SG_ TimeToCollisionLongitudinal : 32|32@1+ (1,0) [0|0] "s" ABD_Controller
+
+BO_ 1602 UD13__ref_point__CMABD03_BUS1: 8 ABD_Controller
+ SG_ ThisVehicleXPositionReference : 0|32@1+ (1,0) [0|0] "m" ABD_Controller
+ SG_ ThisVehicleYPositionReference : 32|32@1+ (1,0) [0|0] "m" ABD_Controller
+
+BO_ 1603 UD21__tracker__CMABD04_BUS1: 8 ABD_Controller
+ SG_ OtherVehicleXPositionReference : 0|32@1+ (1,0) [0|0] "m" ABD_Controller
+ SG_ OtherVehicleYPositionReference : 32|32@1+ (1,0) [0|0] "m" ABD_Controller
+
+BO_ 1604 UD5__speed__CMABD05_BUS1: 8 ABD_Controller
+ SG_ MpForwardAcceleration : 0|32@1+ (1,0) [0|0] "m/s²" ABD_Controller
+ SG_ Speed : 32|32@1+ (1,0) [0|0] "km/h" ABD_Controller
+
+BO_ 1605 UD15_CMABD06_BUS1: 8 ABD_Controller
+ SG_ OtherVehicleForwardVelocity : 0|32@1+ (1,0) [0|0] "m/s" ABD_Controller
+ SG_ OtherVehicleLateralVelocity : 32|32@1+ (1,0) [0|0] "m/s" ABD_Controller
+
+BO_ 1606 UD22__rel_lateral_distance__CMAB: 8 ABD_Controller
+ SG_ RelativeLateralDistance : 0|32@1+ (1,0) [0|0] "m" ABD_Controller
+ SG_ MpLateralVelocity : 32|32@1+ (1,0) [0|0] "m/s" ABD_Controller
+
+BO_ 1607 UD23__rel_velocity__CMABD08_BUS1: 8 ABD_Controller
+ SG_ RelativeLongitudinalVelocity : 0|32@1+ (1,0) [0|0] "m/s" ABD_Controller
+ SG_ RelativeLateralVelocity : 32|32@1+ (1,0) [0|0] "m/s" ABD_Controller
+
+BO_ 1608 UD20__yaw__CMABD09_BUS1: 8 ABD_Controller
+ SG_ OtherVehicleYaw : 0|32@1+ (1,0) [0|0] "°" ABD_Controller
+ SG_ OtherVehicleYawVelocity : 32|32@1+ (1,0) [0|0] "°/s" ABD_Controller
+
+CM_ SG_ 1600 SrCommand "SR Command";
+CM_ SG_ 1600 SrAngle "SR Angle";
+CM_ SG_ 1600 SrVelocity "SR Velocity";
+CM_ SG_ 1600 SrAcceleration "SR Acceleration";
+CM_ BO_ 1600 "Steering 1 CMABD01_BUS1";
+CM_ SG_ 1601 RelativeLongitudinalDistance "Relative longitudinal distance";
+CM_ SG_ 1601 TimeToCollisionLongitudinal "Time to collision (longitudinal)";
+CM_ BO_ 1601 "UD7 (longitudinal) CMABD02_BUS1";
+CM_ SG_ 1602 ThisVehicleXPositionReference "Subject reference X position";
+CM_ SG_ 1602 ThisVehicleYPositionReference "Subject reference Y position";
+CM_ BO_ 1602 "UD13 (ref point) CMABD03_BUS1";
+CM_ SG_ 1603 OtherVehicleXPositionReference "Head tracker reference X position";
+CM_ SG_ 1603 OtherVehicleYPositionReference "Head tracker reference Y position";
+CM_ BO_ 1603 "UD21 (tracker) CMABD04_BUS1";
+CM_ SG_ 1604 MpForwardAcceleration "Forward acceleration";
+CM_ SG_ 1604 Speed "Speed";
+CM_ BO_ 1604 "UD5 (speed) CMABD05_BUS1";
+CM_ SG_ 1605 OtherVehicleForwardVelocity "Head tracker forward velocity (ref point)";
+CM_ SG_ 1605 OtherVehicleLateralVelocity "Head tracker lateral velocity";
+CM_ BO_ 1605 "UD15 CMABD06_BUS1";
+CM_ SG_ 1606 RelativeLateralDistance "Relative lateral distance";
+CM_ SG_ 1606 MpLateralVelocity "Lateral velocity";
+CM_ BO_ 1606 "UD22 (rel lateral distance) CMABD07_BUS1";
+CM_ SG_ 1607 RelativeLongitudinalVelocity "Relative longitudinal velocity";
+CM_ SG_ 1607 RelativeLateralVelocity "Relative lateral velocity";
+CM_ BO_ 1607 "UD23 (rel velocity) CMABD08_BUS1";
+CM_ SG_ 1608 OtherVehicleYaw "Head tracker yaw";
+CM_ SG_ 1608 OtherVehicleYawVelocity "Head tracker yaw velocity";
+CM_ BO_ 1608 "UD20 (yaw) CMABD09_BUS1";
+SIG_VALTYPE_ 1601 RelativeLongitudinalDistance : 1;
+SIG_VALTYPE_ 1601 TimeToCollisionLongitudinal : 1;
+SIG_VALTYPE_ 1602 ThisVehicleXPositionReference : 1;
+SIG_VALTYPE_ 1602 ThisVehicleYPositionReference : 1;
+SIG_VALTYPE_ 1603 OtherVehicleXPositionReference : 1;
+SIG_VALTYPE_ 1603 OtherVehicleYPositionReference : 1;
+SIG_VALTYPE_ 1604 MpForwardAcceleration : 1;
+SIG_VALTYPE_ 1604 Speed : 1;
+SIG_VALTYPE_ 1605 OtherVehicleForwardVelocity : 1;
+SIG_VALTYPE_ 1605 OtherVehicleLateralVelocity : 1;
+SIG_VALTYPE_ 1606 RelativeLateralDistance : 1;
+SIG_VALTYPE_ 1606 MpLateralVelocity : 1;
+SIG_VALTYPE_ 1607 RelativeLongitudinalVelocity : 1;
+SIG_VALTYPE_ 1607 RelativeLateralVelocity : 1;
+SIG_VALTYPE_ 1608 OtherVehicleYaw : 1;
+SIG_VALTYPE_ 1608 OtherVehicleYawVelocity : 1;

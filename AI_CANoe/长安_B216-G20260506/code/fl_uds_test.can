@@ -1,0 +1,349 @@
+/*@!Encoding:UTF8*/
+/**
+ * fl_uds_test.can — CAPL Test Module（在 Test Setup 里 Insert CAPL Test Module 绑定本文件）
+ *
+ * - 不与 FL_uds.can 混用同一 Network Node；Test Report API 仅在 Test Module 中有效。
+ * - 架构：同步步骤 + WaitRespMs + testStepPass / testStepFail。
+ * - 阶段 1：TC_Read_FD0C_FD1C_766_754（仅 22，需 ECU 已允许读）。
+ * - 阶段 2：TC_FullCalibration_FL766_then_RR754（10 03 / 27 / 31 01 23 01 / FD0C / FD1C，先 FL 再 RR）。
+ */
+
+variables {
+  long gReqId;
+  long gRespId;
+  int  gCanCh;
+
+  int  gRxFlag;
+  byte gRxData[8];
+  int  gRxDlc;
+
+  byte gSeed[4];
+  byte gKey[4];
+
+  int  kServiceGapMs = 20;
+  char gDiagEcuQualifierForKey[10];
+}
+
+void ServiceGap()
+{
+  testWaitForTimeout(kServiceGapMs);
+}
+
+/** 产品索引对齐 FL_uds InitProducts：0=B216_FL 766/76E CAN1；3=B216_RR 754/75C CAN2 */
+void SelectProduct(int idx)
+{
+  if(idx == 0) {
+    gReqId = 0x766;
+    gRespId = 0x76E;
+    gCanCh = 1;
+  }
+  else if(idx == 3) {
+    gReqId = 0x754;
+    gRespId = 0x75C;
+    gCanCh = 2;
+  }
+  else {
+    write("[fl_uds_test] SelectProduct: unsupported idx=%d (use 0 or 3)", idx);
+    gReqId = 0x766;
+    gRespId = 0x76E;
+    gCanCh = 1;
+  }
+}
+
+int WaitRespMs(long timeoutMs)
+{
+  long waited;
+
+  waited = 0;
+  gRxFlag = 0;
+
+  while(waited < timeoutMs) {
+    if(gRxFlag == 1) {
+      return 1;
+    }
+    testWaitForTimeout(1);
+    waited++;
+  }
+  return 0;
+}
+
+void SendIsoTpRaw8(byte b0, byte b1, byte b2, byte b3,
+                   byte b4, byte b5, byte b6, byte b7)
+{
+  message * m;
+
+  m.can = gCanCh;
+  m.id = gReqId;
+  m.dlc = 8;
+  m.byte(0) = b0;
+  m.byte(1) = b1;
+  m.byte(2) = b2;
+  m.byte(3) = b3;
+  m.byte(4) = b4;
+  m.byte(5) = b5;
+  m.byte(6) = b6;
+  m.byte(7) = b7;
+  output(m);
+}
+
+int IsNrc()
+{
+  if(gRxFlag != 1) {
+    return 0;
+  }
+  if(gRxDlc < 2) {
+    return 0;
+  }
+  return (gRxData[1] == 0x7F) ? 1 : 0;
+}
+
+/** 扩展会话 10 03 */
+int Step_ExtendedSession()
+{
+  TestStep("10 03", "Extended diagnostic session");
+
+  SendIsoTpRaw8(0x02, 0x10, 0x03, 0, 0, 0, 0, 0);
+  if(!WaitRespMs(2000)) {
+    testStepFail("10 03: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("10 03: negative response");
+    return 0;
+  }
+  if(gRxData[1] != 0x50 || gRxData[2] != 0x03) {
+    testStepFail("10 03: unexpected positive payload");
+    return 0;
+  }
+  testStepPass("10 03 OK");
+  ServiceGap();
+  return 1;
+}
+
+/** Seed/Key（与 FL_uds SendKey 相同：diagGenerateKeyFromSeed + 27 02） */
+int Step_SecurityUnlock()
+{
+  dword keyActualSize;
+  long st;
+
+  TestStep("27 01", "Request seed");
+  SendIsoTpRaw8(0x02, 0x27, 0x01, 0, 0, 0, 0, 0);
+  if(!WaitRespMs(2000)) {
+    testStepFail("27 01: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("27 01: NRC");
+    return 0;
+  }
+  if(gRxData[1] != 0x67 || gRxData[2] != 0x01) {
+    testStepFail("27 01: unexpected response");
+    return 0;
+  }
+  gSeed[0] = gRxData[3];
+  gSeed[1] = gRxData[4];
+  gSeed[2] = gRxData[5];
+  gSeed[3] = gRxData[6];
+  testStepPass("27 01 seed OK");
+  ServiceGap();
+
+  keyActualSize = 0;
+  st = diagGenerateKeyFromSeed(gDiagEcuQualifierForKey,
+                               gSeed, elcount(gSeed), 1,
+                               "", "",
+                               gKey, elcount(gKey), keyActualSize);
+  if(st != 0) {
+    testStepFail("Key generation failed (diagGenerateKeyFromSeed)");
+    return 0;
+  }
+
+  TestStep("27 02", "Send security key");
+  SendIsoTpRaw8(0x06, 0x27, 0x02, gKey[0], gKey[1], gKey[2], gKey[3]);
+  if(!WaitRespMs(2000)) {
+    testStepFail("27 02: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("27 02: NRC");
+    return 0;
+  }
+  if(gRxData[1] != 0x67 || gRxData[2] != 0x02) {
+    testStepFail("27 02: unexpected response");
+    return 0;
+  }
+  testStepPass("27 02 unlocked");
+  ServiceGap();
+  return 1;
+}
+
+/** 启动标定例程 31 01 23 01 */
+int Step_Routine31012301()
+{
+  TestStep("31 01 23 01", "Start calibration routine");
+  SendIsoTpRaw8(0x04, 0x31, 0x01, 0x23, 0x01, 0, 0, 0);
+  if(!WaitRespMs(3000)) {
+    testStepFail("31 01: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("31 01: NRC");
+    return 0;
+  }
+  if(gRxData[1] != 0x71 || gRxData[2] != 0x01 ||
+     gRxData[3] != 0x23 || gRxData[4] != 0x01) {
+    testStepFail("31 01: unexpected positive response");
+    return 0;
+  }
+  testStepPass("31 01 routine started");
+  ServiceGap();
+  return 1;
+}
+
+int Step_ReadFD0C()
+{
+  TestStep("22 FD0C", "Read calibration status DID");
+  SendIsoTpRaw8(0x03, 0x22, 0xFD, 0x0C, 0, 0, 0, 0);
+  if(!WaitRespMs(2000)) {
+    testStepFail("FD0C: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("FD0C: NRC");
+    return 0;
+  }
+  if(gRxData[1] != 0x62 || gRxData[2] != 0xFD || gRxData[3] != 0x0C) {
+    testStepFail("FD0C: wrong payload");
+    return 0;
+  }
+  testStepPass("FD0C OK");
+  ServiceGap();
+  return 1;
+}
+
+int Step_ReadFD1C()
+{
+  TestStep("22 FD1C", "Read installation angle DID");
+  SendIsoTpRaw8(0x03, 0x22, 0xFD, 0x1C, 0, 0, 0, 0);
+  if(!WaitRespMs(2000)) {
+    testStepFail("FD1C: timeout");
+    return 0;
+  }
+  if(IsNrc()) {
+    testStepFail("FD1C: NRC");
+    return 0;
+  }
+  if(gRxData[1] != 0x62 || gRxData[2] != 0xFD || gRxData[3] != 0x1C) {
+    testStepFail("FD1C: wrong payload");
+    return 0;
+  }
+  testStepPass("FD1C OK");
+  ServiceGap();
+  return 1;
+}
+
+int RunFullCalibrationOnSelectedProduct()
+{
+  char desc[80];
+
+  snprintf(desc, elCount(desc), "Req=0x%03lX Resp=0x%03lX CAN%d",
+           gReqId, gRespId, gCanCh);
+  TestStep("Product", desc);
+
+  if(!Step_ExtendedSession()) {
+    return 0;
+  }
+  if(!Step_SecurityUnlock()) {
+    return 0;
+  }
+  if(!Step_Routine31012301()) {
+    return 0;
+  }
+  if(!Step_ReadFD0C()) {
+    return 0;
+  }
+  if(!Step_ReadFD1C()) {
+    return 0;
+  }
+  testStepPass("Full sequence done for this ECU");
+  return 1;
+}
+
+/** 仅 22：前提为当前会话允许读 DID（否则会 NRC）。 */
+testcase TC_Read_FD0C_FD1C_766_754()
+{
+  TestStep("Start", "Read FD0C/FD1C on FL(766) then RR(754)");
+
+  SelectProduct(0);
+  if(!Step_ReadFD0C()) {
+    return;
+  }
+  if(!Step_ReadFD1C()) {
+    return;
+  }
+
+  SelectProduct(3);
+  if(!Step_ReadFD0C()) {
+    return;
+  }
+  if(!Step_ReadFD1C()) {
+    return;
+  }
+
+  testStepPass("FD0C/FD1C dual-radar read completed");
+}
+
+/** 完整标定链：每台 ECU各自 10 03 -> 解锁 -> 31 -> FD0C -> FD1C；顺序 FL 再 RR。 */
+testcase TC_FullCalibration_FL766_then_RR754()
+{
+  TestStep("Suite", "Full calibration: FL then RR");
+
+  SelectProduct(0);
+  if(!RunFullCalibrationOnSelectedProduct()) {
+    return;
+  }
+
+  testWaitForTimeout(100);
+
+  SelectProduct(3);
+  if(!RunFullCalibrationOnSelectedProduct()) {
+    return;
+  }
+
+  testStepPass("Dual radar full calibration test completed");
+}
+
+void MainTest()
+{
+  /* 可调：与服务间隔、coding 对齐 */
+  kServiceGapMs = 20;
+  snprintf(gDiagEcuQualifierForKey, elCount(gDiagEcuQualifierForKey), "FL");
+
+  gRxFlag = 0;
+
+  /* 切换用例：只读 / 全流程 */
+  TC_FullCalibration_FL766_then_RR754();
+  /* TC_Read_FD0C_FD1C_766_754(); */
+
+  /* Test Report 外联 ASC 示例（路径按本机修改为真实文件）：
+   * testReportAddExternalRef("file:///F:/Log/manual.asc", "UDS ASC", "F:\\Log\\manual.asc");
+   */
+}
+
+on message *
+{
+  int i;
+
+  if(this.id == gRespId && this.can == gCanCh) {
+    gRxDlc = this.dlc;
+    if(gRxDlc > 8) {
+      gRxDlc = 8;
+    }
+    for(i = 0; i < gRxDlc; i++) {
+      gRxData[i] = this.byte(i);
+    }
+    for(i = gRxDlc; i < 8; i++) {
+      gRxData[i] = 0;
+    }
+    gRxFlag = 1;
+  }
+}

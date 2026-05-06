@@ -1,0 +1,57 @@
+/*@!Encoding:936*/
+
+/*
+ * 普通 Simulation/Analyze CAPL 节点可用（无 Test Module API）。
+ * TimeString、LoggingBLockName、logFile 在主节点 FL_uds.can 的 variables 中声明。
+ * Measurement Setup：Logging Block 名 = Logging，过滤 0x700~0x7DF 等在 CANoe 侧配置。
+ */
+
+void InitUdsLoggingTime()
+{
+  long tm[9];
+
+  getLocalTime(tm);
+  snprintf(TimeString, elCount(TimeString),
+           "%d_%02d_%02d_%02d_%02d_%02d",
+           tm[5] + 1900, tm[4] + 1, tm[3],
+           tm[2], tm[1], tm[0]);
+}
+
+void loggingStart(char testCaseTitle[])
+{
+  int i;
+  int j;
+  char c;
+  char safeTitle[120];
+
+  InitUdsLoggingTime();
+
+  j = 0;
+  for(i = 0; testCaseTitle[i] && j < elCount(safeTitle) - 1; i++) {
+    c = testCaseTitle[i];
+    if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+       (c >= '0' && c <= '9') || c == '_' || c == '-') {
+      safeTitle[j++] = c;
+    } else {
+      safeTitle[j++] = '_';
+    }
+  }
+  safeTitle[j] = '\0';
+
+  snprintf(logFile, elCount(logFile),
+           "F:\\AI_Cursor\\AI_CANoe\\长安_B216-G\\Log\\UDS_%s_%s.asc",
+           TimeString,
+           safeTitle);
+
+  stopLogging();
+  setLogFileName(LoggingBLockName, logFile);
+  startLogging(LoggingBLockName);
+
+  write("【Logging】Block=%s, File=%s", LoggingBLockName, logFile);
+}
+
+void loggingStop()
+{
+  stopLogging();
+  write("【Logging】Stop, File=%s", logFile);
+}
