@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemvariables version="4">
+  <namespace name="" comment="" interface="">
+    <namespace name="Stess" comment="" interface="">
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DIDtest_Fail_times" comment="" bitcount="64" isSigned="false" encoding="65001" type="longlong" startValue="0" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DIDtest_Success_times" comment="" bitcount="64" isSigned="false" encoding="65001" type="longlong" startValue="0" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Reset11_Fail_times" comment="" bitcount="64" isSigned="false" encoding="65001" type="longlong" startValue="0" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Reset11_Success_times" comment="" bitcount="64" isSigned="false" encoding="65001" type="longlong" startValue="0" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Stress_start" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="success_times" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="0" />
+      <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_start" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+    </namespace>
+    <namespace name="UDS" comment="" interface="">
+      <namespace name="DTC" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_DD01" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_DD02" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_DD03" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_DD04" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_F120" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_F121" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_F122" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DID_F123" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Rx_dtc" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Rx_dtc_state" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Rx_occ1" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Rx_occ2" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      </namespace>
+      <namespace name="function" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="cal_distance" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" startValue="1" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="cal_distance_right" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" startValue="1" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CompentationResult" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_01_cal_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_01_cal_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_03_cal_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_03_cal_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_03_RX_state_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int">
+          <valuetable name="Custom" definesMinMax="false">
+            <valuetableentry value="0" lowerBound="0" upperBound="0" description="Invalid" displayString="Invalid" />
+            <valuetableentry value="1" lowerBound="1" upperBound="1" description="Incalibrating" displayString="Incalibrating" />
+            <valuetableentry value="2" lowerBound="2" upperBound="2" description="CalibSuccessfully" displayString="CalibSuccessfully" />
+            <valuetableentry value="3" lowerBound="3" upperBound="3" description="NoTarget" displayString="NoTarget" />
+            <valuetableentry value="4" lowerBound="4" upperBound="4" description="NoTalignBetweenRadarAndTarget" displayString="NoTalignBetweenRadarAndTarget" />
+            <valuetableentry value="5" lowerBound="5" upperBound="5" description="Interference" displayString="Interference" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="R31_03_RX_state_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int">
+          <valuetable name="Custom" definesMinMax="false">
+            <valuetableentry value="0" lowerBound="0" upperBound="0" description="Invalid" displayString="Invalid" />
+            <valuetableentry value="1" lowerBound="1" upperBound="1" description="InCalibrating" displayString="InCalibrating" />
+            <valuetableentry value="2" lowerBound="2" upperBound="2" description="CalibSuccessfully" displayString="CalibSuccessfully" />
+            <valuetableentry value="3" lowerBound="3" upperBound="3" description="NoTarget" displayString="NoTarget" />
+            <valuetableentry value="4" lowerBound="4" upperBound="4" description="NotAlignBetweenRadarAndTarget" displayString="NotAlignBetweenRadarAndTarget" />
+            <valuetableentry value="5" lowerBound="5" upperBound="5" description="Interference" displayString="Interference" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="rx_cal_distance_left" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" startValue="0" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="rx_cal_distance_right" comment="" bitcount="64" isSigned="true" encoding="65001" type="float" startValue="0" />
+      </namespace>
+      <namespace name="General_Service" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ClearDiagnosticInformation_14FFFFFF" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CommunicationControl_2800" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CommunicationControl_2803" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ControlDTCSetting_8501" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ControlDTCSetting_8502" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DiagnosticSessionControl_1001" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DiagnosticSessionControl_1002" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DiagnosticSessionControl_1003" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ECUReset_1101" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ECUReset_1103" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ReadDTCInformation_1901" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ReadDTCInformation_1902" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="ReadDTCInformation_190A" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="SecurityAccess_2701" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="SecurityAccess_2702" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TesterPresent_3E00" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TesterPresent_3E00_Cycle" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      </namespace>
+      <namespace name="ManualInput" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Age_counter" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="10" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte0" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte1" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte2" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte3" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte4" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte5" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte6" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Byte7" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Cycle_change" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DTC_04_06" comment="" bitcount="32" isSigned="true" encoding="65001" type="int">
+          <valuetable name="Custom" definesMinMax="false">
+            <valuetableentry value="0" lowerBound="0" upperBound="0" description="DTC1904" displayString="DTC1904" />
+            <valuetableentry value="1" lowerBound="1" upperBound="1" description="DTC1906" displayString="DTC1906" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="DTC_Name" comment="" bitcount="32" isSigned="true" encoding="65001" type="int">
+          <valuetable name="Custom" definesMinMax="false">
+            <valuetableentry value="0" lowerBound="0" upperBound="0" description="DTC_D10017" displayString="DTC_D10017" />
+            <valuetableentry value="1" lowerBound="1" upperBound="1" description="DTC_D10016" displayString="DTC_D10016" />
+            <valuetableentry value="2" lowerBound="2" upperBound="2" description="DTC_D17488" displayString="DTC_D17488" />
+            <valuetableentry value="3" lowerBound="3" upperBound="3" description="DTC_D01F88" displayString="DTC_D01F88" />
+            <valuetableentry value="4" lowerBound="4" upperBound="4" description="DTC_661087" displayString="DTC_661087" />
+            <valuetableentry value="5" lowerBound="5" upperBound="5" description="DTC_661187" displayString="DTC_661187" />
+            <valuetableentry value="6" lowerBound="6" upperBound="6" description="DTC_661287" displayString="DTC_661287" />
+            <valuetableentry value="7" lowerBound="7" upperBound="7" description="DTC_661387" displayString="DTC_661387" />
+            <valuetableentry value="8" lowerBound="8" upperBound="8" description="DTC_661487" displayString="DTC_661487" />
+            <valuetableentry value="9" lowerBound="9" upperBound="9" description="DTC_661587" displayString="DTC_661587" />
+            <valuetableentry value="10" lowerBound="10" upperBound="10" description="DTC_661687" displayString="DTC_661687" />
+            <valuetableentry value="11" lowerBound="11" upperBound="11" description="DTC_663076" displayString="DTC_663076" />
+            <valuetableentry value="12" lowerBound="12" upperBound="12" description="DTC_664076" displayString="DTC_664076" />
+            <valuetableentry value="13" lowerBound="13" upperBound="13" description="DTC_66314F" displayString="DTC_66314F" />
+            <valuetableentry value="14" lowerBound="14" upperBound="14" description="DTC_66324F" displayString="DTC_66324F" />
+            <valuetableentry value="15" lowerBound="15" upperBound="15" description="DTC_663175" displayString="DTC_663175" />
+            <valuetableentry value="16" lowerBound="16" upperBound="16" description="DTC_663275" displayString="DTC_663275" />
+          </valuetable>
+        </variable>
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Matul_TX" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Matul_TX_Timer" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="0" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="off_on_timer" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="10000" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="on_off_timer" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="10000" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="Request_ID" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="1939" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="wake_up_state" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" startValue="1" />
+      </namespace>
+      <namespace name="Service_22" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_CAR_type" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_ECU_name" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_hw_version" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_installation_date" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_part_number" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_sw_supply_code" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_sw_version" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="read_VIN" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E000_CAL_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E001_CAL_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E004_CAL_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E005_CAL_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      </namespace>
+      <namespace name="Service_2E" comment="" interface="">
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="CAR_type" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="installation_date" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E004_CAL_left" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="TX_E005_CAL_right" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="VIN" comment="" bitcount="32" isSigned="true" encoding="65001" type="intarray" arrayLength="1" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_CAR_type" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_ECU_name" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_installation_date" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_part_number" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_sw_supply_code" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+        <variable anlyzLocal="2" readOnly="false" valueSequence="false" unit="" name="write_VIN" comment="" bitcount="32" isSigned="true" encoding="65001" type="int" />
+      </namespace>
+    </namespace>
+  </namespace>
+</systemvariables>
