@@ -41,4 +41,20 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 
 ---
 
+## 在仓库中的位置
+
+本工程位于：<https://github.com/Huanghe5566/Vector_CANoe> 的 **`QiRui_T19C_0511/`** 子目录。
+
+检出标签：
+
+```bash
+git clone https://github.com/Huanghe5566/Vector_CANoe.git
+cd Vector_CANoe
+git checkout v1.0.0
+```
+
+在 Windows 上克隆完整仓库（含 Vector 示例的长路径）时建议启用：`git config --global core.longpaths true`。
+
+---
+
 仓库：<https://github.com/Huanghe5566/Vector_CANoe>
