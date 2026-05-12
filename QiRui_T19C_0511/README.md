@@ -1,6 +1,6 @@
 # QiRui_T19C_0511 — 奇瑞 T19C CANoe 仿真测试工程
 
-**版本**: v1.0.0  
+**版本**: V1.0.1  
 **CANoe**: 12.0.221（配置见 `Chery_T19C.cfg` 文件头）
 
 面向奇瑞 **T19C / RLCR / RRCR** 相关 CAN FD 网络的仿真与台架测试，集成 DBC、面板、系统变量及 CAPL 校验逻辑。
@@ -35,6 +35,10 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 
 ## 变更记录
 
+### V1.0.1
+
+- 添加了 UDP 数据接收功能。
+
 ### v1.0.0
 
 - 初始归档：奇瑞 T19C 相关 CANoe 配置、DBC、面板、CAPL 与诊断描述。
@@ -50,11 +54,7 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 ```bash
 git clone https://github.com/Huanghe5566/Vector_CANoe.git
 cd Vector_CANoe
-git checkout v1.0.0
+git checkout V1.0.1
 ```
 
 在 Windows 上克隆完整仓库（含 Vector 示例的长路径）时建议启用：`git config --global core.longpaths true`。
-
----
-
-仓库：<https://github.com/Huanghe5566/Vector_CANoe>
