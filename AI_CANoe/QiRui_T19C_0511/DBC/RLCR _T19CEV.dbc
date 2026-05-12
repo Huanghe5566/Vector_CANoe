@@ -1,0 +1,1471 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: CGW_T19CEV CGW_T19C RLCR
+
+
+BO_ 1245 FCM_5: 8 CGW_T19C
+ SG_ FCM_5_ELKONOFFSts : 19|2@0+ (1,0) [0|3] ""  RLCR
+
+BO_ 1201 RLCR_1: 8 RLCR
+ SG_ RLCR_1_SysSt : 7|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_RCTBWarn : 5|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_RAEBWarn : 4|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_Resd2 : 3|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_ELKSts : 2|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_BlkSts : 1|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_RCTAWarn : 0|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_BSDWarn : 15|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_DOWWarn : 13|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_RCWWarn : 11|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_ObjTyp : 9|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_BSDLCARCTAONOFFSts : 23|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_DOWONOFFSts : 21|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_RCWONOFFSts : 19|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_Resd1 : 52|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_MsgCntr : 51|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_1_CRC : 63|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 498 RLCR_2: 8 RLCR
+ SG_ RLCR_2_Resd1 : 7|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RAEBReq : 6|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RAEBONOFFSts : 3|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RCTBONOFFSts : 5|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RAEBCtrlA : 1|10@0+ (0.01,-10.22) [-10.22|0] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_Resd4 : 23|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RCTBReq : 22|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_Resd2 : 18|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_RCTBCtrlA : 17|10@0+ (0.01,-10.22) [-10.22|0] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_Resd3 : 39|20@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_MsgCntr : 51|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_2_CRC : 63|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 935 RLCR_3: 24 RLCR
+ SG_ RLCR_3_Le1ObjBoxLen : 7|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjBoxWidth : 14|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1HdTo : 21|12@0+ (0.1,-180) [-180|180] "deg"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjID : 25|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjCoordY : 33|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjCoordX : 52|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjXDirAV : 71|8@0+ (0.1,-12.8) [-12.8|12.7] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjYDirV : 79|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjXDirV : 81|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjMtnChartc : 99|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjTyp : 97|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjConf : 111|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjNrOffocst : 110|5@0+ (1,0) [0|31] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjTrackSt : 105|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjCoordXDstStdDe : 119|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjCoordYDstStdDe : 127|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjXDirVStdDe : 135|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Le1ObjYDirVStdDe : 129|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_Resd_1 : 139|40@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_MsgCntr : 179|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_3_CRC : 191|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 937 RLCR_4: 24 RLCR
+ SG_ RLCR_4_Le2ObjBoxLen : 7|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjBoxWidth : 14|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2HdTo : 21|12@0+ (0.1,-180) [-180|180] "deg"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjID : 25|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjCoordY : 33|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjCoordX : 52|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjXDirAV : 71|8@0+ (0.1,-12.8) [-12.8|12.7] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjYDirV : 79|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjXDirV : 81|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjMtnChartc : 99|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjTyp : 97|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjConf : 111|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjNrOffocst : 110|5@0+ (1,0) [0|31] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjTrackSt : 105|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjCoordXDstStdDe : 119|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjCoordYDstStdDe : 127|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjXDirVStdDe : 135|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Le2ObjYDirVStdDe : 129|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_Resd_1 : 139|40@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_MsgCntr : 179|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_4_CRC : 191|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 941 RLCR_5: 24 RLCR
+ SG_ RLCR_5_Le3ObjBoxLen : 7|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjBoxWidth : 14|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3HdTo : 21|12@0+ (0.1,-180) [-180|180] "deg"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjID : 25|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjCoordY : 33|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjCoordX : 52|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjXDirAV : 71|8@0+ (0.1,-12.8) [-12.8|12.7] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjYDirV : 79|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjXDirV : 81|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjMtnChartc : 99|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjTyp : 97|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjConf : 111|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjNrOffocst : 110|5@0+ (1,0) [0|31] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjTrackSt : 105|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjCoordXDstStdDe : 119|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjCoordYDstStdDe : 127|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjXDirVStdDe : 135|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Le3ObjYDirVStdDe : 129|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_Resd_1 : 139|40@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_MsgCntr : 179|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_5_CRC : 191|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 946 RLCR_6: 24 RLCR
+ SG_ RLCR_6_Le4ObjBoxLen : 7|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjBoxWidth : 14|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4HdTo : 21|12@0+ (0.1,-180) [-180|180] "deg"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjID : 25|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjCoordY : 33|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjCoordX : 52|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjXDirAV : 71|8@0+ (0.1,-12.8) [-12.8|12.7] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjYDirV : 79|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjXDirV : 81|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjMtnChartc : 99|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjTyp : 97|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjConf : 111|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjNrOffocst : 110|5@0+ (1,0) [0|31] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjTrackSt : 105|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjCoordXDstStdDe : 119|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjCoordYDstStdDe : 127|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjXDirVStdDe : 135|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Le4ObjYDirVStdDe : 129|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_Resd_1 : 139|40@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_MsgCntr : 179|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_6_CRC : 191|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 948 RLCR_7: 24 RLCR
+ SG_ RLCR_7_Le5ObjBoxLen : 7|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjBoxWidth : 14|9@0+ (0.1,0) [0|50] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5HdTo : 21|12@0+ (0.1,-180) [-180|180] "deg"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjID : 25|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjCoordY : 33|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjCoordX : 52|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjXDirAV : 71|8@0+ (0.1,-12.8) [-12.8|12.7] "m/s2"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjYDirV : 79|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjXDirV : 81|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjMtnChartc : 99|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjTyp : 97|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjConf : 111|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjNrOffocst : 110|5@0+ (1,0) [0|31] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjTrackSt : 105|2@0+ (1,0) [0|3] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjCoordXDstStdDe : 119|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjCoordYDstStdDe : 127|8@0+ (0.05,0) [0|12.7] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjXDirVStdDe : 135|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Le5ObjYDirVStdDe : 129|6@0+ (0.05,0) [0|2] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_Resd_1 : 139|40@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_MsgCntr : 179|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_7_CRC : 191|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 953 RLCR_8: 8 RLCR
+ SG_ RLCR_8_TiStampLaten : 7|16@0+ (1,0) [0|65535] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_8_Resd1 : 23|36@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_8_MsgCntr : 51|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_8_CRC : 63|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 955 RLCR_9: 8 RLCR
+ SG_ RLCR_9_ObjVldFlg : 7|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_9_LgtDst : 6|13@0+ (0.05,-200) [-200|200] "m"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_9_LgtRelV : 9|14@0+ (0.02,-128) [-128|128] "m/s"  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_9_Resd1 : 27|24@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_9_MsgCntr : 51|4@0+ (1,0) [0|15] ""  CGW_T19CEV,CGW_T19C
+ SG_ RLCR_9_CRC : 63|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 1599 NMm_RLCR: 8 RLCR
+ SG_ srcNodeID_RLCR : 7|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ RMR_RLCR : 8|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ NMm_RLCR_Reserved1 : 15|7@0+ (1,0) [0|127] ""  CGW_T19CEV,CGW_T19C
+ SG_ usrData0_RLCR : 23|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ IGNITION_WAKEUP_RLCR : 24|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ RESET_WAKEUP_RLCR : 25|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ NETWORK_WAKEUP_RLCR : 26|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ ECUSPEC_WAKEUP_RLCR : 27|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ NETWORK_AWAKE_RLCR : 28|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ IGNITION_AWAKE_RLCR : 29|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ DIAGNOSTIC_AWAKE_RLCR : 30|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ ECUSPEC_AWAKE_RLCR : 31|1@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+ SG_ usrData2_RLCR : 39|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ usrData3_RLCR : 47|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ usrData4_RLCR : 55|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+ SG_ usrData5_RLCR : 63|8@0+ (1,0) [0|255] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 745 ABS_ESP_1: 8 CGW_T19C
+ SG_ ABS_ESP_1_ABSFailSts : 5|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_ABSActive : 6|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_VDCFailSts : 11|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_VDCActive : 12|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_TCSFailSts : 13|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_TCSActive : 14|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_PressureMasterCylinder : 9|10@0+ (1,0) [0|1022] "Bar"  RLCR
+ SG_ ESP1_PressureMasCylindValidData : 29|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ IPB_SimulatorPressure : 9|10@0+ (1,0) [0|1022] "Bar"  RLCR
+ SG_ IPB_SimulatorPressureStatus : 29|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ESP1_VehicleSpeedVSOSigValidData : 30|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_1_VehicleSpeedVSOSig : 28|13@0+ (0.0625,0) [0|511.875] "km/h"  RLCR
+ SG_ ABS_ESP_1_Checksum : 47|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ ABS_ESP_1_MessageCounter : 59|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ABS_ESP_1_ESPSwitchStatus : 60|1@0+ (1,0) [0|1] ""  RLCR
+
+BO_ 787 ABS_ESP_3: 8 CGW_T19C
+ SG_ NoBrakeForce : 36|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABS_ESP_3_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ABS_ESP_3_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 790 ABS_ESP_4: 8 CGW_T19C
+ SG_ VehicleStandstill : 47|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ ABS_ESP_4_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ABS_ESP_4_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 793 ABS_ESP_5: 8 CGW_T19C
+ SG_ LHRPulseCounter : 7|13@0+ (1,0) [0|8191] "pulse"  RLCR
+ SG_ LHRPulseCounterFailSts : 10|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHFPulseCounterFailSts : 8|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ LHFPulseCounterFailSts : 9|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHRPulseCounter : 23|13@0+ (1,0) [0|8191] "pulse"  RLCR
+ SG_ RHRPulseCounterFailSts : 26|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHFPulseCounter : 25|13@0+ (1,0) [0|8191] "pulse"  RLCR
+ SG_ LHFPulseCounter : 44|13@0+ (1,0) [0|8191] "pulse"  RLCR
+
+BO_ 608 ABS_ESP_7: 8 CGW_T19C
+ SG_ LHFWheelSpeedRaw : 4|12@0+ (0.05,-30) [-30|80] "m/s"  RLCR
+ SG_ LHFWheelDriveDirection : 7|3@0+ (1,0) [0|7] ""  RLCR
+ SG_ LHFWheelSpeedRawValidData : 8|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHFWheelSpeedRaw : 20|12@0+ (0.05,-30) [-30|80] "m/s"  RLCR
+ SG_ RHFWheelDriveDirection : 23|3@0+ (1,0) [0|7] ""  RLCR
+ SG_ RHFWheelSpeedRawValidData : 24|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ WheelBrakeForce : 36|16@0+ (8,-250000) [-250000|250000] "N"  RLCR
+ SG_ ABSESP_7_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ABSESP_7_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 641 ABS_ESP_8: 8 CGW_T19C
+ SG_ LHRWheelSpeedRaw : 4|12@0+ (0.05,-30) [-30|80] "m/s"  RLCR
+ SG_ LHRWheelDriveDirection : 7|3@0+ (1,0) [0|7] ""  RLCR
+ SG_ LHRWheelSpeedRawValidData : 8|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHRWheelSpeedRaw : 20|12@0+ (0.05,-30) [-30|80] "m/s"  RLCR
+ SG_ RHRWheelDriveDirection : 23|3@0+ (1,0) [0|7] ""  RLCR
+ SG_ RHRWheelSpeedRawValidData : 24|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABSESP_8_RCTBAvl : 36|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABSESP_8_RAEBdecActv : 38|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABSESP_8_RAEBAvl : 39|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABSESP_8_RCTBdecActv : 47|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ABSESP_8_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ABSESP_8_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 913 BCM_1: 8 CGW_T19C
+ SG_ KeySts : 6|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ BCM_1_Checksum : 15|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ DirectionIndRight : 16|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ DirectionIndLeft : 17|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ HazardLightSW : 18|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ DriverDoorLockSts : 23|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ DriverDoorSts : 24|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ PsngrDoorSts : 25|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHRDoorSts : 28|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ LHRdoorSts : 29|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ TrunkSts : 30|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ DriverDoorStsQbit : 31|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ReverseGearSts : 35|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ LHTurnSW : 44|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ RHTurnSW : 45|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ WiperSts : 47|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ RainDetected : 53|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ AutoHighSpeedRequest : 52|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ BCM_1_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+
+BO_ 914 BCM_4: 8 CGW_T19C
+ SG_ BCM_4_ArmingSts : 1|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ LightDetected : 4|1@0+ (1,0) [0|1] ""  RLCR
+
+BO_ 1077 BCM_9: 8 CGW_T19C
+ SG_ TrailerConnectSts : 48|1@0+ (1,0) [0|1] ""  RLCR
+
+BO_ 746 BCM_19: 8 CGW_T19C
+ SG_ SlaveVehMod : 5|3@0+ (1,0) [0|7] ""  RLCR
+ SG_ BCM_19_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ BCM_19_CRC : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 1333 CLM_2: 8 CGW_T19C
+ SG_ CLM2_AliveCounter : 23|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ CLM2_ExternalTempFailSts : 16|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ CLM2_ExternalTemperature_C : 31|8@0+ (0.5,-55) [-55|70] "°C"  RLCR
+ SG_ CLM2_CRC : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 1057 HCU_EMS_2_G: 8 CGW_T19C
+ SG_ GasPedalPosition : 23|8@0+ (0.392,0) [0|99.568] "%"  RLCR
+ SG_ GasPedalPositionInvalidData : 31|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ EngineSts : 25|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ EMS_2_G_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ EMS_2_G_CRC : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 647 ICM_5: 8 CGW_T19C
+ SG_ ICM_5_DriverSeatBeltSwitch : 25|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ DriverSeatBeltSwitchQbit : 24|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ ICM_5_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ICM_5_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 196 SAM_1_G: 8 CGW_T19C
+ SG_ SteeringAngle : 7|16@0+ (0.0625,-2048) [-2048|2047.875] "deg"  RLCR
+ SG_ SteeringAngleSpeed : 23|8@0+ (4,0) [0|1016] "deg/Sec"  RLCR
+ SG_ SteeringAngleValidData : 25|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ SteeringAngleSpeedValidData : 24|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ SAM_1_G_MessageCounter : 47|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ SAM_1_GCRCCheck : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 768 TCU_2: 8 CGW_T19C
+ SG_ ActualGear : 7|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ ActualGearValidData : 13|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ TCU_2_MessageCounter : 51|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ TCU_2_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 1276 IHU_11: 8 CGW_T19C
+ SG_ DVD_SET_DOW : 15|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ DVD_SET_RCW : 13|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ IHU_11_BSDSwitchSts : 11|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ IHU_11_RAEBSwtSet : 9|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ IHU_11_RCTBSwtSet : 23|2@0+ (1,0) [0|3] ""  RLCR
+
+BO_ 62 VCU_2: 48 CGW_T19CEV
+ SG_ VCU_2_CRC3 : 135|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ VCU_2_RollgCntr3 : 139|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ VCU_GasPedalPositionInvalidData : 173|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ VCU_GasPedalPosition : 183|8@0+ (0.392,0) [0|99.568] "%"  RLCR
+ SG_ VCU_2_CRC4 : 199|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ VCU_2_RollgCntr4 : 203|4@0+ (1,0) [0|15] ""  RLCR
+ SG_ VCU_PTReady : 245|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ VCU_ActualGear : 210|3@0+ (1,0) [0|7] ""  RLCR
+
+BO_ 295 YAS_1: 8 CGW_T19C
+ SG_ YAS_1_MessageCounter : 7|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ YAS_CalibrationSts : 11|1@0+ (1,0) [0|1] ""  RLCR
+ SG_ YawrateSigValidData : 13|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ LateralAccelerationSigValidData : 15|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ LateralAcceleration : 23|16@0+ (0.001,-2) [-2|2] "g"  RLCR
+ SG_ YawRate : 39|16@0+ (0.01,-180) [-180|180] "deg/sec"  RLCR
+ SG_ YAS_1_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 296 YAS_2: 8 CGW_T19C
+ SG_ YAS_2_MessageCounter : 7|8@0+ (1,0) [0|255] ""  RLCR
+ SG_ LongitudinalAccelerationSigValid : 15|2@0+ (1,0) [0|3] ""  RLCR
+ SG_ LongitudinalAcceleration : 23|16@0+ (0.001,-2) [-2|2] "g"  RLCR
+ SG_ YAS_2_Checksum : 63|8@0+ (1,0) [0|255] ""  RLCR
+
+BO_ 2003 Diag_RLCR_RES: 8 RLCR
+ SG_ Diag_RLCR_RES : 7|64@0+ (1,0) [0|1] ""  CGW_T19CEV,CGW_T19C
+
+BO_ 1987 Diag_RLCR_REQ: 8 CGW_T19C
+ SG_ Diag_RLCR_REQ : 7|64@0+ (1,0) [0|1] ""  RLCR
+
+BO_ 2015 DIAG_OBD_REQ_Broadcast: 8 CGW_T19C
+ SG_ Diag_Functional_REQ : 7|64@0+ (1,0) [0|1] ""  RLCR
+
+BO_TX_BU_ 1245 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 745 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 787 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 790 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 793 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 608 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 641 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 913 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 914 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 1077 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 746 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 1333 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 1057 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 647 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 196 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 1276 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 295 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 296 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 1987 : CGW_T19CEV,CGW_T19C;
+BO_TX_BU_ 2015 : CGW_T19CEV,CGW_T19C;
+
+
+CM_ "Version:V1.0,Date:2021.04.30,Author:XiaopingGao,Review:ZhonglinWang,Approval:JiancaiLi,Description:(Frist revision)Frist revision;
+Version:V1.1,Date:2021.05.06,Author:XiaopingGao,Review:ZhonglinWang,Approval:JiancaiLi,Description:(RLCR_1(0x4B1))RLCR_1_BSDELKWarning
+The signal name change to RLCR_1_BSDWarn;
+ ";
+CM_ SG_ 1245 FCM_5_ELKONOFFSts "ELK status";
+CM_ SG_ 1201 RLCR_1_SysSt "System self-test State(only for VEONEER)";
+CM_ SG_ 1201 RLCR_1_RCTBWarn "RCTA Warning";
+CM_ SG_ 1201 RLCR_1_RAEBWarn "RAEB Warning";
+CM_ SG_ 1201 RLCR_1_ELKSts "ELK Status of Left radar(only for VEONEER)";
+CM_ SG_ 1201 RLCR_1_BlkSts "Blockage Status(only for VEONEER)";
+CM_ SG_ 1201 RLCR_1_RCTAWarn "RCTA Warning";
+CM_ SG_ 1201 RLCR_1_BSDWarn "Blind spot detection system Warning";
+CM_ SG_ 1201 RLCR_1_DOWWarn "Door open warning Warning";
+CM_ SG_ 1201 RLCR_1_RCWWarn "Rear Collision Warning Warning";
+CM_ SG_ 1201 RLCR_1_ObjTyp "Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 1201 RLCR_1_BSDLCARCTAONOFFSts "Blind spot detection system/LCA/RCTA Switch status";
+CM_ SG_ 1201 RLCR_1_DOWONOFFSts "Door open warning Switch status";
+CM_ SG_ 1201 RLCR_1_RCWONOFFSts "Rear Collision Warning Switch Status";
+CM_ SG_ 1201 RLCR_1_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 1201 RLCR_1_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ SG_ 498 RLCR_2_Resd1 "RCTB Warning";
+CM_ SG_ 498 RLCR_2_RAEBReq "RAEB Request";
+CM_ SG_ 498 RLCR_2_RAEBONOFFSts "RAEB Switch status";
+CM_ SG_ 498 RLCR_2_RCTBONOFFSts "RCTB Switch status";
+CM_ SG_ 498 RLCR_2_RAEBCtrlA "RAEB Control Acceleration";
+CM_ SG_ 498 RLCR_2_Resd4 "RAEB Warning";
+CM_ SG_ 498 RLCR_2_RCTBReq "RCTBRequest";
+CM_ SG_ 498 RLCR_2_RCTBCtrlA "RCTB Control Acceleration";
+CM_ SG_ 498 RLCR_2_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 498 RLCR_2_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 935 "(only for VEONEER)";
+CM_ SG_ 935 RLCR_3_Le1ObjBoxLen "left 1 Objective Box Length";
+CM_ SG_ 935 RLCR_3_Le1ObjBoxWidth "left 1 Objective Box Width";
+CM_ SG_ 935 RLCR_3_Le1HdTo "left 1 Head towards";
+CM_ SG_ 935 RLCR_3_Le1ObjID "left 1 Objective ID";
+CM_ SG_ 935 RLCR_3_Le1ObjCoordY "Y coordinates of Left 1 Objective目标物中心位置y轴坐标";
+CM_ SG_ 935 RLCR_3_Le1ObjCoordX "X coordinates of left 1 Objective目标物中心位置x轴坐标";
+CM_ SG_ 935 RLCR_3_Le1ObjXDirAV "left 1 Objective X directions Acceleration velocity目标物x方向加速度";
+CM_ SG_ 935 RLCR_3_Le1ObjYDirV "left 1 Objective Y directions velocity目标物y方向速度";
+CM_ SG_ 935 RLCR_3_Le1ObjXDirV "left 1 Objective X directions velocity目标物x方向速度";
+CM_ SG_ 935 RLCR_3_Le1ObjMtnChartc "left 1 Objective motion characteristic目标运动特征";
+CM_ SG_ 935 RLCR_3_Le1ObjTyp "left 1 Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 935 RLCR_3_Le1ObjConf "left 1 Objective confidence目标置信度";
+CM_ SG_ 935 RLCR_3_Le1ObjNrOffocst "forecast Number of left 1 Objective  目标预测次数";
+CM_ SG_ 935 RLCR_3_Le1ObjTrackSt "left 1 Objective Track state 目标追踪状态";
+CM_ SG_ 935 RLCR_3_Le1ObjCoordXDstStdDe "left 1 Objective X coordinates distance standard deviations
+x轴距离标准";
+CM_ SG_ 935 RLCR_3_Le1ObjCoordYDstStdDe "left 1 ObjectiveY coordinates distance standard deviations  y轴距离标准差";
+CM_ SG_ 935 RLCR_3_Le1ObjXDirVStdDe "left 1 Objective X directions velocity standard deviations x方向速度标准差";
+CM_ SG_ 935 RLCR_3_Le1ObjYDirVStdDe "left 1 Objective Y directions velocity standard deviations y方向速度标准差";
+CM_ SG_ 935 RLCR_3_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 935 RLCR_3_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 937 "(only for VEONEER)";
+CM_ SG_ 937 RLCR_4_Le2ObjBoxLen "left 2 Objective Box Length";
+CM_ SG_ 937 RLCR_4_Le2ObjBoxWidth "left 2 Objective Box Width";
+CM_ SG_ 937 RLCR_4_Le2HdTo "left 2 Head towards";
+CM_ SG_ 937 RLCR_4_Le2ObjID "left 2 Objective ID";
+CM_ SG_ 937 RLCR_4_Le2ObjCoordY "Y coordinates of left 2 Objective目标物中心位置y轴坐标";
+CM_ SG_ 937 RLCR_4_Le2ObjCoordX "X coordinates of left 2Objective目标物中心位置x轴坐标";
+CM_ SG_ 937 RLCR_4_Le2ObjXDirAV "left 2 Objective X directions Acceleration velocity目标物x方向加速度";
+CM_ SG_ 937 RLCR_4_Le2ObjYDirV "left 2Objective Y directions velocity目标物y方向速度";
+CM_ SG_ 937 RLCR_4_Le2ObjXDirV "left 2Objective X directions velocity目标物x方向速度";
+CM_ SG_ 937 RLCR_4_Le2ObjMtnChartc "left 2 Objective motion characteristic目标运动特征";
+CM_ SG_ 937 RLCR_4_Le2ObjTyp "left 2 Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 937 RLCR_4_Le2ObjConf "left 2 Objective confidence目标置信度";
+CM_ SG_ 937 RLCR_4_Le2ObjNrOffocst "forecast Number of left 2 Objective  目标预测次数";
+CM_ SG_ 937 RLCR_4_Le2ObjTrackSt "left 2 Objective Track state 目标追踪状态";
+CM_ SG_ 937 RLCR_4_Le2ObjCoordXDstStdDe "left 2 Objective X coordinates distance standard deviations
+x轴距离标准";
+CM_ SG_ 937 RLCR_4_Le2ObjCoordYDstStdDe "left 2ObjectiveY coordinates distance standard deviations  y轴距离标准差";
+CM_ SG_ 937 RLCR_4_Le2ObjXDirVStdDe "left 2 Objective X directions velocity standard deviations x方向速度标准差";
+CM_ SG_ 937 RLCR_4_Le2ObjYDirVStdDe "left 2 Objective Y directions velocity standard deviations y方向速度标准差";
+CM_ SG_ 937 RLCR_4_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 937 RLCR_4_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 941 "(only for VEONEER)";
+CM_ SG_ 941 RLCR_5_Le3ObjBoxLen "left 3 Objective Box Length";
+CM_ SG_ 941 RLCR_5_Le3ObjBoxWidth "left 3 Objective Box Width";
+CM_ SG_ 941 RLCR_5_Le3HdTo "left 3 Head towards";
+CM_ SG_ 941 RLCR_5_Le3ObjID "left 3 Objective ID";
+CM_ SG_ 941 RLCR_5_Le3ObjCoordY "Y coordinates of left 3 Objective目标物中心位置y轴坐标";
+CM_ SG_ 941 RLCR_5_Le3ObjCoordX "X coordinates of  left 3 Objective目标物中心位置x轴坐标";
+CM_ SG_ 941 RLCR_5_Le3ObjXDirAV "left 3 Objective X directions Acceleration velocity目标物x方向加速度";
+CM_ SG_ 941 RLCR_5_Le3ObjYDirV "left 3 Objective Y directions velocity目标物y方向速度";
+CM_ SG_ 941 RLCR_5_Le3ObjXDirV "left 3 Objective X directions velocity目标物x方向速度";
+CM_ SG_ 941 RLCR_5_Le3ObjMtnChartc "left 3 Objective motion characteristic目标运动特征";
+CM_ SG_ 941 RLCR_5_Le3ObjTyp "left 3 Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 941 RLCR_5_Le3ObjConf "left 3 Objective confidence目标置信度";
+CM_ SG_ 941 RLCR_5_Le3ObjNrOffocst "forecast Number of left 3 Objective  目标预测次数";
+CM_ SG_ 941 RLCR_5_Le3ObjTrackSt "left 3 Objective Track state 目标追踪状态";
+CM_ SG_ 941 RLCR_5_Le3ObjCoordXDstStdDe "left 3 Objective X coordinates distance standard deviations
+x轴距离标准";
+CM_ SG_ 941 RLCR_5_Le3ObjCoordYDstStdDe "left 3 ObjectiveY coordinates distance standard deviations  y轴距离标准差";
+CM_ SG_ 941 RLCR_5_Le3ObjXDirVStdDe "left 3 Objective X directions velocity standard deviations x方向速度标准差";
+CM_ SG_ 941 RLCR_5_Le3ObjYDirVStdDe "left 3 Objective Y directions velocity standard deviations y方向速度标准差";
+CM_ SG_ 941 RLCR_5_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 941 RLCR_5_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 946 "(only for VEONEER)";
+CM_ SG_ 946 RLCR_6_Le4ObjBoxLen "left 4 Objective Box Length";
+CM_ SG_ 946 RLCR_6_Le4ObjBoxWidth "left 4 Objective Box Width";
+CM_ SG_ 946 RLCR_6_Le4HdTo "left 4 Head towards";
+CM_ SG_ 946 RLCR_6_Le4ObjID "left 4 Objective ID";
+CM_ SG_ 946 RLCR_6_Le4ObjCoordY "Y coordinates of left 4 Objective目标物中心位置y轴坐标";
+CM_ SG_ 946 RLCR_6_Le4ObjCoordX "X coordinates of  left 4 Objective目标物中心位置x轴坐标";
+CM_ SG_ 946 RLCR_6_Le4ObjXDirAV "left 4 Objective X directions Acceleration velocity目标物x方向加速度";
+CM_ SG_ 946 RLCR_6_Le4ObjYDirV "left 4 Objective Y directions velocity目标物y方向速度";
+CM_ SG_ 946 RLCR_6_Le4ObjXDirV "left 4 Objective X directions velocity目标物x方向速度";
+CM_ SG_ 946 RLCR_6_Le4ObjMtnChartc "left 4 Objective motion characteristic目标运动特征";
+CM_ SG_ 946 RLCR_6_Le4ObjTyp "left 4Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 946 RLCR_6_Le4ObjConf "left 4 Objective confidence目标置信度";
+CM_ SG_ 946 RLCR_6_Le4ObjNrOffocst "forecast Number of left 4 Objective  目标预测次数";
+CM_ SG_ 946 RLCR_6_Le4ObjTrackSt "left 4 Objective Track state 目标追踪状态";
+CM_ SG_ 946 RLCR_6_Le4ObjCoordXDstStdDe "left 4 Objective X coordinates distance standard deviations
+x轴距离标准";
+CM_ SG_ 946 RLCR_6_Le4ObjCoordYDstStdDe "left 4 ObjectiveY coordinates distance standard deviations  y轴距离标准差";
+CM_ SG_ 946 RLCR_6_Le4ObjXDirVStdDe "left 4 Objective X directions velocity standard deviations x方向速度标准差";
+CM_ SG_ 946 RLCR_6_Le4ObjYDirVStdDe "left 4 Objective Y directions velocity standard deviations y方向速度标准差";
+CM_ SG_ 946 RLCR_6_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 946 RLCR_6_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 948 "(only for VEONEER)";
+CM_ SG_ 948 RLCR_7_Le5ObjBoxLen "left 5 Objective Box Length";
+CM_ SG_ 948 RLCR_7_Le5ObjBoxWidth "left 5 Objective Box Width";
+CM_ SG_ 948 RLCR_7_Le5HdTo "left 5 Head towards";
+CM_ SG_ 948 RLCR_7_Le5ObjID "left 5 Objective ID";
+CM_ SG_ 948 RLCR_7_Le5ObjCoordY "Y coordinates of left 5 Objective目标物中心位置y轴坐标";
+CM_ SG_ 948 RLCR_7_Le5ObjCoordX "X coordinates of  left 5 Objective目标物中心位置x轴坐标";
+CM_ SG_ 948 RLCR_7_Le5ObjXDirAV "left 5 Objective X directions Acceleration velocity目标物x方向加速度";
+CM_ SG_ 948 RLCR_7_Le5ObjYDirV "left 5 Objective Y directions velocity目标物y方向速度";
+CM_ SG_ 948 RLCR_7_Le5ObjXDirV "left 5 Objective X directions velocity目标物x方向速度";
+CM_ SG_ 948 RLCR_7_Le5ObjMtnChartc "left 5 Objective motion characteristic目标运动特征";
+CM_ SG_ 948 RLCR_7_Le5ObjTyp "left 5 Objective type
+-00 (Ukwn)： invalid（Unused objects, such as people）";
+CM_ SG_ 948 RLCR_7_Le5ObjConf "left 5 Objective confidence目标置信度";
+CM_ SG_ 948 RLCR_7_Le5ObjNrOffocst "forecast Number of left 5 Objective  目标预测次数";
+CM_ SG_ 948 RLCR_7_Le5ObjTrackSt "left 5 Objective Track state 目标追踪状态";
+CM_ SG_ 948 RLCR_7_Le5ObjCoordXDstStdDe "left 5 Objective X coordinates distance standard deviations
+x轴距离标准";
+CM_ SG_ 948 RLCR_7_Le5ObjCoordYDstStdDe "left 5 ObjectiveY coordinates distance standard deviations  y轴距离标准差";
+CM_ SG_ 948 RLCR_7_Le5ObjXDirVStdDe "left 5 Objective X directions velocity standard deviations x方向速度标准差";
+CM_ SG_ 948 RLCR_7_Le5ObjYDirVStdDe "left 5 Objective Y directions velocity standard deviations y方向速度标准差";
+CM_ SG_ 948 RLCR_7_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 948 RLCR_7_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 953 "(only for VEONEER)";
+CM_ SG_ 953 RLCR_8_TiStampLaten "timestamp Latency时间戳同步用的延迟，生成目标到发到总线上的时间，提供平均值";
+CM_ SG_ 953 RLCR_8_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 953 RLCR_8_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ BO_ 955 "(only for Bosch)";
+CM_ SG_ 955 RLCR_9_ObjVldFlg "Left Object valid flag(For Bosch)目标有效位";
+CM_ SG_ 955 RLCR_9_LgtDst "Left Longitudinal distance(For Bosch)纵向距离（以车辆后轴中心作为原点）";
+CM_ SG_ 955 RLCR_9_LgtRelV "Left Longitudinal relative velocity(For Bosch)   纵向相对速度";
+CM_ SG_ 955 RLCR_9_MsgCntr "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 955 RLCR_9_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ SG_ 1599 srcNodeID_RLCR "The srcNodeID of RLCR is 0x3F'";
+CM_ SG_ 1599 RMR_RLCR "If set to 1 to force the network management of all other nodes on the bus into the re-peat message state.";
+CM_ SG_ 1599 IGNITION_WAKEUP_RLCR "ECU was “power off” or “Bus sleep” mode and started by ignition switch";
+CM_ SG_ 1599 RESET_WAKEUP_RLCR "If ECU was already awake, in “Prepare Bus Sleep” or “Ready Sleep” mode and re-started by an internal or an external reset.";
+CM_ SG_ 1599 NETWORK_WAKEUP_RLCR "ECU was in “Power off”, “Bus Sleep”, “Pre-pare Bus Sleep” or “Ready Sleep” Mode and then re-started by a network communication.";
+CM_ SG_ 1599 ECUSPEC_WAKEUP_RLCR "ECU was in ”power off”, “Bus Sleep”, “Pre-pare Bus Sleep” or “Ready Sleep” mode or “awake” and re-started by ECU specific reason (e.g. pressed Button, timer, etc.)";
+CM_ SG_ 1599 NETWORK_AWAKE_RLCR "ECU keeps the network awake due to the CAN message received from the network";
+CM_ SG_ 1599 IGNITION_AWAKE_RLCR "ECU can?t release communication because ignition (KL15) is turn on, or KLR is turned on";
+CM_ SG_ 1599 DIAGNOSTIC_AWAKE_RLCR "ECU needs communication for diagnostic purpose and keeps network awake.";
+CM_ SG_ 1599 ECUSPEC_AWAKE_RLCR "ECU keeps the network awake for ECU-define reasons for which communication is needed";
+CM_ BO_ 745 "Source network message is 'Cyclic, 10ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 745 ABS_ESP_1_VDCActive "ESP lamp on ICM should blinking ;VDC Intervention";
+CM_ SG_ 745 ABS_ESP_1_TCSActive "ESP lamp on ICM should blinking; TCS Intervention";
+CM_ SG_ 745 ABS_ESP_1_PressureMasterCylinder "ESP：主缸压力";
+CM_ SG_ 745 ESP1_PressureMasCylindValidData "Valid check bit of the signal ABS_ESP_1_PressureMasterCylinder";
+CM_ SG_ 745 IPB_SimulatorPressure "IPB:踏板模拟腔压力";
+CM_ SG_ 745 IPB_SimulatorPressureStatus "Valid check bit of the signal IPB_SimulatorPressure";
+CM_ SG_ 745 ABS_ESP_1_Checksum "((Byte0+Byte1+ Byte2+Byte3+Byte4+Byte6+Byte7) AND 0xFF) XOR 0xFF";
+CM_ SG_ 745 ABS_ESP_1_ESPSwitchStatus "“1” means VDC and Engine Traction Control System (PTC) Function and Brake Traction Control System (BTC) Function disabled and Ignit ESP lamp.
+0x0：ESP功能开启
+0x1：ESP功能关闭";
+CM_ BO_ 787 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 787 NoBrakeForce "No brake pressure applied
+Generally it regards wheel cylinder pressure";
+CM_ SG_ 787 ABS_ESP_3_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 787 ABS_ESP_3_Checksum "((Byte0+Byte1+ Byte2+Byte3+Byte4+Byte5+Byte6) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.3";
+CM_ BO_ 790 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 790 VehicleStandstill "车辆静止状态";
+CM_ SG_ 790 ABS_ESP_4_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ SG_ 790 ABS_ESP_4_Checksum "((Byte0+Byte1+ Byte2+Byte3+Byte4+Byte5+Byte6) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.3";
+CM_ BO_ 793 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ BO_ 608 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 608 WheelBrakeForce "Four-wheel total braking force
+0xF425~0xFFFE：Not Used";
+CM_ SG_ 608 ABSESP_7_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ SG_ 608 ABSESP_7_Checksum "((Byte0+Byte1+ Byte2+Byte3+Byte4+Byte5+Byte6) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.3";
+CM_ BO_ 641 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 641 ABSESP_8_RCTBAvl "RCTB Available";
+CM_ SG_ 641 ABSESP_8_RAEBdecActv "RAEB deceleration Active function triggers feedback signals deceleration Active.";
+CM_ SG_ 641 ABSESP_8_RAEBAvl "RAEB Available";
+CM_ SG_ 641 ABSESP_8_RCTBdecActv "RCTB deceleration Active function triggers feedback signals deceleration Active.";
+CM_ SG_ 641 ABSESP_8_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ SG_ 641 ABSESP_8_Checksum "((Byte0+Byte1+ Byte2+Byte3+Byte4+Byte5+Byte6) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.3";
+CM_ BO_ 913 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 913 BCM_1_Checksum "((Byte0+Byte2+Byte3+Byte4+Byte5+Byte6+Byte7) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.3";
+CM_ SG_ 913 DirectionIndRight "当右转向灯闪烁时一直发1，转向灯熄灭时一直发0.";
+CM_ SG_ 913 DirectionIndLeft "当左转向灯闪烁时一直发1，转向灯熄灭时一直发0.";
+CM_ SG_ 913 HazardLightSW "带自锁的开关，按照危险灯状态发送；不带自锁的开关，发送危险灯状态";
+CM_ SG_ 913 ReverseGearSts "MT：BCM接倒车开关硬线。
+AT：BCM接TCU发的倒档CAN信号。
+MT的车，ESP接收从BCM过来的ReverseGearSts信号
+AT的车，ESP 接收从TCU过来的ActualGear信号";
+CM_ SG_ 913 LHTurnSW "左转向开关，打开发1；关闭发0，默认发0";
+CM_ SG_ 913 RHTurnSW "右转向开关，打开发1；关闭发0，默认发0";
+CM_ SG_ 913 RainDetected "Rain detected
+检测到有无雨量";
+CM_ SG_ 913 AutoHighSpeedRequest "Auto high speed request
+让高速雨刮电机工作";
+CM_ SG_ 913 BCM_1_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ BO_ 914 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 914 BCM_4_ArmingSts "整车设防/解防成功动作信号
+设防成功0x1,解防成功0x2
+设防成功/解放成功后 0x1或0x2值只发十次之后0x0";
+CM_ SG_ 914 LightDetected "0X0: 暗
+0x1: 亮
+若为上LIN传感器：
+根据LIN信号S_AUTO_LAMP自动大灯开启或关闭转换为此CAN信号的亮或暗；
+若不上LIN传感器
+BCM根据传感器硬线信号转换为此CAN信号的亮或暗；
+无传感器或无法判断亮暗时此信号发默认值0";
+CM_ BO_ 1077 "Source network message is 'Cyclic, 100ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 1077 TrailerConnectSts "拖车连接状态";
+CM_ BO_ 746 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 746 SlaveVehMod "Slave Vehicle Mode";
+CM_ SG_ 746 BCM_19_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN  Network Implementation》section 2.3.1";
+CM_ SG_ 746 BCM_19_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN  Network Implementation》section 2.3.2";
+CM_ BO_ 1333 "Source network message is 'Cyclic, 100ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 1333 CLM2_AliveCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1
+备注：外控变排量增加此信号";
+CM_ SG_ 1333 CLM2_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.2
+备注：外控变排量增加此信号";
+CM_ BO_ 1057 "Source network message is 'Cyclic, 100ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 1057 GasPedalPosition "Driver/Cruise control
+This signal including compositive informations which are actual gas pedal position and dummy Cruise control gas pedal position";
+CM_ SG_ 1057 EMS_2_G_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation_V6.0》section 2.3.1";
+CM_ SG_ 1057 EMS_2_G_CRC "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation_V6.0》section 2.3.2";
+CM_ BO_ 647 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 647 ICM_5_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ SG_ 647 ICM_5_Checksum "((Byte0+Byte1+Byte2+Byte3+Byte4+Byte5+Byte6) AND 0xFF) XOR 0xFF
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.3";
+CM_ BO_ 196 "Source network message is 'Cyclic, 10ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 196 SteeringAngle "The actual range is from -720 deg to +720 deg.";
+CM_ SG_ 196 SAM_1_G_MessageCounter "Rolling message counter(the maximum value of Alive counter is 15)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.1";
+CM_ SG_ 196 SAM_1_GCRCCheck "CRC (SAE J1850 CRC-8)
+Note: Details Please refer to specification《Standard Specification for CAN Data Link Layer_v1.1》section 2.3.2";
+CM_ BO_ 768 "Source network message is 'Cyclic, 10ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 768 ActualGear "gives the actual engaged gear
+实际档位 
+DCT无0111,1000两个属性
+DHT只能发出1001、1010、1011、1111";
+CM_ SG_ 768 TCU_2_Checksum "((Byte0+Byte1+……+Byte6) AND 0xFF) XOR 0xFF";
+CM_ BO_ 1276 "此帧报文的设置信号，每设置一次，只发三次设置值
+Source network message is 'NoMsgSendType, /'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 1276 DVD_SET_RCW "通过DVD设置RCW功能开关";
+CM_ SG_ 1276 IHU_11_BSDSwitchSts "通过DVD设置BSD功能开关";
+CM_ SG_ 1276 IHU_11_RAEBSwtSet "RAEB switch set";
+CM_ SG_ 1276 IHU_11_RCTBSwtSet "RCTB switch set";
+CM_ BO_ 62 "Source network message is 'Cyclic, 10ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 62 VCU_2_CRC3 "CRC (SAE J1850 CRC-8) Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ SG_ 62 VCU_2_RollgCntr3 "Rolling message counter(the maximum value of Alive counter is 15) Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 62 VCU_GasPedalPosition "Driver/Cruise control
+This signal including compositive informations which are actual gas pedal position and dummy Cruise control gas pedal position";
+CM_ SG_ 62 VCU_2_CRC4 "CRC (SAE J1850 CRC-8) Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.2";
+CM_ SG_ 62 VCU_2_RollgCntr4 "Rolling message counter(the maximum value of Alive counter is 15) Note: Details Please refer to specification《EE Standard Specification for CAN FD Network Implementation》section 2.3.1";
+CM_ SG_ 62 VCU_PTReady "PT Ready indication";
+CM_ SG_ 62 VCU_ActualGear "actual gear";
+CM_ BO_ 295 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 295 YAS_CalibrationSts "Indicates  IMU Calibration State";
+CM_ SG_ 295 YawrateSigValidData "Signal state for yawrate";
+CM_ SG_ 295 LateralAccelerationSigValidData "If hasn’t been calibrated, after initialization, this signal ‘s value is always 10(invalid).";
+CM_ SG_ 295 LateralAcceleration "横向加速度信号
+传感器精度：0.0027680342857143g";
+CM_ SG_ 295 YawRate "偏航角速度信号                传感器精度：0.122189236 deg/s";
+CM_ SG_ 295 YAS_1_Checksum "0x01 XOR 0x27 XOR Byte0 XOR Byte1 XOR Byte2 XOR Byte3 XOR Byte4 XOR Byte5 XOR Byte6";
+CM_ BO_ 296 "Source network message is 'Cyclic, 20ms'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ SG_ 296 LongitudinalAccelerationSigValid "If hasn’t been calibrated, after initialization, this signal ‘s value is always10(invalid)";
+CM_ SG_ 296 LongitudinalAcceleration "纵向加速度信号
+传感器精度：0.0027680342857143 g";
+CM_ SG_ 296 YAS_2_Checksum "0x01 XOR 0x28 XOR Byte0 XOR Byte1 XOR Byte2 XOR Byte3 XOR Byte4 XOR Byte5 XOR Byte6";
+CM_ BO_ 1987 "Source network message is 'NoMsgSendType, /'.
+If no messages are received on source network, no messages are sent on the destination network.";
+CM_ BO_ 2015 "Source network message is 'NoMsgSendType, /'.
+If no messages are received on source network, no messages are sent on the destination network.";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","Event","IfActive","CE","CA","NoMsgSendType";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnChange","OnWrite","IfActive","OnChangeWithRepetition","OnWriteWithRepetition","IfActiveWithRepetition","NoSigSendType","OnChangeAndIfActive","OnChangeAndIfActiveWithRepetition","CA","CE","Event";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_ BO_  "CANFD_BRS" ENUM  "0","1";
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_  "NmMessageCount" INT 0 255;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_ BU_  "NmNode" ENUM  "no","yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_ SG_  "GenSigMeplex" STRING ;
+BA_DEF_ SG_  "GenSigASIL" ENUM  "QM","A","B","C","D","vector_leerstring";
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "GenMsgSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "CANFD_BRS" "1";
+BA_DEF_DEF_  "VFrameFormat" "StandardCAN_FD";
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "GenMsgILSupport" "No";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "NmNode" "no";
+BA_DEF_DEF_  "BusType" "CAN FD";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+BA_DEF_DEF_  "GenSigMeplex" "";
+BA_DEF_DEF_  "GenSigASIL" "QM";
+BA_ "DBName" "sdadad";
+BA_ "GenMsgILSupport" BO_ 1245 1;
+BA_ "GenMsgCycleTime" BO_ 1245 100;
+BA_ "VFrameFormat" BO_ 1245 14;
+BA_ "GenMsgILSupport" BO_ 1201 1;
+BA_ "GenMsgCycleTime" BO_ 1201 100;
+BA_ "VFrameFormat" BO_ 1201 14;
+BA_ "GenMsgILSupport" BO_ 498 1;
+BA_ "GenMsgCycleTime" BO_ 498 10;
+BA_ "VFrameFormat" BO_ 498 14;
+BA_ "GenMsgILSupport" BO_ 935 1;
+BA_ "GenMsgCycleTime" BO_ 935 50;
+BA_ "VFrameFormat" BO_ 935 14;
+BA_ "GenMsgILSupport" BO_ 937 1;
+BA_ "GenMsgCycleTime" BO_ 937 50;
+BA_ "VFrameFormat" BO_ 937 14;
+BA_ "GenMsgILSupport" BO_ 941 1;
+BA_ "GenMsgCycleTime" BO_ 941 50;
+BA_ "VFrameFormat" BO_ 941 14;
+BA_ "GenMsgILSupport" BO_ 946 1;
+BA_ "GenMsgCycleTime" BO_ 946 50;
+BA_ "VFrameFormat" BO_ 946 14;
+BA_ "GenMsgILSupport" BO_ 948 1;
+BA_ "GenMsgCycleTime" BO_ 948 50;
+BA_ "VFrameFormat" BO_ 948 14;
+BA_ "GenMsgILSupport" BO_ 953 1;
+BA_ "GenMsgCycleTime" BO_ 953 50;
+BA_ "VFrameFormat" BO_ 953 14;
+BA_ "GenMsgILSupport" BO_ 955 1;
+BA_ "GenMsgCycleTime" BO_ 955 50;
+BA_ "VFrameFormat" BO_ 955 14;
+BA_ "NmMessage" BO_ 1599 1;
+BA_ "GenMsgCycleTime" BO_ 1599 1000;
+BA_ "VFrameFormat" BO_ 1599 14;
+BA_ "GenMsgILSupport" BO_ 745 1;
+BA_ "GenMsgCycleTime" BO_ 745 10;
+BA_ "VFrameFormat" BO_ 745 14;
+BA_ "GenMsgILSupport" BO_ 787 1;
+BA_ "GenMsgCycleTime" BO_ 787 20;
+BA_ "VFrameFormat" BO_ 787 14;
+BA_ "GenMsgILSupport" BO_ 790 1;
+BA_ "GenMsgCycleTime" BO_ 790 20;
+BA_ "VFrameFormat" BO_ 790 14;
+BA_ "GenMsgILSupport" BO_ 793 1;
+BA_ "GenMsgCycleTime" BO_ 793 20;
+BA_ "VFrameFormat" BO_ 793 14;
+BA_ "GenMsgILSupport" BO_ 608 1;
+BA_ "GenMsgCycleTime" BO_ 608 20;
+BA_ "VFrameFormat" BO_ 608 14;
+BA_ "GenMsgILSupport" BO_ 641 1;
+BA_ "GenMsgCycleTime" BO_ 641 20;
+BA_ "VFrameFormat" BO_ 641 14;
+BA_ "GenMsgILSupport" BO_ 913 1;
+BA_ "GenMsgCycleTime" BO_ 913 20;
+BA_ "VFrameFormat" BO_ 913 14;
+BA_ "GenMsgILSupport" BO_ 914 1;
+BA_ "GenMsgCycleTime" BO_ 914 20;
+BA_ "VFrameFormat" BO_ 914 14;
+BA_ "GenMsgILSupport" BO_ 1077 1;
+BA_ "GenMsgCycleTime" BO_ 1077 100;
+BA_ "VFrameFormat" BO_ 1077 14;
+BA_ "GenMsgILSupport" BO_ 746 1;
+BA_ "GenMsgCycleTime" BO_ 746 20;
+BA_ "VFrameFormat" BO_ 746 14;
+BA_ "GenMsgILSupport" BO_ 1333 1;
+BA_ "GenMsgCycleTime" BO_ 1333 100;
+BA_ "VFrameFormat" BO_ 1333 14;
+BA_ "GenMsgILSupport" BO_ 1057 1;
+BA_ "GenMsgCycleTime" BO_ 1057 100;
+BA_ "VFrameFormat" BO_ 1057 14;
+BA_ "GenMsgILSupport" BO_ 647 1;
+BA_ "GenMsgCycleTime" BO_ 647 20;
+BA_ "VFrameFormat" BO_ 647 14;
+BA_ "GenMsgILSupport" BO_ 196 1;
+BA_ "GenMsgCycleTime" BO_ 196 10;
+BA_ "VFrameFormat" BO_ 196 14;
+BA_ "GenMsgILSupport" BO_ 768 1;
+BA_ "GenMsgCycleTime" BO_ 768 10;
+BA_ "VFrameFormat" BO_ 768 14;
+BA_ "GenMsgILSupport" BO_ 1276 1;
+BA_ "GenMsgSendType" BO_ 1276 5;
+BA_ "GenMsgCycleTimeFast" BO_ 1276 100;
+BA_ "GenMsgNrOfRepetition" BO_ 1276 3;
+BA_ "GenMsgDelayTime" BO_ 1276 5;
+BA_ "VFrameFormat" BO_ 1276 14;
+BA_ "GenMsgILSupport" BO_ 62 1;
+BA_ "GenMsgCycleTime" BO_ 62 10;
+BA_ "VFrameFormat" BO_ 62 14;
+BA_ "GenMsgILSupport" BO_ 295 1;
+BA_ "GenMsgCycleTime" BO_ 295 20;
+BA_ "VFrameFormat" BO_ 295 14;
+BA_ "GenMsgILSupport" BO_ 296 1;
+BA_ "GenMsgCycleTime" BO_ 296 20;
+BA_ "VFrameFormat" BO_ 296 14;
+BA_ "GenMsgSendType" BO_ 2003 5;
+BA_ "VFrameFormat" BO_ 2003 14;
+BA_ "GenMsgSendType" BO_ 1987 5;
+BA_ "VFrameFormat" BO_ 1987 14;
+BA_ "DiagState" BO_ 2015 1;
+BA_ "GenMsgSendType" BO_ 2015 5;
+BA_ "VFrameFormat" BO_ 2015 14;
+BA_ "GenSigStartValue" SG_ 1245 FCM_5_ELKONOFFSts 1;
+BA_ "GenSigASIL" SG_ 1245 FCM_5_ELKONOFFSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_SysSt 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_RCTBWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_RAEBWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_Resd2 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_ELKSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_BlkSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_RCTAWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_BSDWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_DOWWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_RCWWarn 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_ObjTyp 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_BSDLCARCTAONOFFSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_DOWONOFFSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_RCWONOFFSts 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_Resd1 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 1201 RLCR_1_CRC 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_Resd1 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RAEBReq 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RAEBONOFFSts 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RCTBONOFFSts 5;
+BA_ "GenSigStartValue" SG_ 498 RLCR_2_RAEBCtrlA 1022;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RAEBCtrlA 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_Resd4 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RCTBReq 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_Resd2 5;
+BA_ "GenSigStartValue" SG_ 498 RLCR_2_RCTBCtrlA 1022;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_RCTBCtrlA 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_Resd3 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 498 RLCR_2_CRC 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjBoxLen 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjBoxWidth 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1HdTo 1800;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1HdTo 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjID 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjCoordY 4000;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjCoordY 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjCoordX 4000;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjCoordX 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjXDirAV 128;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjXDirAV 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjYDirV 6400;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjYDirV 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjXDirV 6400;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjXDirV 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjMtnChartc 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjTyp 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjConf 5;
+BA_ "GenSigStartValue" SG_ 935 RLCR_3_Le1ObjNrOffocst 31;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjNrOffocst 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjTrackSt 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjCoordXDstStdDe 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjCoordYDstStdDe 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjXDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Le1ObjYDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_Resd_1 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 935 RLCR_3_CRC 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjBoxLen 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjBoxWidth 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2HdTo 1800;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2HdTo 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjID 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjCoordY 4000;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjCoordY 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjCoordX 4000;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjCoordX 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjXDirAV 128;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjXDirAV 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjYDirV 6400;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjYDirV 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjXDirV 6400;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjXDirV 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjMtnChartc 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjTyp 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjConf 5;
+BA_ "GenSigStartValue" SG_ 937 RLCR_4_Le2ObjNrOffocst 31;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjNrOffocst 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjTrackSt 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjCoordXDstStdDe 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjCoordYDstStdDe 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjXDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Le2ObjYDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_Resd_1 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 937 RLCR_4_CRC 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjBoxLen 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjBoxWidth 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3HdTo 1800;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3HdTo 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjID 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjCoordY 4000;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjCoordY 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjCoordX 4000;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjCoordX 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjXDirAV 128;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjXDirAV 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjYDirV 6400;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjYDirV 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjXDirV 6400;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjXDirV 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjMtnChartc 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjTyp 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjConf 5;
+BA_ "GenSigStartValue" SG_ 941 RLCR_5_Le3ObjNrOffocst 31;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjNrOffocst 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjTrackSt 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjCoordXDstStdDe 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjCoordYDstStdDe 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjXDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Le3ObjYDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_Resd_1 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 941 RLCR_5_CRC 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjBoxLen 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjBoxWidth 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4HdTo 1800;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4HdTo 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjID 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjCoordY 4000;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjCoordY 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjCoordX 4000;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjCoordX 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjXDirAV 128;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjXDirAV 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjYDirV 6400;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjYDirV 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjXDirV 6400;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjXDirV 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjMtnChartc 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjTyp 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjConf 5;
+BA_ "GenSigStartValue" SG_ 946 RLCR_6_Le4ObjNrOffocst 31;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjNrOffocst 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjTrackSt 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjCoordXDstStdDe 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjCoordYDstStdDe 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjXDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Le4ObjYDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_Resd_1 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 946 RLCR_6_CRC 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjBoxLen 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjBoxWidth 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5HdTo 1800;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5HdTo 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjID 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjCoordY 4000;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjCoordY 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjCoordX 4000;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjCoordX 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjXDirAV 128;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjXDirAV 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjYDirV 6400;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjYDirV 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjXDirV 6400;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjXDirV 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjMtnChartc 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjTyp 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjConf 5;
+BA_ "GenSigStartValue" SG_ 948 RLCR_7_Le5ObjNrOffocst 31;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjNrOffocst 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjTrackSt 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjCoordXDstStdDe 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjCoordYDstStdDe 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjXDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Le5ObjYDirVStdDe 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_Resd_1 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 948 RLCR_7_CRC 5;
+BA_ "GenSigASIL" SG_ 953 RLCR_8_TiStampLaten 5;
+BA_ "GenSigASIL" SG_ 953 RLCR_8_Resd1 5;
+BA_ "GenSigASIL" SG_ 953 RLCR_8_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 953 RLCR_8_CRC 5;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_ObjVldFlg 5;
+BA_ "GenSigStartValue" SG_ 955 RLCR_9_LgtDst 4000;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_LgtDst 5;
+BA_ "GenSigStartValue" SG_ 955 RLCR_9_LgtRelV 6400;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_LgtRelV 5;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_Resd1 5;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_MsgCntr 5;
+BA_ "GenSigASIL" SG_ 955 RLCR_9_CRC 5;
+BA_ "GenSigStartValue" SG_ 1599 srcNodeID_RLCR 63;
+BA_ "GenSigASIL" SG_ 1599 srcNodeID_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 RMR_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 NMm_RLCR_Reserved1 5;
+BA_ "GenSigASIL" SG_ 1599 usrData0_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 IGNITION_WAKEUP_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 RESET_WAKEUP_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 NETWORK_WAKEUP_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 ECUSPEC_WAKEUP_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 NETWORK_AWAKE_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 IGNITION_AWAKE_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 DIAGNOSTIC_AWAKE_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 ECUSPEC_AWAKE_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 usrData2_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 usrData3_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 usrData4_RLCR 5;
+BA_ "GenSigASIL" SG_ 1599 usrData5_RLCR 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_ABSFailSts 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_ABSActive 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_VDCFailSts 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_VDCActive 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_TCSFailSts 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_TCSActive 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_PressureMasterCylinder 5;
+BA_ "GenSigStartValue" SG_ 745 ESP1_PressureMasCylindValidData 1;
+BA_ "GenSigASIL" SG_ 745 ESP1_PressureMasCylindValidData 5;
+BA_ "GenSigASIL" SG_ 745 IPB_SimulatorPressure 5;
+BA_ "GenSigStartValue" SG_ 745 IPB_SimulatorPressureStatus 1;
+BA_ "GenSigASIL" SG_ 745 IPB_SimulatorPressureStatus 5;
+BA_ "GenSigStartValue" SG_ 745 ESP1_VehicleSpeedVSOSigValidData 1;
+BA_ "GenSigASIL" SG_ 745 ESP1_VehicleSpeedVSOSigValidData 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_VehicleSpeedVSOSig 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_Checksum 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 745 ABS_ESP_1_ESPSwitchStatus 5;
+BA_ "GenSigStartValue" SG_ 787 NoBrakeForce 1;
+BA_ "GenSigASIL" SG_ 787 NoBrakeForce 5;
+BA_ "GenSigASIL" SG_ 787 ABS_ESP_3_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 787 ABS_ESP_3_Checksum 5;
+BA_ "GenSigASIL" SG_ 790 VehicleStandstill 5;
+BA_ "GenSigASIL" SG_ 790 ABS_ESP_4_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 790 ABS_ESP_4_Checksum 5;
+BA_ "GenSigASIL" SG_ 793 LHRPulseCounter 5;
+BA_ "GenSigASIL" SG_ 793 LHRPulseCounterFailSts 5;
+BA_ "GenSigASIL" SG_ 793 RHFPulseCounterFailSts 5;
+BA_ "GenSigASIL" SG_ 793 LHFPulseCounterFailSts 5;
+BA_ "GenSigASIL" SG_ 793 RHRPulseCounter 5;
+BA_ "GenSigASIL" SG_ 793 RHRPulseCounterFailSts 5;
+BA_ "GenSigASIL" SG_ 793 RHFPulseCounter 5;
+BA_ "GenSigASIL" SG_ 793 LHFPulseCounter 5;
+BA_ "GenSigASIL" SG_ 608 LHFWheelSpeedRaw 5;
+BA_ "GenSigASIL" SG_ 608 LHFWheelDriveDirection 5;
+BA_ "GenSigStartValue" SG_ 608 LHFWheelSpeedRawValidData 1;
+BA_ "GenSigASIL" SG_ 608 LHFWheelSpeedRawValidData 5;
+BA_ "GenSigASIL" SG_ 608 RHFWheelSpeedRaw 5;
+BA_ "GenSigASIL" SG_ 608 RHFWheelDriveDirection 5;
+BA_ "GenSigStartValue" SG_ 608 RHFWheelSpeedRawValidData 1;
+BA_ "GenSigASIL" SG_ 608 RHFWheelSpeedRawValidData 5;
+BA_ "GenSigStartValue" SG_ 608 WheelBrakeForce 31250;
+BA_ "GenSigASIL" SG_ 608 WheelBrakeForce 5;
+BA_ "GenSigASIL" SG_ 608 ABSESP_7_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 608 ABSESP_7_Checksum 5;
+BA_ "GenSigASIL" SG_ 641 LHRWheelSpeedRaw 5;
+BA_ "GenSigASIL" SG_ 641 LHRWheelDriveDirection 5;
+BA_ "GenSigStartValue" SG_ 641 LHRWheelSpeedRawValidData 1;
+BA_ "GenSigASIL" SG_ 641 LHRWheelSpeedRawValidData 5;
+BA_ "GenSigASIL" SG_ 641 RHRWheelSpeedRaw 5;
+BA_ "GenSigASIL" SG_ 641 RHRWheelDriveDirection 5;
+BA_ "GenSigStartValue" SG_ 641 RHRWheelSpeedRawValidData 1;
+BA_ "GenSigASIL" SG_ 641 RHRWheelSpeedRawValidData 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_RCTBAvl 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_RAEBdecActv 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_RAEBAvl 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_RCTBdecActv 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 641 ABSESP_8_Checksum 5;
+BA_ "GenSigASIL" SG_ 913 KeySts 5;
+BA_ "GenSigASIL" SG_ 913 BCM_1_Checksum 5;
+BA_ "GenSigASIL" SG_ 913 DirectionIndRight 5;
+BA_ "GenSigASIL" SG_ 913 DirectionIndLeft 5;
+BA_ "GenSigASIL" SG_ 913 HazardLightSW 5;
+BA_ "GenSigStartValue" SG_ 913 DriverDoorLockSts 1;
+BA_ "GenSigASIL" SG_ 913 DriverDoorLockSts 5;
+BA_ "GenSigASIL" SG_ 913 DriverDoorSts 5;
+BA_ "GenSigASIL" SG_ 913 PsngrDoorSts 5;
+BA_ "GenSigASIL" SG_ 913 RHRDoorSts 5;
+BA_ "GenSigASIL" SG_ 913 LHRdoorSts 5;
+BA_ "GenSigASIL" SG_ 913 TrunkSts 5;
+BA_ "GenSigASIL" SG_ 913 DriverDoorStsQbit 5;
+BA_ "GenSigASIL" SG_ 913 ReverseGearSts 5;
+BA_ "GenSigASIL" SG_ 913 LHTurnSW 5;
+BA_ "GenSigASIL" SG_ 913 RHTurnSW 5;
+BA_ "GenSigASIL" SG_ 913 WiperSts 5;
+BA_ "GenSigASIL" SG_ 913 RainDetected 5;
+BA_ "GenSigASIL" SG_ 913 AutoHighSpeedRequest 5;
+BA_ "GenSigASIL" SG_ 913 BCM_1_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 914 BCM_4_ArmingSts 5;
+BA_ "GenSigASIL" SG_ 914 LightDetected 5;
+BA_ "GenSigASIL" SG_ 1077 TrailerConnectSts 5;
+BA_ "GenSigASIL" SG_ 746 SlaveVehMod 5;
+BA_ "GenSigASIL" SG_ 746 BCM_19_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 746 BCM_19_CRC 5;
+BA_ "GenSigASIL" SG_ 1333 CLM2_AliveCounter 5;
+BA_ "GenSigASIL" SG_ 1333 CLM2_ExternalTempFailSts 5;
+BA_ "GenSigStartValue" SG_ 1333 CLM2_ExternalTemperature_C 254;
+BA_ "GenSigASIL" SG_ 1333 CLM2_ExternalTemperature_C 5;
+BA_ "GenSigASIL" SG_ 1333 CLM2_CRC 5;
+BA_ "GenSigASIL" SG_ 1057 GasPedalPosition 5;
+BA_ "GenSigASIL" SG_ 1057 GasPedalPositionInvalidData 5;
+BA_ "GenSigASIL" SG_ 1057 EngineSts 5;
+BA_ "GenSigASIL" SG_ 1057 EMS_2_G_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 1057 EMS_2_G_CRC 5;
+BA_ "GenSigASIL" SG_ 647 ICM_5_DriverSeatBeltSwitch 5;
+BA_ "GenSigASIL" SG_ 647 DriverSeatBeltSwitchQbit 5;
+BA_ "GenSigASIL" SG_ 647 ICM_5_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 647 ICM_5_Checksum 5;
+BA_ "GenSigStartValue" SG_ 196 SteeringAngle 65535;
+BA_ "GenSigASIL" SG_ 196 SteeringAngle 5;
+BA_ "GenSigStartValue" SG_ 196 SteeringAngleSpeed 255;
+BA_ "GenSigASIL" SG_ 196 SteeringAngleSpeed 5;
+BA_ "GenSigStartValue" SG_ 196 SteeringAngleValidData 1;
+BA_ "GenSigASIL" SG_ 196 SteeringAngleValidData 5;
+BA_ "GenSigStartValue" SG_ 196 SteeringAngleSpeedValidData 1;
+BA_ "GenSigASIL" SG_ 196 SteeringAngleSpeedValidData 5;
+BA_ "GenSigASIL" SG_ 196 SAM_1_G_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 196 SAM_1_GCRCCheck 5;
+BA_ "GenSigStartValue" SG_ 768 ActualGear 15;
+BA_ "GenSigASIL" SG_ 768 ActualGear 5;
+BA_ "GenSigASIL" SG_ 768 ActualGearValidData 5;
+BA_ "GenSigASIL" SG_ 768 TCU_2_MessageCounter 5;
+BA_ "GenSigASIL" SG_ 768 TCU_2_Checksum 5;
+BA_ "GenSigSendType" SG_ 1276 DVD_SET_DOW 5;
+BA_ "GenSigASIL" SG_ 1276 DVD_SET_DOW 5;
+BA_ "GenSigSendType" SG_ 1276 DVD_SET_RCW 5;
+BA_ "GenSigASIL" SG_ 1276 DVD_SET_RCW 5;
+BA_ "GenSigSendType" SG_ 1276 IHU_11_BSDSwitchSts 5;
+BA_ "GenSigASIL" SG_ 1276 IHU_11_BSDSwitchSts 5;
+BA_ "GenSigSendType" SG_ 1276 IHU_11_RAEBSwtSet 5;
+BA_ "GenSigASIL" SG_ 1276 IHU_11_RAEBSwtSet 5;
+BA_ "GenSigSendType" SG_ 1276 IHU_11_RCTBSwtSet 5;
+BA_ "GenSigASIL" SG_ 1276 IHU_11_RCTBSwtSet 5;
+BA_ "GenSigASIL" SG_ 62 VCU_2_CRC3 5;
+BA_ "GenSigASIL" SG_ 62 VCU_2_RollgCntr3 5;
+BA_ "GenSigASIL" SG_ 62 VCU_GasPedalPositionInvalidData 5;
+BA_ "GenSigASIL" SG_ 62 VCU_GasPedalPosition 5;
+BA_ "GenSigASIL" SG_ 62 VCU_2_CRC4 5;
+BA_ "GenSigASIL" SG_ 62 VCU_2_RollgCntr4 5;
+BA_ "GenSigASIL" SG_ 62 VCU_PTReady 5;
+BA_ "GenSigASIL" SG_ 62 VCU_ActualGear 5;
+BA_ "GenSigASIL" SG_ 295 YAS_1_MessageCounter 5;
+BA_ "GenSigStartValue" SG_ 295 YAS_CalibrationSts 1;
+BA_ "GenSigASIL" SG_ 295 YAS_CalibrationSts 5;
+BA_ "GenSigStartValue" SG_ 295 YawrateSigValidData 3;
+BA_ "GenSigASIL" SG_ 295 YawrateSigValidData 5;
+BA_ "GenSigStartValue" SG_ 295 LateralAccelerationSigValidData 3;
+BA_ "GenSigASIL" SG_ 295 LateralAccelerationSigValidData 5;
+BA_ "GenSigASIL" SG_ 295 LateralAcceleration 5;
+BA_ "GenSigASIL" SG_ 295 YawRate 5;
+BA_ "GenSigASIL" SG_ 295 YAS_1_Checksum 5;
+BA_ "GenSigASIL" SG_ 296 YAS_2_MessageCounter 5;
+BA_ "GenSigStartValue" SG_ 296 LongitudinalAccelerationSigValid 3;
+BA_ "GenSigASIL" SG_ 296 LongitudinalAccelerationSigValid 5;
+BA_ "GenSigASIL" SG_ 296 LongitudinalAcceleration 5;
+BA_ "GenSigASIL" SG_ 296 YAS_2_Checksum 5;
+BA_ "GenSigSendType" SG_ 2003 Diag_RLCR_RES 2;
+BA_ "GenSigASIL" SG_ 2003 Diag_RLCR_RES 5;
+BA_ "GenSigSendType" SG_ 1987 Diag_RLCR_REQ 2;
+BA_ "GenSigASIL" SG_ 1987 Diag_RLCR_REQ 5;
+BA_ "GenSigSendType" SG_ 2015 Diag_Functional_REQ 2;
+BA_ "GenSigASIL" SG_ 2015 Diag_Functional_REQ 5;
+VAL_ 1245 FCM_5_ELKONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 1201 RLCR_1_SysSt 3 " System Error" 2 " Temporary Error" 1 " On" 0 " Off" ;
+VAL_ 1201 RLCR_1_RCTBWarn 1 " Warning" 0 " No Warning" ;
+VAL_ 1201 RLCR_1_RAEBWarn 1 " Warning" 0 " No Warning" ;
+VAL_ 1201 RLCR_1_ELKSts 1 " Active" 0 " Not Active" ;
+VAL_ 1201 RLCR_1_BlkSts 1 " Blockage" 0 " Not Blockage" ;
+VAL_ 1201 RLCR_1_RCTAWarn 1 " Warning" 0 " No Warning" ;
+VAL_ 1201 RLCR_1_BSDWarn 3 " Not Used" 2 " Critical Warning" 1 " Standard Warning" 0 " No Warning" ;
+VAL_ 1201 RLCR_1_DOWWarn 3 " Not Used" 2 " Level2 Warning " 1 " Level1 Warning " 0 " No Warning" ;
+VAL_ 1201 RLCR_1_RCWWarn 3 " Not Used" 2 " Level2 Warning " 1 " Level1 Warning " 0 " No Warning" ;
+VAL_ 1201 RLCR_1_ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 1201 RLCR_1_BSDLCARCTAONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 1201 RLCR_1_DOWONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 1201 RLCR_1_RCWONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 498 RLCR_2_RAEBReq 1 " Request" 0 " Not Request" ;
+VAL_ 498 RLCR_2_RAEBONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 498 RLCR_2_RCTBONOFFSts 3 " Reserved" 2 " OFF" 1 " ON" 0 " Not active" ;
+VAL_ 498 RLCR_2_RAEBCtrlA 1023 "Invalid" ;
+VAL_ 498 RLCR_2_RCTBReq 1 " Request" 0 " Not Request" ;
+VAL_ 498 RLCR_2_RCTBCtrlA 1023 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjBoxLen 511 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjBoxWidth 511 "Invalid" ;
+VAL_ 935 RLCR_3_Le1HdTo 4095 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjID 255 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjCoordY 8191 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjCoordX 8191 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjXDirAV 255 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjYDirV 16383 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjXDirV 16383 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjMtnChartc 3 " Moving" 2 " StatyFromMoving" 1 " Staty" 0 "  Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjConf 1 " Conf" 0 " Un conf" ;
+VAL_ 935 RLCR_3_Le1ObjNrOffocst 31 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjTrackSt 3 " Coasted" 2 " New" 1 " Updated" 0 " Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjCoordXDstStdDe 255 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjCoordYDstStdDe 255 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjXDirVStdDe 63 "Invalid" ;
+VAL_ 935 RLCR_3_Le1ObjYDirVStdDe 63 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjBoxLen 511 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjBoxWidth 511 "Invalid" ;
+VAL_ 937 RLCR_4_Le2HdTo 4095 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjID 255 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjCoordY 8191 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjCoordX 8191 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjXDirAV 255 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjYDirV 16383 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjXDirV 16383 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjMtnChartc 3 " Moving" 2 " StatyFromMoving" 1 " Staty" 0 "  Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjConf 1 " Conf" 0 " Un conf" ;
+VAL_ 937 RLCR_4_Le2ObjNrOffocst 31 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjTrackSt 3 " Coasted" 2 " New" 1 " Updated" 0 " Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjCoordXDstStdDe 255 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjCoordYDstStdDe 255 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjXDirVStdDe 63 "Invalid" ;
+VAL_ 937 RLCR_4_Le2ObjYDirVStdDe 63 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjBoxLen 511 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjBoxWidth 511 "Invalid" ;
+VAL_ 941 RLCR_5_Le3HdTo 4095 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjID 255 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjCoordY 8191 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjCoordX 8191 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjXDirAV 255 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjYDirV 16383 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjXDirV 16383 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjMtnChartc 3 " Moving" 2 " StatyFromMoving" 1 " Staty" 0 "  Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjConf 1 " Conf" 0 " Un conf" ;
+VAL_ 941 RLCR_5_Le3ObjNrOffocst 31 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjTrackSt 3 " Coasted" 2 " New" 1 " Updated" 0 " Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjCoordXDstStdDe 255 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjCoordYDstStdDe 255 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjXDirVStdDe 63 "Invalid" ;
+VAL_ 941 RLCR_5_Le3ObjYDirVStdDe 63 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjBoxLen 511 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjBoxWidth 511 "Invalid" ;
+VAL_ 946 RLCR_6_Le4HdTo 4095 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjID 255 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjCoordY 8191 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjCoordX 8191 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjXDirAV 255 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjYDirV 16383 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjXDirV 16383 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjMtnChartc 3 " Moving" 2 " StatyFromMoving" 1 " Staty" 0 "  Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjConf 1 " Conf" 0 " Un conf" ;
+VAL_ 946 RLCR_6_Le4ObjNrOffocst 31 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjTrackSt 3 " Coasted" 2 " New" 1 " Updated" 0 " Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjCoordXDstStdDe 255 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjCoordYDstStdDe 255 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjXDirVStdDe 63 "Invalid" ;
+VAL_ 946 RLCR_6_Le4ObjYDirVStdDe 63 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjBoxLen 511 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjBoxWidth 511 "Invalid" ;
+VAL_ 948 RLCR_7_Le5HdTo 4095 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjID 255 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjCoordY 8191 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjCoordX 8191 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjXDirAV 255 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjYDirV 16383 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjXDirV 16383 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjMtnChartc 3 " Moving" 2 " StatyFromMoving" 1 " Staty" 0 "  Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjTyp 3 " Not Used" 2 " Two wheels vehicle " 1 " Four wheels vehicle " 0 "  Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjConf 1 " Conf" 0 " Un conf" ;
+VAL_ 948 RLCR_7_Le5ObjNrOffocst 31 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjTrackSt 3 " Coasted" 2 " New" 1 " Updated" 0 " Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjCoordXDstStdDe 255 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjCoordYDstStdDe 255 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjXDirVStdDe 63 "Invalid" ;
+VAL_ 948 RLCR_7_Le5ObjYDirVStdDe 63 "Invalid" ;
+VAL_ 955 RLCR_9_ObjVldFlg 1 " InValid" 0 " Valid" ;
+VAL_ 955 RLCR_9_LgtDst 8191 "Invalid" ;
+VAL_ 955 RLCR_9_LgtRelV 16383 "Invalid" ;
+VAL_ 1599 RMR_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 usrData0_RLCR 254 " Not Used" 253 " Not Used" 252 " Not Used" 251 " Not Used" 250 " Not Used" 249 " Not Used" 248 " Not Used" 247 " Not Used" 246 " Not Used" 245 " Not Used" 244 " Not Used" 243 " Not Used" 242 " Not Used" 241 " Not Used" 240 " Not Used" 239 " Not Used" 238 " Not Used" 237 " Not Used" 236 " Not Used" 235 " Not Used" 234 " Not Used" 233 " Not Used" 232 " Not Used" 231 " Not Used" 230 " Not Used" 229 " Not Used" 228 " Not Used" 227 " Not Used" 226 " Not Used" 225 " Not Used" 224 " Not Used" 223 " Not Used" 222 " Not Used" 221 " Not Used" 220 " Not Used" 219 " Not Used" 218 " Not Used" 217 " Not Used" 216 " Not Used" 215 " Not Used" 214 " Not Used" 213 " Not Used" 212 " Not Used" 211 " Not Used" 210 " Not Used" 209 " Not Used" 208 " Not Used" 207 " Not Used" 206 " Not Used" 205 " Not Used" 204 " Not Used" 203 " Not Used" 202 " Not Used" 201 " Not Used" 200 " Not Used" 199 " Not Used" 198 " Not Used" 197 " Not Used" 196 " Not Used" 195 " Not Used" 194 " Not Used" 193 " Not Used" 192 " Not Used" 191 " Not Used" 190 " Not Used" 189 " Not Used" 188 " Not Used" 187 " Not Used" 186 " Not Used" 185 " Not Used" 184 " Not Used" 183 " Not Used" 182 " Not Used" 181 " Not Used" 180 " Not Used" 179 " Not Used" 178 " Not Used" 177 " Not Used" 176 " Not Used" 175 " Not Used" 174 " Not Used" 173 " Not Used" 172 " Not Used" 171 " Not Used" 170 " Not Used" 169 " Not Used" 168 " Not Used" 167 " Not Used" 166 " Not Used" 165 " Not Used" 164 " Not Used" 163 " Not Used" 162 " Not Used" 161 " Not Used" 160 " Not Used" 159 " Not Used" 158 " Not Used" 157 " Not Used" 156 " Not Used" 155 " Not Used" 154 " Not Used" 153 " Not Used" 152 " Not Used" 151 " Not Used" 150 " Not Used" 149 " Not Used" 148 " Not Used" 147 " Not Used" 146 " Not Used" 145 " Not Used" 144 " Not Used" 143 " Not Used" 142 " Not Used" 141 " Not Used" 140 " Not Used" 139 " Not Used" 138 " Not Used" 137 " Not Used" 136 " Not Used" 135 " Not Used" 134 " Not Used" 133 " Not Used" 132 " Not Used" 131 " Not Used" 130 " Not Used" 129 " Not Used" 128 " Not Used" 127 " Not Used" 126 " Not Used" 125 " Not Used" 124 " Not Used" 123 " Not Used" 122 " Not Used" 121 " Not Used" 120 " Not Used" 119 " Not Used" 118 " Not Used" 117 " Not Used" 116 " Not Used" 115 " Not Used" 114 " Not Used" 113 " Not Used" 112 " Not Used" 111 " Not Used" 110 " Not Used" 109 " Not Used" 108 " Not Used" 107 " Not Used" 106 " Not Used" 105 " Not Used" 104 " Not Used" 103 " Not Used" 102 " Not Used" 101 " Not Used" 100 " Not Used" 99 " Not Used" 98 " Not Used" 97 " Not Used" 96 " Not Used" 95 " Not Used" 94 " Not Used" 93 " Not Used" 92 " Not Used" 91 " Not Used" 90 " Not Used" 89 " Not Used" 88 " Not Used" 87 " Not Used" 86 " Not Used" 85 " Not Used" 84 " Not Used" 83 " Not Used" 82 " Not Used" 81 " Not Used" 80 " Not Used" 79 " Not Used" 78 " Not Used" 77 " Not Used" 76 " Not Used" 75 " Not Used" 74 " Not Used" 73 " Not Used" 72 " Not Used" 71 " Not Used" 70 " Not Used" 69 " Not Used" 68 " Not Used" 67 " Not Used" 66 " Not Used" 65 " Not Used" 64 " Not Used" 63 " Not Used" 62 " Not Used" 61 " Not Used" 60 " Not Used" 59 " Not Used" 58 " Not Used" 57 " Not Used" 56 " Not Used" 55 " Not Used" 54 " Not Used" 53 " Not Used" 52 " Not Used" 51 " Not Used" 50 " Not Used" 49 " Not Used" 48 " Not Used" 47 " Not Used" 46 " Not Used" 45 " Not Used" 44 " Not Used" 43 " Not Used" 42 " Not Used" 41 " Not Used" 40 " Not Used" 39 " Not Used" 38 " Not Used" 37 " Not Used" 36 " Not Used" 35 " Not Used" 34 " Not Used" 33 " Not Used" 32 " Not Used" 31 " Not Used" 30 " Not Used" 29 " Not Used" 28 " Not Used" 27 " Not Used" 26 " Not Used" 25 " Not Used" 24 " Not Used" 23 " Not Used" 22 " Not Used" 21 " Not Used" 20 " Not Used" 19 " Not Used" 18 " Not Used" 17 " Not Used" 16 " Not Used" 15 " Not Used" 14 " Not Used" 13 " Not Used" 12 " Not Used" 11 " Not Used" 10 " Not Used" 9 " Not Used" 8 " Not Used" 7 " Not Used" 6 " Not Used" 5 " Not Used" 4 " Not Used" 3 " Not Used" 2 " Not Used" 1 " Not Used" 255 " User data not used" 0 " User data for current vehicle" ;
+VAL_ 1599 IGNITION_WAKEUP_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 RESET_WAKEUP_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 NETWORK_WAKEUP_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 ECUSPEC_WAKEUP_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 NETWORK_AWAKE_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 IGNITION_AWAKE_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 DIAGNOSTIC_AWAKE_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 1599 ECUSPEC_AWAKE_RLCR 1 " Active" 0 " Inactive" ;
+VAL_ 745 ABS_ESP_1_ABSFailSts 1 " Fail present (lamp on)" 0 " Not present" ;
+VAL_ 745 ABS_ESP_1_ABSActive 1 " Active" 0 " Not active" ;
+VAL_ 745 ABS_ESP_1_VDCFailSts 1 " Fail present (lamp on)" 0 " Not present" ;
+VAL_ 745 ABS_ESP_1_VDCActive 1 " Active" 0 " Not active" ;
+VAL_ 745 ABS_ESP_1_TCSFailSts 1 " Fail present (lamp on)" 0 " Not present" ;
+VAL_ 745 ABS_ESP_1_TCSActive 1 " Active" 0 " Not active" ;
+VAL_ 745 ABS_ESP_1_PressureMasterCylinder 1023 "Invalid" ;
+VAL_ 745 ESP1_PressureMasCylindValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 745 IPB_SimulatorPressure 1023 "Invalid" ;
+VAL_ 745 IPB_SimulatorPressureStatus 1 " Not Valid" 0 " Valid" ;
+VAL_ 745 ESP1_VehicleSpeedVSOSigValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 745 ABS_ESP_1_VehicleSpeedVSOSig 8191 "Invalid" ;
+VAL_ 745 ABS_ESP_1_ESPSwitchStatus 1 " Disable" 0 " On" ;
+VAL_ 787 NoBrakeForce 1 " No Brake Force" 0 " Exist Brake Force" ;
+VAL_ 790 VehicleStandstill 3 " Reserved" 2 " invalid" 1 " Standstill" 0 " Not standstill" ;
+VAL_ 793 LHRPulseCounterFailSts 1 " Fail Present" 0 " Fail Not Present" ;
+VAL_ 793 RHFPulseCounterFailSts 1 " Fail Present" 0 " Fail Not Present" ;
+VAL_ 793 LHFPulseCounterFailSts 1 " Fail Present" 0 " Fail Not Present" ;
+VAL_ 793 RHRPulseCounterFailSts 1 " Fail Present" 0 " Fail Not Present" ;
+VAL_ 608 LHFWheelDriveDirection 7 " reserved" 6 " reserved" 5 " reserved" 4 " Invalid" 3 " Stop" 2 " Backward" 1 " Forward" 0 " Init" ;
+VAL_ 608 LHFWheelSpeedRawValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 608 RHFWheelDriveDirection 7 " reserved" 6 " reserved" 5 " reserved" 4 " Invalid" 3 " Stop" 2 " Backward" 1 " Forward" 0 " Init" ;
+VAL_ 608 RHFWheelSpeedRawValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 608 WheelBrakeForce 65535 "Invalid" ;
+VAL_ 641 LHRWheelDriveDirection 7 " reserved" 6 " reserved" 5 " reserved" 4 " Invalid" 3 " Stop" 2 " Backward" 1 " Forward" 0 " Init" ;
+VAL_ 641 LHRWheelSpeedRawValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 641 RHRWheelDriveDirection 7 " reserved" 6 " reserved" 5 " reserved" 4 " Invalid" 3 " Stop" 2 " Backward" 1 " Forward" 0 " Init" ;
+VAL_ 641 RHRWheelSpeedRawValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 641 ABSESP_8_RCTBAvl 1 " Available" 0 " Not available" ;
+VAL_ 641 ABSESP_8_RAEBdecActv 1 " Active" 0 " Not active" ;
+VAL_ 641 ABSESP_8_RAEBAvl 1 " Available" 0 " Not available" ;
+VAL_ 641 ABSESP_8_RCTBdecActv 1 " Active" 0 " Not active" ;
+VAL_ 913 KeySts 3 " CRANK + ON" 2 " ON" 1 " ACC" 0 " OFF" ;
+VAL_ 913 DirectionIndRight 1 " Active" 0 " Not active" ;
+VAL_ 913 DirectionIndLeft 1 " Active" 0 " Not active" ;
+VAL_ 913 HazardLightSW 1 " Active" 0 " Not active" ;
+VAL_ 913 DriverDoorLockSts 1 " Unlock" 0 " Lock" ;
+VAL_ 913 DriverDoorSts 1 " Open" 0 " Close" ;
+VAL_ 913 PsngrDoorSts 1 " Open" 0 " Close" ;
+VAL_ 913 RHRDoorSts 1 " Open" 0 " Close" ;
+VAL_ 913 LHRdoorSts 1 " Open" 0 " Close" ;
+VAL_ 913 TrunkSts 1 " Open" 0 " Close" ;
+VAL_ 913 DriverDoorStsQbit 1 " invalid" 0 " valid" ;
+VAL_ 913 ReverseGearSts 1 " Active" 0 " Off" ;
+VAL_ 913 LHTurnSW 1 " Active" 0 " Off" ;
+VAL_ 913 RHTurnSW 1 " Active" 0 " Off" ;
+VAL_ 913 WiperSts 3 " ContinuousFast" 2 " ContinuousSlow" 1 " Auto or Intermittent" 0 " OFF" ;
+VAL_ 913 RainDetected 1 " True" 0 "False" ;
+VAL_ 913 AutoHighSpeedRequest 1 " True" 0 "False" ;
+VAL_ 914 BCM_4_ArmingSts 3 " Invalid" 2 " Disarming successful" 1 " Arming successful" 0 " Not active" ;
+VAL_ 914 LightDetected 1 " Bright" 0 " Dark" ;
+VAL_ 1077 TrailerConnectSts 1 " Active" 0 " Not Active" ;
+VAL_ 746 SlaveVehMod 7 "Reserved" 6 "Transport Paused" 5 "Factory Paused " 4 " Crash" 3 " Dyno " 2 " Normal" 1 " Transport" 0 " Factory " ;
+VAL_ 1333 CLM2_ExternalTempFailSts 1 " Fail Present" 0 " Fail Not Present" ;
+VAL_ 1057 GasPedalPositionInvalidData 1 " Invalid" 0 " Valid" ;
+VAL_ 1057 EngineSts 1 "Run" 0 "Not Run" ;
+VAL_ 647 ICM_5_DriverSeatBeltSwitch 1 " Unfasten" 0 " Fasten" ;
+VAL_ 647 DriverSeatBeltSwitchQbit 1 " invalid" 0 " valid" ;
+VAL_ 196 SteeringAngle 65535 "Invalid" ;
+VAL_ 196 SteeringAngleSpeed 255 "Invalid" ;
+VAL_ 196 SteeringAngleValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 196 SteeringAngleSpeedValidData 1 " Not Valid" 0 " Valid" ;
+VAL_ 768 ActualGear 15 "Invalid/limp home" 14 "Reserved  " 13 "Reserved  " 12 " 9th gear" 11 " Park" 10 " Neutral" 9 " Reverse" 8 " 8th gear" 7 " 7th gear" 6 " 6th gear" 5 " 5th gear" 4 " 4th gear" 3 " 3rd gear" 2 " 2nd gear" 1 " 1st gear" 0 " Reserved" ;
+VAL_ 768 ActualGearValidData 1 " valid" 0 " Not Valid" ;
+VAL_ 1276 DVD_SET_DOW 3 " Not Used" 2 " OFF" 1 " ON" 0 " Not Active" ;
+VAL_ 1276 DVD_SET_RCW 3 " Not Used" 2 " OFF" 1 " ON" 0 " Not Active" ;
+VAL_ 1276 IHU_11_BSDSwitchSts 3 " Not Used" 2 " OFF" 1 " ON" 0 " Not Active" ;
+VAL_ 1276 IHU_11_RAEBSwtSet 3 " Not Used" 2 " OFF" 1 " ON" 0 " Not Active" ;
+VAL_ 1276 IHU_11_RCTBSwtSet 3 " Not Used" 2 " OFF" 1 " ON" 0 " Not Active" ;
+VAL_ 62 VCU_GasPedalPositionInvalidData 1 " Invalid" 0 " Valid" ;
+VAL_ 62 VCU_PTReady 1 " LmpON" 0 " LmpOFF" ;
+VAL_ 62 VCU_ActualGear 7 " Reserved" 6 " Reserved" 5 " Reserved" 4 " D" 3 " N" 2 " R" 1 " P" 0 " Init" ;
+VAL_ 295 YAS_CalibrationSts 1 " Sensor  Calibrated" 0 " Sensor  Not Calibrated" ;
+VAL_ 295 YawrateSigValidData 3 " Initialize" 2 " Invalid" 1 " Reserved" 0 " Valid" ;
+VAL_ 295 LateralAccelerationSigValidData 3 " Initialize" 2 " Invalid" 1 " Reserved" 0 " Valid" ;
+VAL_ 295 LateralAcceleration 65535 "Invalid" ;
+VAL_ 295 YawRate 65535 "Invalid" ;
+VAL_ 296 LongitudinalAccelerationSigValid 3 " Initialize" 2 " Invalid" 1 " Reserved" 0 " Valid" ;
+VAL_ 296 LongitudinalAcceleration 65535 "Invalid" ;
+

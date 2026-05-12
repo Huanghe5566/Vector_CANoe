@@ -1,0 +1,302 @@
+/*@!Encoding:936*/
+/*@!Encoding:936*/
+includes
+{
+  //#include "..\Include\CRC.cin"
+  #include "crc.cin"
+}
+
+variables
+{
+//  msTimer ABS_ESP_1_2E9_miss_time;
+//  msTimer ICM_5_287_miss_time;
+//  msTimer TCU_2_300_miss_time;
+//  msTimer FCM_5_4DD_miss_time;
+  
+}
+
+on preStart
+{
+  set_value_to_valid();
+}
+
+
+
+
+on busoff{
+  resetCanEx(this.can);
+}
+
+// 以下是节点控制报文
+//on sysvar_update sysvar::Vehicle_Input::Node::FCR_GW
+//{
+//  long node;
+//  if (@this == 1)
+//  {
+//     node = ILControlStop();   // 停止发送该节点报文
+//  }
+//  else
+//  {
+//    node = ILControlStart();   // 开始发送该节点报文
+//  }
+//}
+//
+//on sysvar_update sysvar::Vehicle_Input::Message_Missing::FCM_5_0x4DD
+//{
+//  if(@this == 1)
+//  {ILFaultInjectionDisableMsg(FCM_5); 
+//    setTimer(FCM_5_4DD_miss_time, @sysvar::Vehicle_Input::Message_Missing::FCM_5_0x4DD_MissTime); 
+//  }
+//  else
+//  { ILFaultInjectionEnableMsg(FCM_5);} 
+//}
+//
+//
+//on sysvar_update sysvar::Vehicle_Input::Message_Missing::ABS_ESP_1_0x2E9
+//{
+//  if(@this == 1)
+//  {ILFaultInjectionDisableMsg(ABS_ESP_1);
+//    setTimer(ABS_ESP_1_2E9_miss_time, @sysvar::Vehicle_Input::Message_Missing::ABS_ESP_1_0x2E9_MissTime);
+//  }
+//  else
+//  { ILFaultInjectionEnableMsg(ABS_ESP_1);} 
+//}
+//
+//on sysvar_update sysvar::Vehicle_Input::Message_Missing::ICM_5_0x287
+//{
+//  if(@this == 1)
+//  {ILFaultInjectionDisableMsg(ICM_5);  
+//    setTimer(ICM_5_287_miss_time, @sysvar::Vehicle_Input::Message_Missing::ICM_5_0x287_MissTime);}
+//  else
+//  { ILFaultInjectionEnableMsg(ICM_5);} 
+//}
+//
+//on sysvar_update sysvar::Vehicle_Input::Message_Missing::TCU_2_0x300
+//{
+//  if(@this == 1)
+//  {ILFaultInjectionDisableMsg(TCU_2);  
+//    setTimer(TCU_2_300_miss_time, @sysvar::Vehicle_Input::Message_Missing::TCU_2_0x300_MissTime);}
+//  else
+//  { ILFaultInjectionEnableMsg(TCU_2);} 
+//}
+//
+//on timer FCM_5_4DD_miss_time
+//{
+//  @ sysvar::Vehicle_Input::Message_Missing::FCM_5_0x4DD = 0;
+//}
+//
+//on timer ABS_ESP_1_2E9_miss_time
+//{
+//  @ sysvar::Vehicle_Input::Message_Missing::ABS_ESP_1_0x2E9 = 0;
+//}
+//
+//on timer ICM_5_287_miss_time
+//{
+//  @ sysvar::Vehicle_Input::Message_Missing::ICM_5_0x287 = 0;
+//}
+//
+//on timer TCU_2_300_miss_time
+//{
+//  @ sysvar::Vehicle_Input::Message_Missing::TCU_2_0x300 = 0;
+//}
+
+// 以下是通过ID来改部分信号数值的方法
+dword applILTxPending (long aId, dword aDlc, byte data[])
+{
+  dword i;
+  byte MSG_RawData[64];
+  byte result_crc;
+  
+  if(aId == 0x300){
+    if(@sysvar::Vehicle_Input::CheckSum::TCU_2_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::TCU_2_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::TCU_2_CheckSum + checksum_sum_7B(data);
+  }
+  
+    if(aId == 0x2E9){
+    if(@sysvar::Vehicle_Input::CheckSum::ABS_EPS_1_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ABS_EPS_1_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[7] = E2E_Counter1(data,7);  
+    } 
+    data[5] = @sysvar::Vehicle_Input::CheckSum::ABS_EPS_1_CheckSum + checksum_sum_5B(data);
+  }
+    
+  if(aId == 0x313){
+    if(@sysvar::Vehicle_Input::CheckSum::ABS_EPS_3_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ABS_EPS_3_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::ABS_EPS_3_CheckSum + checksum_sum_7B(data);
+  }
+    
+  if(aId == 0x316){
+    if(@sysvar::Vehicle_Input::CheckSum::ABS_EPS_4_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ABS_EPS_4_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::ABS_EPS_4_CheckSum + checksum_sum_7B(data);
+  }
+   
+  if(aId == 0x260){
+    if(@sysvar::Vehicle_Input::CheckSum::ABS_EPS_7_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ABS_EPS_7_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::ABS_EPS_7_CheckSum + checksum_sum_7B(data);
+  }
+
+  if(aId == 0x281){
+    if(@sysvar::Vehicle_Input::CheckSum::ABS_EPS_8_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ABS_EPS_8_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::ABS_EPS_8_CheckSum + checksum_sum_7B(data);
+  }
+
+  if(aId == 0x287){
+    if(@sysvar::Vehicle_Input::CheckSum::ICM_5_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::ICM_5_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::ICM_5_CheckSum + checksum_sum_7B(data);
+  }
+  
+  if(aId == 0x421){
+    if(@sysvar::Vehicle_Input::CheckSum::EMS_2_G_Counter == 1)
+    {
+      int current_counter;
+      current_counter++;
+    //  write("the current counter is %d",current_counter);
+      if(current_counter >= @sysvar::Vehicle_Input::CRC::Message_Counter_times)
+      {
+        @sysvar::Vehicle_Input::CheckSum::EMS_2_G_Counter = 0;
+        current_counter = 0;
+      }
+    }
+    else {
+    data[6] = E2E_Counter1(data,6);  
+    } 
+    data[7] = @sysvar::Vehicle_Input::CheckSum::EMS_2_G_CheckSum + E2E_CRC8_Table_B7(data,7,0xff);
+  }
+  
+  if(aId == 0x391){
+    data[6] = E2E_Counter1(data,6);   
+    data[1] = checksum_sum_1B(data);
+  }
+  
+  if(aId == 0x2EA){
+    data[6] = E2E_Counter1(data,6);   
+    data[7] = checksum_sum_7B(data);
+  }
+  
+  if(aId == 0xC4){
+    data[5] = E2E_Counter1(data,5);
+    data[7] = E2E_CRC8_Table_B7(data,7,0xff);
+  }
+  
+  if(aId == 0x127){
+    data[0] = E2E_Counter1(data,0);   
+    data[7] = checksum_sum_7B(data);
+  }
+    
+  if(aId == 0x128){
+    data[0] = E2E_Counter1(data,0);   
+    data[7] = checksum_sum_7B(data);
+  }
+  
+  if(aId == 0x535){
+  data[2] = E2E_Counter2(data,2);
+  data[7] = E2E_CRC8_Table_B7(data,7,0xff);
+  }
+  
+  if(aId == 0x31C){
+  data[1] = E2E_Counter2(data,1);
+  data[2] = checksum_sum_2B(data);
+  }
+  
+   return 1; // don't prevent sending of the message
+}
+
+
+set_value_to_valid()
+{
+  $CAN1::TCU_2::ActualGear.phys = 11;
+  $CAN1::ABS_ESP_1::ABS_ESP_1_VehicleSpeedVSOSig.phys = 0;
+  $CAN1::SAM_1_G::SteeringAngle.phys = 0;
+  $CAN1::YAS_1::YawRate.phys = 0;
+  $CAN1::SAM_1_G::SteeringAngleValidData.phys = 0;
+  $CAN1::BCM_1::KeySts.phys = 2;
+  
+}
