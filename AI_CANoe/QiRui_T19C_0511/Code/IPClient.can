@@ -22,26 +22,23 @@ void SetupIp()
   if (1 > IpGetAdapterCount())
   {
     writelineex(0, 3, "Error: There is no network interface available!");
-    
     stop();
   }
 
   if (0 != IpGetAdapterAddress(adapterIndex, addresses, 1))
   {
     writelineex(0, 3, "Error: Could not retrieve ip address!");
-    
     stop();
   }
 
-  gIpAddress = addresses[0]; // the interface used
+  gIpAddress = addresses[0];
 
   if (INVALID_IP == gIpAddress)
   {
     writelineex(0, 3, "Error: ip address to be used is invalid!");
-    
     stop();
   }
- 
+
   IpGetAdapterDescription(adapterIndex, text, size);
   snprintf(info, size, "Interface: %s", text);
   writelineex(0, 1, info);
@@ -51,9 +48,7 @@ void SetupIp()
   writelineex(0, 1, info);
 
   SysSetVariableString(sysvar::TCPIP::TcpClientIp, text);
-
   SysSetVariableString(sysvar::UDP::UdpClientIp, text);
-
 
   IpGetAdapterMaskAsString(adapterIndex, text, size);
   snprintf(info, size, "Subnet mask: %s", text);
@@ -62,13 +57,29 @@ void SetupIp()
   IpGetAdapterGatewayAsString(adapterIndex, text, size);
   snprintf(info, size, "Gateway address: %s", text);
   writelineex(0, 1, info);
- 
+
   gStatus = gkSTATUS_INITIALISED;
+}
+
+void UpdateGwFromUdpBytes(char buffer[], dword count)
+{
+  if (count >= 1)
+  {
+    @sysvar::GW::VehicleSpeed = (float)buffer[0];
+  }
+  if (count >= 2)
+  {
+    @sysvar::GW::SteeringAngle = (float)buffer[1];
+  }
+  if (count >= 3)
+  {
+    @sysvar::GW::YawRate = (float)buffer[2];
+  }
 }
 
 on start
 {
-  SetupIp();  
+  SetupIp();
 }
 
 on stopMeasurement
@@ -83,23 +94,18 @@ void OnTcpReceive( dword socket, long result, dword address, dword port, char bu
   if ( gTcpDataSocket != socket)
   {
     writelineex(0, 2, "OnTcpReceive called for unknown socket 0x%X", socket);
-
     return;
   }
 
   if (0 != result)
   {
     IpGetLastSocketErrorAsString( socket, gIpLastErrStr, elcount( gIpLastErrStr));
-
     writelineex( 0, 2, "OnTcpReceive error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
-
     return;
   }
- 
-  IpGetAddressAsString(address, addressString, elcount(addressString));
 
+  IpGetAddressAsString(address, addressString, elcount(addressString));
   SysSetVariableString(sysvar::TCPIP::TcpData, buffer);
- 
   TcpRecv( socket);
 }
 
@@ -113,35 +119,30 @@ void OnTcpSend( dword socket, long result, char buffer[], dword size)
   if (0 != result)
   {
     IpGetLastSocketErrorAsString( socket, gIpLastErrStr, elcount( gIpLastErrStr));
-
     writelineex( 0, 2, "OnTcpSend error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
   }
 }
 
 void ConnectTcp()
-{ 
+{
   char buffer[64];
   dword serverIp;
 
   SysGetVariableString(sysvar::TCPIP::TcpServerIp, buffer, elcount(buffer));
-
   serverIp = IpGetAddressAsNumber(buffer);
 
   if (INVALID_IP == serverIp)
   {
     writelineex(0, 1, "Error: invalid server Ip address!");
-    
     return;
   }
 
   gTcpPort = @sysvar::TCPIP::TcpClientPort;
-  
   gTcpDataSocket = TcpOpen(gIpAddress, gTcpPort);
 
   if ( INVALID_SOCKET == gTcpDataSocket)
   {
     writelineex(0, 1, "Error: could not open Tcp socket!");
-
     return;
   }
   else
@@ -152,7 +153,6 @@ void ConnectTcp()
   if (0 == TcpConnect(gTcpDataSocket, serverIp, @sysvar::TCPIP::TcpServerPort))
   {
     writelineex(0, 1, "Successfully connected to server %s:%d", buffer, @sysvar::TCPIP::TcpServerPort);
-
     TcpRecv( gTcpDataSocket);
   }
 }
@@ -162,34 +162,29 @@ void DisconnectTcp()
   if (INVALID_SOCKET != gTcpDataSocket)
   {
     TcpClose(gTcpDataSocket);
-    
     gTcpDataSocket = INVALID_SOCKET;
   }
-
   writelineex(0, 1, "Tcp socket is closed.");
 }
 
 void SendTcpData()
 {
   char buffer[8192];
-  
+
   SysGetVariableString(sysvar::TCPIP::TcpClientData, buffer, elcount(buffer));
 
   if (INVALID_SOCKET == gTcpDataSocket)
   {
     writelineex( 0, 2, "Tcp socket is invalid!");
-
     return;
   }
-  
+
   if (0 != TcpSend( gTcpDataSocket, buffer, elcount(buffer)))
   {
     gIpLastErr = IpGetLastSocketError( gTcpDataSocket);
-
     if ( WSA_IO_PENDING != gIpLastErr)
     {
       IpGetLastSocketErrorAsString( gTcpDataSocket, gIpLastErrStr, elcount( gIpLastErrStr));
-
       writelineex( 0, 2, "Tcp send error (%d): %s", gIpLastErr, gIpLastErrStr);
     }
   }
@@ -201,26 +196,19 @@ void SendTcpData()
 
 void SendUdpData()
 {
-  char buffer[64]; // used for ip address
-
-  char data[4096]; // user data
-
+  char buffer[64];
+  char data[4096];
   dword serverIp;
-
-  int serverPort;
 
   if ( INVALID_SOCKET == gUdpSocket)
   {
     writelineex(0, 1, "Error: Udp socket is not opened!");
-
     return;
   }
 
   SysGetVariableString(sysvar::UDP::UdpServerIp, buffer, elcount(buffer));
-  
-
   serverIp = IpGetAddressAsNumber(buffer);
-  
+
   if (INVALID_IP == serverIp)
   {
     writelineex(0, 1, "Error: invalid server Ip address!");
@@ -242,7 +230,6 @@ void SendUdpData()
 void OpenUdpPort()
 {
   gUdpPort = @sysvar::UDP::UdpClientPort;
-  
   gUdpSocket = UdpOpen( gIpAddress, gUdpPort);
 
   if ( INVALID_SOCKET == gUdpSocket)
@@ -252,7 +239,6 @@ void OpenUdpPort()
   else
   {
     writelineex(0, 1, "Udp socket is opened successfully.");
-    
     UdpRecv( gUdpSocket);
   }
 }
@@ -262,14 +248,11 @@ void CloseUdpPort()
   if (INVALID_SOCKET != gUdpSocket)
   {
     UdpClose(gUdpSocket);
-    
     gUdpSocket = INVALID_SOCKET;
-
     writelineex(0, 2, "Udp port is closed.");
   }
 
   SysSetVariableString(sysvar::UDP::UdpServerIp, "");
-
   @sysvar::UDP::UdpServerPort = 0;
 }
 
@@ -278,17 +261,14 @@ void ResetIp()
   if (INVALID_SOCKET != gTcpDataSocket)
   {
     TcpClose(gTcpDataSocket);
-    
     gTcpDataSocket = INVALID_SOCKET;
   }
 
   if (INVALID_SOCKET != gUdpSocket)
   {
     UdpClose(gUdpSocket);
-    
     gUdpSocket = INVALID_SOCKET;
   }
-
 }
 
 void OnUdpReceiveFrom( dword socket, long result, dword address, dword port, char buffer[], dword count)
@@ -303,19 +283,16 @@ void OnUdpReceiveFrom( dword socket, long result, dword address, dword port, cha
   if (0 != result)
   {
     IpGetLastSocketErrorAsString( socket, gIpLastErrStr, elcount( gIpLastErrStr));
-
     writelineex( 0, 2, "OnUdpReceiveFrom error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
   }
- 
+
   IpGetAddressAsString(address, addressString, elcount(addressString));
-
   SysSetVariableString(sysvar::UDP::UdpServerIp, addressString);
-
   @sysvar::UDP::UdpServerPort = port;
 
   SysSetVariableString(sysvar::UDP::UdpData, buffer);
+  UpdateGwFromUdpBytes(buffer, count);
 
- 
   UdpRecv( socket);
 }
 
@@ -329,7 +306,6 @@ void OnUdpSendTo( dword socket, long result, char buffer[], dword size)
   if (0 != result)
   {
     IpGetLastSocketErrorAsString( socket, gIpLastErrStr, elcount( gIpLastErrStr));
-
     writelineex( 0, 2, "OnUdpSendTo error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
   }
   else
@@ -343,22 +319,18 @@ void OnTcpConnect( dword socket, long result)
   if ( gTcpDataSocket != socket)
   {
     writelineex(0, 2, "OnTcpConnect called for unknown socket 0x%X", socket);
-
     return;
   }
 
   if (0 != result)
   {
     IpGetLastSocketErrorAsString( socket, gIpLastErrStr, elcount( gIpLastErrStr));
-
     writelineex( 0, 2, "OnTcpConnect error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
-
     return;
   }
   else
   {
     writelineex(0, 1, "Successfully connected to server via Tcp");
-
     TcpRecv( socket);
   }
 }
@@ -410,4 +382,3 @@ on sysvar_update sysvar::UDP::UdpSend
     SendUdpData();
   }
 }
-

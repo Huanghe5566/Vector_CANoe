@@ -1,0 +1,12 @@
+# 空场景：没有目标，通常用于验证“不应误报警”或初始化环境。
+case_id: SCN_EMPTY_001
+name: empty_scene
+duration_ms: 200
+vehicle:
+  speed_kph: 0
+  gear: P
+  bsd_lca_rcta_switch: false
+objects: []
+expected:
+  alarm: rlcr_bsd_warn
+  active: false
