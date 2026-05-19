@@ -756,6 +756,79 @@
         <Property Name="Text">Bench_test</Property>
       </Object>
       <Object Type="Vector.CANalyzer.Panels.Design.VectorTabPage, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="VectorTabPage5" Children="Controls" ControlName="Bench_test">
+        <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl11" Children="Controls" ControlName="Group Box 8">
+          <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl5" Children="Controls" ControlName="Numeric Up/Down 2">
+            <Property Name="Name">NumericUpDownControl5</Property>
+            <Property Name="Size">74, 25</Property>
+            <Property Name="Location">67, 21</Property>
+            <Property Name="DecimalPlaces">1</Property>
+            <Property Name="Maximum">300</Property>
+            <Property Name="SymbolConfiguration">6;16;GW;;;VehicleSpeed;2;;;-1;;;;</Property>
+            <Property Name="TabIndex">64</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl4" Children="Controls" ControlName="Numeric Up/Down 1">
+            <Property Name="Name">NumericUpDownControl4</Property>
+            <Property Name="Size">75, 25</Property>
+            <Property Name="Location">65, 86</Property>
+            <Property Name="DecimalPlaces">4</Property>
+            <Property Name="Maximum">256</Property>
+            <Property Name="Minimum">-256</Property>
+            <Property Name="Increment">0.1</Property>
+            <Property Name="SymbolConfiguration">6;16;GW;;;YawRate;2;;;-1;;;;</Property>
+            <Property Name="TabIndex">66</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl14" Children="Controls" ControlName="Static Text 8">
+            <Property Name="Name">StaticTextControl14</Property>
+            <Property Name="Size">39, 13</Property>
+            <Property Name="Location">22, 88</Property>
+            <Property Name="Text">偏航角</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl13" Children="Controls" ControlName="Static Text 7">
+            <Property Name="Name">StaticTextControl13</Property>
+            <Property Name="Size">28, 13</Property>
+            <Property Name="Location">34, 23</Property>
+            <Property Name="Text">车速</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl15" Children="Controls" ControlName="Static Text 9">
+            <Property Name="Name">StaticTextControl15</Property>
+            <Property Name="Size">35, 13</Property>
+            <Property Name="Location">145, 89</Property>
+            <Property Name="Text">deg/s</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl18" Children="Controls" ControlName="Static Text 12">
+            <Property Name="Name">StaticTextControl18</Property>
+            <Property Name="Size">29, 13</Property>
+            <Property Name="Location">145, 23</Property>
+            <Property Name="Text">km/h</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl16" Children="Controls" ControlName="Static Text 10">
+            <Property Name="Name">StaticTextControl16</Property>
+            <Property Name="Size">23, 13</Property>
+            <Property Name="Location">146, 63</Property>
+            <Property Name="Text">deg</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl6" Children="Controls" ControlName="Numeric Up/Down 3">
+            <Property Name="Name">NumericUpDownControl6</Property>
+            <Property Name="Size">76, 25</Property>
+            <Property Name="Location">64, 59</Property>
+            <Property Name="DecimalPlaces">1</Property>
+            <Property Name="Maximum">780</Property>
+            <Property Name="Minimum">-780</Property>
+            <Property Name="SymbolConfiguration">6;16;GW;;;SteeringAngle;2;;;-1;;;;</Property>
+            <Property Name="TabIndex">65</Property>
+          </Object>
+          <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl17" Children="Controls" ControlName="Static Text 11">
+            <Property Name="Name">StaticTextControl17</Property>
+            <Property Name="Size">62, 13</Property>
+            <Property Name="Location">4, 63</Property>
+            <Property Name="Text">方向盘转角</Property>
+          </Object>
+          <Property Name="Name">GroupBoxControl11</Property>
+          <Property Name="Size">212, 136</Property>
+          <Property Name="Location">4, 305</Property>
+          <Property Name="Text">系统变量</Property>
+          <Property Name="TabIndex">72</Property>
+        </Object>
         <Object Type="Vector.CANalyzer.Panels.Design.StartStopControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="StartStopControl1" Children="Controls" ControlName="Start Stop Control 1">
           <Property Name="Name">StartStopControl1</Property>
           <Property Name="Size">112, 56</Property>

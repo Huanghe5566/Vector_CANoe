@@ -1,6 +1,6 @@
 # QiRui_T19C_0511 — 奇瑞 T19C CANoe 仿真测试工程
 
-**版本**: V1.0.1  
+**版本**: V1.0.2  
 **CANoe**: 12.0.221（配置见 `Chery_T19C.cfg` 文件头）
 
 面向奇瑞 **T19C / RLCR / RRCR** 相关 CAN FD 网络的仿真与台架测试，集成 DBC、面板、系统变量及 CAPL 校验逻辑。
@@ -24,6 +24,24 @@
 3. 打开 **`Chery_T19C.cfg`**，检查 Simulation Setup 中节点与通道是否与硬件一致。
 4. 通过 **`Panel/`** 内面板注入车身、车机开关（如 `IHU_11`）、雷达相关信号；必要时在 **CAPL** 中扩展事件或报文行为。
 
+## Python 自动化框架
+
+`autotest/` 是新增的 pytest 主控框架，CANoe 仍作为台架底座，负责 CANFD DBC、Restbus、Trace/BLF 和 CAPL 底层辅助；Python 负责配置加载、用例编排、UDP 点云回灌、报警判定和报告输出。
+
+离线自检：
+
+```bash
+python -m pytest
+```
+
+真实 CANoe 台架运行：
+
+```bash
+python -m pytest autotest/test_cases --real-canoe --junitxml reports/junit/t19c.xml
+```
+
+项目差异放在 `autotest/project_config/t19c_rlcr_rrcr.yaml`，场景放在 `autotest/scenario_library/`。后续换项目时优先新增配置和协议插件，不直接改测试用例。
+
 ## 事件型报文（车机开关等）
 
 DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文级 **`GenMsgNrOfRepetition`** 等属性，由 **Interaction Layer** 按数据库定义发送；若与 OEM 要求的帧数/间隔不一致，需在 DBC 或 CAPL 侧对齐后用手机帐或 Trace 复核。
@@ -34,6 +52,12 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 - 本仓库用于 **Vector CANoe** 学习与项目归档；工具软件需遵循 Vector 许可协议。
 
 ## 变更记录
+
+### V1.0.2
+
+- UDP 接收字节映射至网关系统变量：`byte0`→车速、`byte1`→转向角、`byte2`→偏航角（`IPClient.can` → `GW::VehicleSpeed` / `SteeringAngle` / `YawRate`）。
+- `FCR_GW.can` / `MainTest/FCR_GW.can`：系统变量与 CAN 信号双向同步（`ABS_ESP_1_VehicleSpeedVSOSig`、`SAM_1_G::SteeringAngle`、`YAS_1::YawRate`），50 ms 定时器支持面板改信号回写。
+- 工程清理：移除冗余 `D01P_Vehicle_Message.can`、`crc.cin`（MainTest 保留 `crc.cin`）。
 
 ### V1.0.1
 
@@ -54,7 +78,7 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 ```bash
 git clone https://github.com/Huanghe5566/Vector_CANoe.git
 cd Vector_CANoe
-git checkout V1.0.1
+git checkout V1.0.2
 ```
 
 在 Windows 上克隆完整仓库（含 Vector 示例的长路径）时建议启用：`git config --global core.longpaths true`。

@@ -1,0 +1,30 @@
+# BSD 左侧目标靠近场景
+#
+# 这个文件描述“一条测试场景”，不是 Python 程序。
+# 测试程序会读取它，然后自动设置车身信号、发送 UDP 点云、检查报警。
+
+# 场景 ID，建议和测试用例管理系统保持一致。
+case_id: SCN_BSD_LEFT_001
+# 场景名称，便于报告显示。
+name: bsd_target_approach_left
+# 场景持续时间，单位 ms。
+duration_ms: 300
+# 车身条件：这些值会先写入 CANoe。
+vehicle:
+  speed_kph: 30
+  gear: D
+  bsd_lca_rcta_switch: true
+# UDP 点云目标列表。
+objects:
+  - id: 1
+    distance_m: 12.0
+    velocity_mps: -3.0
+    azimuth_deg: -35.0
+    elevation_deg: 0.0
+    rcs_dbsm: 15.0
+# 期望结果。
+expected:
+  alarm: rlcr_bsd_warn
+  active: true
+  trigger_within_ms: 1500
+  min_hold_ms: 300

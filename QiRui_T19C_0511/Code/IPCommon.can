@@ -1,6 +1,9 @@
+/*@!Encoding:936*/
 /*@@var:*/
 variables
 {
+  // Shared TCP/UDP globals for IPClient.can
+
   const long  INVALID_SOCKET =    ~0;
   const long  WSA_IO_PENDING =   997;
   const long  WSAEWOULDBLOCK = 10035;
@@ -20,7 +23,6 @@ variables
   long        gTcpDataSocket    = INVALID_SOCKET;
   char        gTcpRxBuffer[8192];
 
-  // status
   int         gStatus = 0;
   const int   gkSTATUS_UNINITIALISED = 0;
   const int   gkSTATUS_INITIALISED   = 1;

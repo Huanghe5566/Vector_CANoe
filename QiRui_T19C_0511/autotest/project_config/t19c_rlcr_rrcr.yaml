@@ -1,0 +1,126 @@
+# T19C RLCR/RRCR 项目配置文件
+#
+# 这个文件的作用：
+# 1. 把“项目差异”集中放在这里。
+# 2. 测试用例只写 speed、rlcr_bsd_warn 这种简单名字。
+# 3. 真实 DBC 信号名、CANoe 工程路径、UDP 地址都在这里改。
+#
+# 小白理解：
+# YAML 是一种配置表。冒号左边是名字，冒号右边是值。
+# 缩进表示层级，缩进不要乱改。
+
+project:
+  # 项目名称，只用于报告和日志展示。
+  name: Chery_T19C_RLCR_RRCR
+  # CANoe 工程文件路径。这里是相对当前 yaml 文件的位置。
+  canoe_cfg: "../../Chery_T19C.cfg"
+  # CANoe 版本提示，不参与程序判断。
+  canoe_version: "12.0.221"
+  # DBC 路径，便于后续做 DBC 自动检查或报告记录。
+  dbc:
+    rlcr: "../../DBC/RLCR _T19CEV.dbc"
+    rrcr: "../../DBC/DA CANFD RRCR Message list V3.0 ISSUE(For T19C,T1CFL,T18P,M1E,T22,T26,T1EJ,T19CEV M32TFL2 T1E ANZ Project) (2).dbc"
+  # CDD 路径，后续 UDS 诊断扩展会用到。
+  cdd:
+    rlcr: "../../Cdd/Chery_T19_RLCR_DIAG.cdd"
+    rrcr: "../../Cdd/Chery_T19_RRCR_DIAG.cdd"
+
+paths:
+  # 场景库目录，测试用例写场景名时会到这里找 yaml。
+  scenario_library: "../scenario_library"
+  # 测试证据输出目录，例如报警判定 JSON。
+  reports: "../../reports/logs"
+
+udp_point_cloud:
+  # UDP 目标 IP。离线测试用 127.0.0.1；真实雷达请改成雷达 IP。
+  target_ip: "127.0.0.1"
+  # UDP 目标端口。必须和雷达协议一致。
+  target_port: 50001
+  # 本机发送网卡 IP。null 表示让系统自动选择；真实台架多网卡时建议写固定 IP。
+  local_ip: null
+  # 点云协议插件名。后续拿到真实 T19C 二进制协议后，仍使用这个名字。
+  protocol: "t19c_pointcloud_v1"
+  # UDP 发送周期，单位 ms。50 表示每 50 ms 发一帧。
+  cycle_ms: 50
+  # 时间戳单位提示，目前用于配置记录。
+  timestamp_unit: "us"
+
+vehicle_values:
+  # 档位文字到数值的映射。
+  # 用例写 D，底层会转换成 4。
+  gear:
+    P: 1
+    R: 2
+    N: 3
+    D: 4
+  # 开关量文字到数值的映射。
+  switch:
+    off: 0
+    on: 1
+
+vehicle_signals:
+  # 车速输入信号。
+  speed:
+    network: "CAN1"
+    message: "ABS_ESP_1"
+    signal: "ABS_ESP_1_VehicleSpeedVSOSig"
+  # 档位输入信号。
+  gear:
+    network: "CAN1"
+    message: "VCU_COM_10"
+    signal: "VCU_ActualGear"
+  # BSD/LCA/RCTA 功能开关。当前映射需要结合项目 DBC/需求继续确认。
+  bsd_lca_rcta_switch:
+    network: "CAN1"
+    message: "FCM_5"
+    signal: "FCM_5_ELKONOFFSts"
+
+alarm_outputs:
+  # 左后角雷达 BSD 报警输出。
+  rlcr_bsd_warn:
+    network: "CAN1"
+    message: "RLCR_1"
+    signal: "RLCR_1_BSDWarn"
+    # active_values 表示这些值都认为“报警触发”。
+    active_values: [1, 2, 3]
+    # 期望触发时间窗口，单位 ms。
+    trigger_within_ms: 1500
+    # 触发后最少保持时间，单位 ms。
+    min_hold_ms: 300
+  # 左后角雷达 RCTA 报警输出。
+  rlcr_rcta_warn:
+    network: "CAN1"
+    message: "RLCR_1"
+    signal: "RLCR_1_RCTAWarn"
+    active_values: [1]
+    trigger_within_ms: 1500
+    min_hold_ms: 300
+  # 右后角雷达 BSD 报警输出。
+  rrcr_bsd_warn:
+    network: "CAN1"
+    message: "RRCR_1"
+    signal: "RRCR_1_BSDWarn"
+    active_values: [1, 2, 3]
+    trigger_within_ms: 1500
+    min_hold_ms: 300
+  # 右后角雷达 RCTA 报警输出。
+  rrcr_rcta_warn:
+    network: "CAN1"
+    message: "RRCR_1"
+    signal: "RRCR_1_RCTAWarn"
+    active_values: [1]
+    trigger_within_ms: 1500
+    min_hold_ms: 300
+
+state_machine:
+  # 状态机信号。当前先以 RLCR_1_SysSt 为示例。
+  state_signal:
+    network: "CAN1"
+    message: "RLCR_1"
+    signal: "RLCR_1_SysSt"
+  # 状态枚举。数值含义要以项目需求/DBC 为准。
+  states:
+    init: 0
+    standby: 1
+    active: 2
+    fault: 3
