@@ -1,8 +1,0 @@
-[NStatePersistence]
-Signature=VectorStatePersistence
-[VGlobalMeasurementIndex]
-mMeasurementIndex=27
-[VTestConfigurationConfigData]
-PythonBasicTest_NextTestRun=3
-[VTestExecutable]
-PythonBasicTest_LastReportFile=TestConfiguration_Report\Report_PythonBasicTest.xml

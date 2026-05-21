@@ -1,8 +1,0 @@
-[NStatePersistence]
-Signature=VectorStatePersistence
-[VGlobalMeasurementIndex]
-mMeasurementIndex=79
-[VTestConfigurationConfigData]
-Door_Control_Unit_NextTestRun=66
-[VTestExecutable]
-Door_Control_Unit_LastReportFile=Report_Door_Control_Unit_Tests.vtestreport

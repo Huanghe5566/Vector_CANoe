@@ -1,2 +1,0 @@
-"""Point cloud protocol plugins."""
-

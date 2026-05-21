@@ -1,2 +1,0 @@
-ipy client.py
-PAUSE

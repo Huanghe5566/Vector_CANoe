@@ -1,2 +1,0 @@
-"""Bench/HIL test cases."""
-
