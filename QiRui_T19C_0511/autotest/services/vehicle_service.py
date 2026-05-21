@@ -29,6 +29,8 @@ class VehicleService:
         # 设置开关类信号，例如 BSD/LCA/RCTA 开关。
         # logical_name 是 YAML 中 vehicle_signals 下的名字。
         ref = self.config.signal(logical_name)
-        switch_values = self.config.section("vehicle_values").get("switch", {})
+        signal_cfg = self.config.section("vehicle_signals").get(logical_name, {})
+        values_key = signal_cfg.get("value_map", "switch")
+        switch_values = self.config.section("vehicle_values").get(values_key, {})
         value = switch_values.get("on" if enabled else "off", 1 if enabled else 0)
         self.canoe.set_signal(ref, value)

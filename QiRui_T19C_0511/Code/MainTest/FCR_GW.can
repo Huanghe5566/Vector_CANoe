@@ -15,6 +15,26 @@ variables
   int gGwSteerFromSysvar;
   int gGwYawFromSysvar;
   msTimer gGwSyncTimer;
+
+  const int IHU_SW_NOT_ACTIVE = 0;
+  const int IHU_SW_ON         = 1;
+  const int IHU_SW_OFF        = 2;
+  const int IHU_SW_NOT_USED   = 3;
+
+  const int IHU11_EVENT_TX_COUNT = 3;
+  const long IHU11_CAN_ID        = 0x4FC;
+
+  const int IHU_SW_IDX_BSD  = 0;
+  const int IHU_SW_IDX_DOW  = 1;
+  const int IHU_SW_IDX_RCW  = 2;
+  const int IHU_SW_IDX_RCTB = 3;
+  const int IHU_SW_IDX_RAEB = 4;
+  const int IHU_SW_IDX_COUNT = 5;
+
+  int gIhu11IlTxAllow;
+  int gLastIhu11SwitchSts[5];
+  int gIhu11FromSysvar[5];
+  int gIhu11SuppressSysvar[5];
 }
 
 void PushGwVehicleSpeedToSignal(float value)
@@ -93,6 +113,15 @@ on preStart
 
 on start
 {
+  int i;
+
+  for (i = 0; i < IHU_SW_IDX_COUNT; i++)
+  {
+    gLastIhu11SwitchSts[i] = -1;
+    gIhu11FromSysvar[i] = 0;
+    gIhu11SuppressSysvar[i] = 0;
+  }
+  gIhu11IlTxAllow = 0;
   setTimerCyclic(gGwSyncTimer, 50);
   ApplyGwSysvarToSignals();
 }
@@ -100,21 +129,270 @@ on start
 on timer gGwSyncTimer
 {
   SyncGwSysvarsFromPanelSignals();
+  SyncIhu11SwitchesFromPanel();
 }
 
 on sysvar_update sysvar::GW::VehicleSpeed
 {
-  PushGwVehicleSpeedToSignal(@this);
+  PushGwVehicleSpeedToSignal(@sysvar::GW::VehicleSpeed);
 }
 
 on sysvar_update sysvar::GW::SteeringAngle
 {
-  PushGwSteeringAngleToSignal(@this);
+  PushGwSteeringAngleToSignal(@sysvar::GW::SteeringAngle);
 }
 
 on sysvar_update sysvar::GW::YawRate
 {
-  PushGwYawRateToSignal(@this);
+  PushGwYawRateToSignal(@sysvar::GW::YawRate);
+}
+
+long IsValidIhu11SwitchValue(int value)
+{
+  if (value >= IHU_SW_NOT_ACTIVE && value <= IHU_SW_NOT_USED)
+  {
+    return 1;
+  }
+  return 0;
+}
+
+void ArmIhu11IlEventTx()
+{
+  gIhu11IlTxAllow = IHU11_EVENT_TX_COUNT;
+}
+
+void WriteIhu11SwitchToCan(int idx, int value)
+{
+  if (idx == IHU_SW_IDX_BSD)
+  {
+    $CAN1::IHU_11::IHU_11_BSDSwitchSts = value;
+  }
+  else if (idx == IHU_SW_IDX_DOW)
+  {
+    $CAN1::IHU_11::DVD_SET_DOW = value;
+  }
+  else if (idx == IHU_SW_IDX_RCW)
+  {
+    $CAN1::IHU_11::DVD_SET_RCW = value;
+  }
+  else if (idx == IHU_SW_IDX_RCTB)
+  {
+    $CAN1::IHU_11::IHU_11_RCTBSwtSet = value;
+  }
+  else if (idx == IHU_SW_IDX_RAEB)
+  {
+    $CAN1::IHU_11::IHU_11_RAEBSwtSet = value;
+  }
+}
+
+int ReadIhu11SwitchFromCan(int idx)
+{
+  if (idx == IHU_SW_IDX_BSD)
+  {
+    return $CAN1::IHU_11::IHU_11_BSDSwitchSts;
+  }
+  else if (idx == IHU_SW_IDX_DOW)
+  {
+    return $CAN1::IHU_11::DVD_SET_DOW;
+  }
+  else if (idx == IHU_SW_IDX_RCW)
+  {
+    return $CAN1::IHU_11::DVD_SET_RCW;
+  }
+  else if (idx == IHU_SW_IDX_RCTB)
+  {
+    return $CAN1::IHU_11::IHU_11_RCTBSwtSet;
+  }
+  else if (idx == IHU_SW_IDX_RAEB)
+  {
+    return $CAN1::IHU_11::IHU_11_RAEBSwtSet;
+  }
+  return 0;
+}
+
+void SetIhu11SwitchSysvar(int idx, int value)
+{
+  if (idx == IHU_SW_IDX_BSD)
+  {
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts = value;
+  }
+  else if (idx == IHU_SW_IDX_DOW)
+  {
+    @sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW = value;
+  }
+  else if (idx == IHU_SW_IDX_RCW)
+  {
+    @sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW = value;
+  }
+  else if (idx == IHU_SW_IDX_RCTB)
+  {
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet = value;
+  }
+  else if (idx == IHU_SW_IDX_RAEB)
+  {
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet = value;
+  }
+}
+
+int GetIhu11SwitchSysvar(int idx)
+{
+  if (idx == IHU_SW_IDX_BSD)
+  {
+    return @sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts;
+  }
+  else if (idx == IHU_SW_IDX_DOW)
+  {
+    return @sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW;
+  }
+  else if (idx == IHU_SW_IDX_RCW)
+  {
+    return @sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW;
+  }
+  else if (idx == IHU_SW_IDX_RCTB)
+  {
+    return @sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet;
+  }
+  else if (idx == IHU_SW_IDX_RAEB)
+  {
+    return @sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet;
+  }
+  return 0;
+}
+
+void TriggerIhu11SwitchEvent(int idx, int value, int forceRetrigger)
+{
+  if (!IsValidIhu11SwitchValue(value))
+  {
+    writelineex(0, 2, "IHU_11 switch[%d] invalid value %d", idx, value);
+    return;
+  }
+
+  gIhu11FromSysvar[idx] = 1;
+  if (forceRetrigger && (ReadIhu11SwitchFromCan(idx) == value))
+  {
+    WriteIhu11SwitchToCan(idx, IHU_SW_NOT_ACTIVE);
+  }
+  WriteIhu11SwitchToCan(idx, value);
+  gLastIhu11SwitchSts[idx] = value;
+  ArmIhu11IlEventTx();
+  writelineex(0, 1, "IHU_11 switch[%d]=%d, IL allow=%d", idx, value, IHU11_EVENT_TX_COUNT);
+}
+
+void SyncIhu11SwitchesFromPanel()
+{
+  int i;
+  int sigVal;
+
+  for (i = 0; i < IHU_SW_IDX_COUNT; i++)
+  {
+    if (gIhu11FromSysvar[i])
+    {
+      gIhu11FromSysvar[i] = 0;
+    }
+    else
+    {
+      sigVal = ReadIhu11SwitchFromCan(i);
+      if (sigVal != gLastIhu11SwitchSts[i])
+      {
+        gLastIhu11SwitchSts[i] = sigVal;
+        gIhu11SuppressSysvar[i] = 1;
+        SetIhu11SwitchSysvar(i, sigVal);
+        gIhu11SuppressSysvar[i] = 0;
+        ArmIhu11IlEventTx();
+      }
+      else if (sigVal != GetIhu11SwitchSysvar(i))
+      {
+        gIhu11SuppressSysvar[i] = 1;
+        SetIhu11SwitchSysvar(i, sigVal);
+        gIhu11SuppressSysvar[i] = 0;
+      }
+    }
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts
+{
+  if (!gIhu11SuppressSysvar[IHU_SW_IDX_BSD])
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_BSD, @sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts, 0);
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts_Fire
+{
+  if (@sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts_Fire == 1)
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_BSD, @sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts, 1);
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts_Fire = 0;
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW
+{
+  if (!gIhu11SuppressSysvar[IHU_SW_IDX_DOW])
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_DOW, @sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW, 0);
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW_Fire
+{
+  if (@sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW_Fire == 1)
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_DOW, @sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW, 1);
+    @sysvar::Vehicle_Input::EventSwitch::DVD_SET_DOW_Fire = 0;
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW
+{
+  if (!gIhu11SuppressSysvar[IHU_SW_IDX_RCW])
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RCW, @sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW, 0);
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW_Fire
+{
+  if (@sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW_Fire == 1)
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RCW, @sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW, 1);
+    @sysvar::Vehicle_Input::EventSwitch::DVD_SET_RCW_Fire = 0;
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet
+{
+  if (!gIhu11SuppressSysvar[IHU_SW_IDX_RCTB])
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RCTB, @sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet, 0);
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet_Fire
+{
+  if (@sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet_Fire == 1)
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RCTB, @sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet, 1);
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_RCTBSwtSet_Fire = 0;
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet
+{
+  if (!gIhu11SuppressSysvar[IHU_SW_IDX_RAEB])
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RAEB, @sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet, 0);
+  }
+}
+
+on sysvar_update sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet_Fire
+{
+  if (@sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet_Fire == 1)
+  {
+    TriggerIhu11SwitchEvent(IHU_SW_IDX_RAEB, @sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet, 1);
+    @sysvar::Vehicle_Input::EventSwitch::IHU_11_RAEBSwtSet_Fire = 0;
+  }
 }
 
 on busoff{
@@ -379,7 +657,17 @@ dword applILTxPending (long aId, dword aDlc, byte data[])
   data[1] = E2E_Counter2(data,1);
   data[2] = checksum_sum_2B(data);
   }
-  
+
+  if (aId == IHU11_CAN_ID)
+  {
+    if (gIhu11IlTxAllow > 0)
+    {
+      gIhu11IlTxAllow--;
+      return 1;
+    }
+    return 0;
+  }
+
    return 1; // don't prevent sending of the message
 }
 

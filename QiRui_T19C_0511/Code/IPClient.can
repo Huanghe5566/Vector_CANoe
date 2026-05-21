@@ -6,6 +6,70 @@ includes
 
 variables
 {
+  char      gIpClientIni[260] = "Code\\IPClient.ini";
+  msTimer   gUdpSettingsSaveTimer;
+  const int kUdpSettingsSaveDelayMs = 300;
+  long      gUdpSettingsLoaded = 0;
+}
+
+void ScheduleSaveUdpPanelSettings()
+{
+  cancelTimer(gUdpSettingsSaveTimer);
+  setTimer(gUdpSettingsSaveTimer, kUdpSettingsSaveDelayMs);
+}
+
+void SaveUdpPanelSettings()
+{
+  char serverIp[64];
+  char clientData[4096];
+  char portStr[32];
+
+  SysGetVariableString(sysvar::UDP::UdpServerIp, serverIp, elcount(serverIp));
+  SysGetVariableString(sysvar::UDP::UdpClientData, clientData, elcount(clientData));
+
+  writeProfileString("UDP", "ServerIp", serverIp, gIpClientIni);
+
+  snprintf(portStr, elcount(portStr), "%d", @sysvar::UDP::UdpClientPort);
+  writeProfileString("UDP", "ClientPort", portStr, gIpClientIni);
+
+  snprintf(portStr, elcount(portStr), "%d", @sysvar::UDP::UdpServerPort);
+  writeProfileString("UDP", "ServerPort", portStr, gIpClientIni);
+
+  writeProfileString("UDP", "ClientData", clientData, gIpClientIni);
+}
+
+void LoadUdpPanelSettings()
+{
+  char serverIp[64];
+  char clientData[4096];
+  char portStr[32];
+  long port;
+
+  getProfileString("UDP", "ServerIp", "", serverIp, elcount(serverIp), gIpClientIni);
+  if (strlen(serverIp) > 0)
+  {
+    SysSetVariableString(sysvar::UDP::UdpServerIp, serverIp);
+  }
+
+  getProfileString("UDP", "ClientPort", "", portStr, elcount(portStr), gIpClientIni);
+  port = atol(portStr);
+  if (port > 0)
+  {
+    @sysvar::UDP::UdpClientPort = port;
+  }
+
+  getProfileString("UDP", "ServerPort", "", portStr, elcount(portStr), gIpClientIni);
+  port = atol(portStr);
+  if (port > 0)
+  {
+    @sysvar::UDP::UdpServerPort = port;
+  }
+
+  getProfileString("UDP", "ClientData", "", clientData, elcount(clientData), gIpClientIni);
+  SysSetVariableString(sysvar::UDP::UdpClientData, clientData);
+
+  gUdpSettingsLoaded = 1;
+  writelineex(0, 1, "UDP panel settings loaded from %s", gIpClientIni);
 }
 
 void SetupIp()
@@ -61,7 +125,110 @@ void SetupIp()
   gStatus = gkSTATUS_INITIALISED;
 }
 
-void UpdateGwFromUdpBytes(char buffer[], dword count)
+long IsSpaceChar(char c)
+{
+  if (c == ' ' || c == '\t' || c == '\r' || c == '\n')
+  {
+    return 1;
+  }
+  return 0;
+}
+
+float ParseDecimalStringToFloat(char buffer[], dword buflen, dword &pos, long &ok)
+{
+  float value;
+  float scale;
+  long sign;
+  long hasDigit;
+  long inFraction;
+  byte ch;
+
+  ok = 0;
+  value = 0.0;
+  sign = 1;
+  hasDigit = 0;
+  inFraction = 0;
+  scale = 0.1;
+
+  while (pos < buflen && IsSpaceChar(buffer[pos]))
+  {
+    pos++;
+  }
+
+  if (pos >= buflen)
+  {
+    return 0.0;
+  }
+
+  if (buffer[pos] == '-')
+  {
+    sign = -1;
+    pos++;
+  }
+  else if (buffer[pos] == '+')
+  {
+    pos++;
+  }
+
+  while (pos < buflen)
+  {
+    ch = buffer[pos];
+    if (ch >= '0' && ch <= '9')
+    {
+      hasDigit = 1;
+      if (!inFraction)
+      {
+        value = value * 10.0 + (ch - '0');
+      }
+      else
+      {
+        value = value + (ch - '0') * scale;
+        scale = scale / 10.0;
+      }
+      pos++;
+    }
+    else if (ch == '.' && !inFraction)
+    {
+      inFraction = 1;
+      pos++;
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  if (hasDigit)
+  {
+    ok = 1;
+    return sign * value;
+  }
+  return 0.0;
+}
+
+void SkipUdpFieldSeparators(char buffer[], dword buflen, dword &pos)
+{
+  while (pos < buflen && (buffer[pos] == ',' || IsSpaceChar(buffer[pos])))
+  {
+    pos++;
+  }
+}
+
+long UdpPayloadHasComma(char buffer[], dword count)
+{
+  dword i;
+
+  for (i = 0; i < count; i++)
+  {
+    if (buffer[i] == ',')
+    {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+void UpdateGwFromUdpLegacyBytes(char buffer[], dword count)
 {
   if (count >= 1)
   {
@@ -77,14 +244,88 @@ void UpdateGwFromUdpBytes(char buffer[], dword count)
   }
 }
 
+void UpdateGwFromUdpAsciiCsv(char buffer[], dword count)
+{
+  char text[4096];
+  dword pos;
+  dword i;
+  long okSpeed;
+  long okSteer;
+  long okYaw;
+  float speed;
+  float steer;
+  float yaw;
+
+  if (count >= elcount(text))
+  {
+    count = elcount(text) - 1;
+  }
+
+  for (i = 0; i < count; i++)
+  {
+    text[i] = buffer[i];
+  }
+  text[count] = 0;
+
+  pos = 0;
+  speed = ParseDecimalStringToFloat(text, count, pos, okSpeed);
+  SkipUdpFieldSeparators(text, count, pos);
+  steer = ParseDecimalStringToFloat(text, count, pos, okSteer);
+  SkipUdpFieldSeparators(text, count, pos);
+  yaw = ParseDecimalStringToFloat(text, count, pos, okYaw);
+
+  if (okSpeed && okSteer && okYaw)
+  {
+    @sysvar::GW::VehicleSpeed = speed;
+    @sysvar::GW::SteeringAngle = steer;
+    @sysvar::GW::YawRate = yaw;
+  }
+  else
+  {
+    writelineex(0, 2, "UDP CSV parse failed (%d/%d/%d): %s", okSpeed, okSteer, okYaw, text);
+  }
+}
+
+void UpdateGwFromUdpPayload(char buffer[], dword count)
+{
+  if (count == 0)
+  {
+    return;
+  }
+
+  if (UdpPayloadHasComma(buffer, count))
+  {
+    UpdateGwFromUdpAsciiCsv(buffer, count);
+  }
+  else if (count == 8)
+  {
+    // Sender end notification: three 8-byte frames; ignore.
+  }
+  else if (count <= 3)
+  {
+    UpdateGwFromUdpLegacyBytes(buffer, count);
+  }
+  else
+  {
+    writelineex(0, 2, "UDP payload ignored, len=%d", count);
+  }
+}
+
 on start
 {
+  LoadUdpPanelSettings();
   SetupIp();
 }
 
 on stopMeasurement
 {
+  SaveUdpPanelSettings();
   ResetIp();
+}
+
+on timer gUdpSettingsSaveTimer
+{
+  SaveUdpPanelSettings();
 }
 
 void OnTcpReceive( dword socket, long result, dword address, dword port, char buffer[], dword size)
@@ -194,16 +435,25 @@ void SendTcpData()
   }
 }
 
-void SendUdpData()
+void ClearCharBuffer(char buffer[], dword buflen)
+{
+  dword i;
+
+  for (i = 0; i < buflen; i++)
+  {
+    buffer[i] = 0;
+  }
+}
+
+long SendUdpPayload(char payload[])
 {
   char buffer[64];
-  char data[4096];
   dword serverIp;
 
-  if ( INVALID_SOCKET == gUdpSocket)
+  if (INVALID_SOCKET == gUdpSocket)
   {
     writelineex(0, 1, "Error: Udp socket is not opened!");
-    return;
+    return -1;
   }
 
   SysGetVariableString(sysvar::UDP::UdpServerIp, buffer, elcount(buffer));
@@ -212,19 +462,31 @@ void SendUdpData()
   if (INVALID_IP == serverIp)
   {
     writelineex(0, 1, "Error: invalid server Ip address!");
-    return;
+    return -1;
   }
 
+  if (0 == UdpSendTo(gUdpSocket, serverIp, @sysvar::UDP::UdpServerPort, payload, strlen(payload)))
+  {
+    writelineex(0, 1, "Successfully sent Udp data: %s", payload);
+    return 0;
+  }
+
+  writelineex(0, 1, "Error: failed to send Udp data to %s:%d", buffer, @sysvar::UDP::UdpServerPort);
+  return -1;
+}
+
+void SendUdpData()
+{
+  char data[4096];
+
+  ClearCharBuffer(data, elcount(data));
   SysGetVariableString(sysvar::UDP::UdpClientData, data, elcount(data));
+  SendUdpPayload(data);
+}
 
-  if (0 == UdpSendTo(gUdpSocket, serverIp, @sysvar::UDP::UdpServerPort, data, elcount(data)))
-  {
-    writelineex(0, 1, "Successfully sent Udp data.");
-  }
-  else
-  {
-    writelineex(0, 1, "Error: an error occured while connecting to server %s:%d", serverIp, @sysvar::TCPIP::TcpServerPort);
-  }
+void SendUdpStop()
+{
+  SendUdpPayload("STOP");
 }
 
 void OpenUdpPort()
@@ -251,9 +513,6 @@ void CloseUdpPort()
     gUdpSocket = INVALID_SOCKET;
     writelineex(0, 2, "Udp port is closed.");
   }
-
-  SysSetVariableString(sysvar::UDP::UdpServerIp, "");
-  @sysvar::UDP::UdpServerPort = 0;
 }
 
 void ResetIp()
@@ -273,8 +532,6 @@ void ResetIp()
 
 void OnUdpReceiveFrom( dword socket, long result, dword address, dword port, char buffer[], dword count)
 {
-  char  addressString[64] = "";
-
   if ( gUdpSocket != socket)
   {
     writelineex(0, 2, "OnUdpReceiveFrom called for unknown socket!");
@@ -286,12 +543,8 @@ void OnUdpReceiveFrom( dword socket, long result, dword address, dword port, cha
     writelineex( 0, 2, "OnUdpReceiveFrom error (%d): %s", IpGetLastSocketError( socket), gIpLastErrStr);
   }
 
-  IpGetAddressAsString(address, addressString, elcount(addressString));
-  SysSetVariableString(sysvar::UDP::UdpServerIp, addressString);
-  @sysvar::UDP::UdpServerPort = port;
-
   SysSetVariableString(sysvar::UDP::UdpData, buffer);
-  UpdateGwFromUdpBytes(buffer, count);
+  UpdateGwFromUdpPayload(buffer, count);
 
   UdpRecv( socket);
 }
@@ -380,5 +633,45 @@ on sysvar_update sysvar::UDP::UdpSend
   if (@this)
   {
     SendUdpData();
+  }
+}
+
+on sysvar_update sysvar::UDP::UdpSendStop
+{
+  if (@this)
+  {
+    SendUdpStop();
+  }
+}
+
+on sysvar_update sysvar::UDP::UdpServerIp
+{
+  if (gUdpSettingsLoaded)
+  {
+    ScheduleSaveUdpPanelSettings();
+  }
+}
+
+on sysvar_update sysvar::UDP::UdpClientPort
+{
+  if (gUdpSettingsLoaded)
+  {
+    ScheduleSaveUdpPanelSettings();
+  }
+}
+
+on sysvar_update sysvar::UDP::UdpServerPort
+{
+  if (gUdpSettingsLoaded)
+  {
+    ScheduleSaveUdpPanelSettings();
+  }
+}
+
+on sysvar_update sysvar::UDP::UdpClientData
+{
+  if (gUdpSettingsLoaded)
+  {
+    ScheduleSaveUdpPanelSettings();
   }
 }

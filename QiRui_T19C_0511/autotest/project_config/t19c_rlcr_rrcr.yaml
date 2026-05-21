@@ -57,6 +57,11 @@ vehicle_values:
   switch:
     off: 0
     on: 1
+  # IHU_11 event switch (DBC VAL_: 0 Not Active, 1 ON, 2 OFF, 3 Not Used)
+  ihu_switch:
+    off: 2
+    on: 1
+    not_active: 0
 
 vehicle_signals:
   # 车速输入信号。
@@ -69,11 +74,12 @@ vehicle_signals:
     network: "CAN1"
     message: "VCU_COM_10"
     signal: "VCU_ActualGear"
-  # BSD/LCA/RCTA 功能开关。当前映射需要结合项目 DBC/需求继续确认。
+  # BSD 功能开关（IHU_11 事件型报文，由 CGW_T19C IL 发 3 帧快发）
   bsd_lca_rcta_switch:
     network: "CAN1"
-    message: "FCM_5"
-    signal: "FCM_5_ELKONOFFSts"
+    message: "IHU_11"
+    signal: "IHU_11_BSDSwitchSts"
+    value_map: ihu_switch
 
 alarm_outputs:
   # 左后角雷达 BSD 报警输出。

@@ -6,7 +6,7 @@
         <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box 1">
           <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl1" Children="Controls" ControlName="Combo Box 1">
             <Property Name="Name">ComboBoxControl1</Property>
-            <Property Name="Size">168, 23</Property>
+            <Property Name="Size">167, 23</Property>
             <Property Name="Location">26, 54</Property>
             <Property Name="DropDownWidth">192</Property>
             <Property Name="BackColor">Window</Property>
@@ -14,13 +14,14 @@
             <Property Name="TextBackColor">Silver</Property>
             <Property Name="DisplayLabel">Left</Property>
             <Property Name="DescriptionText">DOW功能开关</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
             <Property Name="DescriptionSize">68, 20</Property>
-            <Property Name="SymbolConfiguration">6;2;sdada;;IHU_11;DVD_SET_DOW;1;CAN1;;-1;;;;</Property>
+            <Property Name="SymbolConfiguration">6;16;Vehicle_Input::EventSwitch;;;DVD_SET_DOW;1;;;-1;;;;</Property>
             <Property Name="TabIndex">376</Property>
           </Object>
           <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl4" Children="Controls" ControlName="Combo Box 36">
             <Property Name="Name">ComboBoxControl4</Property>
-            <Property Name="Size">174, 23</Property>
+            <Property Name="Size">173, 23</Property>
             <Property Name="Location">20, 105</Property>
             <Property Name="DropDownWidth">192</Property>
             <Property Name="BackColor">Window</Property>
@@ -28,13 +29,14 @@
             <Property Name="TextBackColor">Silver</Property>
             <Property Name="DisplayLabel">Left</Property>
             <Property Name="DescriptionText">RCTB功能开关</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
             <Property Name="DescriptionSize">74, 20</Property>
-            <Property Name="SymbolConfiguration">6;2;sdada;;IHU_11;IHU_11_RCTBSwtSet;1;CAN1;;-1;;;;</Property>
+            <Property Name="SymbolConfiguration">6;16;Vehicle_Input::EventSwitch;;;IHU_11_RCTBSwtSet;1;;;-1;;;;</Property>
             <Property Name="TabIndex">375</Property>
           </Object>
           <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl6" Children="Controls" ControlName="Combo Box 37">
             <Property Name="Name">ComboBoxControl6</Property>
-            <Property Name="Size">173, 23</Property>
+            <Property Name="Size">172, 23</Property>
             <Property Name="Location">20, 126</Property>
             <Property Name="DropDownWidth">192</Property>
             <Property Name="BackColor">Window</Property>
@@ -42,13 +44,14 @@
             <Property Name="TextBackColor">Silver</Property>
             <Property Name="DisplayLabel">Left</Property>
             <Property Name="DescriptionText">RAEB功能开关</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
             <Property Name="DescriptionSize">74, 20</Property>
-            <Property Name="SymbolConfiguration">6;2;sdada;;IHU_11;IHU_11_RAEBSwtSet;1;CAN1;;-1;;;;</Property>
+            <Property Name="SymbolConfiguration">6;16;Vehicle_Input::EventSwitch;;;IHU_11_RAEBSwtSet;1;;;-1;;;;</Property>
             <Property Name="TabIndex">378</Property>
           </Object>
           <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl16" Children="Controls" ControlName="Combo Box 38">
             <Property Name="Name">ComboBoxControl16</Property>
-            <Property Name="Size">168, 23</Property>
+            <Property Name="Size">167, 23</Property>
             <Property Name="Location">25, 80</Property>
             <Property Name="DropDownWidth">192</Property>
             <Property Name="BackColor">Window</Property>
@@ -56,8 +59,9 @@
             <Property Name="TextBackColor">Silver</Property>
             <Property Name="DisplayLabel">Left</Property>
             <Property Name="DescriptionText">RCW功能开关</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
             <Property Name="DescriptionSize">68, 20</Property>
-            <Property Name="SymbolConfiguration">6;2;sdada;;IHU_11;DVD_SET_RCW;1;CAN1;;-1;;;;</Property>
+            <Property Name="SymbolConfiguration">6;16;Vehicle_Input::EventSwitch;;;DVD_SET_RCW;1;;;-1;;;;</Property>
             <Property Name="TabIndex">377</Property>
           </Object>
           <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl17" Children="Controls" ControlName="Combo Box 39">
@@ -70,13 +74,14 @@
             <Property Name="TextBackColor">Silver</Property>
             <Property Name="DisplayLabel">Left</Property>
             <Property Name="DescriptionText">BSD功能开关</Property>
+            <Property Name="UsedValueTable">PhysicalValue</Property>
             <Property Name="DescriptionSize">68, 20</Property>
-            <Property Name="SymbolConfiguration">6;2;sdada;;IHU_11;IHU_11_BSDSwitchSts;1;CAN1;;-1;;;;</Property>
+            <Property Name="SymbolConfiguration">6;16;Vehicle_Input::EventSwitch;;;IHU_11_BSDSwitchSts;1;;;-1;;;;</Property>
             <Property Name="TabIndex">374</Property>
           </Object>
           <Property Name="Name">GroupBoxControl1</Property>
           <Property Name="Size">228, 158</Property>
-          <Property Name="Location">4, 368</Property>
+          <Property Name="Location">4, 375</Property>
           <Property Name="Text">车机开关输入</Property>
           <Property Name="TabIndex">374</Property>
         </Object>
@@ -756,6 +761,16 @@
         <Property Name="Text">Bench_test</Property>
       </Object>
       <Object Type="Vector.CANalyzer.Panels.Design.VectorTabPage, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="VectorTabPage5" Children="Controls" ControlName="Bench_test">
+        <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl4" Children="Controls" ControlName="Button 4">
+          <Property Name="Name">ButtonControl4</Property>
+          <Property Name="Size">152, 29</Property>
+          <Property Name="Location">410, 271</Property>
+          <Property Name="Font">Microsoft Sans Serif, 10.8pt, style=Bold</Property>
+          <Property Name="Text">停止回灌</Property>
+          <Property Name="UseTransparentColor">False</Property>
+          <Property Name="SymbolConfiguration">6;16;UDP;;;UdpSendStop;1;;;-1;;;;</Property>
+          <Property Name="TabIndex">19</Property>
+        </Object>
         <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl11" Children="Controls" ControlName="Group Box 8">
           <Object Type="Vector.CANalyzer.Panels.Design.NumericUpDownControl, Vector.CANalyzer.Panels.CommonControls, Version=12.0.221.0, Culture=neutral, PublicKeyToken=null" Name="NumericUpDownControl5" Children="Controls" ControlName="Numeric Up/Down 2">
             <Property Name="Name">NumericUpDownControl5</Property>
@@ -825,7 +840,7 @@
           </Object>
           <Property Name="Name">GroupBoxControl11</Property>
           <Property Name="Size">212, 136</Property>
-          <Property Name="Location">4, 305</Property>
+          <Property Name="Location">4, 318</Property>
           <Property Name="Text">系统变量</Property>
           <Property Name="TabIndex">72</Property>
         </Object>
@@ -1074,7 +1089,7 @@
             <Property Name="TabIndex">12</Property>
           </Object>
           <Property Name="Name">GroupBoxControl10</Property>
-          <Property Name="Size">564, 220</Property>
+          <Property Name="Size">564, 246</Property>
           <Property Name="Location">2, 67</Property>
           <Property Name="BackColor">Silver</Property>
           <Property Name="Font">Courier New, 13pt</Property>

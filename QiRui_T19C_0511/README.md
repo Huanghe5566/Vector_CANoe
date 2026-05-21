@@ -1,6 +1,6 @@
 # QiRui_T19C_0511 — 奇瑞 T19C CANoe 仿真测试工程
 
-**版本**: V1.0.2  
+**版本**: V1.0.3  
 **CANoe**: 12.0.221（配置见 `Chery_T19C.cfg` 文件头）
 
 面向奇瑞 **T19C / RLCR / RRCR** 相关 CAN FD 网络的仿真与台架测试，集成 DBC、面板、系统变量及 CAPL 校验逻辑。
@@ -44,7 +44,13 @@ python -m pytest autotest/test_cases --real-canoe --junitxml reports/junit/t19c.
 
 ## 事件型报文（车机开关等）
 
-DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文级 **`GenMsgNrOfRepetition`** 等属性，由 **Interaction Layer** 按数据库定义发送；若与 OEM 要求的帧数/间隔不一致，需在 DBC 或 CAPL 侧对齐后用手机帐或 Trace 复核。
+DBC 中对 `IHU_11` 等开关信号配置了 **OnChangeWithRepetition**（`GenMsgNrOfRepetition=3`、`GenMsgCycleTimeFast=100ms`），由 **CGW_T19C** 节点 IL 发送。CAPL（`FCR_GW.can`）支持：
+
+- 面板直接改 `$CAN1::IHU_11::IHU_11_BSDSwitchSts`（0/1/2/3）
+- 系统变量 `Vehicle_Input::EventSwitch::IHU_11_BSDSwitchSts`（改值即发）；`IHU_11_BSDSwitchSts_Fire=1` 可重复触发同值
+- autotest `bsd_lca_rcta_switch: true` → 写 `IHU_11_BSDSwitchSts=1`（ON）
+
+若 OEM 要求 6 帧而非 3 帧，改 DBC `GenMsgNrOfRepetition` 后 Trace 复核。
 
 ## 许可证与合规
 
@@ -53,9 +59,15 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 
 ## 变更记录
 
+### V1.0.3
+
+- 面板 `UdpClientData` 支持回灌数据路径：发送格式 `START <文件夹路径>`（仅支持英文路径），例如 `START C:\ReplayData\sample`。
+- 新增 **停止回灌** 按钮（`UDP::UdpSendStop`），发送 `STOP` 指令终止回灌。
+- `IPClient.can`：UDP 面板参数持久化至 `Code/IPClient.ini`；`SendUdpData` / `SendUdpStop` 封装发送逻辑。
+
 ### V1.0.2
 
-- UDP 接收字节映射至网关系统变量：`byte0`→车速、`byte1`→转向角、`byte2`→偏航角（`IPClient.can` → `GW::VehicleSpeed` / `SteeringAngle` / `YawRate`）。
+- UDP 接收 ASCII CSV：`speed, steer, yaw`（如 `25.50, 10.25, 0.015`）解析至 `GW::VehicleSpeed` / `SteeringAngle` / `YawRate`；仍兼容 3 字节旧格式；8 字节结束帧忽略（`IPClient.can`）。
 - `FCR_GW.can` / `MainTest/FCR_GW.can`：系统变量与 CAN 信号双向同步（`ABS_ESP_1_VehicleSpeedVSOSig`、`SAM_1_G::SteeringAngle`、`YAS_1::YawRate`），50 ms 定时器支持面板改信号回写。
 - 工程清理：移除冗余 `D01P_Vehicle_Message.can`、`crc.cin`（MainTest 保留 `crc.cin`）。
 
@@ -78,7 +90,7 @@ DBC 中对部分车机开关信号配置了 **OnChangeWithRepetition** 及报文
 ```bash
 git clone https://github.com/Huanghe5566/Vector_CANoe.git
 cd Vector_CANoe
-git checkout V1.0.2
+git checkout V1.0.3
 ```
 
 在 Windows 上克隆完整仓库（含 Vector 示例的长路径）时建议启用：`git config --global core.longpaths true`。

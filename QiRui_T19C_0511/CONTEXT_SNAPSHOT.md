@@ -7,7 +7,7 @@
 - 规则：`.cursor/rules/capl-canoe-t19c.mdc`
 
 ## 已实现
-- **IPClient.can**：UDP byte0/1/2 → `GW::VehicleSpeed` / `SteeringAngle` / `YawRate`
+- **IPClient.can**：UDP ASCII CSV `speed, steer, yaw` → `GW::VehicleSpeed` / `SteeringAngle` / `YawRate`（兼容 3 字节旧格式）
 - **FCR_GW.can**：sysvar 变→写信号；50ms 定时器面板改信号→回写 sysvar
 - 映射：VehicleSpeed↔ABS_ESP_1_VehicleSpeedVSOSig；SteeringAngle↔SAM_1_G；YawRate↔YAS_1
 - MainTest：同上 + preStart/set_value_to_valid + crc.cin
@@ -15,5 +15,7 @@
 ## Git
 - https://github.com/Huanghe5566/Vector_CANoe → `QiRui_T19C_0511/`，tag v1.0.0
 
-## 待办（可选）
-- IHU_11 事件 6 帧：改 DBC GenMsgNrOfRepetition 并 Trace 验证
+## 事件开关 IHU_11
+- `TriggerIhu11SwitchEvent(idx,...)`：`FCR_GW.can` / MainTest；sysvar `Vehicle_Input::EventSwitch::*`
+- 信号：BSD / DVD_SET_DOW / DVD_SET_RCW / RCTBSwtSet / RAEBSwtSet（0/1/2/3）
+- IL `applILTxPending(0x4FC)` 放行 3 帧

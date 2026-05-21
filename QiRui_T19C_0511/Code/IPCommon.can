@@ -1,5 +1,4 @@
 /*@!Encoding:936*/
-/*@@var:*/
 variables
 {
   // Shared TCP/UDP globals for IPClient.can
@@ -27,9 +26,7 @@ variables
   const int   gkSTATUS_UNINITIALISED = 0;
   const int   gkSTATUS_INITIALISED   = 1;
 }
-/*@@end*/
 
-/*@@caplFunc:UdpReceive(dword):*///function
 long UdpRecv( dword socket)
 {
   int result = 0;
@@ -50,9 +47,7 @@ long UdpRecv( dword socket)
 
   return result;
 }
-/*@@end*/
 
-/*@@caplFunc:<newFunction>:*///function
 long TcpRecv( dword socket)
 {
   int result = 0;
@@ -73,4 +68,3 @@ long TcpRecv( dword socket)
 
   return result;
 }
-/*@@end*/
